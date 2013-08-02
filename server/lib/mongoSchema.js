@@ -1,12 +1,22 @@
 var mongoose = require('mongoose'),
   //Get the configuration from env or use defaults
   config = {
+    user: process.env.MONGODB_USER,
+    pass: process.env.MONGODB_PASS,
     host: process.env.MONGODB_HOST || 'localhost',
     port: process.env.MONGODB_PORT || '27017',
     db: process.env.MONGODB_DB || 'rootstrikers'
-  };
+  }, user = '';
 
-mongoose.connect('mongodb://' + config.host + ':' + config.port + '/' + config.db);
+if (process.env.MONGOLAB_URI) {
+  mongoose.connect(process.env.MONGOLAB_URI);
+} else {
+
+  if (config.user && config.pass) {
+    user = config.user + ':' + config.pass + '@';
+  }
+  mongoose.connect('mongodb://' + user + config.host + ':' + config.port + '/' + config.db);
+}
 
 var schema = {};
 
