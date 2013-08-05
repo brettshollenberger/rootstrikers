@@ -16,6 +16,11 @@ angular
         controller:   'projectEditController',
         templateUrl:  'app/templates/admin/projectForm.html'
       })
+      //Edit Project Route
+      .when('/admin/project/edit/:projectID', {
+        controller:   'projectEditController',
+        templateUrl:  'app/templates/admin/projectForm.html'
+      })
     ;
   }])
 ;

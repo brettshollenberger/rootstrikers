@@ -11,11 +11,15 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="project in projects">
                     <td>{{project.name}}</td>
+                    <td>
+                        <a href="#/admin/project/edit/{{project.id}}" class="btn btn-primary">Edit</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -22,6 +22,7 @@ var schema = {};
 
 //Create a schema for every 
 schema.project = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
     required: true
@@ -39,6 +40,7 @@ var odmApi = {
 
     return {
       create: function(data, cb) {
+        data.id = new mongoose.Types.ObjectId();
         object = new Model(data);
 
         object.save(function(err) {
@@ -46,8 +48,22 @@ var odmApi = {
         });
       },
       findAll: function(cb) {
-        return Model.find(function(err, projects) {
+        Model.find(function(err, projects) {
           cb(err, projects);
+        });
+      },
+      find: function(attributes, cb) {
+        Model.find(attributes, function(err, projects) {
+          cb(err, projects);
+        });
+      },
+      update: function(id, attributes, cb) {
+        delete attributes._id; //cant update id 
+        //Maybe later can be change so _id is not sent
+        Model.findOneAndUpdate({
+          id: new mongoose.Types.ObjectId(id)
+        }, attributes, function(err, doc) {
+          cb(err, doc);
         });
       }
     };

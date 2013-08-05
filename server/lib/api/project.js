@@ -27,4 +27,36 @@ module.exports = function(app, db) {
       }
     });
   });
+
+  //Get of a single project
+  app.get('/api/project/:projectID', function(req, res) {
+    db.Project.find({
+        id: req.params.projectID
+      },
+      function(err, list) {
+        if (!err) {
+          //If went ok return the json of the query result
+          if (list.length) {
+            res.json(list[0]);
+          } else {
+            res.json({
+              message: 'Object Not Found'
+            });
+          }
+        } else {
+          res.json(err);
+        }
+      });
+  });
+
+  app.post('/api/project/:projectID', function(req, res) {
+    db.Project.update(req.params.projectID, req.body,
+      function(err, project) {
+        if (!err) {
+          res.json(project);
+        } else {
+          res.send(err);
+        }
+      });
+  });
 };

@@ -3,7 +3,7 @@ angular
   .controller('projectListController', [
     '$scope',
     'projectService',
-    function($scope, Project) {
-      $scope.projects = Project.query();
+    function($scope, project) {
+      $scope.projects = project.getAll();
     }
   ]);
