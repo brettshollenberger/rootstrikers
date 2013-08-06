@@ -25,7 +25,7 @@ angular
         getAll: function(filters, cb) {
           projects = Project.query(function() {
             if (cb) {
-              cb();
+              cb(projects);
             }
           });
           return projects;
