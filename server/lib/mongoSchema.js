@@ -65,6 +65,13 @@ var odmApi = {
         }, attributes, function(err, doc) {
           cb(err, doc);
         });
+      },
+      remove: function(id, cb) {
+        Model.findOneAndRemove({
+          id: new mongoose.Types.ObjectId(id)
+        }, function(err, doc) {
+          cb(err, doc);
+        });
       }
     };
   }())

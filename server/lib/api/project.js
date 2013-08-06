@@ -59,4 +59,15 @@ module.exports = function(app, db) {
         }
       });
   });
+
+  app.del('/api/project/:projectID', function(req, res) {
+    db.Project.remove(req.params.projectID,
+      function(err, project) {
+        if (!err) {
+          res.json(project);
+        } else {
+          res.send(err);
+        }
+      });
+  });
 };

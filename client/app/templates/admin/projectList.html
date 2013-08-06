@@ -19,6 +19,7 @@
                     <td>{{project.name}}</td>
                     <td>
                         <a href="#/admin/project/edit/{{project.id}}" class="btn btn-primary">Edit</a>
+                        <a class="btn btn-danger" ng-click="remove(project.id)">Delete</a>
                     </td>
                 </tr>
             </tbody>
