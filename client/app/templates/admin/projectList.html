@@ -23,6 +23,7 @@
                         <a class="btn btn-danger" ng-click="remove(project.id)">Delete</a>
                         <a class="btn btn-success" ng-click="publish(project.id, true)" ng-show="!project.publish">Publish</a>
                         <a class="btn btn-warning" ng-click="publish(project.id, false)" ng-show="project.publish">Unpublish</a>
+                        <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a>
                     </td>
                 </tr>
             </tbody>

@@ -21,6 +21,11 @@ angular
         controller:   'projectEditController',
         templateUrl:  'app/templates/admin/projectForm.html'
       })
+      //Preview Project Route
+      .when('/admin/project/preview/:projectID', {
+        controller:   'projectEditController',
+        templateUrl:  'app/templates/admin/projectPreview.html'
+      })
     ;
   }])
 ;
