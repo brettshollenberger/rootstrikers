@@ -5,8 +5,20 @@ angular
     '$rootScope',
     '$routeParams',
     'projectService',
-    function($scope, $rootScope, $routeParams, projectAPI) {
+    '$location',
+    function($scope, $rootScope, $routeParams, projectAPI, $location) {
       var model;
+
+      //Temporary notifiaction system
+      if ($rootScope.flash) {
+        $scope.flash = $rootScope.flash;
+        $rootScope.flash = undefined;
+      } else {
+        $scope.flash = {
+          show: false
+        };
+      }
+
 
       //Check for the ID to know if its an edit or a new
       if ($routeParams.projectID) {
@@ -25,7 +37,18 @@ angular
       $scope.project = model;
 
       $scope.save = function() {
-        model.$save();
+        model.$save(function(project, putResponseHeaders) {
+          $scope.flash = {
+            message: 'Your Project has been successfully saved',
+            type: 'success',
+            show: true
+          };
+
+          if (!!!$routeParams.projectAPI) {
+            $rootScope.flash = $scope.flash;
+            $location.path('/admin/project/edit/' + project.id).replace();
+          }
+        });
       };
     }
   ]);

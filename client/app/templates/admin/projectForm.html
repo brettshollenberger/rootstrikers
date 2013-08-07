@@ -3,9 +3,12 @@
       <form ng-submit="save()">
         <fieldset>
           <legend>{{actionTitle}} Rootstrikers Projects</legend>
+          <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
+            <p>{{flash.message}}</p>
+          </div>
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter a Project Name" ng-model="project.name">
+            <input type="text" class="form-control" id="name" placeholder="Enter a Project Name" ng-model="project.name" required>
           </div>
           <div class="form-group">
             <label for="description">Body</label>
