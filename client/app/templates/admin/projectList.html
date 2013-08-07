@@ -3,7 +3,7 @@
     <hr>
     <div class="row-fluid">
         <div class="btn-group pull-right">
-          <a href="#/admin/project/new" class="btn btn-success">New</a>
+          <a href="#/admin/project/new" class="btn btn-inverse">New</a>
         </div>
     </div>
     <hr/>
@@ -21,6 +21,8 @@
                     <td>
                         <a href="#/admin/project/edit/{{project.id}}" class="btn btn-primary">Edit</a>
                         <a class="btn btn-danger" ng-click="remove(project.id)">Delete</a>
+                        <a class="btn btn-success" ng-click="publish(project.id, true)" ng-show="!project.publish">Publish</a>
+                        <a class="btn btn-warning" ng-click="publish(project.id, false)" ng-show="project.publish">Unpublish</a>
                     </td>
                 </tr>
             </tbody>

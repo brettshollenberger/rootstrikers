@@ -29,6 +29,10 @@ schema.project = new mongoose.Schema({
   },
   description: {
     type: String
+  },
+  publish: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -5,6 +5,6 @@ angular
     '$scope',
     'projectService',
     function($rootScope, $scope, projectAPI) {
-      $scope.projects = projectAPI.getAll();
+      $scope.projects = projectAPI.getPublished();
     }
   ]);

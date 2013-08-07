@@ -19,13 +19,19 @@ module.exports = function(app, db) {
 
   //Get of all project
   app.get('/api/project', function(req, res) {
-    db.Project.findAll(function(err, list) {
+    var cb = function(err, list) {
       if (!err) {
         res.json(list); //If went ok return the json of the query result
       } else {
         res.json(err);
       }
-    });
+    };
+
+    if (req.query) {
+      db.Project.find(req.query, cb);
+    } else {
+      db.Project.findAll(cb);
+    }
   });
 
   //Get of a single project

@@ -23,7 +23,7 @@ angular
           return new Project();
         },
         getAll: function(filters, cb) {
-          projects = Project.query(function() {
+          projects = Project.query(filters, function() {
             if (cb) {
               cb(projects);
             }
@@ -59,11 +59,24 @@ angular
           }, function(result) {
             if (result) {
               projects.splice(getIndex(id), 1);
-              if(cb){
+              if (cb) {
                 cb(projects);
               }
             }
           });
+        },
+        getPublished: function() {
+          //If we have fetched the project from the backend just return the published
+          if (projects.length) {
+            return projects.filter(function(element, index, array) {
+              return element.publish;
+            });
+          } else {
+            //fetch the published only
+            return this.getAll({
+              publish: true
+            });
+          }
         }
       };
     }

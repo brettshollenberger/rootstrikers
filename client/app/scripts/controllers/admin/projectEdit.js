@@ -44,10 +44,35 @@ angular
             show: true
           };
 
-          if (!!!$routeParams.projectAPI) {
+          if ( !! !$routeParams.projectID) {
             $rootScope.flash = $scope.flash;
             $location.path('/admin/project/edit/' + project.id).replace();
           }
+        });
+      };
+
+      $scope.remove = function(id) {
+        var sure = confirm('U sure?');
+        if (sure) {
+          model.$remove(function() {
+            $scope.flash = {
+              message: 'Your Project has been successfully removed',
+              type: 'success',
+              show: true
+            };
+            $location.path('/admin').replace();
+          });
+        }
+      };
+
+      $scope.publish = function(status) {
+        model.publish = status;
+        model.$save(function(project, putResponseHeaders) {
+          $scope.flash = {
+            message: 'Your Project has been successfully ' + ((status) ? 'published' : 'unpublished'),
+            type: 'success',
+            show: true
+          };
         });
       };
     }
