@@ -23,7 +23,7 @@ angular
           return new Project();
         },
         getAll: function(filters, cb) {
-          projects = Project.query(function() {
+          projects = Project.query(filters, function() {
             if (cb) {
               cb(projects);
             }
@@ -58,7 +58,9 @@ angular
             projectID: id
           }, function(result) {
             if (result) {
-              projects.splice(getIndex(id), 1);
+              if(projects.length && getIndex(id) >= 0){
+                projects.splice(getIndex(id), 1);
+              }
               if(cb){
                 cb(projects);
               }
