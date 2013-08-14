@@ -58,8 +58,10 @@ angular
             projectID: id
           }, function(result) {
             if (result) {
-              projects.splice(getIndex(id), 1);
-              if (cb) {
+              if(projects.length && getIndex(id) >= 0){
+                projects.splice(getIndex(id), 1);
+              }
+              if(cb){
                 cb(projects);
               }
             }
