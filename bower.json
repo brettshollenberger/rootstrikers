@@ -9,6 +9,7 @@
     "bootstrap": "~2.3.2",
     "html5shiv-dist": "~3.6.2",
     "modernizr": "~2.6.2",
-    "angular-resource": "~1.0.7"
+    "angular-resource": "~1.0.7",
+    "angular-ui-tinymce": "~0.0.3"
   }
 }

@@ -1,13 +1,12 @@
 module.exports = function(app, db) {
-  //Post to add new projects
-  app.post('/api/project', function(req, res) {
+  app.post('/api/page', function(req, res) {
     var data = req.body;
 
-    //Ask the db to create a new Project
-    //passing the data of the request  and a cb
-    db.project.create({
+    db.page.create({
       name: data.name,
-      description: data.description
+      url: data.url || data.name.replace(/\s/g,'_').toLowerCase(),
+      header: data.header,
+      body: data.body
     }, function(err, model) {
       if (!err) {
         res.json(model); //If went ok return the json of the model
@@ -17,8 +16,8 @@ module.exports = function(app, db) {
     });
   });
 
-  //Get of all project
-  app.get('/api/project', function(req, res) {
+  //Get of all page
+  app.get('/api/page', function(req, res) {
     var cb = function(err, list) {
       if (!err) {
         res.json(list); //If went ok return the json of the query result
@@ -28,16 +27,16 @@ module.exports = function(app, db) {
     };
 
     if (req.query) {
-      db.project.find(req.query, cb);
+      db.page.find(req.query, cb);
     } else {
-      db.project.findAll(cb);
+      db.page.findAll(cb);
     }
   });
 
-  //Get of a single project
-  app.get('/api/project/:projectID', function(req, res) {
-    db.project.find({
-        id: req.params.projectID
+  //Get of a single page
+  app.get('/api/page/:pageID', function(req, res) {
+    db.page.find({
+        id: req.params.pageID
       },
       function(err, list) {
         if (!err) {
@@ -55,22 +54,22 @@ module.exports = function(app, db) {
       });
   });
 
-  app.post('/api/project/:projectID', function(req, res) {
-    db.project.update(req.params.projectID, req.body,
-      function(err, project) {
+  app.post('/api/page/:pageID', function(req, res) {
+    db.page.update(req.params.pageID, req.body,
+      function(err, page) {
         if (!err) {
-          res.json(project);
+          res.json(page);
         } else {
           res.send(err);
         }
       });
   });
 
-  app.del('/api/project/:projectID', function(req, res) {
-    db.project.remove(req.params.projectID,
-      function(err, project) {
+  app.del('/api/page/:pageID', function(req, res) {
+    db.page.remove(req.params.pageID,
+      function(err, page) {
         if (!err) {
-          res.json(project);
+          res.json(page);
         } else {
           res.send(err);
         }
