@@ -16,7 +16,7 @@
   "author": "Faculty Creative",
   "license": "BSD",
   "dependencies": {
-    "bower": "~0.10.0",
+    "bower": "~1.1.2",
     "express": "~3.3.1",
     "grunt-angular-templates": "~0.3.9",
     "grunt-cli": "~0.1.9",
