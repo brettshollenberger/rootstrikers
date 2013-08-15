@@ -8,12 +8,29 @@
       </button>
       <a class="brand" href="./index.html">Rootstrikers</a>
       <div class="nav-collapse collapse">
-        <ul class="nav">
+        <ul class="nav" ng-hide="onAdmin">
           <li class="active">
             <a href="#/">Home</a>
           </li>
           <li ng-repeat="page in pages">
             <a href="#/page/{{page.url}}">{{page.name}}</a>
+          </li>
+        </ul>
+        <ul class="nav" ng-show="onAdmin">
+          <li class="active">
+            <a href="#/admin/">Dashboard</a>
+          </li>
+          <li>
+            <a href="#/admin/projects">Projects</a>
+          </li>
+          <li>
+            <a href="#/admin/pages">pages</a>
+          </li>
+        </ul>
+
+        <ul class="nav pull-right">
+          <li>
+            <a href="#/admin">Admin</a>
           </li>
         </ul>
       </div>

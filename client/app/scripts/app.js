@@ -16,6 +16,10 @@ angular
         controller: 'projectListController',
         templateUrl: 'app/templates/admin/projectList.html'
       })
+        .when('/admin/projects', {
+          controller: 'projectListController',
+          templateUrl: 'app/templates/admin/projectList.html'
+        })
       //New Project Route
       .when('/admin/project/new', {
         controller: 'projectEditController',

@@ -6,8 +6,9 @@ angular
       replace: true,
       scope: true,
       templateUrl: 'app/templates/partials/menu.html',
-      controller: ['$scope', 'pageService',
-        function($scope, pageAPI) {
+      controller: ['$scope', '$routeParams', 'pageService',
+        function($scope, $routeParams, pageAPI) {
+          $scope.onAdmin = /\/admin/.test($location.path());
           $scope.pages = pageAPI.getPublished();
         }
       ],
@@ -27,6 +28,7 @@ angular
 
         scope.$on('$routeChangeStart', function() {
           var pathLink = urlMap[$location.path()];
+          scope.onAdmin = /\/admin/.test($location.path());
 
           if (pathLink) {
             if (currentLink) {
