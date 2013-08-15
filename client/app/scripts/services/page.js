@@ -67,16 +67,45 @@ angular
             }
           });
         },
-        getPublished: function() {
+        getPublished: function(cb) {
+          var published;
           //If we have fetched the page from the backend just return the published
           if (pages.length) {
-            return pages.filter(function(element, index, array) {
+            published = pages.filter(function(element, index, array) {
               return element.publish;
             });
+            cb(published);
+            return published;
           } else {
             //fetch the published only
             return this.getAll({
               publish: true
+            }, cb);
+          }
+        },
+        getByURL: function(url, cb) {
+          var respond = function(results) {
+            if (results.length) {
+              if (cb) {
+                cb(undefined, results[0]);
+              }
+            } else {
+              if (cb) {
+                cb("Not Found");
+              }
+            }
+          };
+          //If we have fetched the page from the backend just return the published
+          if (pages.length) {
+            respond(pages.filter(function(element, index, array) {
+              return element.url === url;
+            }));
+          } else {
+            //fetch the page to the server
+            this.getAll({
+              url: url
+            }, function(result) {
+              respond(result);
             });
           }
         }

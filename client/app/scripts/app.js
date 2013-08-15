@@ -7,6 +7,10 @@ angular
           controller: 'homeController',
           templateUrl: 'app/templates/home.html'
         })
+        .when('/page/:url', {
+          controller: 'pageController',
+          templateUrl: 'app/templates/page.html'
+        })
       //Temporary admin go to project List 
       .when('/admin', {
         controller: 'projectListController',
