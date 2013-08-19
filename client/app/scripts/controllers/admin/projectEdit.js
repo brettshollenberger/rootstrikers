@@ -11,9 +11,11 @@ angular
 
       //Temporary notifiaction system
       if ($rootScope.flash) {
+        //If a notification has been set on the root make it local and clear it
         $scope.flash = $rootScope.flash;
         $rootScope.flash = undefined;
       } else {
+        //If there is no root notification create a local one that dont display
         $scope.flash = {
           show: false
         };
@@ -24,11 +26,13 @@ angular
       if ($routeParams.projectID) {
         //Complements Template title of "Rootstriker Project"
         $scope.actionTitle = 'Edit';
+        //get the project from the API
         projectAPI.get($routeParams.projectID, function(project) {
           model = project;
           $scope.project = model;
         });
       } else {
+        //Create a new resource
         model = projectAPI.newProject();
         $scope.actionTitle = 'New';
       }

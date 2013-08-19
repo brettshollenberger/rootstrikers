@@ -1,14 +1,15 @@
 describe('homeController', function() {
-  var $scope;
-  var homeController;
+  var $scope, homeController, projectService;
 
-  // Initialize `app` module + mock `apiService`
+  // Initialize `app` module + mock `projectService`
   beforeEach(module('app', function($provide) {
-    $provide.value('projectService', {
+    projectService = {
       getAll: function() {
         return [];
       }
-    });
+    };
+    spyOn(projectService, 'getAll').andCallThrough();
+    $provide.value('projectService', projectService);
   }));
 
   // Store `$scope` and `homeController` locally
@@ -23,7 +24,8 @@ describe('homeController', function() {
   }));
 
   // Test `$scope` properties
-  it('should set projects in the $scope', function() {
+  it('should set published projects in the $scope', function() {
     expect($scope.projects).toBeDefined();
+    expect(projectService.getAll).toHaveBeenCalled();
   });
 });
