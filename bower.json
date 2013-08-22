@@ -9,6 +9,7 @@
     "bootstrap": "~2.3.2",
     "html5shiv-dist": "~3.6.2",
     "modernizr": "~2.6.2",
-    "angular-resource": "~1.0.7"
+    "angular-resource": "~1.0.7",
+    "angular-ui-tinymce": "https://github.com/angular-ui/ui-tinymce.git#cff9ae234ddfd2ff2f1663b7b1618059ce9950ff"
   }
 }

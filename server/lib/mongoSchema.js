@@ -18,29 +18,9 @@ if (process.env.MONGOLAB_URI) {
   mongoose.connect('mongodb://' + user + config.host + ':' + config.port + '/' + config.db);
 }
 
-var schema = {};
-
-//Create a schema for every 
-schema.project = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
-  name: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String
-  },
-  publish: {
-    type: Boolean,
-    default: false
-  }
-});
-
-//Create an API for the models of the schema so db logic get isolate here 
-var odmApi = {
-  Project: (function() {
-    //Function so it create a clouse over the model and its available to all methods
-    var Model = mongoose.model('Project', schema.project);
+var schema = {}, odmApi = {}, i, entity,
+  genericAPI = function(entity) {
+    var Model = mongoose.model(entity, schema[entity]);
 
     return {
       create: function(data, cb) {
@@ -52,13 +32,13 @@ var odmApi = {
         });
       },
       findAll: function(cb) {
-        Model.find(function(err, projects) {
-          cb(err, projects);
+        Model.find(function(err, results) {
+          cb(err, results);
         });
       },
       find: function(attributes, cb) {
-        Model.find(attributes, function(err, projects) {
-          cb(err, projects);
+        Model.find(attributes, function(err, results) {
+          cb(err, results);
         });
       },
       update: function(id, attributes, cb) {
@@ -78,7 +58,50 @@ var odmApi = {
         });
       }
     };
-  }())
-};
+  };
+
+//Create a schema for every entity
+schema.project = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String
+  },
+  publish: {
+    type: Boolean,
+    default: false
+  }
+});
+
+schema.page = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
+  name: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    required: true
+  },
+  header: {
+    type: String
+  },
+  body: {
+    type: String
+  },
+  publish: {
+    type: Boolean,
+    default: false
+  }
+});
+
+
+//Create an API for the models of the schema so db logic get isolate here 
+for (entity in schema) {
+  odmApi[entity] = genericAPI(entity);
+}
 
 module.exports = odmApi;

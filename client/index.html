@@ -25,25 +25,7 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">Rootstrikers</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active">
-                <a href="./index.html">Home</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <nav-menu></nav-menu>
 
     <div class="container-fluid">
       
@@ -61,17 +43,24 @@
     </div>
 
     <!-- build:js app/scripts/all.min.js -->
+    <script src="bower_components/tinymce/tinymce.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
 
     <script src="app/scripts/app.js"></script>
     <script src="app/scripts/controllers/home.js"></script>
+    <script src="app/scripts/controllers/page.js"></script>
     <script src="app/scripts/controllers/admin/projectList.js"></script>
     <script src="app/scripts/controllers/admin/projectEdit.js"></script>
     <script src="app/scripts/services/project.js"></script>
-    <script src="app/scripts/services/api.js"></script>
+    <script src="app/scripts/controllers/admin/pageList.js"></script>
+    <script src="app/scripts/controllers/admin/pageEdit.js"></script>
+    <script src="app/scripts/services/page.js"></script>
+    <script src="app/scripts/directive/navMenu.js"></script>
     <script src="app/scripts/directive/projectItem.js"></script>
+    <script src="app/scripts/directive/pageItem.js"></script>
     <script src="app/scripts/app.templates.js"></script>
     <!-- endbuild -->
 
