@@ -39,19 +39,112 @@ angular
 
       //set the model on the scope so its filled by the form
       $scope.project = model;
+      filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
 
-      $scope.save = function() {
+      var saveModel = function(silent) {
+        $scope.flash = {
+          show: false
+        };
         model.$save(function(project, putResponseHeaders) {
+          if (silent) {
+            return;
+          }
+
           $scope.flash = {
             message: 'Your Project has been successfully saved',
             type: 'success',
             show: true
           };
 
+          //If there is no projectID
           if ( !! !$routeParams.projectID) {
             $rootScope.flash = $scope.flash;
             $location.path('/admin/project/edit/' + project.id).replace();
           }
+        });
+      };
+
+      $scope.save = function() {
+        var input = document.getElementById('image');
+
+        if (input.value) {
+          $scope.progress = 'Uploading Image';
+          //We have an image store it
+          filepicker.store(input, {
+              access: 'public',
+              path: '/project/'
+            },
+            function(InkBlob) {
+              //If there was an image already delete it 
+              if (model.InkBlob) {
+                $scope.removeImage(model.InkBlob);
+              }
+              //Set the new image to the model
+              model.image = InkBlob.url;
+              model.InkBlob = InkBlob;
+
+              //Save the modle
+              saveModel();
+
+              //Clear upload progress
+              $scope.progress = '';
+              //Clear file input
+              input.value = '';
+            }, function(FPError) {
+              $scope.flash = {
+                message: 'There has been an error uploading the image. Please try again',
+                type: 'error',
+                show: true
+              };
+            }, function(progress) {
+              $scope.progress = "Loading: " + progress + "%";
+            });
+        } else {
+          //I we dont have image just save the model
+          saveModel();
+        }
+      };
+
+      $scope.removeImage = function(blob) {
+        //If we dont have the blob take the actual image
+        var InkBlob = blob || model.InkBlob;
+
+        if (!InkBlob) {
+          return;
+        }
+        //If its an string convert it to json
+        if (angular.isString(InkBlob)) {
+          InkBlob = JSON.parse(InkBlob);
+        }
+
+        filepicker.remove(InkBlob, function() {
+          //If its the same as the actual model lets remove it
+          if (InkBlob.url === model.image) {
+            //Set as empty field so its updated on the db
+            model.image = '';
+            model.InkBlob = '';
+            //Save without notification
+            saveModel(true);
+
+            $scope.flash = {
+              message: 'The image has been removed',
+              type: 'success',
+              show: true
+            };
+          }
+        }, function(err) {
+          //171 -> image dont exist
+          if (err.code === 171) {
+            //If the image dont exist remove it from the model
+            model.image = '';
+            model.InkBlob = '';
+            saveModel(true);
+          }
+          $scope.flash = {
+            message: 'There have been a problem deleting your image',
+            type: 'error',
+            show: true
+          };
         });
       };
 

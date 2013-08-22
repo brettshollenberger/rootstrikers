@@ -56,6 +56,10 @@ module.exports = function(app, db) {
   });
 
   app.post('/api/project/:projectID', function(req, res) {
+    if(req.body.InkBlob && typeof req.body.InkBlob === "object"){
+      //Stringify InkBlob so we dont care if the db support JSON
+      req.body.InkBlob = JSON.stringify(req.body.InkBlob);
+    }
     db.project.update(req.params.projectID, req.body,
       function(err, project) {
         if (!err) {

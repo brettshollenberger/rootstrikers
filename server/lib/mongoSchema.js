@@ -70,6 +70,12 @@ schema.project = new mongoose.Schema({
   description: {
     type: String
   },
+  image: {
+    type: String
+  },
+  InkBlob: {
+    type: String
+  },
   publish: {
     type: Boolean,
     default: false

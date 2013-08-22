@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row-fluid">
+    <div class="row-fluid project-form">
       <form ng-submit="save()">
         <fieldset>
           <legend>{{actionTitle}} Rootstrikers Projects</legend>
@@ -14,9 +14,14 @@
             <label for="description">Body</label>
             <textarea class="form-control" rows="3" placeholder="Enter a Project Description" id="description" ng-model="project.description"></textarea>
           </div>
+          <div class="form-group" ng-show="!!project.image">
+            <a class="btn" ng-click="removeImage()" ng-show="project.image"><i class="icon-trash"></i></a>
+            <img class="img-polaroid project-thumb" src="{{project.image}}" ng-show="project.image" height="300" />
+          </div>
           <div class="form-group">
             <label for="image">Add an image</label>
             <input type="file" id="image">
+            <div>{{progress}}</div>
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
           <a href="#/admin" class="btn btn-warning">Cancel</a>
