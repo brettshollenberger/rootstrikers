@@ -14,7 +14,7 @@
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
     <!-- End Fonts -->
 
     <!-- build:css app/styles/app.min.css -->
@@ -32,18 +32,45 @@
 
     <nav-menu></nav-menu>
 
-    <div class="container-fluid">
-      
-      <noscript>
-        Please enable Javascript to experience this site :)
-      </noscript>
+    <div class="wrap">
+      <div class="main container-fluid">
+          
+        <noscript>
+          Please enable Javascript to experience this site :)
+        </noscript>
 
-      <div ng-view></div>
+        <div ng-view></div>
 
-      <hr>
+        <hr>
 
-      <footer class="muted text-center">
-        &copy; 2013 Rootstrikers
+      </div>
+    </div>
+
+      <footer class="footer muted text-center">
+        <ul ng-hide="onAdmin">
+          <li class="active">
+            <a href="#/">Learn</a>
+          </li>
+            <li><a href="#/">Take Action</a></li>
+            <li><a href="#/">About Us</a></li>
+          <li ng-repeat="page in pages">
+            <a href="#/page/{{page.url}}">{{page.name}}</a>
+          </li>
+        </ul>
+        <ul ng-show="onAdmin">
+          <li class="active">
+            <a href="#/admin/">Dashboard</a>
+          </li>
+          <li>
+            <a href="#/admin/projects">Projects</a>
+          </li>
+          <li>
+            <a href="#/admin/pages">pages</a>
+          </li>
+        </ul>
+        <div class="copyright">
+          <p>&copy; 2013 Rootstrikers</p>
+      </div>
       </footer>
     </div>
 

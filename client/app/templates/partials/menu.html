@@ -6,37 +6,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="brand" href="./index.html">Rootstrikers</a>
-      <div class="nav-collapse collapse">
-        <ul class="nav" ng-hide="onAdmin">
-          <li class="active">
-            <a href="#/">Home</a>
-          </li>
-          <li ng-repeat="page in pages">
-            <a href="#/page/{{page.url}}">{{page.name}}</a>
-          </li>
-        </ul>
-        <ul class="nav" ng-show="onAdmin">
-          <li class="active">
-            <a href="#/admin/">Dashboard</a>
-          </li>
-          <li>
-            <a href="#/admin/projects">Projects</a>
-          </li>
-          <li>
-            <a href="#/admin/pages">pages</a>
-          </li>
-        </ul>
-
-        <ul class="nav pull-right" ng-controller="authController">
-          <li>
-            <span register-link></span>
-          </li>
-          <li>
-            <span login-link></span>
-          </li>
-        </ul>
+      <a class="brand" href="./index.html"><p>Rootstrikers</p></a>
+      <div class="margin-right">
+        <div class="donation">
+          Only the people can force lasting
+          <br>
+          change on this broken system.
+        </div>
+        <div class="btn rootstricker-btn">
+          Donate
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="user-nav">
+    <div class="container">
+      <ul class="nav pull-right" ng-controller="authController">
+        <li>
+          <span register-link></span>
+        </li>
+        <li>
+          <span login-link></span>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
