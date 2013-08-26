@@ -102,7 +102,6 @@ module.exports = (grunt)->
       files:        [ '<%= SERVER_DIR + JS_FILES %>'
                       '<%= CLIENT_DIR + JS_FILES %>' ]
       options:
-        es5:        true
         laxcomma:   true  # Common in Express-derived libraries
 
     # Browser-based testing
