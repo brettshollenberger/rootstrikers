@@ -1,7 +1,11 @@
 angular
   .module('app', ['ngResource', 'ui.tinymce'])
-  .config(['$routeProvider',
-    function($router) {
+  .config(['$routeProvider', '$httpProvider',
+    function($router, $httpProvider) {
+    
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    
       $router
         .when('/', {
           controller: 'homeController',
