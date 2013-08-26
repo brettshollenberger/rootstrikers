@@ -30,7 +30,9 @@
     "grunt-contrib-watch": "~0.5.2",
     "grunt-express-server": "~0.4.2",
     "grunt-usemin": "~0.1.12",
-    "mongoose": "~3.6.15"
+    "mongoose": "~3.6.15",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.0"
   },
   "peerDependencies": {},
   "devDependencies": {

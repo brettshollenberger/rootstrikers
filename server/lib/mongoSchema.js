@@ -104,6 +104,45 @@ schema.page = new mongoose.Schema({
   }
 });
 
+schema.user = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
+  first_name: {
+    type: String,
+    required: true
+  },
+  last_name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  isVerify: {
+    type: Boolean,
+    default: false
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  city: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  avatar: {
+    type: String
+  },
+});
 
 //Create an API for the models of the schema so db logic get isolate here 
 for (entity in schema) {
