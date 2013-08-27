@@ -70,6 +70,9 @@ schema.project = new mongoose.Schema({
   description: {
     type: String
   },
+  shortname: {
+    type: String  
+  },
   image: {
     type: String
   },
