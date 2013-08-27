@@ -5,13 +5,12 @@ html, body {
   height: 100%;
 }
 
+/* Wrapper for page content to push down footer */
 .wrap {
-  min-height: 100% !important;
-}
-
-.main {
-  overflow: auto;
-  padding-bottom: @footer-size;
+  min-height: 100%;
+  height: auto !important;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -@footer-size;
 }
 
 footer li {
@@ -32,12 +31,12 @@ footer {
   width: 100%;
 }
 
-.footer {
-  position: relative;
-  margin-top: -@footer-size;
+.push {
   height: @footer-size;
-  clear:both;
-  padding-top: 20px;
+}
+
+.footer {
+  height: @footer-size;
 }
 
 .copyright {
@@ -46,6 +45,7 @@ footer {
   background-color: @dark-grey;
   width: 100%;
 }
+
 .copyright p {
   display: inline-block;
   position: relative;

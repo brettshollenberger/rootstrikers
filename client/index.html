@@ -13,8 +13,9 @@
     <meta name="author"                 content="Eric Clemmons">
 
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- End Fonts -->
 
     <!-- build:css app/styles/app.min.css -->
@@ -30,26 +31,17 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav-menu></nav-menu>
-
-    <section class="jumbotron slider">
-      <div class="slider-image">
-        <img src="app/images/header-image.png">
-      </div>
-    </section>
-
     <div class="wrap">
-      <div class="main container-fluid">
+      <nav-menu></nav-menu>
           
-        <noscript>
-          Please enable Javascript to experience this site :)
-        </noscript>
+      <noscript>
+        Please enable Javascript to experience this site :)
+      </noscript>
 
-        <div ng-view></div>
+      <div ng-view></div>
 
-        <hr>
-
-      </div>
+      <hr>
+      <div class="push"></div>
     </div>
 
       <footer class="footer muted text-center">
@@ -76,7 +68,7 @@
         </ul>
         <div class="copyright">
           <p>&copy; 2013 Rootstrikers</p>
-      </div>
+        </div>
       </footer>
     </div>
 
