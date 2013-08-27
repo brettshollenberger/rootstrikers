@@ -12,6 +12,12 @@
     <meta name="description"            content="Modern application skeleton - HTML5 Boilerplate + Angular + Express + Grunt + LiveReload + Bootstrap + Bower">
     <meta name="author"                 content="Eric Clemmons">
 
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <!-- End Fonts -->
+
     <!-- build:css app/styles/app.min.css -->
     <link rel="stylesheet" href="app/styles/app.css">
     <!-- endbuild -->
@@ -25,20 +31,43 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav-menu></nav-menu>
-
-    <div class="container-fluid">
-      
+    <div class="wrap">
+      <nav-menu></nav-menu>
+          
       <noscript>
         Please enable Javascript to experience this site :)
       </noscript>
 
       <div ng-view></div>
 
-      <hr>
+      <div class="push"></div>
+    </div>
 
-      <footer class="muted text-center">
-        &copy; 2013 Rootstrikers
+      <footer class="footer muted text-center">
+        <ul ng-hide="onAdmin">
+          <li class="active">
+            <a href="#/">Learn</a>
+          </li>
+            <li><a href="#/">Take Action</a></li>
+            <li><a href="#/">About Us</a></li>
+          <li ng-repeat="page in pages">
+            <a href="#/page/{{page.url}}">{{page.name}}</a>
+          </li>
+        </ul>
+        <ul ng-show="onAdmin">
+          <li class="active">
+            <a href="#/admin/">Dashboard</a>
+          </li>
+          <li>
+            <a href="#/admin/projects">Projects</a>
+          </li>
+          <li>
+            <a href="#/admin/pages">pages</a>
+          </li>
+        </ul>
+        <div class="copyright">
+          <p>&copy; 2013 Rootstrikers</p>
+        </div>
       </footer>
     </div>
 

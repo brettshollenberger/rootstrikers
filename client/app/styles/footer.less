@@ -1,0 +1,53 @@
+@footer-size: 120px;
+@copyright-height: 40px;
+
+html, body {
+  height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+.wrap {
+  min-height: 100%;
+  height: auto !important;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -@footer-size;
+}
+
+footer li {
+  font-size: 1.5rem;
+  list-style-type: none !important;
+  display: inline-block;
+  font-family: @oswald;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: .25rem;
+  color: @blue;
+  margin: 1rem;
+  padding: 25px 0;
+}
+
+footer {
+  background-color: @footer-grey;
+  width: 100%;
+}
+
+.push {
+  height: @footer-size;
+}
+
+.footer {
+  height: @footer-size;
+}
+
+.copyright {
+  clear: both;
+  height: @copyright-height;
+  background-color: @dark-grey;
+  width: 100%;
+}
+
+.copyright p {
+  display: inline-block;
+  position: relative;
+  margin: (@copyright-height/4) 0;
+}

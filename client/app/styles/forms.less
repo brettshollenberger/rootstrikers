@@ -1,0 +1,23 @@
+@placeholder-blue: #004978;
+
+input {
+  background-color: transparent !important;
+  height: 28px !important;
+  margin: 0 2px 0 0;
+}
+
+::-webkit-input-placeholder {
+   color: @placeholder-blue;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: @placeholder-blue;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: @placeholder-blue;  
+}
+
+:-ms-input-placeholder {  
+   color: @placeholder-blue;  
+}
