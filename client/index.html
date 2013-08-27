@@ -43,33 +43,32 @@
       <div class="push"></div>
     </div>
 
-      <footer class="footer muted text-center">
-        <ul ng-hide="onAdmin">
-          <li class="active">
-            <a href="#/">Learn</a>
-          </li>
-            <li><a href="#/">Take Action</a></li>
-            <li><a href="#/">About Us</a></li>
-          <li ng-repeat="page in pages">
-            <a href="#/page/{{page.url}}">{{page.name}}</a>
-          </li>
-        </ul>
-        <ul ng-show="onAdmin">
-          <li class="active">
-            <a href="#/admin/">Dashboard</a>
-          </li>
-          <li>
-            <a href="#/admin/projects">Projects</a>
-          </li>
-          <li>
-            <a href="#/admin/pages">pages</a>
-          </li>
-        </ul>
-        <div class="copyright">
-          <p>&copy; 2013 Rootstrikers</p>
-        </div>
-      </footer>
-    </div>
+    <footer class="footer muted text-center">
+      <ul ng-hide="onAdmin">
+        <li class="active">
+          <a href="#/">Learn</a>
+        </li>
+          <li><a href="#/">Take Action</a></li>
+          <li><a href="#/">About Us</a></li>
+        <li ng-repeat="page in pages">
+          <a href="#/page/{{page.url}}">{{page.name}}</a>
+        </li>
+      </ul>
+      <ul ng-show="onAdmin">
+        <li class="active">
+          <a href="#/admin/">Dashboard</a>
+        </li>
+        <li>
+          <a href="#/admin/projects">Projects</a>
+        </li>
+        <li>
+          <a href="#/admin/pages">pages</a>
+        </li>
+      </ul>
+      <div class="copyright">
+        <p>&copy; 2013 Rootstrikers</p>
+      </div>
+    </footer>
 
     <!-- build:js app/scripts/all.min.js -->
     <script src="bower_components/jquery/jquery.js"></script>
