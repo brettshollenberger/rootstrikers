@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row-fluid project-form">
-      <form ng-submit="save()">
+      <form name="projectForm" ng-submit="save()" novalidate>
         <fieldset>
           <legend>{{actionTitle}} Rootstrikers Projects</legend>
           <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
@@ -8,7 +8,8 @@
           </div>
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter a Project Name" ng-model="project.name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter a Project Name" ng-model="project.name" required>
+            <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
           </div>
           <div class="form-group">
             <label for="description">Body</label>
@@ -16,7 +17,7 @@
           </div>
           <div class="form-group">
             <label for="shortname">Action Kit Shortname</label>
-            <input type="text" class="form-control" id="shortname" placeholder="Enter the Action Kit Shortname" ng-model="project.shortname" required>
+            <input type="text" class="form-control" id="shortname" placeholder="Enter the Action Kit Shortname" ng-model="project.shortname" validpage>
           </div>
           <div class="form-group" ng-show="!!project.image">
             <a class="btn" ng-click="removeImage()" ng-show="project.image"><i class="icon-trash"></i></a>
@@ -27,7 +28,8 @@
             <input type="file" id="image">
             <div>{{progress}}</div>
           </div>
-          <button type="submit" class="btn btn-primary">Save</button>
+          
+          <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save</button>
           <a href="#/admin" class="btn btn-warning">Cancel</a>
           <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
           <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>

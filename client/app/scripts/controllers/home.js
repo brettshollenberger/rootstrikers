@@ -7,8 +7,5 @@ angular
     'actionKitService',
     function($rootScope, $scope, projectAPI, actionKitService) {
       $scope.projects = projectAPI.getPublished();
-      
-      actionKitService.getBasic();
-      
     }
   ]);
