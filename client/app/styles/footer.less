@@ -1,4 +1,4 @@
-@footer-size: 55px;
+@footer-size: 75px;
 
 html, body {
   height: 100%;
@@ -32,4 +32,16 @@ footer {
 
 .footer {
   height: @footer-size;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+  }
+
+  .footer-links {
+    margin: 10px; 
+  }
 }
