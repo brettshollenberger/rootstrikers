@@ -54,7 +54,8 @@
           </div>
         </div>
       </div>
-
+      <!-- If anyone needs to put these admin links back in, feel free to do
+      so, but they aren't in the comps so I'm taking them out -->
       <!-- <ul ng-hide="onAdmin">
         <li class="active">
           <a href="#/">Learn</a>
@@ -87,6 +88,7 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/bootstrap/js/bootstrap-transition.js"></script>
     <script src="bower_components/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
     <script src="app/scripts/libs/facebook.js"></script>
 
@@ -119,11 +121,14 @@
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
 
+      $(document).ready(function(){
+        $('.carousel').carousel();
+      });
+
       var myWidth = 0, myHeight = 0;
       window.onresize = displayWindowSize;
       window.onload = displayWindowSize;
       function displayWindowSize() {
-          // your size calculation code here
           if( typeof( window.innerWidth ) == 'number' ) {
             myWidth = window.innerWidth; myHeight = window.innerHeight;
           } else if( document.documentElement && ( document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
