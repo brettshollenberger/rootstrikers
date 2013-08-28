@@ -67,6 +67,28 @@ angular
             }
           });
         },
+        createFromFB: function(fbUser){
+          var user =  new User(), loc;
+          user.first_name = fbUser.first_name;
+          user.last_name = fbUser.last_name;
+          user.email = fbUser.email;
+          if(fbUser.location){
+            loc = fbUser.location.name.split(',');
+            switch(loc.length){
+              case 1:
+                user.country = loc[0];
+                break;
+              case 2:
+                user.city = loc[0];
+                user.country = loc[1];
+                break;
+            }
+          }
+          user.avatar = "http://graph.facebook.com/"+fbUser.id+"/picture";
+          user.isFacebook = true;
+          user.isVerify = fbUser.verified;
+          user.$save();
+        },
         login: function(user) {
           loggedUser = user;
         },

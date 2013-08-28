@@ -1,11 +1,27 @@
-<fieldset>
-  <label>Username</label>
-  <input type="text" ng-model="formObject.username" placeholder="Your Username" required/>
-
-  <label>Password</label>
-  <input type="password" ng-model="formObject.password" placeholder="Your Password" required/>
-
-  <div class="alert alert-error" ng-show="formErrors.extra">
-    <strong>{{formErrors.extra}}</strong>
+<div class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4>Login</h4>
   </div>
-</fieldset>
+  <form name="form" ng-submit="login()" class="form-horizontal">
+    <div class="modal-body">
+      <fieldset>
+        <label>Username</label>
+        <input type="text" ng-model="formUser.email" placeholder="Your Email" required/>
+
+        <label>Password</label>
+        <input type="password" ng-model="formUser.password" placeholder="Your Password" required/>
+
+        <div class="alert alert-error" ng-show="formErrors.extra">
+          <strong>{{formErrors.extra}}</strong>
+        </div>
+      </fieldset>
+      <div class="modal-footer">
+        <button type="reset" class="btn" ng-click="close()">Cancel</button>
+        <input type="submit" id="submit" class="btn btn-primary" value="Login"/>
+        OR
+          <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
+      </div>
+    </div>
+  </form>
+</div>

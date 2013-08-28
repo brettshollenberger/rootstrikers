@@ -113,14 +113,17 @@ schema.user = new mongoose.Schema({
     required: true
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   isVerify: {
     type: Boolean,
     default: false
   },
   isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  isFacebook: {
     type: Boolean,
     default: false
   },

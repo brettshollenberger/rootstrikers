@@ -3,9 +3,10 @@ angular
   .controller('authController', [
     '$scope',
     'userService',
-    function($scope, userAPI) {
+    'Facebook',
+    function($scope, userAPI, FB) {
       $scope.formUser = userAPI.newUser();
-      $scope.errors = {};
+      $scope.formErrors = {};
 
       $scope.register = function() {
         _clearErrors();
@@ -19,32 +20,53 @@ angular
           _addError('password', 'Too short. Minimum of six characters');
         }
 
-        if (Object.keys($scope.errors).length === 0) {
-          return $scope.formUser.$save();
-        } else {
-          return false;
+        if (Object.keys($scope.formErrors).length === 0) {
+          $scope.formUser.$save();
+          _close();
         }
       };
 
       $scope.login = function() {
         _clearErrors();
-        return userAPI.login($scope.formUser);
+        userAPI.login($scope.formUser);
+        _close();
       };
 
       $scope.logout = function() {
-        return userAPI.logout();
+        _clearErrors();
+        _close();
+        userAPI.logout();
       };
+
+      $scope.close = _close;
 
       $scope.clear = function() {
         _clearUser();
         _clearErrors();
       };
 
+      $scope.fbLogin = function() {
+        _clearErrors();
+        FB.login().then(function(user) {
+          userAPI.createFromFB(user);
+          _close();
+        }, function() {
+          _addError('extra', "Facebook Login Fail");
+        });
+      };
+
       //private methods to handle common task
 
+      function _close() {
+        if ($scope.closeModal) {
+          $scope.closeModal();
+        }
+      }
+
+
       function _clearErrors() {
-        $scope.errors = null;
-        $scope.errors = {};
+        $scope.formErrors = null;
+        $scope.formErrors = {};
       }
 
       function _clearUser() {
@@ -53,7 +75,7 @@ angular
       }
 
       function _addError(field, message) {
-        $scope.errors[field] = message;
+        $scope.formErrors[field] = message;
       }
 
       function _errored(response) {
@@ -61,14 +83,6 @@ angular
           Object.each(response.errors, function(field, errors) {
             _addError(field, errors.first());
           });
-
-          if ($scope.errors.ip) {
-            _addError('extra', $scope.errors.ip);
-          }
-
-          if (response.errors.base && Object.isString(response.errors.base)) {
-            _addError('extra', response.errors.base);
-          }
         }
       }
     }

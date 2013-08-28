@@ -13,7 +13,9 @@ module.exports = function(app, db) {
       city: data.city,
       state: data.state,
       country: data.country,
-      avatar: data.avatar
+      avatar: data.avatar,
+      isFacebook: data.isFacebook,
+      isVerify: data.isVerify
     }, function(err, model) {
       if (!err) {
         res.json(model); //If went ok return the json of the model
