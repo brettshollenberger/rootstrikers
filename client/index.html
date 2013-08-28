@@ -43,41 +43,7 @@
       <div class="push"></div>
     </div>
 
-    <footer class="footer muted">
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span10 offset1">
-            <div class="footer-links">
-              <a href="#"><h6 class="white">Terms &amp; Conditions</h6></a> |  
-              <a href="#"><h6 class="white">Privacy Policy</h6></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- If anyone needs to put these admin links back in, feel free to do
-      so, but they aren't in the comps so I'm taking them out -->
-      <!-- <ul ng-hide="onAdmin">
-        <li class="active">
-          <a href="#/">Learn</a>
-        </li>
-          <li><a href="#/">Take Action</a></li>
-          <li><a href="#/">About Us</a></li>
-        <li ng-repeat="page in pages">
-          <a href="#/page/{{page.url}}">{{page.name}}</a>
-        </li>
-      </ul>
-      <ul ng-show="onAdmin">
-        <li class="active">
-          <a href="#/admin/">Dashboard</a>
-        </li>
-        <li>
-          <a href="#/admin/projects">Projects</a>
-        </li>
-        <li>
-          <a href="#/admin/pages">pages</a>
-        </li>
-      </ul> -->
-    </footer>
+    <root-footer></root-footer>
 
     <!-- build:js app/scripts/all.min.js -->
     <script src="bower_components/jquery/jquery.js"></script>
@@ -109,6 +75,8 @@
     <script src="app/scripts/directive/formModal.js"></script>
     <script src="app/scripts/directive/auth/loginLink.js"></script>
     <script src="app/scripts/directive/auth/registerLink.js"></script>
+    <script src="app/scripts/directive/carousel.js"></script>
+    <script src="app/scripts/directive/footer.js"></script>
     <script src="app/scripts/app.templates.js"></script>
 
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
@@ -125,7 +93,7 @@
         $('.carousel').carousel();
       });
 
-      // Intended for development only; remove for release
+      // Intended for development only; remove for
       var myWidth = 0, myHeight = 0;
       window.onresize = displayWindowSize;
       window.onload = displayWindowSize;
