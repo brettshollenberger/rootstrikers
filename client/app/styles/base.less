@@ -1,6 +1,5 @@
 // Colors
 @white: #ffffff;
-@actions-grey: #ebf1f4;
 @light-grey: #e3e9ec;
 @medium-grey: #888888;
 @dark-grey: #262626;
@@ -8,13 +7,15 @@
 @dark-blue: #004a7a;
 @footer-grey: #2d2d2d;
 @jumbotron-black: #030301;
+@actions-grey: #ebf1f4;
 @actions-h2: #545454;
+@facebook-blue: #004A7A;
 
 // Fonts
 @opensans: 'Open Sans', sans-serif;
 @oswald: 'Oswald', sans-serif;
 
-// Gutter
+// Gutters
 @global-gutter: 100px;
 
 html, body {
@@ -34,16 +35,47 @@ h2 {
   letter-spacing: 1.5px;
 }
 
-h3 {
+h3, h6 {
   color: @blue;
-  font-size: 40px;
   font-family: @opensans;
-  font-weight: 800;
   text-transform: uppercase;
   text-align: left;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+h6 {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+
+.white {
+  color: @white;
+}
+
+.headline {
+  width: 480px;
 }
 
 .homepage-container {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.center { 
+  text-align: center;  
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+#dimensions {
+  display: inline;
+  color: @white;
+  margin: 10px 0 0 10px;
 }

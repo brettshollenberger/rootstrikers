@@ -1,7 +1,10 @@
+@menu-height: 100px;
+
+// Override Bootstrap defaults
 .navbar-inner, .navbar-inverse {
   background: @dark-grey !important;
   background-color: @dark-grey !important;
-  height: 100px;
+  height: @menu-height;
 };
 
 .navbar-inner .container {
@@ -10,23 +13,6 @@
 
 .navbar-inner .container p {
   margin: -41px 0 0 75px;
-}
-
-.user-nav .container .pull-right li a {
-  padding: 0px !important;
-  margin: 0 0 0 20px;
-}
-
-.user-nav .container {
-  padding: 0px !important;
-  margin: 0px !important;
-  margin: 0px !important;
-  width: 100%;
-  height: 100%
-}
-
-.user-nav .container ul {
-  padding: 10px (@global-gutter + 20px) 0 0;
 }
 
 .brand {
@@ -43,25 +29,6 @@
   margin: 0 25px 0 0;
 }
 
-.user-nav {
-  position: relative;
-  height: 40px;
-  width: 100%;
-  background: @blue !important;
-  background-color: @blue !important;
-}
-
-.user-nav .active {
-  background-color: none !important;
-}
-
-.pull-right li a {
-  color: @white !important;
-  text-shadow: none !important;
-  font-family: @oswald;
-  font-weight: 300 !important;
-}
-
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
   text-shadow: none;
 }
@@ -72,7 +39,7 @@
   top: 22px
 }
 
-.donation {
+.tagline {
   color: @white;
   text-transform: uppercase;
   font-family: @oswald;
@@ -83,7 +50,7 @@
   margin: 10px 20px 0 0;
 }
 
-.margin-right .rootstricker-btn {
+.margin-right .btn {
   position: relative;
   top: -15px;
 }

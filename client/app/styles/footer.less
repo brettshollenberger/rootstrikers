@@ -1,5 +1,4 @@
-@footer-size: 120px;
-@copyright-height: 40px;
+@footer-size: 55px;
 
 html, body {
   height: 100%;
@@ -13,22 +12,20 @@ html, body {
   margin: 0 auto -@footer-size;
 }
 
-footer li {
-  font-size: 1.5rem;
-  list-style-type: none !important;
+footer h6 {
   display: inline-block;
-  font-family: @oswald;
-  font-weight: 700;
-  text-transform: uppercase !important;
-  letter-spacing: .25rem;
+  text-transform: capitalize;
+  text-align: left;
   color: @blue;
-  margin: 1rem;
-  padding: 25px 0;
 }
 
 footer {
   background-color: @footer-grey;
   width: 100%;
+}
+
+.footer-links {
+  margin: 8px 0 0 -10px;
 }
 
 .push {
@@ -37,17 +34,4 @@ footer {
 
 .footer {
   height: @footer-size;
-}
-
-.copyright {
-  clear: both;
-  height: @copyright-height;
-  background-color: @dark-grey;
-  width: 100%;
-}
-
-.copyright p {
-  display: inline-block;
-  position: relative;
-  margin: (@copyright-height/4) 0;
 }
