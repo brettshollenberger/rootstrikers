@@ -2,7 +2,9 @@ angular
   .module('app')
   .factory('userService', [
     '$resource',
-    function($resource) {
+    '$http',
+    '$rootScope',
+    function($resource, $http, $rootScope) {
       var User = $resource('/api/user/:userID', {
         userID: '@id'
       }),
@@ -17,7 +19,9 @@ angular
           }
 
           return -1;
-        }, loggedUser;
+        }, updateUser = function(user) {
+          $rootScope.loggedUser = user;
+        };
       return {
         newUser: function() {
           return new User();
@@ -67,14 +71,16 @@ angular
             }
           });
         },
-        createFromFB: function(fbUser){
-          var user =  new User(), loc;
+        facebookLogin: function(fbUser) {
+          var user = new User(),
+            loc;
+          user.fbID = fbUser.id;
           user.first_name = fbUser.first_name;
           user.last_name = fbUser.last_name;
           user.email = fbUser.email;
-          if(fbUser.location){
+          if (fbUser.location) {
             loc = fbUser.location.name.split(',');
-            switch(loc.length){
+            switch (loc.length) {
               case 1:
                 user.country = loc[0];
                 break;
@@ -84,16 +90,22 @@ angular
                 break;
             }
           }
-          user.avatar = "http://graph.facebook.com/"+fbUser.id+"/picture";
+          user.avatar = "http://graph.facebook.com/" + fbUser.id + "/picture";
           user.isFacebook = true;
           user.isVerify = fbUser.verified;
-          user.$save();
+          user.$save(function(user) {
+            updateUser(user);
+          });
         },
         login: function(user) {
-          loggedUser = user;
+          return $http.post('/auth/login/', user).success(function(user) {
+            updateUser(user);
+          });
         },
         logout: function() {
-          loggedUser = undefined;
+          $http.get('/auth/logout').success(function() {
+            updateUser();
+          });
         }
       };
     }

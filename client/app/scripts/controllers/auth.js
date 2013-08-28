@@ -28,8 +28,11 @@ angular
 
       $scope.login = function() {
         _clearErrors();
-        userAPI.login($scope.formUser);
-        _close();
+        userAPI.login($scope.formUser).error(function(data, status) {
+          _addError('extra', 'Login Invalid');
+        }).success(function() {
+          _close();
+        });
       };
 
       $scope.logout = function() {
@@ -48,7 +51,7 @@ angular
       $scope.fbLogin = function() {
         _clearErrors();
         FB.login().then(function(user) {
-          userAPI.createFromFB(user);
+          userAPI.facebookLogin(user);
           _close();
         }, function() {
           _addError('extra', "Facebook Login Fail");
@@ -58,6 +61,7 @@ angular
       //private methods to handle common task
 
       function _close() {
+        _clearErrors();
         if ($scope.closeModal) {
           $scope.closeModal();
         }

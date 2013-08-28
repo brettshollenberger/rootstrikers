@@ -5,6 +5,9 @@
   </div>
   <form name="form" ng-submit="register()" class="form-horizontal">
     <div class="modal-body">
+      <div class="alert alert-error" ng-show="formErrors.extra">
+         <strong>{{formErrors.extra}}</strong>
+      </div>
       <fieldset>
         <div class="control-group" ng-class="{error: formErrors.first_name}">
           <label class="control-label" for="firstName">First Name</label>
@@ -76,11 +79,6 @@
             <input id="avatar" name="avatar" type="file" ng-model="formUser.avatar" placeholder="Avatar"/>
             <span class="help-inline" ng-show="formErrors.avatar">{{formErrors.avatar}}</span>
           </div>
-        </div>
-
-
-        <div class="alert alert-error" ng-show="formErrors.extra">
-           <strong>{{formErrors.extra}}</strong>
         </div>
     </fieldset>
     </div>
