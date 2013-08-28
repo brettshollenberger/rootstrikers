@@ -77,6 +77,7 @@
     <script src="app/scripts/directive/auth/registerLink.js"></script>
     <script src="app/scripts/directive/carousel.js"></script>
     <script src="app/scripts/directive/footer.js"></script>
+    <script src="app/scripts/directive/projectQuickView.js"></script>
     <script src="app/scripts/app.templates.js"></script>
 
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
@@ -93,20 +94,20 @@
         $('.carousel').carousel();
       });
 
-      // Intended for development only; remove for
-      var myWidth = 0, myHeight = 0;
-      window.onresize = displayWindowSize;
-      window.onload = displayWindowSize;
-      function displayWindowSize() {
-          if( typeof( window.innerWidth ) == 'number' ) {
-            myWidth = window.innerWidth; myHeight = window.innerHeight;
-          } else if( document.documentElement && ( document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
-              myWidth = document.documentElement.clientWidth; myHeight = document.documentElement.clientHeight;
-          } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-              myWidth = document.body.clientWidth; myHeight = document.body.clientHeight;
-          }
-          document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
-      };
+      // Intended for development only; remove for production
+      // var myWidth = 0, myHeight = 0;
+      // window.onresize = displayWindowSize;
+      // window.onload = displayWindowSize;
+      // function displayWindowSize() {
+      //     if( typeof( window.innerWidth ) == 'number' ) {
+      //       myWidth = window.innerWidth; myHeight = window.innerHeight;
+      //     } else if( document.documentElement && ( document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
+      //         myWidth = document.documentElement.clientWidth; myHeight = document.documentElement.clientHeight;
+      //     } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+      //         myWidth = document.body.clientWidth; myHeight = document.body.clientHeight;
+      //     }
+      //     document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
+      // };
     </script>
   </body>
 </html>
