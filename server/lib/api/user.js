@@ -14,6 +14,7 @@ module.exports = function(app, db) {
           state: data.state,
           country: data.country,
           avatar: data.avatar,
+          thumb: data.thumb,
           isFacebook: data.isFacebook,
           isVerify: data.isVerify,
           fbID: data.fbID

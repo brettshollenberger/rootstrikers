@@ -5,6 +5,7 @@ angular
     'userService',
     'Facebook',
     function($scope, userAPI, FB) {
+      var inkBlob, inkBlobThumb;
       $scope.formUser = userAPI.newUser();
       $scope.formErrors = {};
 
@@ -41,7 +42,17 @@ angular
         userAPI.logout();
       };
 
-      $scope.close = _close;
+      $scope.cancel = function() {
+        if (inkBlob) {
+          try {
+            filepicker.remove(inkBlobThumb);
+            filepicker.remove(inkBlob);
+          } catch (err) {
+
+          }
+        }
+        _close();
+      };
 
       $scope.clear = function() {
         _clearUser();
@@ -55,6 +66,25 @@ angular
           _close();
         }, function() {
           _addError('extra', "Facebook Login Fail");
+        });
+      };
+
+      $scope.uploadAvatar = function() {
+        filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
+        filepicker.pick({
+          'mimetype': "image/*"
+        }, function(InkBlob) {
+          filepicker.convert(InkBlob, {
+              width: 200,
+              height: 200
+            },
+            function(InkThumb) {
+              $scope.formUser.thumb = InkThumb.url;
+              $scope.$digest();
+              inkBlobThumb = InkThumb;
+            });
+          inkBlob = InkBlob;
+          $scope.formUser.avatar = InkBlob.url;
         });
       };
 

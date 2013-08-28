@@ -146,6 +146,9 @@ schema.user = new mongoose.Schema({
   avatar: {
     type: String
   },
+  thumb: {
+    type: String
+  },
   fbID: {
     type: String
   },

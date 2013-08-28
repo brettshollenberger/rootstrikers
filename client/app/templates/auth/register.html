@@ -74,16 +74,16 @@
         </div>
 
         <div class="control-group" ng-class="{error: formErrors.avatar}">
-          <label class="control-label" for="avatar">Avatar</label>
           <div class="controls">
-            <input id="avatar" name="avatar" type="file" ng-model="formUser.avatar" placeholder="Avatar"/>
+            <img ng-src="{{formUser.thumb}}"/>
+            <a ng-click="uploadAvatar()" class="btn btn-primary">Add an avatar</a>
             <span class="help-inline" ng-show="formErrors.avatar">{{formErrors.avatar}}</span>
           </div>
         </div>
     </fieldset>
     </div>
     <div class="modal-footer">
-      <button type="reset" class="btn" ng-click="close()">Cancel</button>
+      <button type="reset" class="btn" ng-click="cancel()">Cancel</button>
       <input type="submit" id="submit" class="btn btn-primary" value="Register"/>
       OR
         <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
