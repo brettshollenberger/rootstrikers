@@ -17,7 +17,7 @@
           </div>
           <div class="form-group">
             <label for="shortname">Action Kit Shortname</label>
-            <input type="text" class="form-control" id="shortname" placeholder="Enter the Action Kit Shortname" ng-model="project.shortname" validpage>
+            <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Enter the Action Kit Shortname" ng-model="project.shortname" validpage>
           </div>
           <div class="form-group" ng-show="!!project.image">
             <a class="btn" ng-click="removeImage()" ng-show="project.image"><i class="icon-trash"></i></a>
@@ -28,6 +28,8 @@
             <input type="file" id="image">
             <div>{{progress}}</div>
           </div>
+          
+          {{projectForm.$invalid}}
           
           <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save</button>
           <a href="#/admin" class="btn btn-warning">Cancel</a>

@@ -4,23 +4,39 @@ angular
     '$http',
     function($http) {
       
-      var apiBase = 'https://act.demandprogress.org/rest/v1/';
-      
       return {
       
-        getPage: function (shortname) {
-      
-            var url = apiBase + "page/?name=" + shortname + "&callback=JSON_CALLBACK";
+        /*
+        createUser: function (user) {
             
-            return $http({method: 'JSONP', url: url}).
+            var url = '/api/actionkit/createUser';
+            
+            return $http({method: 'POST', url: url, data:user}).
             then(function (response) {
-                // if the page exists
-                if(response.status === 200 && response.data.meta.total_count === 1) {
-                    return response.data.objects[0];
-                } else {
-                    return false;
-                }
-            });    
+            
+                console.log('RESPONSE');
+                console.log(response);
+            });  
+            
+        },
+        */
+      
+        getPage: function (shortname) {      
+        
+            var url = '/api/actionkit/getPage';
+            
+            return $http({method: 'GET', url: url, params:{'shortname':shortname}}).
+            then(function(response) {
+
+              if(response.status === 200) {
+                  return response.data;
+              } else {
+                  return false;
+              }
+              
+            }, function() {
+                return false;
+            });
         }
         
       };

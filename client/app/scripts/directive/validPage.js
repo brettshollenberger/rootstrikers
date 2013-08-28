@@ -11,11 +11,13 @@ angular
           if(viewValue !== '') {
           
               actionKitService.getPage(viewValue).then(function (response) {
-              
-                if(response != false) {
+                
+                if(response.error === false) {
+                    console.log('IS VALID');
                     ctrl.$setValidity('validpage', true);
                     return viewValue;
                 } else {
+                    console.log('NOT VALID');
                     ctrl.$setValidity('validpage', false);
                     return undefined;
                 }
