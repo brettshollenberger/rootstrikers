@@ -1,91 +1,73 @@
+// Override Bootstrap defaults so we can set flat background color
 .btn {
   border-radius: 3px;
-}
-
-.rootstricker-btn {
-  border: none;
-  background-color: @blue;
-  background-image: none !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  color: @white;
-  text-transform: uppercase;
+  background-image: none;
+  text-shadow: none;
+  box-shadow: none;
+  border: 0;
   font-family: @opensans;
-  font-weight: 800;
-  border-color: none;
+  font-weight: 300;
   font-size: 12px;
+  color: @white;
+  background-color: @blue;
+  text-transform: uppercase;
   padding: 10px 20px;
   letter-spacing: 2.5px;
+  height: 18px;
 }
 
-.facebook-btn,
-.join-btn {
-  background-color: @dark-blue !important;
-  background-image: none !important;
-  border: 0;
-  text-shadow: none !important;
-  color: @white;
-  font-family: @opensans;
-  font-weight: 400;
-  text-transform: uppercase;
-  height: 30px;
+.darkblue-btn {
+  background-color: @dark-blue;
   letter-spacing: 3px;
-  font-size: 10px
+  font-size: 10px;
+  line-height: 18px;
 }
 
 .facebook-btn {
   width: 250px;
 }
 
-.accent-text,
-.join-btn {
-  font-weight: 300;
-  text-transform: uppercase;
-  color: @white;
-}
-
-.facebook-btn .accent-text {
-  font-size: 8px;
-}
-
 .accent-text {
   font-style: italic;
-}
-
-.span1 .accent-text {
-  font-size: 12px;
-  line-height: 35px;
-}
-
-.btn-text { 
-  position: relative;
-  top: -32px;
-  float: right;
-  padding-right: 37px;
+  font-size: 8px;
 }
 
 .facebook-icon {
   position: relative;
-  top: -3px;
-  left: -12px;
+  top: -28px;
+  left: -21px;
   width: 40px;
-  height: 37px;
+  height: 38px;
   background-color: #005a94;
   border-radius: 3px;
+}
+
+.facebook-icon-straight {
+  width: 10px;
+  height: 38px;
+  background-color: #005a94;
+  position: relative;
+  left: 30px;
 }
 
 .facebook-icon i {
   font-size: 24px;
   position: relative;
   left: -5px;
-  top: 8px;
+  top: -28px;
+}
+
+.facebook-icon i:hover {
+  color: @white;
 }
 
 .join-btn {
-  line-height: 30px;
+  padding-left: 25px;
   width: 60px;
-  font-weight: 400;
-  letter-spacing: 5px;
+}
+
+.join-text {
+  margin-left: 30px;
 }
 
 .read-more {

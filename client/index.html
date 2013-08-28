@@ -39,12 +39,24 @@
       </noscript>
 
       <div ng-view></div>
-
+      
       <div class="push"></div>
     </div>
 
-    <footer class="footer muted text-center">
-      <ul class="admin-hide">
+    <footer class="footer muted">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span10 offset1">
+            <div class="footer-links">
+              <a href="#"><h6 class="white">Terms &amp; Conditions</h6></a> |  
+              <a href="#"><h6 class="white">Privacy Policy</h6></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- If anyone needs to put these admin links back in, feel free to do
+      so, but they aren't in the comps so I'm taking them out -->
+      <!-- <ul ng-hide="onAdmin">
         <li class="active">
           <a href="#/">Learn</a>
         </li>
@@ -64,10 +76,7 @@
         <li>
           <a href="#/admin/pages">pages</a>
         </li>
-      </ul>
-      <div class="copyright">
-        <p>&copy; 2013 Rootstrikers</p>
-      </div>
+      </ul> -->
     </footer>
 
     <!-- build:js app/scripts/all.min.js -->
@@ -79,6 +88,7 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/bootstrap/js/bootstrap-transition.js"></script>
     <script src="bower_components/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
     <script src="app/scripts/libs/facebook.js"></script>
 
@@ -113,6 +123,25 @@
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
+
+      $(document).ready(function(){
+        $('.carousel').carousel();
+      });
+
+      // Intended for development only; remove for release
+      var myWidth = 0, myHeight = 0;
+      window.onresize = displayWindowSize;
+      window.onload = displayWindowSize;
+      function displayWindowSize() {
+          if( typeof( window.innerWidth ) == 'number' ) {
+            myWidth = window.innerWidth; myHeight = window.innerHeight;
+          } else if( document.documentElement && ( document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
+              myWidth = document.documentElement.clientWidth; myHeight = document.documentElement.clientHeight;
+          } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+              myWidth = document.body.clientWidth; myHeight = document.body.clientHeight;
+          }
+          document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
+      };
     </script>
   </body>
 </html>

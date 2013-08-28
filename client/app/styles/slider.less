@@ -1,30 +1,119 @@
 @twice-gutter: (@global-gutter * 2);
 
-.slider {
-  margin: 140px 0 0 0;
+// Offset the page container by the height of the sticky menu
+.homepage-container .carousel {
+  margin: @menu-height 0 0 0;
+  width: 100%;
   background-color: @jumbotron-black;
-  width: 100%;
 }
 
-.slider-image {
-  width: (100% - @twice-gutter);
-  margin: 0 auto;
+.carousel-caption {
+  background: none;
 }
 
-.slider-image img {
-  width: 100%;
+.homepage-container .carousel-caption {
+  left: 150px;
+  top: 50px;
 }
 
-.slider h3 {
-  font-family: @oswald;
-  font-size: 40px;
-  font-weight: 300;
-  color: @white;
-  text-transform: uppercase;
-  text-align: center;
-  width: 900px;
-  margin: 10px auto;
-  padding: 40px;
-  letter-spacing: 10px;
-  line-height: 70px;
+@media only screen and (max-width: 1144px) {
+  .homepage-container .carousel-caption {
+    left: 100px;
+    top: 30px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+
+  .homepage-container .carousel-caption {
+    top: 20px;
+  }
+
+  .homepage-container .headline {
+    width: 350px;
+  }
+
+  .homepage-container .carousel-caption h6 {
+    line-height: 12px;
+  }
+
+  .homepage-container .carousel-caption h3 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .homepage-container .carousel-caption p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 979px) {
+  .homepage-container {
+    margin: -10px 0 0 0;
+  }
+
+  .homepage-container .carousel {
+    margin: 0px 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 875px) {
+  .homepage-container .carousel-caption {
+    top: 25px;
+  }
+
+  .homepage-container .headline {
+    width: 300px;
+  }
+
+  .homepage-container .carousel-caption h6 {
+    line-height: 5px;
+  }
+
+  .homepage-container .carousel-caption h3 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .homepage-container .carousel-caption h2 {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .homepage-container .carousel-caption p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .homepage-container .carousel-caption {
+    left: 80px;
+    top: 5px;
+  }
+}
+
+@media only screen and (max-width: 695px) {
+  .homepage-container .carousel-caption {
+    top: 5px;
+    left: 70px;
+  }
+
+  .homepage-container .headline {
+    width: 250px;
+  }
+
+  .homepage-container .carousel-caption p {
+    display: none;
+  }
+
+  .homepage-container .carousel-caption h2 {
+    line-height: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .homepage-container .carousel-caption {
+    display: none;
+  }
 }
