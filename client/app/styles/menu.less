@@ -7,12 +7,8 @@
   height: @menu-height;
 };
 
-.navbar-inner .container {
-  margin: 10px (@global-gutter + 16px);
-}
-
-.navbar-inner .container p {
-  margin: -41px 0 0 75px;
+.navbar-inner .container-fluid p {
+  margin: -30px 0 0 30px;
 }
 
 .brand {
@@ -26,7 +22,7 @@
 
 .brand:before {
   content: url('../images/rsicon.png');
-  margin: 0 25px 0 0;
+  margin: 0 0 0 -30px;
 }
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
@@ -35,7 +31,7 @@
 
 .margin-right {
   position: absolute;
-  right: @global-gutter + 20px;
+  right: @global-gutter;
   top: 22px
 }
 
@@ -55,3 +51,48 @@
   top: -15px;
 }
 
+@media only screen and (max-width: 979px) {
+  .tagline {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 875px) {
+  .tagline {
+    font-size: 10px;
+  }
+
+  .navbar .btn {
+    width: 60px;
+    padding: 10px 5px;
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .brand:before {
+    margin: 0;
+  }
+
+  .brand p {
+    position: relative;
+    left: 30px;
+  }
+
+  .margin-right {
+    right: 10px;
+  }
+}
+
+@media only screen and (max-width: 592px) {
+  #donate, .tagline { 
+    display: none;
+  }
+
+  #join {
+    position: relative;
+    top: 5px;
+  }
+}
