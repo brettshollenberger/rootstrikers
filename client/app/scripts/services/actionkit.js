@@ -6,20 +6,29 @@ angular
       
       return {
       
-        /*
         createUser: function (user) {
+            
+            //console.log('ENTER CREATE USER');
             
             var url = '/api/actionkit/createUser';
             
             return $http({method: 'POST', url: url, data:user}).
             then(function (response) {
             
-                console.log('RESPONSE');
-                console.log(response);
+              //console.log('RESPONSE');
+              //console.log(response);
+              
+              if(response.status === 200) {
+                  return response.data;
+              } else {
+                  return false;
+              }
+                
+            }, function() {
+                return false;
             });  
             
         },
-        */
       
         getPage: function (shortname) {      
         
