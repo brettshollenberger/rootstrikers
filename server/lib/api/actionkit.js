@@ -12,21 +12,11 @@ module.exports = function(app, db) {
        
         request({method:'POST', uri:url, body:req.body, headers:{'Content-Type':'application/json'}, json:true}, function (error, response, body) {
           
-          /*
-          console.log('ERROR');
-          console.log(error);
-          console.log(response.statusCode);
-          console.log('BODY');
-          console.log(body);
-          */
-          
-          /*
-          if (!error && response.statusCode == 200) {
-            res.send('success');
+          if (!error && response.statusCode == 201) {
+            res.send({error:false, response:response.headers.location});
           } else {
-            res.send('you are awesome, but your request failed');
+            res.send({error:true});
           }
-          */ 
           
         }); 
         

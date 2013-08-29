@@ -8,15 +8,10 @@ angular
       
         createUser: function (user) {
             
-            //console.log('ENTER CREATE USER');
-            
             var url = '/api/actionkit/createUser';
             
             return $http({method: 'POST', url: url, data:user}).
             then(function (response) {
-            
-              //console.log('RESPONSE');
-              //console.log(response);
               
               if(response.status === 200) {
                   return response.data;
@@ -27,6 +22,10 @@ angular
             }, function() {
                 return false;
             });  
+            
+        },
+        
+        getUser: function (email) {
             
         },
       
