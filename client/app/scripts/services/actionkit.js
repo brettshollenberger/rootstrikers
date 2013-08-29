@@ -27,6 +27,20 @@ angular
         
         getUser: function (email) {
             
+            var url = '/api/actionkit/getUser';
+            
+            return $http({method: 'GET', url: url, params:{'email':email}}).
+            then(function (response) {
+              
+              if(response.status === 200) {
+                  return response.data.response;
+              } else {
+                  return false;
+              }
+                
+            }, function() {
+                return false;
+            });  
         },
       
         getPage: function (shortname) {      
@@ -37,7 +51,7 @@ angular
             then(function(response) {
 
               if(response.status === 200) {
-                  return response.data;
+                  return response.data.response;
               } else {
                   return false;
               }
