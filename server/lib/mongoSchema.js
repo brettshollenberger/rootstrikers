@@ -71,7 +71,10 @@ schema.project = new mongoose.Schema({
     type: String
   },
   shortname: {
-    type: String  
+    type: String
+  },
+  end_date: {
+    type: Date
   },
   image: {
     type: String

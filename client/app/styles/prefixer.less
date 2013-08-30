@@ -2,12 +2,6 @@
 //  LESS Prefixer
 //---------------------------------------------------
 //
-//  Copyright (c) 2012 Joel Sutherland
-//  MIT Licensed:
-//  http://www.opensource.org/licenses/mit-license.php
-//
-//---------------------------------------------------
-
 
 // Animation
 
@@ -138,7 +132,6 @@
     column-rule: @args;
 }
 
-
 // Gradients
 
 .gradient(@default: #F5F5F5, @start: #EEE, @stop: #FFF) {
@@ -199,6 +192,13 @@
     background-image: linear-gradient(left, @color1 @stop1, @color2 @stop2, @color3 @stop3, @color4 @stop4);
 }
 
+// Filter 
+.filter(@percent: 100%) {
+  filter: grayscale(@percent);
+  -webkit-filter: grayscale(@percent);
+  -moz-filter: grayscale(@percent);
+  filter: grayscale(@percent);
+}
 
 // Opacity
 

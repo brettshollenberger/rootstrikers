@@ -8,7 +8,8 @@ module.exports = function(app, db) {
     db.project.create({
       name: data.name,
       description: data.description,
-      shortname: data.shortname
+      shortname: data.shortname,
+      end_date: data.end_date
     }, function(err, model) {
       if (!err) {
         res.json(model); //If went ok return the json of the model

@@ -1,0 +1,41 @@
+<div class="project">
+  <div class="project-img">
+    <!-- We should have some attribute like project.state which can be open or closed or something, and can stand in for the class here, so we can style the black and white images / color versions -->
+    <img src="app/images/hack_politics_aged.png">
+  </div>
+  <hr class="project-hr">
+  <div class="project-details">
+    <h2>Project:</h2>
+    
+    <h3>{{item.name}}</h3>
+
+    <h2>Time Remaining:</h2>
+    <h4>{{item.end_date}}</h4>
+
+    <h2>Goal:</h2>
+    <p>{{item.description}}</p>
+  </div>
+  <div class="supporters">
+    <div class="supporters-text">
+      <h2>Supporting Rootstrikers</h2>
+      <img src="app/images/circle-head.png">
+      <img src="app/images/circle-head2.png">
+      <img src="app/images/circle-head3.png">
+      <div class="supporter-count">
+        <h5>&amp; 1,293</h5>
+        <h6>more</h6>
+      </div>
+    </div>
+  </div>
+  <div class="read-more">
+    <div class="read-more-text">
+      Read More &amp; Share
+    </div>
+  </div>
+</div>
+
+<script>
+  function state() {
+    return "open";
+  };
+</script>
