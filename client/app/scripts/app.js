@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce'])
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar'])
   .config(['$routeProvider',
     function($router) {
       $router
@@ -57,3 +57,7 @@ angular
       });
     }
   ]);
+
+function myController($scope) {
+    $scope.email = 'brett@facultycreative.com';
+}
