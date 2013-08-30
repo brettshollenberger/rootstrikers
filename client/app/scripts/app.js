@@ -12,6 +12,10 @@ angular
           controller: 'homeController',
           templateUrl: 'app/templates/home.html'
         })
+        .when('/project/:name', {
+          controller: 'projectController',
+          templateUrl: 'app/templates/projectPage.html'
+        })
         .when('/page/:url', {
           controller: 'pageController',
           templateUrl: 'app/templates/page.html'
