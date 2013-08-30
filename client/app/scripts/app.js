@@ -1,7 +1,12 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce'])
-  .config(['$routeProvider',
-    function($router) {
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar'])
+  .config(['$routeProvider', '$httpProvider',
+    function($router, $httpProvider) {
+    
+      // allow for CORS
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+      
       $router
         .when('/', {
           controller: 'homeController',
@@ -56,4 +61,30 @@ angular
         templateUrl: 'app/templates/admin/pagePreview.html'
       });
     }
-  ]);
+  ])
+  .run(['$location', '$rootScope', function($location, $rootScope) {
+      
+        // Handle updating page title
+        $rootScope.$on('$routeChangeSuccess', function($event, $route, $previousRoute) {
+            
+            $rootScope.pageSlug = "";
+            
+            var pageSlug = $location.path().split('/');
+            
+            // remove the first element, which is always ""
+            pageSlug.shift();
+            
+            if(pageSlug.length === 1 && pageSlug[0] === "") {
+                $rootScope.pageSlug = 'home';
+            } else {
+                
+                angular.forEach(pageSlug, function(item) {
+                    $rootScope.pageSlug += item + " "; 
+                });
+            }
+        });      
+  }]);
+
+  function myController($scope) {
+      $scope.email = 'brett@facultycreative.com';
+  }

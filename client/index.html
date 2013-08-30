@@ -26,14 +26,14 @@
     <script src="components/html5shiv-dist/html5shiv.js"></script>
     <![endif]-->
   </head>
-  <body ng-app="app">
+  <body ng-app="app" ng-class="pageSlug">
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
     <div class="wrap">
       <nav-menu></nav-menu>
-          
+
       <noscript>
         Please enable Javascript to experience this site :)
       </noscript>
@@ -52,9 +52,8 @@
     <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <script src="bower_components/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bower_components/bootstrap/js/bootstrap-modal.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//api.filepicker.io/v1/filepicker.js"></script>
 
     <script src="app/scripts/libs/facebook.js"></script>
 
@@ -69,16 +68,19 @@
     <script src="app/scripts/services/page.js"></script>
     <script src="app/scripts/controllers/auth.js"></script>
     <script src="app/scripts/services/user.js"></script>
+    <script src="app/scripts/services/facebook.js"></script>
     <script src="app/scripts/directive/navMenu.js"></script>
     <script src="app/scripts/directive/projectItem.js"></script>
     <script src="app/scripts/directive/pageItem.js"></script>
-    <script src="app/scripts/directive/formModal.js"></script>
-    <script src="app/scripts/directive/auth/loginLink.js"></script>
-    <script src="app/scripts/directive/auth/registerLink.js"></script>
+    <script src="app/scripts/directive/modal.js"></script>
+    <script src="app/scripts/services/actionKit.js"></script>
+    <script src="app/scripts/directive/validPage.js"></script>
     <script src="app/scripts/directive/carousel.js"></script>
     <script src="app/scripts/directive/footer.js"></script>
     <script src="app/scripts/directive/projectQuickView.js"></script>
     <script src="app/scripts/app.templates.js"></script>
+    <script src="app/scripts/services/md5-service.js"></script>
+    <script src="app/scripts/directive/gravatar-directive.js"></script>
 
     <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
     <!-- endbuild -->
@@ -109,5 +111,6 @@
       //     document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
       // };
     </script>
+    <div id="fb-root"></div>
   </body>
 </html>

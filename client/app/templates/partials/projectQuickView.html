@@ -18,9 +18,10 @@
   <div class="supporters">
     <div class="supporters-text">
       <h2>Supporting Rootstrikers</h2>
-      <img src="app/images/circle-head.png">
-      <img src="app/images/circle-head2.png">
-      <img src="app/images/circle-head3.png">
+      <!-- We will have to change this ng-repeat call to user in supporters once we have a service for that -->
+      <div ng-repeat="user in users">
+        <gravatar-image data-email="user.email" data-size="55" data-rating="pg" data-default="404" data-secure="true"></gravatar-image>
+      </div>
       <div class="supporter-count">
         <h5>&amp; 1,293</h5>
         <h6>more</h6>
@@ -33,9 +34,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  function state() {
-    return "open";
-  };
-</script>

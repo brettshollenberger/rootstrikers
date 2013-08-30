@@ -3,8 +3,13 @@ angular
   .controller('homeController', [
     '$rootScope',
     '$scope',
+    'userService',
     'projectService',
-    function($rootScope, $scope, projectAPI) {
-      $scope.projects = projectAPI.getPublished();
+    function($rootScope, $scope, userAPI, projectAPI, actionKitService) {
+      $scope.projects = projectAPI.getPublished(); 
+      // This users object serves no useful purpose in the final app, 
+      // but we need something to stand-in for gravatars until we write
+      // an association for project.supporters
+      $scope.users = userAPI.getAll();
     }
   ]);
