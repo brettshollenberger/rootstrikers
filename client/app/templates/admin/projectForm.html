@@ -34,8 +34,6 @@
             <div>{{progress}}</div>
           </div>
           
-          {{projectForm.$invalid}}
-          
           <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save</button>
           <a href="#/admin" class="btn btn-warning">Cancel</a>
           <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
