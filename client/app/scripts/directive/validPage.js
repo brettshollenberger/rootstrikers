@@ -14,6 +14,7 @@ angular
                 
                 if(response !== false) {
                     ctrl.$setValidity('validpage', true);
+                    scope.project.shortname = viewValue;
                     return viewValue;
                 } else {
                     ctrl.$setValidity('validpage', false);
