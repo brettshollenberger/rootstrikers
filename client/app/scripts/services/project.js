@@ -58,10 +58,10 @@ angular
             projectID: id
           }, function(result) {
             if (result) {
-              if(projects.length && getIndex(id) >= 0){
+              if (projects.length && getIndex(id) >= 0) {
                 projects.splice(getIndex(id), 1);
               }
-              if(cb){
+              if (cb) {
                 cb(projects);
               }
             }
@@ -77,6 +77,32 @@ angular
             //fetch the published only
             return this.getAll({
               publish: true
+            });
+          }
+        },
+        getByName: function(name, cb) {
+          var respond = function(results) {
+            if (results.length) {
+              if (cb) {
+                cb(undefined, results[0]);
+              }
+            } else {
+              if (cb) {
+                cb("Not Found");
+              }
+            }
+          };
+          //If we have fetched the project from the backend just return the published
+          if (projects.length) {
+            respond(projects.filter(function(element, index, array) {
+              return element.name === name;
+            }));
+          } else {
+            //fetch the project to the server
+            this.getAll({
+              name: name
+            }, function(result) {
+              respond(result);
             });
           }
         }

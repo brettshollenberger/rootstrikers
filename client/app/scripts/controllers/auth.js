@@ -6,8 +6,8 @@ angular
     'Facebook',
     function($scope, userAPI, FB) {
       var inkBlob, inkBlobThumb;
-      $scope.formUser = userAPI.newUser();
       $scope.formErrors = {};
+      $scope.formUser = userAPI.newUser();
 
       $scope.register = function() {
         _clearErrors();
@@ -20,6 +20,15 @@ angular
         if ($scope.formUser.password.length < 6) {
           _addError('password', 'Too short. Minimum of six characters');
         }
+
+        if (Object.keys($scope.formErrors).length === 0) {
+          $scope.formUser.$save();
+          _close();
+        }
+      };
+
+      $scope.update = function() {
+        _clearErrors();
 
         if (Object.keys($scope.formErrors).length === 0) {
           $scope.formUser.$save();

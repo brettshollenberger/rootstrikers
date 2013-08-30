@@ -98,8 +98,8 @@ angular
           });
         },
         login: function(user) {
-          return $http.post('/auth/login/', user).success(function(user) {
-            updateUser(user);
+          return $http.post('/auth/login/', user).success(function(user_response_object) {
+            updateUser(user_response_object);
           });
         },
         logout: function() {
