@@ -50,7 +50,7 @@ angular
             return $http({method: 'GET', url: url, params:{'shortname':shortname}}).
             then(function(response) {
 
-              if(response.status === 200) {
+              if(response.status === 200 && response.data.error === false) {
                   return response.data.response;
               } else {
                   return false;

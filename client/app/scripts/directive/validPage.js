@@ -12,12 +12,10 @@ angular
           
               actionKitService.getPage(viewValue).then(function (response) {
                 
-                if(response.error === false) {
-                    console.log('IS VALID');
+                if(response !== false) {
                     ctrl.$setValidity('validpage', true);
                     return viewValue;
                 } else {
-                    console.log('NOT VALID');
                     ctrl.$setValidity('validpage', false);
                     return undefined;
                 }
