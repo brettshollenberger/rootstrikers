@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    bcrypt = require('bcryptjs'),
   //Get the configuration from env or use defaults
   config = {
     user: process.env.MONGODB_USER,
@@ -47,7 +48,9 @@ var schema = {}, odmApi = {}, i, entity,
         Model.findOneAndUpdate({
           id: new mongoose.Types.ObjectId(id)
         }, attributes, function(err, doc) {
-          cb(err, doc);
+          if(cb){
+            cb(err, doc);
+          }
         });
       },
       remove: function(id, cb) {
@@ -105,7 +108,10 @@ schema.page = new mongoose.Schema({
 });
 
 schema.user = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: {
+    type: mongoose.Schema.Types.ObjectId,
+    index: { unique: true }
+  },
   first_name: {
     type: String,
     required: true
@@ -116,17 +122,21 @@ schema.user = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    index: { unique: true }
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   isVerify: {
     type: Boolean,
     default: false
   },
   isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  isFacebook: {
     type: Boolean,
     default: false
   },
@@ -142,7 +152,41 @@ schema.user = new mongoose.Schema({
   avatar: {
     type: String
   },
+  thumb: {
+    type: String
+  },
+  fbID: {
+    type: String
+  },
 });
+
+schema.user.pre('save', function(next) {
+    var user = this;
+
+    // only hash the password if it has been modified (or is new)
+    if (!user.isModified('password')) return next();
+
+    // generate a salt
+    bcrypt.genSalt(5, function(err, salt) {
+        if (err) return next(err);
+
+        // hash the password along with our new salt
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            if (err) return next(err);
+
+            // override the cleartext password with the hashed one
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+schema.user.methods.comparePassword = function(candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+};
 
 //Create an API for the models of the schema so db logic get isolate here 
 for (entity in schema) {

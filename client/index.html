@@ -86,9 +86,8 @@
     <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <script src="bower_components/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="bower_components/bootstrap/js/bootstrap-modal.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//api.filepicker.io/v1/filepicker.js"></script>
 
     <script src="app/scripts/libs/facebook.js"></script>
 
@@ -103,15 +102,15 @@
     <script src="app/scripts/services/page.js"></script>
     <script src="app/scripts/controllers/auth.js"></script>
     <script src="app/scripts/services/user.js"></script>
+    <script src="app/scripts/services/facebook.js"></script>
     <script src="app/scripts/directive/navMenu.js"></script>
     <script src="app/scripts/directive/projectItem.js"></script>
     <script src="app/scripts/directive/pageItem.js"></script>
-    <script src="app/scripts/directive/formModal.js"></script>
+    <script src="app/scripts/directive/modal.js"></script>
     <script src="app/scripts/directive/auth/loginLink.js"></script>
     <script src="app/scripts/directive/auth/registerLink.js"></script>
     <script src="app/scripts/app.templates.js"></script>
 
-    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics -->
@@ -140,5 +139,6 @@
           document.getElementById("dimensions").innerHTML = myWidth + "x" + myHeight;
       };
     </script>
+    <div id="fb-root"></div>
   </body>
 </html>
