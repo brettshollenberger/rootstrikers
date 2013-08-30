@@ -32,7 +32,9 @@
     "grunt-usemin": "~0.1.12",
     "mongoose": "~3.6.15",
     "passport": "~0.1.17",
-    "passport-facebook": "~1.0.0"
+    "passport-local": "~0.1.6",
+    "bcryptjs": "~0.7.10",
+    "request": "2.27.0"
   },
   "peerDependencies": {},
   "devDependencies": {

@@ -3,9 +3,11 @@ angular
   .controller('authController', [
     '$scope',
     'userService',
-    function($scope, userAPI) {
+    'Facebook',
+    function($scope, userAPI, FB) {
+      var inkBlob, inkBlobThumb;
       $scope.formUser = userAPI.newUser();
-      $scope.errors = {};
+      $scope.formErrors = {};
 
       $scope.register = function() {
         _clearErrors();
@@ -19,20 +21,37 @@ angular
           _addError('password', 'Too short. Minimum of six characters');
         }
 
-        if (Object.keys($scope.errors).length === 0) {
-          return $scope.formUser.$save();
-        } else {
-          return false;
+        if (Object.keys($scope.formErrors).length === 0) {
+          $scope.formUser.$save();
+          _close();
         }
       };
 
       $scope.login = function() {
         _clearErrors();
-        return userAPI.login($scope.formUser);
+        userAPI.login($scope.formUser).error(function(data, status) {
+          _addError('extra', 'Login Invalid');
+        }).success(function() {
+          _close();
+        });
       };
 
       $scope.logout = function() {
-        return userAPI.logout();
+        _clearErrors();
+        _close();
+        userAPI.logout();
+      };
+
+      $scope.cancel = function() {
+        if (inkBlob) {
+          try {
+            filepicker.remove(inkBlobThumb);
+            filepicker.remove(inkBlob);
+          } catch (err) {
+
+          }
+        }
+        _close();
       };
 
       $scope.clear = function() {
@@ -40,11 +59,48 @@ angular
         _clearErrors();
       };
 
+      $scope.fbLogin = function() {
+        _clearErrors();
+        FB.login().then(function(user) {
+          userAPI.facebookLogin(user);
+          _close();
+        }, function() {
+          _addError('extra', "Facebook Login Fail");
+        });
+      };
+
+      $scope.uploadAvatar = function() {
+        filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
+        filepicker.pick({
+          'mimetype': "image/*"
+        }, function(InkBlob) {
+          filepicker.convert(InkBlob, {
+              width: 200,
+              height: 200
+            },
+            function(InkThumb) {
+              $scope.formUser.thumb = InkThumb.url;
+              $scope.$digest();
+              inkBlobThumb = InkThumb;
+            });
+          inkBlob = InkBlob;
+          $scope.formUser.avatar = InkBlob.url;
+        });
+      };
+
       //private methods to handle common task
 
+      function _close() {
+        _clearErrors();
+        if ($scope.closeModal) {
+          $scope.closeModal();
+        }
+      }
+
+
       function _clearErrors() {
-        $scope.errors = null;
-        $scope.errors = {};
+        $scope.formErrors = null;
+        $scope.formErrors = {};
       }
 
       function _clearUser() {
@@ -53,7 +109,7 @@ angular
       }
 
       function _addError(field, message) {
-        $scope.errors[field] = message;
+        $scope.formErrors[field] = message;
       }
 
       function _errored(response) {
@@ -61,14 +117,6 @@ angular
           Object.each(response.errors, function(field, errors) {
             _addError(field, errors.first());
           });
-
-          if ($scope.errors.ip) {
-            _addError('extra', $scope.errors.ip);
-          }
-
-          if (response.errors.base && Object.isString(response.errors.base)) {
-            _addError('extra', response.errors.base);
-          }
         }
       }
     }

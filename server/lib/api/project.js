@@ -8,6 +8,7 @@ module.exports = function(app, db) {
     db.project.create({
       name: data.name,
       description: data.description,
+      shortname: data.shortname,
       end_date: data.end_date
     }, function(err, model) {
       if (!err) {
