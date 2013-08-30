@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('ui-gravatar', ['md5']).
     factory('gravatarImageService', function (md5) {
         return {
@@ -19,7 +17,7 @@ angular.module('ui-gravatar', ['md5']).
                 // watch to notify us when the value changes
                 scope.$watch(attrs.email, function (value) {
                     // let's do nothing if the value comes in empty, null or undefined
-                    if ((value !== null) && (value !== undefined) && (value !== '') && (null != value.match(/.*@.*\..{2}/))) {
+                    if ((value !== null) && (value !== undefined) && (value !== '')) {
                         // parse the size attribute
                         var size = attrs.size || 40;
                         // parse the ratings attribute

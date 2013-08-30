@@ -1,10 +1,5 @@
 angular
-<<<<<<< HEAD
   .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar'])
-  .config(['$routeProvider',
-    function($router) {
-=======
-  .module('app', ['ngResource', 'ui.tinymce'])
   .config(['$routeProvider', '$httpProvider',
     function($router, $httpProvider) {
     
@@ -12,7 +7,6 @@ angular
       $httpProvider.defaults.useXDomain = true;
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
       
->>>>>>> 27d188d51c163381447e45fbf037c7180f27663e
       $router
         .when('/', {
           controller: 'homeController',
