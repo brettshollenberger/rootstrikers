@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce'])
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar'])
   .config(['$routeProvider', '$httpProvider',
     function($router, $httpProvider) {
     
@@ -11,6 +11,10 @@ angular
         .when('/', {
           controller: 'homeController',
           templateUrl: 'app/templates/home.html'
+        })
+        .when('/project/:name', {
+          controller: 'projectController',
+          templateUrl: 'app/templates/projectPage.html'
         })
         .when('/page/:url', {
           controller: 'pageController',
@@ -84,3 +88,7 @@ angular
             }
         });      
   }]);
+
+  function myController($scope) {
+      $scope.email = 'brett@facultycreative.com';
+  }

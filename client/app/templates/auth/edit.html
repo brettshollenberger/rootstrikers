@@ -1,0 +1,95 @@
+<div class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4>Edit</h4>
+  </div>
+  <form name="form" ng-submit="update()" class="form-horizontal">
+    <div class="modal-body">
+      <div class="alert alert-error" ng-show="formErrors.extra">
+         <strong>{{formErrors.extra}}</strong>
+      </div>
+      <fieldset>
+        <div class="control-group" ng-class="{error: formErrors.first_name}">
+
+          <label class="control-label" for="firstName">First Name</label>
+          <div class="controls">
+            <input type="text" id="firstName" name="first_name" ng-model="loggedUser.first_name" placeholder="First Name" required/>
+            <span class="help-inline" ng-show="formErrors.first_name">{{formErrors.first_name}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.last_name}">
+          <label class="control-label" for="lastName">Last Name</label>
+          <div class="controls">
+            <input type="text" id="registeremail" name="last_name" ng-model="loggedUser.last_name" placeholder="Last Name" required/>
+            <span class="help-inline" ng-show="formErrors.last_name">{{formErrors.last_name}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.email}">
+          <label class="control-label" for="registeremail">Email</label>
+          <div class="controls">
+            <input type="email" id="registeremail" name="email" ng-model="loggedUser.email" placeholder="Your Email" required/>
+            <span class="help-inline" ng-show="formErrors.email">{{formErrors.email}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.password}">
+          <label class="control-label" for="registerPassword">Password</label>
+          <div class="controls">
+            <input type="password" id="registerPassword" name="password" ng-model="formUser.password" placeholder="Desired password" min-lenght="6" required/>
+            <span class="help-inline" ng-show="formErrors.password">{{formErrors.password}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.passConfirmation}">
+          <label class="control-label" for="registerConfirm">Password Confirmation</label>
+          <div class="controls">
+            <input class="warning" id="registerConfirm" name="passConfirmation" type="password" ng-model="formUser.passConfirmation" placeholder="Confirm password" required/>
+            <span class="help-inline" ng-show="formErrors.passConfirmation">{{formErrors.passConfirmation}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.city}">
+          <label class="control-label" for="city">City</label>
+          <div class="controls">
+            <input id="city" name="city" type="text" ng-model="formUser.city" placeholder="City"/>
+            <span class="help-inline" ng-show="formErrors.city">{{formErrors.city}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.state}">
+          <label class="control-label" for="state">State</label>
+          <div class="controls">
+            <input id="state" name="state" type="text" ng-model="formUser.state" placeholder="State"/>
+            <span class="help-inline" ng-show="formErrors.state">{{formErrors.state}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.country}">
+          <label class="control-label" for="country">Country</label>
+          <div class="controls">
+            <input id="country" name="country" type="text" ng-model="formUser.country" placeholder="Country"/>
+            <span class="help-inline" ng-show="formErrors.country">{{formErrors.country}}</span>
+          </div>
+        </div>
+
+        <div class="control-group" ng-class="{error: formErrors.avatar}">
+          <div class="controls">
+            <img ng-src="{{formUser.thumb}}"/>
+            <a ng-click="uploadAvatar()" class="btn btn-primary">Add an avatar</a>
+            <span class="help-inline" ng-show="formErrors.avatar">{{formErrors.avatar}}</span>
+          </div>
+        </div>
+    </fieldset>
+    </div>
+    <div class="modal-footer">
+      <button type="reset" class="btn" ng-click="cancel()">Cancel</button>
+      <input type="submit" id="submit" class="btn btn-primary" value="Register"/>
+      OR
+        <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
+    </div>
+  </form>
+</div>
+
+

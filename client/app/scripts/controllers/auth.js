@@ -7,8 +7,8 @@ angular
     'actionKitService',
     function($scope, userAPI, FB, actionKitService) {
       var inkBlob, inkBlobThumb;
-      $scope.formUser = userAPI.newUser();
       $scope.formErrors = {};
+      $scope.formUser = userAPI.newUser();
 
       $scope.register = function() {
         _clearErrors();
@@ -53,6 +53,15 @@ angular
               
               _close();
           });
+        }
+      };
+
+      $scope.update = function() {
+        _clearErrors();
+
+        if (Object.keys($scope.formErrors).length === 0) {
+          $scope.formUser.$save();
+          _close();
         }
       };
 
