@@ -7,7 +7,8 @@ module.exports = function(app, db) {
     //passing the data of the request  and a cb
     db.project.create({
       name: data.name,
-      description: data.description
+      description: data.description,
+      end_date: data.end_date
     }, function(err, model) {
       if (!err) {
         res.json(model); //If went ok return the json of the model

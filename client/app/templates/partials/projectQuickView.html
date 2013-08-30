@@ -6,13 +6,14 @@
   <hr class="project-hr">
   <div class="project-details">
     <h2>Project:</h2>
-    <h3>Hack Politics</h3>
+    
+    <h3>{{item.name}}</h3>
 
     <h2>Time Remaining:</h2>
-    <h4>105 Days</h4>
+    <h4>{{item.end_date}}</h4>
 
     <h2>Goal:</h2>
-    <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat.</p>
+    <p>{{item.description}}</p>
   </div>
   <div class="supporters">
     <div class="supporters-text">
@@ -32,3 +33,9 @@
     </div>
   </div>
 </div>
+
+<script>
+  function state() {
+    return "open";
+  };
+</script>

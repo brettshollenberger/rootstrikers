@@ -70,6 +70,9 @@ schema.project = new mongoose.Schema({
   description: {
     type: String
   },
+  end_date: {
+    type: Date
+  },
   image: {
     type: String
   },
