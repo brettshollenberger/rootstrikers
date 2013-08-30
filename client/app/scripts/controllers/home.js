@@ -4,7 +4,7 @@ angular
     '$rootScope',
     '$scope',
     'projectService',
-    function($rootScope, $scope, projectAPI) {
-      $scope.projects = projectAPI.getPublished();
+    function($rootScope, $scope, projectAPI, actionKitService) {
+      $scope.projects = projectAPI.getPublished(); 
     }
   ]);

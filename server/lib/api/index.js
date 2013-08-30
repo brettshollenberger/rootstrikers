@@ -6,3 +6,4 @@ require('../auth')(app,db);
 require('./project')(app, db);
 require('./page')(app, db);
 require('./user')(app, db);
+require('./actionkit')(app, db);

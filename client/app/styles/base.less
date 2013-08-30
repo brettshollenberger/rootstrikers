@@ -35,7 +35,7 @@ h2 {
   letter-spacing: 1.5px;
 }
 
-h3, h6 {
+h3, h5, h6 {
   color: @blue;
   font-family: @opensans;
   text-transform: uppercase;
@@ -45,6 +45,13 @@ h3, h6 {
 h3 {
   font-size: 40px;
   font-weight: 800;
+}
+
+h5 {
+  font-size: 25px;
+  letter-spacing: .5px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 h6 {
@@ -57,6 +64,10 @@ h6 {
   color: @white;
 }
 
+.blue {
+  color: @blue !important;
+}
+
 .headline {
   width: 480px;
 }
@@ -64,6 +75,14 @@ h6 {
 .homepage-container {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.admin .admin-hide {
+    display: none;
+}
+
+.admin .admin-show {
+    display: block;
 }
 
 .center { 

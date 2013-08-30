@@ -1,20 +1,6 @@
 <div class="container-fluid homepage-container">
 
-  <div id="homepage-carousel" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="app/images/header-image.png" alt="" />
-        <div class="carousel-caption">
-          <h6>Featured Project</h6>
-          <h3 class="white headline">Make Corruption Your Issue</h3>
-          <p class="white headline">In condimentum tellus vitae tortor venenatis, vel posurere enim venenatis. Donec eu ligula ac arcu lacinia sodales. Phasellus eget magna felis.</p>
-          <h2><a>Read More &amp; Share <i class="icon-arrow-right" class="white" style="position: relative; top: 3px;"></i></a></h2>
-        </div>
-      </div>
-    </div><!-- /.carousel-inner -->
-      <a class="carousel-control left" href="#homepage-carousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#homepage-carousel" data-slide="next">&rsaquo;</a>
-  </div><!-- /.carousel -->
+  <root-carousel></root-carousel>
 
   <div class="row-fluid by-the-numbers">
     <div class="span10 offset1">
@@ -34,7 +20,7 @@
         </div>
       </div>
     </div>
-  </div> <!-- End By the Numbers Section -->
+  </div> <!-- EndBy the Numbers Section -->
 
   <div class="row-fluid active-projects" >
     <div class="span10 offset1">
@@ -46,100 +32,23 @@
   <div class="row-fluid">
     <div class="span10 offset1">
       <div class="row-fluid">
-        <div class="span4">
-          <div class="project">
-            <div class="project-img">
-              <img src="app/images/hack_politics_aged.png">
-            </div>
-            <hr class="project-hr">
-            <div class="project-details">
-              <h2>Project:</h2>
-              <h3>Hack Politics</h3>
-
-              <h2>Time Remaining:</h2>
-              <h4>105 Days</h4>
-
-              <h2>Goal:</h2>
-              <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat.</p>
-            </div>
-            <div class="supporters">
-              <div class="supporters-text">
-                <h2>Supporting Rootstrikers</h2>
-                <img src="app/images/circle-head.png">
-                <img src="app/images/circle-head2.png">
-                <img src="app/images/circle-head3.png">
-              </div>
-            </div>
-            <div class="read-more">
-              <div class="read-more-text">
-                Read More &amp; Share
-              </div>
-            </div>
+          <div class="span4" ng-repeat="item in projects">
+            <project-quick-view></project-quick-view>
           </div>
-          
+      </div>
+
+
+      <div class="row-fluid">
+        <div class="span4">
+          <project-quick-view></project-quick-view>
         </div>
 
         <div class="span4">
-          <div class="project">
-            <div class="project-img">
-              <img src="app/images/hack_politics_aged.png">
-            </div>
-            <hr class="project-hr">
-            <div class="project-details">
-              <h2>Project:</h2>
-              <h3>Hack Politics</h3>
-
-              <h2>Time Remaining:</h2>
-              <h4>105 Days</h4>
-
-              <h2>Goal:</h2>
-              <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat.</p>
-            </div>
-            <div class="supporters">
-              <div class="supporters-text">
-                <h2>Supporting Rootstrikers</h2>
-                <img src="app/images/circle-head.png">
-                <img src="app/images/circle-head2.png">
-                <img src="app/images/circle-head3.png">
-              </div>
-            </div>
-            <div class="read-more">
-              <div class="read-more-text">
-                Read More &amp; Share
-              </div>
-            </div>
-          </div>
+          <project-quick-view></project-quick-view>  
+        </div>
           
-        </div><div class="span4">
-          <div class="project">
-            <div class="project-img">
-              <img src="app/images/hack_politics_aged.png">
-            </div>
-            <hr class="project-hr">
-            <div class="project-details">
-              <h2>Project:</h2>
-              <h3>Hack Politics</h3>
-
-              <h2>Time Remaining:</h2>
-              <h4>105 Days</h4>
-
-              <h2>Goal:</h2>
-              <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat.</p>
-            </div>
-            <div class="supporters">
-              <div class="supporters-text">
-                <h2>Supporting Rootstrikers</h2>
-                <img src="app/images/circle-head.png">
-                <img src="app/images/circle-head2.png">
-                <img src="app/images/circle-head3.png">
-              </div>
-            </div>
-            <div class="read-more">
-              <div class="read-more-text">
-                Read More &amp; Share
-              </div>
-            </div>
-          </div>
+        <div class="span4">
+          <project-quick-view></project-quick-view>
         </div>
       </div>
     </div>
