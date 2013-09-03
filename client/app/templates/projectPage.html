@@ -27,8 +27,10 @@
             The Action
           </h2>
 
-          <p ng-bind-html-unsafe="project.goal"></p>
-  <!--     <div class="span8" ng-repeat="project in projects">
+          <p>
+            Ut literally viral mumblecore paleo aesthetic, mustache proident in cred labore +1 readymade. Odd Future dolore salvia paleo Thundercats. Helvetica reprehenderit lomo gastropub mustache pickled. DIY Odd Future semiotics, sunt aute laboris 3 wolf moon hella lomo letterpress cred nulla pour-over do. Delectus VHS dolore ea church-key, irure single-origin coffee Cosby sweater jean shorts Schlitz mollit accusamus nesciunt before they sold out organic. Incididunt plaid wolf organic laboris. Voluptate lomo sint occaecat.
+          </p>
+          <!-- <div class="span8" ng-repeat="project in projects">
           <project-item></project-item>
           </div> -->
         </div>
@@ -53,4 +55,29 @@
       </div> --> <!-- End row-fluid --> 
     </div> <!-- End span10 -->
   </div><!-- End row-fluid --> 
+</section>
+
+<section ng-controller="projectController">
+    <a ng-click="signPledge()">
+        <div class="row-fluid">        
+            <div class="span10 offset1">
+                <h1 class="pull-left">Sign the Pledge</h1>
+                <div class="pull-right">
+                    <p>Signed</p>
+                </div>
+            </div>
+        </div>
+    </a>
+    
+    <a ng-click="donateProject()">
+        <div class="row-fluid">        
+            <div class="span10 offset1">
+                <h1 class="pull-left">Donate to the Project</h1>
+                <div class="pull-right">
+                    <p>Donate More +</p>
+                    <p>$50 Donated</p>
+                </div>
+            </div>
+        </div>
+    </a>
 </section>
