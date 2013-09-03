@@ -7,7 +7,9 @@ module.exports = function(app, db) {
     //passing the data of the request  and a cb
     db.project.create({
       name: data.name,
-      description: data.description,
+      problem: data.problem,
+      action: data.action,
+      goal: data.goal,
       shortname: data.shortname,
       end_date: data.end_date
     }, function(err, model) {

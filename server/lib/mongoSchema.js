@@ -70,7 +70,13 @@ schema.project = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
+  problem: {
+    type: String
+  },
+  action: {
+    type: String
+  },
+  goal: {
     type: String
   },
   shortname: {

@@ -8,35 +8,39 @@
   <div class="row-fluid">
     <div class="span10 offset1">
       <div class="row-fluid">
-        <div class="span6">
-          <h2>
-            Project:
-          </h2>
+        <div class="span7 project-information">
+          <div>
+            <h2>
+              Project:
+            </h2>
 
-          <h3>
-            {{project.name}}
-          </h3>
+            <h3>
+              {{project.name}}
+            </h3>
+          </div>
 
-          <h2>
-            The Problem:
-          </h2>
+          <div>
+            <h2>
+              The Problem:
+            </h2>
 
-          <p>
-            Jean shorts incididunt assumenda fap gentrify, sed pop-up sartorial vinyl mollit master cleanse irure Odd Future. Godard fugiat typewriter polaroid, tempor chia cardigan whatever ut. Bitters lomo fugiat whatever, pug exercitation Vice Tumblr salvia nesciunt. Laboris odio tofu, asymmetrical cliche ullamco kogi Wes Anderson trust fund do consequat pug fingerstache. Sartorial sed umami, synth Shoreditch odio vero High Life placeat labore. Duis 3 wolf moon iPhone nostrud viral PBR salvia. Fingerstache freegan consectetur duis whatever, Terry Richardson chambray laboris wolf Intelligentsia aute jean shorts nihil.
-          </p>
+            <p>
+              {{project.problem}}
+            </p>
+          </div>
 
-          <h2>
-            The Action
-          </h2>
+          <div>
+            <h2>
+              The Action
+            </h2>
 
-          <p>
-            Ut literally viral mumblecore paleo aesthetic, mustache proident in cred labore +1 readymade. Odd Future dolore salvia paleo Thundercats. Helvetica reprehenderit lomo gastropub mustache pickled. DIY Odd Future semiotics, sunt aute laboris 3 wolf moon hella lomo letterpress cred nulla pour-over do. Delectus VHS dolore ea church-key, irure single-origin coffee Cosby sweater jean shorts Schlitz mollit accusamus nesciunt before they sold out organic. Incididunt plaid wolf organic laboris. Voluptate lomo sint occaecat.
-          </p>
-  <!--     <div class="span8" ng-repeat="project in projects">
-          <project-item></project-item>
-          </div> -->
+            <p>
+              {{project.action}}
+            </p>
+          </div>
+
         </div>
-        <div class="span4 offset2">
+        <div class="span3 offset2">
           <div class="actions-circle">
             <img src="app/images/fist.png">
           </div>
@@ -46,15 +50,51 @@
           </div>
         </div>
       </div> <!-- End row -->
+    </div><!-- End Span10 -->
+  </div><!-- End container row -->
 
-      <!-- <div class="row fluid">
-        <div class="span12">
-          <div class="attend-rally">
-            <h2>Attend Rally</h2>
-            <h3>@ City Hall, Philadelphia</h3>
-          </div>
+  <!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
+  <div class="row-fluid banner attend-rally not-attending">
+    <div class="span10 offset1">
+      <div class="row-fluid">
+        <div class="span8 rally-content">
+          <h2>Attend Rally</h2>
+          <h3>@ City Hall, Philadelphia, PA</h3>
         </div>
-      </div> --> <!-- End row-fluid --> 
-    </div> <!-- End span10 -->
-  </div><!-- End row-fluid --> 
+        <div class="span3 offset1 rally-attendance">
+          <p color="white"><i class="icon-check"></i></p>
+        </div>
+      </div>
+    </div>
+  </div> <!-- End row-fluid --> 
+
+  <div class="row-fluid banner share-rally not-attending">
+    <div class="span10 offset1">
+      <div class="row-fluid">
+        <div class="span5 share-content">
+          <i class="icon-facebook-sign"></i><h2>Share on Facebook</h2>
+          <p color="white"><i class="icon-check"></i></p>
+        </div>
+        <div class="span5 offset1 share-content twitter">
+          <i class="icon-twitter-sign"></i><h2>Share on Twitter</h2>
+          <p color="white"><i class="icon-check"></i></p>
+        </div>
+      </div>
+    </div>
+  </div> <!-- End row-fluid -->
+
+  <div class="row-fluid taking-action">
+    <div class="span10 offset1">
+      <h2>Rootstrikers Taking Action:</h2>
+      <div class="action-pill">
+        <h3>529</h3>
+        <h2>Rootstrikers</h2>
+      </div>
+      <div ng-repeat="user in users">
+        <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="supporter"></gravatar-image>
+      </div>
+    </div>
+  </div>
+
 </section>
+
