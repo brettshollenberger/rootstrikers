@@ -88,6 +88,12 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
+  },
+  goal: {
+    type: String
+  },
+  action_goal: {
+    type: Number
   }
 });
 
