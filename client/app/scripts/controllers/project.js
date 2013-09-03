@@ -21,5 +21,14 @@ angular
         }
         
       });
+      
+      $scope.donateProject = function() {
+          console.log('DONATE PROJECT');
+      };
+      
+      $scope.signPledge = function() {
+          console.log('SIGN PLEDGE');
+      };
+      
     }
   ]);
