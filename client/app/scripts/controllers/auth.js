@@ -4,7 +4,8 @@ angular
     '$scope',
     'userService',
     'Facebook',
-    function($scope, userAPI, FB) {
+    'actionKitService',
+    function($scope, userAPI, FB, actionKitService) {
       var inkBlob, inkBlobThumb;
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
@@ -22,8 +23,36 @@ angular
         }
 
         if (Object.keys($scope.formErrors).length === 0) {
-          $scope.formUser.$save();
-          _close();
+        
+          // make a call to see if this user has already signed up with ActionKit
+          actionKitService.getUser($scope.formUser.email).then(function(response) {
+              
+              // the user has not already signed up
+              if(response === false) {
+              
+                  // make a call to add this user to ActionKit
+                  var user = {
+                      'email': $scope.formUser.email,
+                      'first_name': $scope.formUser.first_name,
+                      'last_name': $scope.formUser.last_name,
+                      'city': $scope.formUser.city,
+                      'state': $scope.formUser.state
+                  };
+                  
+                  actionKitService.createUser(user).then(function (userResponse) {
+                      $scope.formUser.actionkitId = userResponse;
+                      $scope.formUser.$save();
+                  });
+              
+              } else {
+              
+                  // get the location of the current ActionKit user
+                  $scope.formUser.actionkitId = response.id;
+                  $scope.formUser.$save();
+              }
+              
+              _close();
+          });
         }
       };
 

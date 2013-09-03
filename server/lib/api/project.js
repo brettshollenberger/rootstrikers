@@ -11,7 +11,11 @@ module.exports = function(app, db) {
       action: data.action,
       goal: data.goal,
       shortname: data.shortname,
-      end_date: data.end_date
+      end_date: data.end_date,
+      image: data.image, //we save the InkBLob of the image to delete it when the project is deleted
+      InkBlob: (data.InkBlob && typeof data.InkBlob === "object")?  JSON.stringify(data.InkBlob) : data.InkBlob,
+      goal: data.goal,
+      action_goal: data.action_goal
     }, function(err, model) {
       if (!err) {
         res.json(model); //If went ok return the json of the model
@@ -59,6 +63,7 @@ module.exports = function(app, db) {
       });
   });
 
+  //Update a project ngResource use post not put
   app.post('/api/project/:projectID', function(req, res) {
     if(req.body.InkBlob && typeof req.body.InkBlob === "object"){
       //Stringify InkBlob so we dont care if the db support JSON
@@ -74,6 +79,7 @@ module.exports = function(app, db) {
       });
   });
 
+  //Delete a project
   app.del('/api/project/:projectID', function(req, res) {
     db.project.remove(req.params.projectID,
       function(err, project) {

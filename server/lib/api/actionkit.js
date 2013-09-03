@@ -11,7 +11,13 @@ module.exports = function(app, db) {
         request({method:'POST', uri:url, body:req.body, headers:{'Content-Type':'application/json'}, json:true}, function (error, response, body) {
           
           if (!error && response.statusCode == 201) {
-            res.send({error:false, response:response.headers.location});
+          
+            // get the user id of the returned ActionKit user
+            var segment_str = response.headers.location;
+            var segment_array = segment_str.split( '/' );
+            var last_segment = segment_array[segment_array.length - 2];
+          
+            res.send({error:false, response:last_segment});
           } else {
             res.send({error:true});
           }

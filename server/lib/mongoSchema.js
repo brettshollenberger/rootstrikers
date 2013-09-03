@@ -94,6 +94,12 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
+  },
+  goal: {
+    type: String
+  },
+  action_goal: {
+    type: Number
   }
 });
 
@@ -169,6 +175,9 @@ schema.user = new mongoose.Schema({
   },
   fbID: {
     type: String
+  },
+  actionkitId: {
+    type: Number  
   },
 });
 

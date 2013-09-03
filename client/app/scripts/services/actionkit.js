@@ -13,8 +13,8 @@ angular
             return $http({method: 'POST', url: url, data:user}).
             then(function (response) {
               
-              if(response.status === 200) {
-                  return response.data;
+              if(response.status === 200 && response.data.error === false) {
+                  return response.data.response;
               } else {
                   return false;
               }
@@ -32,7 +32,7 @@ angular
             return $http({method: 'GET', url: url, params:{'email':email}}).
             then(function (response) {
               
-              if(response.status === 200) {
+              if(response.status === 200 && response.data.error === false) {
                   return response.data.response;
               } else {
                   return false;
