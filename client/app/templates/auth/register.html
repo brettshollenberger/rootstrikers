@@ -28,8 +28,9 @@
         <div class="control-group" ng-class="{error: formErrors.email}">
           <label class="control-label" for="registeremail">Email</label>
           <div class="controls">
-            <input type="email" id="registeremail" name="email" ng-model="formUser.email" placeholder="Your Email" required/>
+            <input type="email" id="registeremail" name="email" ng-model="formUser.email" placeholder="Your Email" required ng-unique="user.email"/>
             <span class="help-inline" ng-show="formErrors.email">{{formErrors.email}}</span>
+            <span ng-show="form.email.$error.unique">A user with that email already exists.</span>
           </div>
         </div>
 
