@@ -13,7 +13,7 @@
     <h4>{{item.end_date}}</h4>
 
     <h2>Goal:</h2>
-    <p>{{item.description}}</p>
+    <p ng-bind-html-unsafe="item.goal"></p>
   </div>
   <div class="supporters">
     <div class="supporters-text">

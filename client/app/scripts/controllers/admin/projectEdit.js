@@ -39,7 +39,15 @@ angular
 
       //set the model on the scope so its filled by the form
       $scope.project = model;
-      filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
+      //And for preview
+      $scope.item = model;
+
+      //Opions to description and goal fields
+      $scope.tinymceOptions = {
+        menubar: false,
+        statusbar: false,
+        toolbar: 'undo redo | styleselect | bold italic'
+      };
 
       var saveModel = function(silent) {
         $scope.flash = {
@@ -64,45 +72,24 @@ angular
         });
       };
 
+      $scope.selectImage = function() {
+        filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
+        filepicker.pick({
+          'mimetype': "image/*"
+        }, function(InkBlob) {
+          //If there was an image already delete it 
+          if (model.InkBlob) {
+            $scope.removeImage(model.InkBlob);
+          }
+          //Set the new image to the model
+          model.image = InkBlob.url;
+          model.InkBlob = InkBlob;
+          $scope.$digest();
+        });
+      };
+
       $scope.save = function() {
-        var input = document.getElementById('image');
-
-        if (input.value) {
-          $scope.progress = 'Uploading Image';
-          //We have an image store it
-          filepicker.store(input, {
-              access: 'public',
-              path: '/project/'
-            },
-            function(InkBlob) {
-              //If there was an image already delete it 
-              if (model.InkBlob) {
-                $scope.removeImage(model.InkBlob);
-              }
-              //Set the new image to the model
-              model.image = InkBlob.url;
-              model.InkBlob = InkBlob;
-
-              //Save the modle
-              saveModel();
-
-              //Clear upload progress
-              $scope.progress = '';
-              //Clear file input
-              input.value = '';
-            }, function(FPError) {
-              $scope.flash = {
-                message: 'There has been an error uploading the image. Please try again',
-                type: 'error',
-                show: true
-              };
-            }, function(progress) {
-              $scope.progress = "Loading: " + progress + "%";
-            });
-        } else {
-          //I we dont have image just save the model
-          saveModel();
-        }
+        saveModel();
       };
 
       $scope.removeImage = function(blob) {
