@@ -96,5 +96,32 @@
     </div>
   </div>
 
+  <div class="row-fluid dialog">
+    <div class="span10 offset1">
+      <h2>Dialog:</h2>
+      <!-- We'll change this to comment in comments with the association on the project -->
+      <div ng-repeat="user in users">
+        <div class="row-fluid comment project-comment">
+          <div class="span2">
+            <div class="comment-head">
+              <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true"></gravatar-image>
+            </div>
+          </div>
+          <div class="span10">
+            <div class="comment-box">
+              <div class="commenter-name">
+                <h2 class="blue">Rob M.</h2>
+              </div>
+              <div class="comment-body">
+                <p>Hipster ipsum yolo sit amet. Consectetur Marfa duis leggings blog yr, whatever sriracha. Velit in trust fund authentic. Occupy exercitation biodiesel bicycle rights, Pinterest hashtag Bushwick. Synth American Apparel 3 wolf moon laboris Schlitz, bespoke nulla 8-bit umami wolf aliqua dolore fap. Voluptate incididunt direct trade elit exercitation occaecat. Farm-to-table chillwave qui Wes Anderson, street art umami ea meggings church-key cupidatat distillery. Exercitation quinoa aesthetic, polaroid whatever Odd Future food truck American Apparel retro butcher twee wolf trust fund raw denim.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
