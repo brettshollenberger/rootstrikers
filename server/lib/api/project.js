@@ -14,7 +14,6 @@ module.exports = function(app, db) {
       end_date: data.end_date,
       image: data.image, //we save the InkBLob of the image to delete it when the project is deleted
       InkBlob: (data.InkBlob && typeof data.InkBlob === "object")?  JSON.stringify(data.InkBlob) : data.InkBlob,
-      goal: data.goal,
       action_goal: data.action_goal
     }, function(err, model) {
       if (!err) {

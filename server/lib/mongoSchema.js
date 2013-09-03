@@ -95,9 +95,6 @@ schema.project = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  goal: {
-    type: String
-  },
   action_goal: {
     type: Number
   }
