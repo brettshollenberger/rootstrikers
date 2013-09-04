@@ -4,7 +4,8 @@ angular
     '$resource',
     '$http',
     '$rootScope',
-    function($resource, $http, $rootScope) {
+    '$cookieStore',
+    function($resource, $http, $rootScope, $cookieStore) {
       var User = $resource('/api/user/:userID', {
         userID: '@id'
       }),
@@ -99,11 +100,19 @@ angular
         },
         login: function(user) {
           return $http.post('/auth/login/', user).success(function(user_response_object) {
+          
+            // add the logged in user to cookie storage
+            $cookieStore.put('loggedUser', user_response_object);
+          
             updateUser(user_response_object);
           });
         },
         logout: function() {
           $http.get('/auth/logout').success(function() {
+          
+            // remove the currently logged in user from cookie storage
+            $cookieStore.remove('loggedUser');
+          
             updateUser();
           });
         }

@@ -6,8 +6,8 @@ angular
       replace: true,
       scope: true,
       templateUrl: 'app/templates/partials/menu.html',
-      controller: ['$scope', '$routeParams', 'pageService',
-        function($scope, $routeParams, pageAPI) {
+      controller: ['$scope', '$routeParams', 'pageService', '$cookieStore',
+        function($scope, $routeParams, pageAPI, $cookieStore) {
           $scope.onAdmin = /\/admin/.test($location.path());
           $scope.pages = pageAPI.getPublished();
         }
