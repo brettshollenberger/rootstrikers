@@ -12,6 +12,7 @@ module.exports = function(app, db) {
           email: data.email,
           city: data.city,
           state: data.state,
+          zip: data.zip,
           country: data.country,
           avatar: data.avatar,
           thumb: data.thumb,
