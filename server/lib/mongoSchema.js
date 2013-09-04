@@ -70,7 +70,13 @@ schema.project = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
+  problem: {
+    type: String
+  },
+  action: {
+    type: String
+  },
+  goal: {
     type: String
   },
   shortname: {
@@ -88,6 +94,9 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
+  },
+  action_goal: {
+    type: Number
   }
 });
 
@@ -152,6 +161,9 @@ schema.user = new mongoose.Schema({
   state: {
     type: String
   },
+  zip: {
+    type: String  
+  },
   country: {
     type: String
   },
@@ -163,6 +175,9 @@ schema.user = new mongoose.Schema({
   },
   fbID: {
     type: String
+  },
+  actionkitId: {
+    type: Number  
   },
 });
 

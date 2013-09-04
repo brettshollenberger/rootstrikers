@@ -12,15 +12,17 @@ module.exports = function(app, db) {
           email: data.email,
           city: data.city,
           state: data.state,
+          zip: data.zip,
           country: data.country,
           avatar: data.avatar,
           thumb: data.thumb,
           isFacebook: data.isFacebook,
           isVerify: data.isVerify,
-          fbID: data.fbID
+          fbID: data.fbID,
+          actionkitId: data.actionkitId
         }, function(err, model) {
           if (!err) {
-            req.logIn(model, function(){
+            req.logIn(model, function() {
               res.json(model); //If went ok return the json of the model
             });
           } else {
@@ -39,14 +41,14 @@ module.exports = function(app, db) {
             //if already exist loge in and update
             if (list.length) {
               req.logIn(list[0], function() {
-                
+
               });
               db.user.update(list[0].id.toString(), data, function(err, user) {
                 res.json(user);
               });
             } else {
-            //if not we create it
-             createUser(db, data, res);
+              //if not we create it
+              createUser(db, data, res);
             }
           } else {
             res.json(err);
@@ -87,6 +89,25 @@ module.exports = function(app, db) {
           } else {
             res.json({
               message: 'Object Not Found'
+            });
+          }
+        } else {
+          res.json(err);
+        }
+      });
+  });
+
+  app.post('/api/user/chekUnique', function(req, res) {
+    db.user.find(req.body,
+      function(err, list) {
+        if (!err) {
+          if (list.length) {
+            res.json({
+              unique: false
+            });
+          } else {
+            res.json({
+              unique: true
             });
           }
         } else {

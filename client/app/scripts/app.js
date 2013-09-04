@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar'])
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies'])
   .config(['$routeProvider', '$httpProvider',
     function($router, $httpProvider) {
     
@@ -66,7 +66,10 @@ angular
       });
     }
   ])
-  .run(['$location', '$rootScope', function($location, $rootScope) {
+  .run(['$location', '$rootScope', '$cookieStore', function($location, $rootScope, $cookieStore) {
+      
+        // get loggedUser cookie and set it to $rootScope.loggedUser
+        $rootScope.loggedUser = $cookieStore.get('loggedUser');
       
         // Handle updating page title
         $rootScope.$on('$routeChangeSuccess', function($event, $route, $previousRoute) {

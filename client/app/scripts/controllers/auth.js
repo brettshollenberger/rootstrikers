@@ -4,7 +4,8 @@ angular
     '$scope',
     'userService',
     'Facebook',
-    function($scope, userAPI, FB) {
+    'actionKitService',
+    function($scope, userAPI, FB, actionKitService) {
       var inkBlob, inkBlobThumb;
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
@@ -18,12 +19,47 @@ angular
         }
 
         if ($scope.formUser.password.length < 6) {
-          _addError('password', 'Too short. Minimum of six characters');
+          _addError('password', 'Too short. Minimum of six characters.');
+        }
+        
+        if ($scope.formUser.zip.toString().length != 5) {
+          _addError('zip', 'Zip must be 5 digits long.');
         }
 
         if (Object.keys($scope.formErrors).length === 0) {
-          $scope.formUser.$save();
-          _close();
+        
+          // make a call to see if this user has already signed up with ActionKit
+          actionKitService.getUser($scope.formUser.email).then(function(response) {
+              
+              // the user has not already signed up
+              if(response === false) {
+              
+                  // make a call to add this user to ActionKit
+                  var user = {
+                      'email': $scope.formUser.email,
+                      'first_name': $scope.formUser.first_name,
+                      'last_name': $scope.formUser.last_name,
+                      'city': $scope.formUser.city,
+                      'state': $scope.formUser.state,
+                      'zip': $scope.formUser.zip.toString()
+                  };
+                  
+                  actionKitService.createUser(user).then(function (userResponse) {
+                      $scope.formUser.actionkitId = userResponse;
+                      $scope.formUser.$save();
+                      $scope.login();
+                  });
+              
+              } else {
+              
+                  // get the location of the current ActionKit user
+                  $scope.formUser.actionkitId = response.id;
+                  $scope.formUser.$save();
+                  $scope.login();
+              }
+              
+              _close();
+          });
         }
       };
 
