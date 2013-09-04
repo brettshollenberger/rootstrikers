@@ -37,7 +37,7 @@
         <div class="control-group" ng-class="{error: formErrors.password}">
           <label class="control-label" for="registerPassword">Password</label>
           <div class="controls">
-            <input type="password" id="registerPassword" name="password" ng-model="formUser.password" placeholder="Desired password" min-lenght="6" required/>
+            <input type="password" id="registerPassword" name="password" ng-model="formUser.password" placeholder="Desired password" required/>
             <span class="help-inline" ng-show="formErrors.password">{{formErrors.password}}</span>
           </div>
         </div>
@@ -63,6 +63,14 @@
           <div class="controls">
             <input id="state" name="state" type="text" ng-model="formUser.state" placeholder="State"/>
             <span class="help-inline" ng-show="formErrors.state">{{formErrors.state}}</span>
+          </div>
+        </div>
+        
+        <div class="control-group" ng-class="{error: formErrors.zip}">
+          <label class="control-label" for="zip">Zip</label>
+          <div class="controls">
+            <input id="zip" name="zip" type="number" ng-model="formUser.zip" placeholder="Zip" required/>
+            <span class="help-inline" ng-show="formErrors.zip">{{formErrors.zip}}</span>
           </div>
         </div>
 

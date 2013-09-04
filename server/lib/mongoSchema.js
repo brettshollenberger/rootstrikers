@@ -161,6 +161,9 @@ schema.user = new mongoose.Schema({
   state: {
     type: String
   },
+  zip: {
+    type: String  
+  },
   country: {
     type: String
   },
