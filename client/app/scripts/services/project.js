@@ -41,7 +41,8 @@ angular
           //If the project have been already fetch return that model
           i = getIndex(id);
           if (i >= 0 && cb) {
-            cb(projects[i]);
+            project = projects[i];
+            cb(project);
           }
 
           //If not ask the server

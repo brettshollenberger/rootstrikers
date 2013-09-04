@@ -20,7 +20,8 @@ angular
           controller: 'pageController',
           templateUrl: 'app/templates/page.html'
         })
-      //Temporary admin go to project List 
+
+      //Admin
       .when('/admin', {
         controller: 'projectListController',
         templateUrl: 'app/templates/admin/projectList.html'
@@ -63,6 +64,21 @@ angular
       .when('/admin/page/preview/:pageID', {
         controller: 'pageEditController',
         templateUrl: 'app/templates/admin/pagePreview.html'
+      })
+      //Email Templates List
+      .when('/admin/emails', {
+        controller: 'emailListController',
+        templateUrl: 'app/templates/admin/emailList.html'
+      })
+      //Edit email Template
+      .when('/admin/email/edit/:emailID', {
+        controller: 'emailEditController',
+        templateUrl: 'app/templates/admin/emailForm.html'
+      })
+      //Preview email Template
+      .when('/admin/email/preview/:emailID', {
+        controller: 'emailEditController',
+        templateUrl: 'app/templates/admin/emailPreview.html'
       });
     }
   ])
