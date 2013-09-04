@@ -5,7 +5,8 @@ angular
     '$routeParams',
     'projectService',
     'actionKitService',
-    function($scope, $routeParams, projectAPI, actionKitService) {
+    '$rootScope',
+    function($scope, $routeParams, projectAPI, actionKitService, $rootScope) {
       projectAPI.getByName($routeParams.name, function(err, res) {
         
         // get the project from our backend
@@ -27,7 +28,25 @@ angular
       };
       
       $scope.signPledge = function() {
-          console.log('SIGN PLEDGE');
+          
+          if($rootScope.loggedUser) {
+          
+              // make the call to ActionKit to sign the petition
+              var action = {
+                  'page': $scope.project.shortname,
+                  'email': $rootScope.loggedUser.email,
+                  'zip': $rootScope.loggedUser.zip
+              };
+              
+              actionKitService.doAction(action).then(function (response) {
+                  //console.log(response);
+              });
+              
+          } else {
+              // prompt the user to log in
+              console.log('USER NEEDS TO LOG IN');
+          }
+          
       };
       
     }
