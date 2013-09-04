@@ -19,7 +19,11 @@ angular
         }
 
         if ($scope.formUser.password.length < 6) {
-          _addError('password', 'Too short. Minimum of six characters');
+          _addError('password', 'Too short. Minimum of six characters.');
+        }
+        
+        if ($scope.formUser.zip.toString().length != 5) {
+          _addError('zip', 'Zip must be 5 digits long.');
         }
 
         if (Object.keys($scope.formErrors).length === 0) {
@@ -36,12 +40,14 @@ angular
                       'first_name': $scope.formUser.first_name,
                       'last_name': $scope.formUser.last_name,
                       'city': $scope.formUser.city,
-                      'state': $scope.formUser.state
+                      'state': $scope.formUser.state,
+                      'zip': $scope.formUser.zip.toString()
                   };
                   
                   actionKitService.createUser(user).then(function (userResponse) {
                       $scope.formUser.actionkitId = userResponse;
                       $scope.formUser.$save();
+                      $scope.login();
                   });
               
               } else {
@@ -49,6 +55,7 @@ angular
                   // get the location of the current ActionKit user
                   $scope.formUser.actionkitId = response.id;
                   $scope.formUser.$save();
+                  $scope.login();
               }
               
               _close();
