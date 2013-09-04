@@ -22,7 +22,13 @@ angular
           _addError('password', 'Too short. Minimum of six characters.');
         }
         
-        if ($scope.formUser.zip.toString().length != 5) {
+        var numbers = /^[0-9]+$/;  
+        
+        if(!$scope.formUser.zip.match(numbers)) {
+           _addError('zip', 'Zip must be all digits.');
+        }
+        
+        if ($scope.formUser.zip.toString().length != 5) {          
           _addError('zip', 'Zip must be 5 digits long.');
         }
 
