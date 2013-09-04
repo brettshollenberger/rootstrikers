@@ -20,8 +20,10 @@ angular
           }
 
           return -1;
-        }, updateUser = function(user) {
-          $rootScope.loggedUser = user;
+        }, createLoggedUser = function(user) {
+          $rootScope.loggedUser = new User(user);
+        }, destroyLoggedUser = function() {
+          $rootScope.loggedUser = undefined;
         };
       return {
         newUser: function() {
@@ -99,12 +101,11 @@ angular
           });
         },
         login: function(user) {
-          return $http.post('/auth/login/', user).success(function(user_response_object) {
+          return $http.post('/auth/login/', user).success(function(user) {
           
             // add the logged in user to cookie storage
-            $cookieStore.put('loggedUser', user_response_object);
-          
-            updateUser(user_response_object);
+            $cookieStore.put('loggedUser', new User(user));
+            createLoggedUser(user);
           });
         },
         logout: function() {
@@ -113,7 +114,7 @@ angular
             // remove the currently logged in user from cookie storage
             $cookieStore.remove('loggedUser');
           
-            updateUser();
+            destroyLoggedUser();
           });
         }
       };

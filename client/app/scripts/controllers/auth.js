@@ -9,6 +9,7 @@ angular
       var inkBlob, inkBlobThumb;
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
+      $scope.editFormUser = userAPI.newUser();
 
       $scope.register = function() {
         _clearErrors();
@@ -67,8 +68,12 @@ angular
         _clearErrors();
 
         if (Object.keys($scope.formErrors).length === 0) {
-          $scope.formUser.$save();
+          $scope.loggedUser.password = $scope.editFormUser.password;
+          $scope.loggedUser.passConfirmation = $scope.editFormUser.passConfirmation;
+          $scope.loggedUser.$save();
           _close();
+        } else {
+          console.log("No worky home-boy");
         }
       };
 

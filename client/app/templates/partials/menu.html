@@ -10,7 +10,7 @@
           <span class="auth-links" ng-controller="authController">
             <div class="btn" id="donate">Donate</div>
             <div class="btn" modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser">Login</div>
-            <div class="btn" ng-click="logout()" ng-show="loggedUser">{{loggedUser.first_name}}</div>
+            <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
             <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
             <div class="btn" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
           </span>
