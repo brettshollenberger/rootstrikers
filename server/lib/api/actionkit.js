@@ -23,7 +23,7 @@ module.exports = function(app, db) {
           }
           
         }); 
-        
+
     });
     
     app.get('/api/actionkit/getUser', function(req, res, next) {
@@ -56,6 +56,28 @@ module.exports = function(app, db) {
           
         });
         
+    });
+    
+    app.post('/api/actionkit/doAction', function(req, res, next) {
+    
+        var url = apiBase + 'action/';
+       
+        request({method:'POST', uri:url, body:req.body, headers:{'Content-Type':'application/json'}, json:true}, function (error, response, body) {      
+          
+          if (!error && response.statusCode == 201) {
+            res.send({error:false});
+          } else if(!error && response.statusCode == 400) {
+              if(body.errors) {
+                res.send({error:true, errors:body.errors});
+              } else {
+                res.send({error:true});
+              }
+          } 
+          else {
+              res.send({error:true});
+          }
+          
+        }); 
     });
     
 };
