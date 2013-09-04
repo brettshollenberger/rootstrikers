@@ -25,7 +25,7 @@ angular.module('ui-gravatar', ['md5']).
                         // parse the default image url
                         var defaultUrl = 'http://www.gravatar.com/avatar/00000000000000000000000000000000' || '404';
                         // parse css class
-                        var cssClass = attrs.cssClass || 'gravatar-icon';
+                        var cssClass = attrs.cssClass || 'gravatar-icon avatar-circular small-avatar" ';
                         // get image src from service
                         var src = gravatarImageService.getImageSrc(value, size, rating, defaultUrl, attrs.secure);
                         // construct the tag to insert into the element

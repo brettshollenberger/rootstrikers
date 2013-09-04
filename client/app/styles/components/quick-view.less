@@ -1,0 +1,74 @@
+/********************************************************************
+* Customize the colors and fonts of the quick-view module with LESS *
+********************************************************************/ 
+
+@primary-color: @blue;
+@secondary-color: @light-grey;
+@highlight-color: @white;
+
+.heading-typeface {
+  font-family: @oswald;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.body-typeface {
+  font-family: @opensans;
+}
+
+/*******************************************************************/
+
+
+@quick-views-border: 2px solid @secondary-color;
+
+// Every third image requires a clearfix, and an overriding shift
+// back to the left-hand side
+.quick-views .clearfix {
+  margin-left: 0 !important;
+}
+
+.quick-view {
+  border: @quick-views-border;
+  margin: 0 0 25px 0;
+  padding: 4px;
+}
+
+// Crop the primary quick view image
+.quick-view-img {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.quick-view hr {
+  margin: 4px 0 0 0;
+}
+
+// Pad the project quick view details
+.quick-view .content,
+.quick-view-footer .content {
+  padding: 10px 20px 60px 20px;
+}
+
+.quick-view-footer .content {
+  margin-top: -50px;
+  padding-top: 10px;
+  background-color: @secondary-color;
+  border: @quick-views-border;
+  // Remove if floats not used for footer icons
+  padding-bottom: 70px;
+}
+
+.quick-view-cta {
+  background-color: @primary-color;
+  padding: 20px 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quick-view-cta .content,
+.quick-view-cta .content a {
+  color: @highlight-color;
+  text-transform: uppercase;
+  .heading-typeface;
+}
