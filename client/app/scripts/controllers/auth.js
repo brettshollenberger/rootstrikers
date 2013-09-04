@@ -47,6 +47,7 @@ angular
                   actionKitService.createUser(user).then(function (userResponse) {
                       $scope.formUser.actionkitId = userResponse;
                       $scope.formUser.$save();
+                      $scope.login();
                   });
               
               } else {
@@ -54,6 +55,7 @@ angular
                   // get the location of the current ActionKit user
                   $scope.formUser.actionkitId = response.id;
                   $scope.formUser.$save();
+                  $scope.login();
               }
               
               _close();
