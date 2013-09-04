@@ -1,11 +1,11 @@
-<section class="jumbotron slider">
-  <div class="slider-image">
+<section class="carousel">
+  <div class="carousel-inner">
     <img ng-src="{{project.image}}">
   </div>
 </section>
 
-<section class="jumbotron projects">
-  <div class="row-fluid">
+<section>
+  <div class="row-fluid section project">
     <div class="span10 offset1">
       <div class="row-fluid">
         <div class="span7 project-information">
@@ -38,46 +38,64 @@
               {{project.action}}
             </p>
           </div>
-
         </div>
+
         <div class="span3 offset2">
-          <div class="actions-circle">
+          <div class="graph-circular">
             <img src="app/images/fist.png">
           </div>
-          <div class="actions-text">
+          <div class="callout">
             <h2>529</h2>
             <h3>Taking Action</h3>
           </div>
         </div>
-      </div> <!-- End row -->
+
+      </div> <!-- End row-fluid -->
     </div><!-- End Span10 -->
-  </div><!-- End container row -->
+  </div><!-- End row-fluid -->
 
   <!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-  <div class="row-fluid banner attend-rally not-attending">
+  <div class="row-fluid section banner banner-blue">
     <div class="span10 offset1">
       <div class="row-fluid">
-        <div class="span8 rally-content">
+        <div class="span8 content">
+          <div class="banner-image">
+            <img src="app/images/fistsmall.png">
+          </div>
           <h2>Attend Rally</h2>
           <h3>@ City Hall, Philadelphia, PA</h3>
         </div>
-        <div class="span3 offset1 rally-attendance">
-          <p color="white"><i class="icon-check"></i></p>
+        <div class="span2 offset1 rally-attendance">
+          <div class="banner-action">
+            <input type="checkbox"><span></span>
+          </div>
         </div>
       </div>
     </div>
   </div> <!-- End row-fluid --> 
 
-  <div class="row-fluid banner share-rally">
+  <div class="row-fluid section banner banner-grey">
     <div class="span10 offset1">
       <div class="row-fluid">
-        <div class="span5 share-content">
-          <i class="icon-facebook-sign"></i><h2>Share on Facebook</h2>
-          <p color="white"><i class="icon-check"></i></p>
+        <div class="span6">
+          <div class="banner-action">
+            <input type="checkbox"><span></span>
+          </div>
+          <div class="banner-icon">
+            <i class="icon-facebook-sign"></i>
+          </div>
+          <h2>Share on Facebook</h2>
+          <h3>and reach 738 people</h3>
         </div>
-        <div class="span5 offset1 share-content twitter">
-          <i class="icon-twitter-sign"></i><h2>Share on Twitter</h2>
-          <p color="white"><i class="icon-check"></i></p>
+        <div class="span5 twitter">
+          <div class="banner-action">
+            <input type="checkbox"><span></span>
+          </div>
+          <div class="banner-icon">
+            <i class="icon-twitter-sign"></i>
+          </div>
+          <h2>Share on Twitter</h2>
+          <h3>and reach 501 people</h3>
         </div>
       </div>
     </div>

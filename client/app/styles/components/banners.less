@@ -1,33 +1,73 @@
-// The banner spans the entire page width, and is the standard blue; content begins
-// 40px down.
-.join-banner {
+.banner {
   width: 100%;
   height: 100px;
-  background-color: @blue;
-  padding: 40px 0 0 0;
+  padding: 50px 0;
 }
 
-.or {
-  margin-left: 12px;
-  margin-right: 12px;
-  display: inline-block;
-  font-size: 8px;
-  color: @white;
-  text-transform: uppercase;
-}
-
-.fineprint {
-  font-size: 10px;
-  text-align: center;
-  margin: 10px 0 5px 0px;
-  color: @dark-blue;
-}
-
-.fineprint a {
-  color: @white;
-}
-
-// Bootstrap sets a default margin-bottom, which needs to be overridden for these to line up
-.join-banner input {
+.banner h2 {
+  font-size: 25px;
+  margin-top: 17px;
+  letter-spacing: 5px;
   margin-bottom: 0px;
+}
+
+.banner h3 {
+  margin-top: -15px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.banner-image,
+.banner-icon {
+  float: left;
+  position: relative;
+  width: 50px;
+  top: 25px;
+  margin-right: 20px;
+}
+
+.banner-icon {
+  color: @blue;
+  display: inline;
+  font-size: 60px;
+  top: 27px;
+}
+
+.banner-blue {
+  background-color: @blue;
+}
+
+.banner-grey {
+  background-color: @light-grey;
+}
+
+.attending {
+  color: @pale-blue !important;
+}
+
+.banner-blue h2 {
+  color: @white;
+}
+
+.banner-blue h3 {
+  color: @dark-grey;
+}
+
+.banner-grey h2 {
+  color: @dark-grey;
+}
+
+.banner-grey h3 {
+  color: @darkest-grey;
+}
+
+.banner-blue i {
+  position: relative;
+  top: 10px;
+}
+
+.banner-action {
+  position: relative;
+  top: 40px;
+  float: right;
 }
