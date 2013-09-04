@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    bcrypt = require('bcryptjs'),
+  bcrypt = require('bcryptjs'),
   //Get the configuration from env or use defaults
   config = {
     user: process.env.MONGODB_USER,
@@ -25,11 +25,13 @@ var schema = {}, odmApi = {}, i, entity,
 
     return {
       create: function(data, cb) {
-        data.id = new mongoose.Types.ObjectId();
+        data.id = data.id || new mongoose.Types.ObjectId();
         object = new Model(data);
 
         object.save(function(err) {
-          cb(err, object);
+          if(cb){
+            cb(err, object);
+          }
         });
       },
       findAll: function(cb) {
@@ -42,13 +44,13 @@ var schema = {}, odmApi = {}, i, entity,
           cb(err, results);
         });
       },
-      update: function(id, attributes, cb) {
+      update: function(id, attributes, cb, isNotObject) {
         delete attributes._id; //cant update id 
         //Maybe later can be change so _id is not sent
         Model.findOneAndUpdate({
-          id: new mongoose.Types.ObjectId(id)
+          id: (isNotObject) ? id : new mongoose.Types.ObjectId(id)
         }, attributes, function(err, doc) {
-          if(cb){
+          if (cb) {
             cb(err, doc);
           }
         });
@@ -58,6 +60,11 @@ var schema = {}, odmApi = {}, i, entity,
           id: new mongoose.Types.ObjectId(id)
         }, function(err, doc) {
           cb(err, doc);
+        });
+      },
+      count: function(conditions, cb) {
+        Model.count(conditions, function(err, count) {
+          cb(err, count);
         });
       }
     };
@@ -122,7 +129,9 @@ schema.page = new mongoose.Schema({
 schema.user = new mongoose.Schema({
   id: {
     type: mongoose.Schema.Types.ObjectId,
-    index: { unique: true }
+    index: {
+      unique: true
+    }
   },
   first_name: {
     type: String,
@@ -135,7 +144,9 @@ schema.user = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    index: { unique: true }
+    index: {
+      unique: true
+    }
   },
   password: {
     type: String
@@ -171,37 +182,66 @@ schema.user = new mongoose.Schema({
     type: String
   },
   actionkitId: {
-    type: Number  
+    type: Number
   },
 });
 
 schema.user.pre('save', function(next) {
-    var user = this;
+  var user = this;
 
-    // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
+  // only hash the password if it has been modified (or is new)
+  if (!user.isModified('password')) return next();
 
-    // generate a salt
-    bcrypt.genSalt(5, function(err, salt) {
-        if (err) return next(err);
+  // generate a salt
+  bcrypt.genSalt(5, function(err, salt) {
+    if (err) return next(err);
 
-        // hash the password along with our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
+    // hash the password along with our new salt
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      if (err) return next(err);
 
-            // override the cleartext password with the hashed one
-            user.password = hash;
-            next();
-        });
+      // override the cleartext password with the hashed one
+      user.password = hash;
+      next();
     });
+  });
 });
 
 schema.user.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
 };
+
+schema.email = new mongoose.Schema({
+  id: {
+    type: String,
+    index: {
+      unique: true
+    }
+  },
+  name: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  subject: {
+    type: String,
+    required: true
+  },
+  body: {
+    type: String
+  },
+  from: {
+    type: String,
+    required: true
+  },
+  vars: {
+    type: String
+  },
+});
 
 //Create an API for the models of the schema so db logic get isolate here 
 for (entity in schema) {

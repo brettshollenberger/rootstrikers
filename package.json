@@ -34,7 +34,9 @@
     "passport": "~0.1.17",
     "passport-local": "~0.1.6",
     "bcryptjs": "~0.7.10",
-    "request": "2.27.0"
+    "request": "2.27.0",
+    "sendgrid": "~0.3.0-rc.1.7",
+    "underscore": "~1.5.1"
   },
   "peerDependencies": {},
   "devDependencies": {

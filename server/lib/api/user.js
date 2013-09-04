@@ -1,8 +1,13 @@
-module.exports = function(app, db) {
+var _ = require('underscore');
+_.templateSettings = {
+  interpolate : /\{\{(.+?)\}\}/g
+};
+
+module.exports = function(app, db, mail) {
   //Post to add new users
   app.post('/api/user', function(req, res) {
     var data = req.body,
-      createUser = function(db, data, res) {
+      createUser = function(db, data, res, cb) {
         //Ask the db to create a new user
         //passing the data of the request  and a cb
         db.user.create({
@@ -26,6 +31,9 @@ module.exports = function(app, db) {
             });
           } else {
             res.json(err); // If could not be save send the json of the error (A better error strategy can be defined)
+          }
+          if (cb) {
+            cb(err, model);
           }
         });
       };
@@ -54,7 +62,24 @@ module.exports = function(app, db) {
           }
         });
     } else {
-      createUser(db, data, res);
+      createUser(db, data, res, function(err, user) {
+        if (err) throw err;
+        db.email.find({
+          id: 'email_verify'
+        }, function(err, doc) {
+          if (err) throw err;
+
+          var template = doc[0];
+          mail.send({
+            to: user.email,
+            from: template.from,
+            subject: template.subject,
+            html: _.template(template.body || "", user)
+          }, function(err, json) {
+            if (err) throw err;
+          });
+        });
+      });
     }
   });
 
