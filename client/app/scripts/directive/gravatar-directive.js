@@ -23,7 +23,7 @@ angular.module('ui-gravatar', ['md5']).
                         // parse the ratings attribute
                         var rating = attrs.rating || 'pg';
                         // parse the default image url
-                        var defaultUrl = attrs.default || '404';
+                        var defaultUrl = 'http://www.gravatar.com/avatar/00000000000000000000000000000000' || '404';
                         // parse css class
                         var cssClass = attrs.cssClass || 'gravatar-icon';
                         // get image src from service
