@@ -23,14 +23,17 @@ var _ = require('underscore'),
     });
   },
   cleanUser = function(user) {
-    var fields = ['__v', 'password', '_id'];
+    var fields = ['__v', 'password', '_id'],
+      clean = function(dirty) {
+        return _.omit((dirty.toJSON) ? dirty.toJSON() : dirty, fields);
+      };
     //Remove fields dont need it on the client
     if (_.isArray(user)) {
-      _.map(user, function(item) {
-        return _.omit(item, fields);
+      return _.map(user, function(item) {
+        return clean(item);
       });
     }
-    return _.omit(user, fields);
+    return clean(user);
   };
 
 //Handlebars like templates

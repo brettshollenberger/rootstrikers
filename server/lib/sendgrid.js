@@ -1,6 +1,6 @@
 var sendgrid = require('sendgrid')(
-  process.env.SENDGRID_USERNAME || 'app17807371@heroku.com',
-  process.env.SENDGRID_PASSWORD || '6e1zv73g'
+  process.env.SENDGRID_USERNAME,
+  process.env.SENDGRID_PASSWORD
 );
 
 module.exports = {
