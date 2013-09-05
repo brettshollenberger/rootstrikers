@@ -3,9 +3,7 @@
       <form ng-submit="save()">
         <fieldset>
           <legend>{{actionTitle}} Rootstrikers Pages</legend>
-          <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
-            <p>{{flash.message}}</p>
-          </div>
+          <notification></notification>
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Enter a page Name" ng-model="page.name" required>

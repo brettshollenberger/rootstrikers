@@ -184,6 +184,23 @@ module.exports = function(app, db, mail) {
       });
   });
 
+  //request a new verification email
+  app.get('/api/user/verify/:userID', function(req, res) {
+    db.user.find({
+        id: req.params.userID
+      },
+      function(err, list) {
+        if (!err) {
+          if (list.length) {
+            verifyUser(req, db, mail, list[0]);
+          }
+        } else {
+          res.json(err);
+        }
+      });
+  });
+
+  //Process verification link and update user status to verify
   app.get('/verify/:userID', function(req, res) {
     db.user.update(req.params.userID, {
         isVerify: true

@@ -31,7 +31,7 @@ angular
       $scope.save = function() {
         model.$save(function(email, putResponseHeaders) {
           notification.pop({
-            message: 'Your Email has been successfully saved',
+            body: 'Your Email has been successfully saved',
             type: 'success'
           });
         });

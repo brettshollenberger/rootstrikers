@@ -5,8 +5,14 @@ angular
     'userService',
     'Facebook',
     'actionKitService',
-    function($scope, userAPI, FB, actionKitService) {
-      var inkBlob, inkBlobThumb;
+    'flash',
+    function($scope, userAPI, FB, actionKitService, notification) {
+      var inkBlob, inkBlobThumb, saveSuccess = function() {
+        notification.pop({
+          body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
+          type: 'success'
+        });
+      };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
 
@@ -41,14 +47,14 @@ angular
                   
                   actionKitService.createUser(user).then(function (userResponse) {
                       $scope.formUser.actionkitId = userResponse;
-                      $scope.formUser.$save();
+                      $scope.formUser.$save(saveSuccess);
                   });
               
               } else {
               
                   // get the location of the current ActionKit user
                   $scope.formUser.actionkitId = response.id;
-                  $scope.formUser.$save();
+                  $scope.formUser.$save(saveSuccess);
               }
               
               _close();

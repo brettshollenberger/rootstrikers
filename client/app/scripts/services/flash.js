@@ -1,27 +1,35 @@
 angular
   .module('app')
   .factory('flash', function($rootScope) {
+    //Not a big deal of notification but now with the logic on the factory and directive we can improve it
     var queue = [],
-      currentMessage = {};
+      currentMessage,
+      pop = function(message) {
+        $rootScope.$broadcast('flash', message);
+      };
 
+    //Listen to rout change to send message if there is one saved
     $rootScope.$on('$routeChangeSuccess', function() {
-      if (queue.length > 0)
+      if (queue.length > 0) {
         currentMessage = queue.shift();
-      else
-        currentMessage = {};
+      } else {
+        currentMessage = false;
+      }
     });
 
     return {
+      //Set notification for future brodcast
       set: function(message) {
-        var msg = message;
-        queue.push(msg);
-
+        queue.push(message);
       },
-      get: function(message) {
-        return currentMessage;
+      get: function() {
+        if(currentMessage){
+          return currentMessage;
+        }else{
+          return false;
+        }
       },
-      pop: function(message) {
-        $rootScope.$broadcast('flash', message);
-      }
+      //Show a notification
+      pop: pop
     };
   });
