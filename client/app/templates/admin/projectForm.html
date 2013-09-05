@@ -10,16 +10,16 @@
             <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
           </div>
           <div class="form-group">
-            <label for="description">Body</label>
-            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Enter a Project Description" id="description" ng-model="project.description"></textarea>
+            <label for="problem">The Problem</label>
+            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Describe the Problem" id="problem" ng-model="project.problem"></textarea>
           </div>
           <div class="form-group">
-            <label for="goal">Goal</label>
-            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Enter a Goal" id="goal" ng-model="project.goal"></textarea>
+            <label for="action">The Action</label>
+            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Action We Need to Take" id="action" ng-model="project.action"></textarea>
           </div>
           <div class="form-group">
-            <label for="actionGoal">Action Goal</label>
-            <input type="number" step="any" min="0" class="form-control" id="actionGoal" name="action_goal" placeholder="Enter a Action Goal" ng-model="project.action_goal">
+            <label for="goal">The Goal</label>
+            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Describe the Goal" id="goal" ng-model="project.goal"></textarea>
           </div>
           <div class="form-group">
 

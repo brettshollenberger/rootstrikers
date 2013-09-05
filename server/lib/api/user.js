@@ -55,6 +55,7 @@ module.exports = function(app, db, mail) {
           email: data.email,
           city: data.city,
           state: data.state,
+          zip: data.zip,
           country: data.country,
           avatar: data.avatar,
           thumb: data.thumb,

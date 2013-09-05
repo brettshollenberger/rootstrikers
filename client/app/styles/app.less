@@ -14,58 +14,25 @@
 /**
  * Base Styles
  */
-@import "./base.less";
+@import "./base/base.less";
 
 /**
- * Navbar
+ * Component Styles
  */
-@import "./menu.less";
+@import "./components/components.less";
 
 /**
- * Main Content
+ * Module-specific Styles
  */
-
-@import "./main-content.less";
-
-/**
- * Footer
- */
-@import "./footer.less";
-
-/**
- * Buttons
- */
-@import "./buttons.less";
-
-/**
- * Slider
- */
-@import "./slider.less";
-
-/**
- * Projects
- */
-@import "./projects.less";
-
-/**
- * Join Banner
- */
-@import "./join-banner.less";
-
-
-/**
- * Forms
- */
-@import "./forms.less";
-
-/**
- * Homepage
- */
-@import "./homepage.less";
+@import "./modules/modules.less";
 
 /**
  * Angular
  */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none;
+}
+
+.float-right {
+  float: right;
 }

@@ -1,0 +1,165 @@
+// Navbar consists of left and right sides which are aligned to the sides
+// of the page. The both sides have the equivalent of an offset1, and so
+// content on each side floats left and right respectively. The defined
+// gutters mixed with the floats make the navbar easy to scale and reuse
+// for new content that doesn't follow the traditional link-orientation.
+
+// Media queries shrink the content and at mobile/tablet levels we lose
+// the Donate button in favor of more space for the more important content. 
+
+@menu-height: 100px;
+
+// Override Bootstrap defaults
+.navbar-inner, .navbar-inverse {
+  background: @darkest-grey !important;
+  background-color: @darkest-grey !important;
+  height: @menu-height;
+};
+
+.navbar-inner .container-fluid,
+.navbar-inner .container-fluid .row-fluid .span3
+.navbar-inner .container-fluid .row-fluid .span7 {
+  height: 100%;
+}
+
+// Logo
+.navbar-inverse img {
+  margin-top: (@menu-height / 5);
+  float: left;
+}
+
+// Override Bootstrap defaults
+.navbar-inverse .brand {
+  font-family: @oswald;
+  color: @white;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: .12rem;
+  font-size: 1.5rem;
+  line-height: 80px;
+}
+
+// Override Bootstrap defaults
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+  text-shadow: none;
+}
+
+// Offset the logo and brand
+.navbar-inner .container-fluid p {
+  margin: 0 0 0 20px;
+}
+
+.auth-links {
+  margin-top: 22px;
+  float: right;
+}
+
+.auth-links .btn,
+.tagline {
+  float: right;
+  margin-left: 5px;
+}
+
+.tagline {
+  color: @white;
+  text-transform: uppercase;
+  font-family: @oswald;
+  font-weight: 300;
+  letter-spacing: 2px !important;
+  text-align: right;
+  display: inline-block;
+  margin: 27px 10px 0 0;
+}
+
+// Media queries focus primarily on reducing the size of content and
+// margins proportionately such that the page "feels" the same at any size.
+@media only screen and (max-width: 1023px) {
+  .navbar-inverse .brand {
+    letter-spacing: .1rem;
+    font-size: 1.2rem;
+  }
+
+  .navbar-inner .container-fluid p {
+    margin: 0 0 0 15px;
+  }
+
+  .tagline {
+    font-size: .6rem;
+  }
+}
+
+@media only screen and (max-width: 979px) {
+  // Bootstrap default switches to static, which throws a nasty
+  // border above the navbar.
+  .navbar-fixed-top {
+    position: fixed;
+  }
+}
+
+@media only screen and (max-width: 896px) {
+  .navbar-inverse .brand {
+    font-size: 1rem;
+  }
+
+  .navbar-inner .container-fluid p {
+    margin: 0 0 0 5px;
+  }
+
+  .tagline {
+    font-size: .5rem;
+  }
+
+  .navbar .btn {
+    width: 60px;
+    padding: 10px 5px;
+    font-size: 10px;
+  }
+}
+
+// At 768px width, Bootstrap transforms all rows into full-width, regardless 
+// of span- class so we have to get a little hack-y with the float-right 
+// portion of the nav to line it up again.
+@media only screen and (max-width: 768px) {
+  .navbar-inner .container-fluid {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .float-right-nav {
+    position: relative;
+    top: -30px;
+  }
+}
+
+@media only screen and (max-width: 625px) {
+  .navbar-inverse .brand {
+    font-size: .8rem;
+  }
+
+  .navbar-inner .container-fluid p {
+    margin: 0 0 0 2px;
+  }
+
+  .tagline {
+    font-size: .3rem;
+    line-height: 1.2rem;
+  }
+
+  .navbar .btn {
+    width: 40px;
+    padding: 10px 10px;
+    font-size: .5rem;
+  }
+}
+
+@media only screen and (max-width: 592px) {
+  #donate { 
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 505px) {
+  .tagline { 
+    display: none;
+  }
+}

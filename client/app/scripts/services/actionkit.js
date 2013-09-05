@@ -59,7 +59,33 @@ angular
             }, function() {
                 return false;
             });
-        }
+        },
+        
+        doAction: function (action) {
+            
+            var url = '/api/actionkit/doAction';
+            
+            return $http({method: 'POST', url: url, data:action}).
+            then(function (response) {
+              
+              if(response.status === 200) {
+                  if(response.data.error === false) {
+                      return true;
+                  } else {
+                      // show these errors
+                      //console.log('SHOW ERRORS');
+                      //console.log(response.data.errors);
+                      return false;
+                  }
+              } else {
+                  return false;
+              }
+                
+            }, function() {
+                return false;
+            });  
+            
+        },
         
       };
     }

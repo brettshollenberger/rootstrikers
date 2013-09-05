@@ -7,12 +7,13 @@ module.exports = function(app, db) {
     //passing the data of the request  and a cb
     db.project.create({
       name: data.name,
-      description: data.description,
+      problem: data.problem,
+      action: data.action,
+      goal: data.goal,
       shortname: data.shortname,
       end_date: data.end_date,
       image: data.image, //we save the InkBLob of the image to delete it when the project is deleted
       InkBlob: (data.InkBlob && typeof data.InkBlob === "object")?  JSON.stringify(data.InkBlob) : data.InkBlob,
-      goal: data.goal,
       action_goal: data.action_goal
     }, function(err, model) {
       if (!err) {
