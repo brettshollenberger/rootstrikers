@@ -20,6 +20,10 @@ angular
           controller: 'pageController',
           templateUrl: 'app/templates/page.html'
         })
+        .when('/features/:id', {
+          controller: 'featureShowController',
+          templateUrl: 'app/templates/features/show.html'
+        })
       //Temporary admin go to project List 
       .when('/admin', {
         controller: 'projectListController',
@@ -63,6 +67,21 @@ angular
       .when('/admin/page/preview/:pageID', {
         controller: 'pageEditController',
         templateUrl: 'app/templates/admin/pagePreview.html'
+      })
+      //Features Index Action
+      .when('/admin/features', {
+        controller: 'featureIndexController',
+        templateUrl: 'app/templates/admin/features/index.html'
+      })
+      //Features New Action
+      .when('/admin/features/new', {
+        controller: 'featureNewController',
+        templateUrl: 'app/templates/admin/features/new.html'
+      })
+      //Features Edit Action
+      .when('/admin/features/:id/edit', {
+        controller: 'featureEditController',
+        templateUrl: 'app/templates/admin/features/edit.html'
       });
     }
   ])
@@ -91,7 +110,3 @@ angular
             }
         });      
   }]);
-
-  function myController($scope) {
-      $scope.email = 'brett@facultycreative.com';
-  }
