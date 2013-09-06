@@ -63,7 +63,6 @@ var schema = {}, odmApi = {}, i, entity,
     };
   };
 
-//Create a schema for every entity
 schema.project = new mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
   name: {
@@ -117,6 +116,28 @@ schema.page = new mongoose.Schema({
     type: String
   },
   publish: {
+    type: Boolean,
+    default: false
+  }
+});
+
+schema.feature = new mongoose.Schema({
+  id: mongoose.Schema.Types.ObjectId,
+  message: {
+    type: String,
+    required: true
+  },
+  action: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String
+  },
+  InkBlob: {
+    type: String
+  },
+  published: {
     type: Boolean,
     default: false
   }
