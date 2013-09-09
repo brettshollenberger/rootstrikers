@@ -52,7 +52,7 @@ angular
 
       } else {
 
-        return "expired";
+        return "completed";
 
       }
 
