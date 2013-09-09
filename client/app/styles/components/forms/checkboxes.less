@@ -19,11 +19,22 @@ input[type="checkbox"] {
 }
 
 input[type="radio"] + span:before,
-input[type="checkbox"] + span:before {
+input[type="checkbox"] + span:before
+input[type="radio"] + span.blue:before,
+input[type="checkbox"] + span.blue:before {
   font-family: 'FontAwesome';
   padding-right: 3px;
   font-size: 2.5rem;
+} 
+
+input[type="radio"] + span:before,
+input[type="checkbox"] + span:before {
   color: @white;
+}
+
+input[type="radio"] + span.blue:before,
+input[type="checkbox"] + span.blue:before {
+  color: @blue;
 }
 
 input[type="radio"] + span:before {

@@ -37,7 +37,7 @@
         <div class="control-group" ng-class="{error: formErrors.password}">
           <label class="control-label" for="registerPassword">Password</label>
           <div class="controls">
-            <input type="password" id="registerPassword" name="password" ng-model="formUser.password" placeholder="Desired password" min-lenght="6" required/>
+            <input type="password" id="registerPassword" name="password" ng-model="editFormUser.password" placeholder="Desired password" min-lenght="6" required/>
             <span class="help-inline" ng-show="formErrors.password">{{formErrors.password}}</span>
           </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="control-group" ng-class="{error: formErrors.passConfirmation}">
           <label class="control-label" for="registerConfirm">Password Confirmation</label>
           <div class="controls">
-            <input class="warning" id="registerConfirm" name="passConfirmation" type="password" ng-model="formUser.passConfirmation" placeholder="Confirm password" required/>
+            <input class="warning" id="registerConfirm" name="passConfirmation" type="password" ng-model="editFormUser.passConfirmation" placeholder="Confirm password" required/>
             <span class="help-inline" ng-show="formErrors.passConfirmation">{{formErrors.passConfirmation}}</span>
           </div>
         </div>

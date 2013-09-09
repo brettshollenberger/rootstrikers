@@ -10,7 +10,8 @@
     <h3 class="dark-grey">{{item.name}}</h3>
 
     <h2>Time Remaining:</h2>
-    <h4>{{item.end_date}}</h4>
+
+    <h4>{{item.end_date | timeRemaining}}</h4>
 
     <h2>Goal:</h2>
     <p>{{item.goal}}</p>

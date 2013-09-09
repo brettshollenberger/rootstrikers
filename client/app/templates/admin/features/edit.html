@@ -1,0 +1,26 @@
+<div class="span12">
+  <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
+  <a href="#/admin/features/new" class="btn btn-inverse float-right">New Feature</a>
+  <h1>Edit</h1>
+
+  Message: <input type="text" ng-model="feature.message"><br>
+  Action: <input type="text" ng-model="feature.action"><br>
+  Published: <input type="checkbox" ng-model="feature.published"><span class="blue"></span><br>
+
+  <a type="submit" class="btn" ng-click="update();">Update</a>
+</div>
+
+<div class="span12">
+  <h1>Preview</h1>
+  <div id="homepage-carousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img ng-src="app/images/header-image.png" alt="" />
+        <div class="carousel-caption">
+          <h3 class="white headline-big">{{feature.message}}</h3>
+          <h2><a>{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+        </div>
+      </div>
+    </div><!-- /.carousel-inner -->
+  </div><!-- /.carousel -->
+</div>

@@ -6,7 +6,7 @@ angular
     'userService',
     'projectService',
     function($rootScope, $scope, userService, projectService, actionKitService) {
-      $scope.projects = projectService.getPublished(); 
+      $scope.projects = projectService.getActive();
       // This users object serves no useful purpose in the final app, 
       // but we need something to stand-in for gravatars until we write
       // an association for project.supporters
