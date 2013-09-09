@@ -2,9 +2,17 @@ angular
   .module('app')
   .factory('projectService', [
     '$resource',
-    function($resource) {
-      var Project = $resource('/api/project/:projectID', {
+    '$http',
+    function($resource, $http) {
+      var Project = $resource('/api/project/:projectID', 
+      {
         projectID: '@id'
+      }, {
+        active: {
+          method: 'GET',
+          url: '/api/project/active',
+          isArray: true
+        }
       }),
         projects = [],
         getIndex = function(id) {
@@ -29,6 +37,11 @@ angular
             }
           });
           return projects;
+        },
+        getActive: function() {
+          return $http.get('/api/project/active').then(function(response) {
+              return response.data;
+          });
         },
         get: function(id, cb) {
           var project, i;
