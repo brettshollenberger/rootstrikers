@@ -86,7 +86,10 @@ angular
     }
   ])
   .run(['$location', '$rootScope', '$cookieStore', function($location, $rootScope, $cookieStore) {
-      
+        
+        // Set location object for use throughout applications
+        $rootScope.location = $location;
+
         // get loggedUser cookie and set it to $rootScope.loggedUser
         $rootScope.loggedUser = $cookieStore.get('loggedUser');
       
