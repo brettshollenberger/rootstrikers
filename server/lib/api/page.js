@@ -1,5 +1,5 @@
-module.exports = function(app, db) {
-  app.post('/api/page', function(req, res) {
+module.exports = function(app, db, auth) {
+  app.post('/api/page', auth.middleware(true), function(req, res) {
     var data = req.body;
 
     db.page.create({
@@ -54,7 +54,7 @@ module.exports = function(app, db) {
       });
   });
 
-  app.post('/api/page/:pageID', function(req, res) {
+  app.post('/api/page/:pageID', auth.middleware(true), function(req, res) {
     db.page.update(req.params.pageID, req.body,
       function(err, page) {
         if (!err) {
@@ -65,7 +65,7 @@ module.exports = function(app, db) {
       });
   });
 
-  app.del('/api/page/:pageID', function(req, res) {
+  app.del('/api/page/:pageID', auth.middleware(true), function(req, res) {
     db.page.remove(req.params.pageID,
       function(err, page) {
         if (!err) {
