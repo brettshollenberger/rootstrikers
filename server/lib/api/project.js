@@ -1,10 +1,31 @@
 module.exports = function(app, db) {
-
+  ////////////////////////////////////////////////////
   // Get active projects
+  ////////////////////////////////////////////////////
+  // Only returns active projects that are published!
+  ////////////////////////////////////////////////////
   app.get('/api/project/active', function(req, res) {
     db.project.find({
       publish: true,
       end_date: {"$gte": new Date()}
+    }, function(err, list) {
+      if (!err) { 
+        res.json(list);
+      } else {
+        res.json(err);
+      }
+    });
+  });
+
+  ////////////////////////////////////////////////////
+  // Get completed projects
+  ////////////////////////////////////////////////////
+  // Only returns completed projects that are published!
+  ////////////////////////////////////////////////////
+  app.get('/api/project/completed', function(req, res) {
+    db.project.find({
+      publish: true,
+      end_date: {"$lt": new Date()}
     }, function(err, list) {
       if (!err) { 
         res.json(list);
