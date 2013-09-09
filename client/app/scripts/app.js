@@ -82,6 +82,10 @@ angular
       .when('/admin/features/:id/edit', {
         controller: 'featureEditController',
         templateUrl: 'app/templates/admin/features/edit.html'
+      })
+      .when('/terms', {
+        controller: 'termsController',
+        templateUrl: 'app/templates/terms.html'
       });
     }
   ])
