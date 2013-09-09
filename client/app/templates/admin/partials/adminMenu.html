@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-fixed-top" ng-show="onAdmin">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 offset1 float-left-nav">
+          <img src="app/images/rsicon.png">
+          <a class="brand" href="./index.html"><p>Rootstrikers Admin</p></a>
+        </div>
+        <div class="span7 float-right-nav">
+          <span class="auth-links" ng-controller="authController">
+            <a href="#/admin" class="btn">Projects</a>
+            <a href="#/admin/features" class="btn">Features</a>
+            <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
+            <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
+          </span>
+          <div class="tagline">
+            Create beautiful things<br>
+            to share with the people
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
