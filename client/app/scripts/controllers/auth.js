@@ -2,11 +2,12 @@ angular
   .module('app')
   .controller('authController', [
     '$scope',
+    '$location',
     'userService',
     'Facebook',
     'actionKitService',
     'flash',
-    function($scope, userAPI, FB, actionKitService, notification) {
+    function($scope, $location, userAPI, FB, actionKitService, notification) {
       var inkBlob, inkBlobThumb, saveSuccess = function() {
         notification.pop({
           body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
@@ -97,6 +98,7 @@ angular
         _clearErrors();
         _close();
         userAPI.logout();
+        $location.path('/');
       };
 
       $scope.cancel = function() {
