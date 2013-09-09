@@ -86,6 +86,10 @@ angular
       .when('/terms', {
         controller: 'termsController',
         templateUrl: 'app/templates/terms.html'
+      })
+      .when('/privacy', {
+        controller: 'privacyController',
+        templateUrl: 'app/templates/privacy.html'
       });
     }
   ])
