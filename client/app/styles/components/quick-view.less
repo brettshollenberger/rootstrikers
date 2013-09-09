@@ -6,6 +6,7 @@
 @primary-color: @blue;
 @secondary-color: @light-grey;
 @highlight-color: @white;
+@muted-color: @darkest-grey;
 
 .heading-typeface {
   font-family: @oswald;
@@ -72,4 +73,23 @@
   color: @highlight-color;
   text-transform: uppercase;
   .heading-typeface;
+}
+
+.completed .quick-view img {
+  .grayscale;
+}
+
+.completed .avatar {
+  .grayscale;
+}
+
+.completed .quick-view-cta {
+  background-color: @muted-color;
+}
+
+.completed h2,
+.completed h3,
+.completed h4,
+.completed h5 {
+  color: @muted-color;
 }
