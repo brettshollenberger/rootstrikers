@@ -41,6 +41,20 @@ module.exports = function(app, db) {
     }
   });
 
+  // Get active projects
+  app.get('/api/project/active', function(req, res) {
+    db.project.find({
+      publish: true,
+      end_date: {"$gte": new Date()}
+    }, function(err, list) {
+      if (!err) { 
+        res.json(list);
+      } else {
+        res.json(err);
+      }
+    });
+  });
+
   //Get of a single project
   app.get('/api/project/:projectID', function(req, res) {
     db.project.find({
