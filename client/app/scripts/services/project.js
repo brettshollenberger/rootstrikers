@@ -4,7 +4,7 @@ angular
     '$resource',
     '$http',
     function($resource, $http) {
-      var Project = $resource('/api/project/:projectID', 
+      var Project = $resource('/api/project/:projectID',
       {
         projectID: '@id'
       }, {
@@ -41,6 +41,11 @@ angular
         getActive: function() {
           return $http.get('/api/project/active').then(function(response) {
               return response.data;
+          });
+        },
+        getCompleted: function() {
+          return $http.get('/api/project/completed').then(function(response) {
+            return response.data;
           });
         },
         get: function(id, cb) {
