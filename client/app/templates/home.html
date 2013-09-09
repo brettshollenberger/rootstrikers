@@ -24,7 +24,7 @@
     <h2>Active Projects</h2>
     <hr>
     <div class="row-fluid quick-views">
-      <div class="span4" ng-repeat="item in projects | orderBy: '-end_date'" ng-class="{ 'clearfix' : $index % 3 == 0 }">
+      <div class="span4" ng-repeat="item in projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
         <project-quick-view></project-quick-view>
       </div>
     </div>
