@@ -26,9 +26,12 @@ angular
             if (confirmation) {
                 Feature.update({id: featureId}, {published: status}, function(response) {
                     $scope.features.forEach(function(feature) {
-                        feature.id === featureId ? feature.published = status : false;
+                        if (feature.id === featureId) {
+                            feature.published = status;
+                        }
                     });
                 });
             }
         };
+
     }]);
