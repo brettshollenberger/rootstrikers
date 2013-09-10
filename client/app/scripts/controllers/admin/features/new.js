@@ -9,7 +9,7 @@ angular
     'actionKitService',
     '$rootScope',
     function($scope, $location, $routeParams, userAPI, Feature, actionKitService, $rootScope) {
-        $scope.feature = new Feature();
+        $scope.feature = new Feature({image: "/app/images/axesbaxes.gif"});
 
         $scope.create = function() {
             $scope.feature.$save(function() {

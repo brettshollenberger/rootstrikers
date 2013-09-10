@@ -39,6 +39,7 @@ module.exports = function(app, db) {
     db.feature.create({
       message: data.message,
       action: data.action,
+      actionUrl: data.actionUrl,
       image: data.image, //we save the InkBLob of the image to delete it when the project is deleted
       InkBlob: (data.InkBlob && typeof data.InkBlob === "object")?  JSON.stringify(data.InkBlob) : data.InkBlob,
       published: data.published

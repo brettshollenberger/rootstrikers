@@ -6,6 +6,22 @@ angular
       replace: true,
       templateUrl: 'app/templates/components/addImageButton.html',
       link: function(scope, element, attrs) {
+
+        // Find ViewModel object using the string passed in as the addImage value:
+        Model = scope.$eval(attrs.addImage);
+
+        /////////////////////////////////////////////////////////////////////////
+        ///////////////// Set default image here, or use null ///////////////////
+        /////////////////////////////////////////////////////////////////////////
+        defaultImage = "/app/images/axesbaxes.gif";
+        /////////////////////////////////////////////////////////////////////////
+        ///////////////// Set default image here, or use null ///////////////////
+        /////////////////////////////////////////////////////////////////////////
+
+        scope.imageEqualsDefaultImage = function() {
+          return Model.image == defaultImage;
+        };
+
         element.bind('click', function() {
           filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
           filepicker.pick({
@@ -16,8 +32,8 @@ angular
               scope.removeImage();
             }
             //Set the new image to the $scope.feature
-            scope.$eval(attrs.addImage).image = InkBlob.url;
-            scope.$eval(attrs.addImage).InkBlob = InkBlob;
+            Model.image = InkBlob.url;
+            Model.InkBlob = InkBlob;
             scope.$apply();
           });
         });

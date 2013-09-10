@@ -1,26 +1,41 @@
-<div class="span12">
-  <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
-  <a href="#/admin/features/new" class="btn btn-inverse float-right">New Feature</a>
-  <h1>Edit</h1>
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
+    <a href="#/admin/features/new" class="btn btn-inverse float-right">New Feature</a>
+    <h1>Edit</h1>
 
-  Message: <input type="text" ng-model="feature.message"><br>
-  Action: <input type="text" ng-model="feature.action"><br>
-  Published: <input type="checkbox" ng-model="feature.published"><span class="blue"></span><br>
+    Message: <input type="text" ng-model="feature.message"><br>
+    Action: <input type="text" ng-model="feature.action"><br>
+    Action Link: <input type="text" ng-model="feature.actionUrl"><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
 
-  <a type="submit" class="btn" ng-click="update();">Update</a>
+    <div remove-image="feature"></div>
+    <div add-image="feature"></div>
+
+  </div>
 </div>
 
-<div class="span12">
-  <h1>Preview</h1>
-  <div id="homepage-carousel" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="item active">
-        <img ng-src="{{feature.image}}" alt="" />
-        <div class="carousel-caption">
-          <h3 class="white headline-big">{{feature.message}}</h3>
-          <h2><a>{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <h1>Preview</h1>
+    <div class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img ng-src="{{feature.image}}" alt="" />
+          <div class="carousel-caption">
+            <h3 class="white headline-big">{{feature.message}}</h3>
+            <h2><a ng-href="{{feature.actionUrl}}" target="_blank">{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+          </div>
         </div>
-      </div>
-    </div><!-- /.carousel-inner -->
-  </div><!-- /.carousel -->
+      </div><!-- /.carousel-inner -->
+    </div><!-- /.carousel -->
+  </div>
+</div>
+
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <h1>Publish or Save</h1>
+    Published: <input type="checkbox" ng-model="feature.published"><span class="blue"></span>
+    <br><br>
+    <a type="submit" class="btn" ng-click="update();">Update</a>
+  </div>
 </div>
