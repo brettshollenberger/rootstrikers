@@ -16,6 +16,8 @@ angular
       };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
+      $scope.loginErrors = {};
+      $scope.loginUser = {};
 
       $scope.register = function() {
         _clearErrors();
@@ -88,7 +90,7 @@ angular
       $scope.login = function() {
         _clearErrors();
         userAPI.login($scope.formUser).error(function(data, status) {
-          _addError('extra', 'Login Invalid');
+          _addError('extra', 'Login Invalid', 'loginErrors');
         }).success(function() {
           _close();
         });
@@ -158,8 +160,8 @@ angular
 
 
       function _clearErrors() {
-        $scope.formErrors = null;
         $scope.formErrors = {};
+        $scope.loginErrors = {};
       }
 
       function _clearUser() {
@@ -167,8 +169,9 @@ angular
         $scope.formUser = {};
       }
 
-      function _addError(field, message) {
-        $scope.formErrors[field] = message;
+      function _addError(field, message, type) {
+        var form = type || 'formErrors';
+        $scope[form][field] = message;
       }
 
       function _errored(response) {
