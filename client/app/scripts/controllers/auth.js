@@ -89,7 +89,7 @@ angular
 
       $scope.login = function() {
         _clearErrors();
-        userAPI.login($scope.formUser).error(function(data, status) {
+        userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login Invalid', 'loginErrors');
         }).success(function() {
           _close();
