@@ -5,6 +5,7 @@
 
     Message: <input type="text" ng-model="feature.message"><br>
     Action: <input type="text" ng-model="feature.action"><br>
+    Action Link: <input type="text" ng-model="feature.actionUrl"><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
     <br>
 
     <div remove-image="feature"></div>
@@ -23,7 +24,7 @@
           <img ng-src="{{feature.image}}" alt="" ng-show="feature.image"/>
           <div class="carousel-caption">
             <h3 class="white headline-big">{{feature.message}}</h3>
-            <h2><a>{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+            <h2><a ng-href="{{feature.actionUrl}}" target="_blank">{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
           </div>
         </div>
       </div><!-- /.carousel-inner -->
