@@ -1,15 +1,11 @@
-<div id="homepage-carousel" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="app/images/header-image.png" alt="" />
+<div ng-controller="CarouselDemoCtrl" id="homepage-carousel" class="carousel slide">
+  <carousel>
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.image}}" style="margin:auto;">
       <div class="carousel-caption">
-        <h6>Featured Project</h6>
-        <h3 class="white headline">Make Corruption Your Issue</h3>
-        <p class="white headline">In condimentum tellus vitae tortor venenatis, vel posurere enim venenatis. Donec eu ligula ac arcu lacinia sodales. Phasellus eget magna felis.</p>
-        <h2><a>Read More &amp; Share <i class="icon-arrow-right" class="white" style="position: relative; top: 3px;"></i></a></h2>
+        <h3 class="white headline">{{slide.message}}</h3>
+        <h2><a ng-href="{{slide.actionUrl}}" target="_blank">{{slide.action}}<i class="icon-arrow-right" class="white"></i></a></h2>
       </div>
-    </div>
-  </div><!-- /.carousel-inner -->
-    <a class="carousel-control left" href="#homepage-carousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#homepage-carousel" data-slide="next">&rsaquo;</a>
-</div><!-- /.carousel -->
+    </slide>
+  </carousel>
+</div>

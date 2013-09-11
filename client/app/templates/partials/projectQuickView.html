@@ -14,7 +14,7 @@
     <h4>{{item.end_date | timeRemaining}}</h4>
 
     <h2>Goal:</h2>
-    <p>{{item.goal}}</p>
+    <p ng-bind-html-unsafe="item.goal">{{item.goal}}</p>
   </div>
 </div>
 <div class="quick-view-footer">

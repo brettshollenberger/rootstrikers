@@ -24,9 +24,7 @@
               The Problem:
             </h2>
 
-            <p>
-              {{project.problem}}
-            </p>
+            <p ng-bind-html-unsafe="project.problem">{{project.problem}}</p>
           </div>
 
           <div>
@@ -34,7 +32,7 @@
               The Action
             </h2>
 
-            <p>
+            <p ng-bind-html-unsafe="project.action">
               {{project.action}}
             </p>
           </div>
