@@ -1,24 +1,36 @@
 angular
   .module('app')
-  .directive('addImage', function() {
+  .directive('addImage', function($rootScope) {
     return {
       restrict: 'A',
       replace: true,
+      scope: {
+        addImage: '='
+      },
       templateUrl: 'app/templates/components/addImageButton.html',
       link: function(scope, element, attrs) {
 
-        // Find ViewModel object using the string passed in as the addImage value:
-        Model = scope.$eval(attrs.addImage);
+        // The addImage attribute of our directive is intended to set 
+        // the name of the model attribute that exists on the scope that
+        // we're going to tap into. 
+        Model = scope.addImage;
 
-        /////////////////////////////////////////////////////////////////////////
-        ///////////////// Set default image here, or use null ///////////////////
-        /////////////////////////////////////////////////////////////////////////
-        defaultImage = "/app/images/axesbaxes.gif";
-        /////////////////////////////////////////////////////////////////////////
-        ///////////////// Set default image here, or use null ///////////////////
-        /////////////////////////////////////////////////////////////////////////
+        // If no defaultImg attr is set, we fall back on undefined
+        // because in Javascript trying to access a non-existent 
+        // property on an object returns undefined.
+        defaultImage = attrs.defaultImg || undefined;
 
+        // In Edit context, the model may already have an image set. 
+        if (!Model.image) {
+          Model.image = defaultImage;
+        }
+
+        // Whether the defautImg is an actual image or undefined,
+        // if the two are set to the same thing, we'll want to use this
+        // helper method in the DOM to display the Remove Image button 
+        // instead of the Add Image button.
         scope.imageEqualsDefaultImage = function() {
+          console.log(Model.image == defaultImage);
           return Model.image == defaultImage;
         };
 
@@ -27,13 +39,17 @@ angular
           filepicker.pick({
             'mimetype': "image/*"
           }, function(InkBlob) {
-            //If there was an image already delete it 
-            if (scope.feature.InkBlob) {
-              scope.removeImage();
-            }
-            //Set the new image to the $scope.feature
+
+            // Set the new image & blob to the Model object
             Model.image = InkBlob.url;
             Model.InkBlob = InkBlob;
+
+            // Since Angular sets no $watch on the Image Picker,
+            // we need to call the $digest cycle directly. We should
+            // always call $apply instead of $digest, since $apply runs
+            // the $digest cycle with error handling. We should also not
+            // tap into this cycle in a controller context, as $digest cycles
+            // will bump into one another and cause errors. 
             scope.$apply();
           });
         });
