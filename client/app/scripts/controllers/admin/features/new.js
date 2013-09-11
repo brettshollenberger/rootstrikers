@@ -9,11 +9,12 @@ angular
     'actionKitService',
     '$rootScope',
     function($scope, $location, $routeParams, userAPI, Feature, actionKitService, $rootScope) {
-        $scope.feature = new Feature({image: "/app/images/axesbaxes.gif"});
+        $scope.feature = new Feature();
 
         $scope.create = function() {
             $scope.feature.$save(function() {
                 $location.path('/admin/features/' + $scope.feature.id + "/edit");
+                alert("Feature saved successfully!");
             });
         };
     }]);
