@@ -1,15 +1,11 @@
-<div id="homepage-carousel" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="item active">
-      <div ng-repeat="feature in features">
-        <img src="{{feature.image}}" alt="" />
-        <div class="carousel-caption">
-          <h3 class="white headline">{{feature.message}}</h3>
-          <h2><a ng-href="{{feature.actionUrl}}" target="_blank">{{feature.action}}<i class="icon-arrow-right" class="white"></i></a></h2>
-        </div>
+<div ng-controller="CarouselDemoCtrl" id="homepage-carousel" class="carousel slide">
+  <carousel>
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.image}}" style="margin:auto;">
+      <div class="carousel-caption">
+        <h3 class="white headline">{{slide.message}}</h3>
+        <h2><a ng-href="{{slide.actionUrl}}" target="_blank">{{slide.action}}<i class="icon-arrow-right" class="white"></i></a></h2>
       </div>
-    </div>
-  </div><!-- /.carousel-inner -->
-    <a class="carousel-control left" href="#homepage-carousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#homepage-carousel" data-slide="next">&rsaquo;</a>
-</div><!-- /.carousel -->
+    </slide>
+  </carousel>
+</div>
