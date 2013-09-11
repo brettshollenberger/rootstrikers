@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies'])
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap'])
   .config(['$routeProvider', '$httpProvider',
     function($router, $httpProvider) {
     

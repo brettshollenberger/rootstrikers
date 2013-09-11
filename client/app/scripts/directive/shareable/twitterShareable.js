@@ -7,7 +7,7 @@ angular
       templateUrl: 'app/templates/components/twitterShareable.html',
       scope: true,
       link: function(scope, element, attr) {
-        scope.absUrl = $location.absUrl();
+        scope.absUrl = $location.absUrl().replace('/#/', '');
       }
     };
   }]);

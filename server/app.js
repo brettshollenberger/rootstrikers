@@ -23,3 +23,14 @@ app.use(app.router);
 if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
+
+
+// catch all which sends all urls to index page, thus starting our app
+// @note that because Express routes are registered in order, and we already defined our api routes
+// this catch all will not effect prior routes. 
+app.use(function(req, res, next) {
+    app.get('*', function(req, res, next) {
+        //return res.ok('catch all');
+        res.redirect('/#' + req.url);
+    });
+});

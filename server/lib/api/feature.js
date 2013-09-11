@@ -14,14 +14,16 @@ module.exports = function(app, db) {
 
   //***************************// Published //*********************************//
   app.get('/api/features/published', function(req, res) {
-    var cb = function(error, features) {
+    features = db.feature.find({
+      published: true
+    },
+      function(error, features) {
       if (!error) {
         res.json(features); // Write the jsonified features to the response object
       } else {
         res.json(error);
       }
-    };
-    features = db.feature.find({published: true}, cb);
+    });
   });
 
   //******************************// Show //**********************************//
