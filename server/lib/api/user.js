@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 module.exports = function(app, db) {
   //Post to add new users
   app.post('/api/user', function(req, res) {
@@ -117,14 +119,48 @@ module.exports = function(app, db) {
   });
 
   app.post('/api/user/:userID', function(req, res) {
-    db.user.update(req.params.userID, req.body,
-      function(err, user) {
+    
+    // make a call to get the user by id
+    db.user.find({
+        id: req.user.id
+      },
+      function(err, list) {
+        
         if (!err) {
-          res.json(user);
+        
+          // if went ok return the json of the query result
+          if (list.length) {
+          
+            var currentUser = list[0];
+            
+            // add all fields from the req.body to the current user
+            _.extend(currentUser, req.body);
+            
+            // function to save the updated current user to the databse
+            var attemptSave = function() {
+                 
+                currentUser.save(function(err, user) {
+                    if (!err) {
+                      res.json(user);
+                    } else {
+                      res.send(err);
+                    }
+                });
+                
+            };
+            
+            // save the user
+            attemptSave(); 
+
+          } else {
+            res.json({
+              message: 'Object Not Found'
+            });
+          }
         } else {
-          res.send(err);
+          res.json(err);
         }
-      });
+      });    
   });
 
   app.del('/api/user/:userID', function(req, res) {

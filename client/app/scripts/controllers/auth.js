@@ -1,17 +1,19 @@
 angular
   .module('app')
   .controller('authController', [
+    '$rootScope',
     '$scope',
     'userService',
     'Facebook',
     'actionKitService',
-    function($scope, userAPI, FB, actionKitService) {
+    function($rootScope, $scope, userAPI, FB, actionKitService) {
       var inkBlob, inkBlobThumb;
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
       $scope.editFormUser = userAPI.newUser();
 
       $scope.register = function() {
+      
         _clearErrors();
 
         if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
@@ -51,11 +53,13 @@ angular
                       'zip': $scope.formUser.zip.toString()
                   };
                   
-                  actionKitService.createUser(user).then(function (userResponse) {
-                      $scope.formUser.actionkitId = userResponse;
+                  // commented out until the SSL certificate is renewed
+                  //actionKitService.createUser(user).then(function (userResponse) {
+                      //$scope.formUser.actionkitId = userResponse;
+                      $scope.formUser.actionkitId = 123;
                       $scope.formUser.$save();
                       $scope.login();
-                  });
+                  //});
               
               } else {
               
@@ -71,20 +75,40 @@ angular
       };
 
       $scope.update = function() {
+        
         _clearErrors();
-
+        
+        // perform if there were no user form errors
         if (Object.keys($scope.formErrors).length === 0) {
-          $scope.loggedUser.password = $scope.editFormUser.password;
-          $scope.loggedUser.passConfirmation = $scope.editFormUser.passConfirmation;
-          $scope.loggedUser.$save();
-          _close();
+        
+            // get the user from the DB based on the logged in users ID
+            userAPI.get($scope.loggedUser.id, function(response) {
+              
+              if($scope.loggedUser.newPassword) {
+                  $scope.loggedUser.password = $scope.loggedUser.newPassword;
+              }
+              
+              // merge any changes from the current user into the existing user
+              response = angular.extend(response, $scope.loggedUser);
+              
+              // save any changes made to the current user
+              response.$save(function(user) {
+                  // update the logged user in the rootScope so the loggedUser cookie updates
+                  $rootScope.loggedUser = user;
+                  _close();
+              }, function(err) {
+                  console.log('The User was not Updated');
+              });
+              
+            });
         } else {
-          console.log("No worky home-boy");
-        }
+            console.log("There were Errors on the User Form");
+        } 
       };
 
       $scope.login = function() {
         _clearErrors();
+        
         userAPI.login($scope.formUser).error(function(data, status) {
           _addError('extra', 'Login Invalid');
         }).success(function() {
@@ -99,6 +123,9 @@ angular
       };
 
       $scope.cancel = function() {
+      
+        _clearUser();
+      
         if (inkBlob) {
           try {
             filepicker.remove(inkBlobThumb);
@@ -152,7 +179,6 @@ angular
           $scope.closeModal();
         }
       }
-
 
       function _clearErrors() {
         $scope.formErrors = null;
