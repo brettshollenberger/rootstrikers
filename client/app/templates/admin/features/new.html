@@ -3,9 +3,9 @@
     <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
     <h1>New</h1>
 
-    Message: <input type="text" ng-model="feature.message"><br>
-    Action: <input type="text" ng-model="feature.action"><br>
-    Action Link: <input type="text" ng-model="feature.actionUrl"><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
+    Message: <input type="text" ng-model="feature.message" required><br>
+    Action: <input type="text" ng-model="feature.action" required><br>
+    Action Link: <input type="text" ng-model="feature.actionUrl" required><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
     <br>
 
     <div remove-image="feature" default-img="app/images/axesbaxes.gif"></div>
