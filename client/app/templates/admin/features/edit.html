@@ -1,16 +1,18 @@
 <div class="row-fluid section">
   <div class="span10 offset1">
-    <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
-    <a href="#/admin/features/new" class="btn btn-inverse float-right">New Feature</a>
-    <h1>Edit</h1>
+    <!-- <div class="error" ng-show="editFeatures.$invalid">{{}}</div> -->
+    <form name="editFeatures">
+      <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
+      <a href="#/admin/features/new" class="btn btn-inverse float-right">New Feature</a>
+      <h1>Edit</h1>
 
-    Message: <input type="text" ng-model="feature.message"><br>
-    Action: <input type="text" ng-model="feature.action"><br>
-    Action Link: <input type="text" ng-model="feature.actionUrl"><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
+      Message: <input type="text" ng-model="feature.message" name="message" required><br>
+      Action: <input type="text" ng-model="feature.action" required><br>
+      Action Link: <input type="text" ng-model="feature.actionUrl" required><span style="margin-left: 5px;">(When users click the Action text, they'll be directed to this URL).</span><br>
 
-    <div remove-image="feature"></div>
-    <div add-image="feature"></div>
-
+      <div remove-image="feature"></div>
+      <div add-image="feature"></div>
+    </form>
   </div>
 </div>
 
@@ -36,6 +38,6 @@
     <h1>Publish or Save</h1>
     Published: <input type="checkbox" ng-model="feature.published"><span class="blue"></span>
     <br><br>
-    <a type="submit" class="btn" ng-click="update();">Update</a>
+    <button type="submit" class="btn" ng-click="update();" ng-disabled="editFeatures.$invalid">Update</button>
   </div>
 </div>
