@@ -12,6 +12,18 @@ module.exports = function(app, db) {
     features = db.feature.findAll(cb);
   });
 
+  //***************************// Published //*********************************//
+  app.get('/api/features/published', function(req, res) {
+    var cb = function(error, features) {
+      if (!error) {
+        res.json(features); // Write the jsonified features to the response object
+      } else {
+        res.json(error);
+      }
+    };
+    features = db.feature.find({published: true}, cb);
+  });
+
   //******************************// Show //**********************************//
   app.get('/api/features/:id', function(req, res) {
     db.feature.find({

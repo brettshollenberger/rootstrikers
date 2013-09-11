@@ -1,9 +1,10 @@
 angular
   .module('app')
   .factory('featureService', [
+    '$http',
     '$resource',
-    function($resource) {
-      return $resource('/api/features/:id',
+    function($http, $resource) {
+      var Feature = $resource('/api/features/:id',
         { id: '@id' },
         {
           update: {
@@ -11,4 +12,10 @@ angular
           }
         }
       );
+      Feature.getPublished = function() {
+        return $http.get('/api/features/published').then(function(response) {
+          return response.data;
+        });
+      };
+      return Feature;
     }]);
