@@ -9,7 +9,6 @@ angular
 
       Feature.getPublished().then(function(response) {
         $scope.features = response;
-
         startSlider();
       });
 
