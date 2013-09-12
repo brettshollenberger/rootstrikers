@@ -1,13 +1,18 @@
 angular
   .module('app')
   .controller('authController', [
-    '$rootScope',
     '$scope',
     'userService',
     'Facebook',
     'actionKitService',
-    function($rootScope, $scope, userAPI, FB, actionKitService) {
-      var inkBlob, inkBlobThumb;
+    'flash',
+    function($scope, userAPI, FB, actionKitService, notification) {
+      var inkBlob, inkBlobThumb, saveSuccess = function() {
+        notification.pop({
+          body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
+          type: 'success'
+        });
+      };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
       $scope.editFormUser = userAPI.newUser();
@@ -52,12 +57,12 @@ angular
                       'state': $scope.formUser.state,
                       'zip': $scope.formUser.zip.toString()
                   };
-                  
+
                   // commented out until the SSL certificate is renewed
                   //actionKitService.createUser(user).then(function (userResponse) {
                       //$scope.formUser.actionkitId = userResponse;
                       $scope.formUser.actionkitId = 123;
-                      $scope.formUser.$save();
+                      $scope.formUser.$save(saveSuccess);
                       $scope.login();
                   //});
               
@@ -65,7 +70,7 @@ angular
               
                   // get the location of the current ActionKit user
                   $scope.formUser.actionkitId = response.id;
-                  $scope.formUser.$save();
+                  $scope.formUser.$save(saveSuccess);
                   $scope.login();
               }
               
