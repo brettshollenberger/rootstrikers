@@ -10,6 +10,7 @@
   background-color: @jumbotron-black;
   height: 360px;
   max-height: 360px;
+  min-height: 360px;
   margin-bottom: -25px;
 }
 
@@ -47,8 +48,28 @@
 }
 
 .carousel-caption a [class^="icon-"] {
-  line-height: 20px;
+  line-height: 25px;
   margin-left: 5px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 310px;
+  right: 20px;
+}
+
+.carousel-control {
+  background: none;
+  border: none;
+  line-height: 120px;
+}
+
+.carousel-control {
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1144px) {
