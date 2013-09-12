@@ -1,19 +1,19 @@
 angular
   .module('app')
-  .directive('removeImage', function($interpolate) {
+  .directive('imagePicker', function($rootScope) {
     return {
       restrict: 'A',
       replace: true,
       scope: {
-        removeImage: '='
+        imagePicker: '='
       },
-      templateUrl: 'app/templates/components/removeImageButton.html',
+      templateUrl: 'app/templates/components/imagePicker.html',
       link: function(scope, element, attrs) {
 
-        // The removeImage attribute of our directive is intended to set 
+        // The imagePicker attribute of our directive is intended to set 
         // the name of the model attribute that exists on the scope that
         // we're going to tap into. 
-        Model = scope.removeImage;
+        Model = scope.imagePicker;
 
         // If no defaultImg attr is set, we fall back on undefined
         // because in Javascript trying to access a non-existent 
@@ -30,20 +30,34 @@ angular
         // helper method in the DOM to display the Remove Image button 
         // instead of the Add Image button.
         scope.imageEqualsDefaultImage = function() {
-          console.log(Model.image == defaultImage);
           return Model.image == defaultImage;
         };
 
-        element.bind('click', function() {
-          // Evaluate the passed value of the removeImage attribute,
-          // and set its image and InkBlob properties to null or a default
-          // image value. In this way, we can create a reusable module that
-          // allows us to pass a value, like "feature" or "project", into the
-          // directive, and have it applied on the current scope. 
+        scope.addImage = function() {
+          filepicker.setKey('ACoTSGXT4Rj2XWKKTZAaJz');
+          filepicker.pick({
+            'mimetype': "image/*"
+          }, function(InkBlob) {
+
+            // Set the new image & blob to the Model object
+            Model.image = InkBlob.url;
+            Model.InkBlob = InkBlob;
+
+            // Since Angular sets no $watch on the Image Picker,
+            // we need to call the $digest cycle directly. We should
+            // always call $apply instead of $digest, since $apply runs
+            // the $digest cycle with error handling. We should also not
+            // tap into this cycle in a controller context, as $digest cycles
+            // will bump into one another and cause errors. 
+            scope.$apply();
+          });
+        };
+
+        scope.removeImage = function() {
           Model.image = defaultImage;
           Model.InkBlob = null;
           scope.$apply();
-        });
+        };
       }
     };
   });
