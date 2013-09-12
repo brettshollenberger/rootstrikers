@@ -1,19 +1,21 @@
 @twice-gutter: (@global-gutter * 2);
 
-#homepage-carousel {
-  top: -20px;
+.carousel-caption h3 {
+  font-family: @oswald;
+  font-weight: 300;
 }
 
 .carousel {
   width: 100%;
   background-color: @jumbotron-black;
-  max-height: 350px;
+  height: 360px;
+  max-height: 360px;
   margin-bottom: -25px;
 }
 
 .carousel img {
   margin: 0 auto;
-  max-height: 350px;
+  height: 360px;
   width: 100%;
   display: block;
 }
@@ -40,8 +42,12 @@
   letter-spacing: 2px;
 }
 
+.carousel-caption a {
+  font-size: 18px;
+}
+
 .carousel-caption a [class^="icon-"] {
-  line-height: 38px;
+  line-height: 26px;
   margin-left: 5px;
 }
 

@@ -1,8 +1,9 @@
-<div class="container">
-    <div class="row-fluid">
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <a href="#/admin/pages" class="btn btn-inverse float-right">View All Pages</a>
+    <h1>{{actionTitle}} Page</h1>
       <form ng-submit="save()">
         <fieldset>
-          <legend>{{actionTitle}} Rootstrikers Pages</legend>
           <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
             <p>{{flash.message}}</p>
           </div>

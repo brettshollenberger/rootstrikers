@@ -2,9 +2,9 @@
 * Customize the colors and fonts of the quick-view module with LESS *
 ********************************************************************/ 
 
-
 @primary-color: @blue;
-@secondary-color: @light-grey;
+@secondary-color: @border-grey;
+@hover-color: @dark-blue;
 @highlight-color: @white;
 @muted-color: @darkest-grey;
 
@@ -20,8 +20,7 @@
 
 /*******************************************************************/
 
-
-@quick-views-border: 2px solid @secondary-color;
+@quick-views-border: 1px solid @secondary-color;
 
 // Every third image requires a clearfix, and an overriding shift
 // back to the left-hand side
@@ -49,7 +48,7 @@
 // Pad the project quick view details
 .quick-view .content,
 .quick-view-footer .content {
-  padding: 10px 20px 60px 20px;
+  padding: 25px 20px 60px 20px;
 }
 
 .quick-view-footer .content {
@@ -61,6 +60,11 @@
   padding-bottom: 70px;
 }
 
+.quick-view .content h2,
+.quick-view .content h3 {
+  line-height: 12px;
+}
+
 .quick-view-cta {
   background-color: @primary-color;
   padding: 20px 40px;
@@ -68,11 +72,26 @@
   margin-bottom: 20px;
 }
 
+.quick-view-cta:hover {
+  background-color: @hover-color;
+}
+
+// .quick-view-cta:hover .icon-arrow-right {
+//   color: @primary-color;
+// }
+
+.quick-view-cta .icon-arrow-right {
+  margin-left: 5px;
+  line-height: 25px;
+  color: @dark-blue;
+}
+
 .quick-view-cta .content,
 .quick-view-cta .content a {
   color: @highlight-color;
   text-transform: uppercase;
   .heading-typeface;
+  font-size: 18px;
 }
 
 .completed .quick-view img {
@@ -83,8 +102,16 @@
   .grayscale;
 }
 
+.completed .quick-view-cta .icon-arrow-right {
+  color: @white !important;
+}
+
 .completed .quick-view-cta {
   background-color: @muted-color;
+}
+
+.completed .quick-view-cta:hover {
+  background-color: black;
 }
 
 .completed h2,

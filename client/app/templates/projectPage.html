@@ -14,7 +14,7 @@
               Project:
             </h2>
 
-            <h3>
+            <h3 class="project-title">
               {{project.name}}
             </h3>
           </div>
@@ -53,7 +53,8 @@
   </div><!-- End row-fluid -->
 
   <!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-  <div class="row-fluid section banner banner-blue" ng-hide="!project.actionkit">
+  <div class="row-fluid banner banner-blue" >
+    <!-- ng-hide="!project.actionkit" -->
     <div class="span10 offset1">
       <div class="row-fluid">
         <div class="span8 content">
@@ -65,14 +66,14 @@
         </div>
         <div class="span2 offset1 rally-attendance">
           <div class="banner-action">
-            <input type="checkbox" ng-click="signPledge()"><span></span>
+            <input type="checkbox" ng-click="signPledge()"><span class="blue"></span>
           </div>
         </div>
       </div>
     </div>
   </div> <!-- End row-fluid --> 
 
-  <div class="row-fluid section banner banner-grey">
+  <div class="row-fluid banner banner-grey">
     <div class="span10 offset1">
       <div class="row-fluid">
         <div class="span6">

@@ -7,7 +7,7 @@
 // Media queries shrink the content and at mobile/tablet levels we lose
 // the Donate button in favor of more space for the more important content. 
 
-@menu-height: 100px;
+@menu-height: 120px;
 
 // Override Bootstrap defaults
 .navbar-inner, .navbar-inverse {
@@ -35,8 +35,10 @@
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: .12rem;
-  font-size: 1.5rem;
-  line-height: 80px;
+  font-size: 2rem;
+  line-height: 100px;
+  padding-left: 0px;
+  margin-left: 20px;
 }
 
 // Override Bootstrap defaults
@@ -44,13 +46,8 @@
   text-shadow: none;
 }
 
-// Offset the logo and brand
-.navbar-inner .container-fluid p {
-  margin: 0 0 0 20px;
-}
-
 .auth-links {
-  margin-top: 22px;
+  margin-top: 35px;
   float: right;
 }
 
@@ -68,18 +65,27 @@
   letter-spacing: 2px !important;
   text-align: right;
   display: inline-block;
-  margin: 27px 10px 0 0;
+  margin: 42px 10px 0 0;
+}
+
+.login {
+  text-align: right;
+  color: @white;
+  display: block;
+  margin-top: 50px;
+  margin-right: 15px;
+}
+
+.login a {
+  color: @white;
+  text-decoration: underline;
 }
 
 // Media queries focus primarily on reducing the size of content and
 // margins proportionately such that the page "feels" the same at any size.
-@media only screen and (max-width: 1023px) {
-  .navbar-inverse .brand {
-    letter-spacing: .1rem;
-    font-size: 1.2rem;
-  }
+@media only screen and (max-width: 1064px) {
 
-  .navbar-inner .container-fluid p {
+  .navbar-inner .container-fluid a {
     margin: 0 0 0 15px;
   }
 
@@ -97,11 +103,13 @@
 }
 
 @media only screen and (max-width: 896px) {
+
   .navbar-inverse .brand {
-    font-size: 1rem;
+    letter-spacing: .1rem;
+    font-size: 1.6rem;
   }
 
-  .navbar-inner .container-fluid p {
+  .navbar-inner .container-fluid a {
     margin: 0 0 0 5px;
   }
 
@@ -132,11 +140,8 @@
 }
 
 @media only screen and (max-width: 625px) {
-  .navbar-inverse .brand {
-    font-size: .8rem;
-  }
 
-  .navbar-inner .container-fluid p {
+  .navbar-inner .container-fluid a {
     margin: 0 0 0 2px;
   }
 
@@ -155,6 +160,10 @@
 @media only screen and (max-width: 592px) {
   #donate { 
     display: none;
+  }
+
+  .login {
+    margin-right: 0px;
   }
 }
 
