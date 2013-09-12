@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap'])
+  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap', 'ngSanitize'])
   .config(['$routeProvider', '$httpProvider',
     function($router, $httpProvider) {
     
@@ -82,14 +82,6 @@ angular
       .when('/admin/features/:id/edit', {
         controller: 'featureEditController',
         templateUrl: 'app/templates/admin/features/edit.html'
-      })
-      .when('/terms', {
-        controller: 'termsController',
-        templateUrl: 'app/templates/terms.html'
-      })
-      .when('/privacy', {
-        controller: 'privacyController',
-        templateUrl: 'app/templates/privacy.html'
       });
     }
   ])

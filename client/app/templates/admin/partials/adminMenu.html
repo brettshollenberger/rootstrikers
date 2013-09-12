@@ -8,8 +8,9 @@
         </div>
         <div class="span7 float-right-nav">
           <span class="auth-links" ng-controller="authController">
-            <a href="#/admin" class="btn">Projects</a>
+            <a href="#/admin/pages" class="btn">Pages</a>
             <a href="#/admin/features" class="btn">Features</a>
+            <a href="#/admin" class="btn">Projects</a>
             <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
             <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
           </span>
