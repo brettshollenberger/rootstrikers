@@ -100,6 +100,11 @@ angular
 
         // get loggedUser cookie and set it to $rootScope.loggedUser
         $rootScope.loggedUser = $cookieStore.get('loggedUser');
+        
+        // update the loggedUser cookie everytime the current logged user is updated
+        $rootScope.$watch('loggedUser', function(newValue, oldValue) {
+            $cookieStore.put('loggedUser', newValue);
+        });
       
         // Handle updating page title
         $rootScope.$on('$routeChangeSuccess', function($event, $route, $previousRoute) {
