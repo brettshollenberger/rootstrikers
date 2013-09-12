@@ -42,6 +42,22 @@ _.templateSettings = {
 };
 
 module.exports = function(app, db, mail) {
+  //Boostrap an admin user
+  db.user.count({
+    'isAdmin': true
+  }, function(err, count) {
+    if (err) throw err;
+    if (count === 0) {
+      db.user.create({
+        first_name: 'Rootstrikers',
+        last_name: 'Administrator',
+        email: 'admin@rootstrikers.com',
+        password: '123123',
+        isAdmin: true
+      });
+    }
+  });
+
   //Post to add new users
   app.post('/api/user', function(req, res) {
     var data = req.body,

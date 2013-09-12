@@ -1,4 +1,4 @@
-module.exports = function(app, db) {
+module.exports = function(app, db, auth) {
   db.email.count({}, function(err, count) {
     if (err) throw err;
     if (count === 0) {
@@ -14,7 +14,7 @@ module.exports = function(app, db) {
   });
 
   //Get of all email
-  app.get('/api/email', function(req, res) {
+  app.get('/api/email', auth.middleware(true), function(req, res) {
     var cb = function(err, list) {
       if (!err) {
         res.json(list); //If went ok return the json of the query result
@@ -31,7 +31,7 @@ module.exports = function(app, db) {
   });
 
   //Get of a single email
-  app.get('/api/email/:emailID', function(req, res) {
+  app.get('/api/email/:emailID', auth.middleware(true), function(req, res) {
     db.email.find({
         id: req.params.emailID
       },
@@ -51,7 +51,7 @@ module.exports = function(app, db) {
       });
   });
 
-  app.post('/api/email/:emailID', function(req, res) {
+  app.post('/api/email/:emailID', auth.middleware(true), function(req, res) {
     db.email.update(req.params.emailID, req.body,
       function(err, email) {
         if (!err) {

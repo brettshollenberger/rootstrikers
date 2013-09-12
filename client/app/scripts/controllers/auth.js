@@ -2,11 +2,12 @@ angular
   .module('app')
   .controller('authController', [
     '$scope',
+    '$location',
     'userService',
     'Facebook',
     'actionKitService',
     'flash',
-    function($scope, userAPI, FB, actionKitService, notification) {
+    function($scope, $location, userAPI, FB, actionKitService, notification) {
       var inkBlob, inkBlobThumb, saveSuccess = function() {
         notification.pop({
           body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
@@ -15,7 +16,8 @@ angular
       };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
-      $scope.editFormUser = userAPI.newUser();
+      $scope.loginErrors = {};
+      $scope.loginUser = {};
 
       $scope.register = function() {
       
@@ -113,9 +115,8 @@ angular
 
       $scope.login = function() {
         _clearErrors();
-        
-        userAPI.login($scope.formUser).error(function(data, status) {
-          _addError('extra', 'Login Invalid');
+        userAPI.login($scope.loginUser).error(function(data, status) {
+          _addError('extra', 'Login Invalid', 'loginErrors');
         }).success(function() {
           _close();
         });
@@ -125,6 +126,7 @@ angular
         _clearErrors();
         _close();
         userAPI.logout();
+        $location.path('/');
       };
 
       $scope.cancel = function() {
@@ -186,8 +188,8 @@ angular
       }
 
       function _clearErrors() {
-        $scope.formErrors = null;
         $scope.formErrors = {};
+        $scope.loginErrors = {};
       }
 
       function _clearUser() {
@@ -195,8 +197,9 @@ angular
         $scope.formUser = {};
       }
 
-      function _addError(field, message) {
-        $scope.formErrors[field] = message;
+      function _addError(field, message, type) {
+        var form = type || 'formErrors';
+        $scope[form][field] = message;
       }
 
       function _errored(response) {
