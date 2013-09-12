@@ -3,7 +3,8 @@ angular
   .controller('projectListController', [
     '$scope',
     'projectService',
-    function($scope, projectAPI) {
+    'flash',
+    function($scope, projectAPI, notification) {
       $scope.projects = projectAPI.getAll();
 
       $scope.remove = function(id) {
@@ -11,6 +12,10 @@ angular
         if (sure) {
           projectAPI.remove(id, function(projects) {
             $scope.projects = projects;
+            notification.pop({
+              body: 'Your Project has been successfully remove',
+              type: 'success'
+            });
           });
         }
       };
@@ -18,7 +23,12 @@ angular
       $scope.publish = function(id, status) {
         projectAPI.get(id, function(project) {
           project.publish = status;
-          project.$save();
+          project.$save(function() {
+            notification.pop({
+              body: 'Your Project has been successfully ' + (status) ? 'published' : 'unpublished',
+              type: 'success'
+            });
+          });
         });
       };
     }

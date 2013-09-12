@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" ng-hide="onAdmin">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
       <div class="row-fluid">
@@ -14,6 +14,20 @@
             <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-large"></gravatar-image>
             <div class="btn" id="donate">Donate</div>
             <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login"><a>or Login</a></div>
+          </span>
+          <div class="tagline">
+            Only the people can force lasting
+            <br>
+            change on this broken system.
+          </div>
+        </div>
+        <div class="span7 float-right-nav"  ng-show="onAdmin">
+          <span class="auth-links" ng-controller="authController">
+            <div class="btn" ng-click="logout()">Logout</div>
+            <div class="btn">{{loggedUser.first_name}}</div>
+            <a class="btn" href="#/admin/emails">Emails</a>
+            <a class="btn" href="#/admin/pages">Pages</a>
+            <a class="btn" href="#/admin/projects">Projects</a>
           </span>
           <div class="tagline">
             Only the people can force lasting

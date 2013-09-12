@@ -41,7 +41,8 @@ angular
           //If the page have been already fetch return that model
           i = getIndex(id);
           if (i >= 0 && cb) {
-            cb(pages[i]);
+            page = pages[i];
+            cb(page);
           }
 
           //If not ask the server

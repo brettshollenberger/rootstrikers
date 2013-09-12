@@ -1,10 +1,67 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+  verifyUser = function(req, db, mail, user) {
+    //After user is create send a verification email using email_verfy template
+    db.email.find({
+      id: 'email_verify'
+    }, function(err, doc) {
+      if (err) throw err;
 
-module.exports = function(app, db) {
+      //Create a verification link 
+      var link = {
+        verification_link: req.headers.host + '/verify/' + user.id
+      };
+
+      var template = doc[0];
+      mail.send({
+        to: user.email,
+        from: template.from,
+        subject: template.subject,
+        html: _.template(template.body || "", _.extend(user, link)) //Apply user to the template
+      }, function(err, json) {
+        if (err) throw err;
+      });
+    });
+  },
+  cleanUser = function(user) {
+    var fields = ['__v', 'password', '_id'],
+      clean = function(dirty) {
+        return _.omit((dirty.toJSON) ? dirty.toJSON() : dirty, fields);
+      };
+    //Remove fields dont need it on the client
+    if (_.isArray(user)) {
+      return _.map(user, function(item) {
+        return clean(item);
+      });
+    }
+    return clean(user);
+  };
+
+//Handlebars like templates
+_.templateSettings = {
+  interpolate: /\{\{(.+?)\}\}/g
+};
+
+module.exports = function(app, db, mail) {
+  //Boostrap an admin user
+  db.user.count({
+    'isAdmin': true
+  }, function(err, count) {
+    if (err) throw err;
+    if (count === 0) {
+      db.user.create({
+        first_name: 'Rootstrikers',
+        last_name: 'Administrator',
+        email: 'admin@rootstrikers.com',
+        password: '123123',
+        isAdmin: true
+      });
+    }
+  });
+
   //Post to add new users
   app.post('/api/user', function(req, res) {
     var data = req.body,
-      createUser = function(db, data, res) {
+      createUser = function(db, data, res, cb) {
         //Ask the db to create a new user
         //passing the data of the request  and a cb
         db.user.create({
@@ -20,15 +77,18 @@ module.exports = function(app, db) {
           thumb: data.thumb,
           isFacebook: data.isFacebook,
           isVerify: data.isVerify,
-          fbID: data.fbID,
-          actionkitId: data.actionkitId
+          fbID: data.fbID
+          //actionkitId: data.actionkitId
         }, function(err, model) {
           if (!err) {
             req.logIn(model, function() {
-              res.json(model); //If went ok return the json of the model
+              res.json(cleanUser(model)); //If went ok return the json of the model
             });
           } else {
             res.json(err); // If could not be save send the json of the error (A better error strategy can be defined)
+          }
+          if (cb) {
+            cb(err, model);
           }
         });
       };
@@ -46,7 +106,7 @@ module.exports = function(app, db) {
 
               });
               db.user.update(list[0].id.toString(), data, function(err, user) {
-                res.json(user);
+                res.json(cleanUser(user));
               });
             } else {
               //if not we create it
@@ -57,7 +117,11 @@ module.exports = function(app, db) {
           }
         });
     } else {
-      createUser(db, data, res);
+      //Create a user with full sign up
+      createUser(db, data, res, function(err, user) {
+        if (err) throw err;
+        verifyUser(req, db, mail, user);
+      });
     }
   });
 
@@ -65,7 +129,7 @@ module.exports = function(app, db) {
   app.get('/api/user', function(req, res) {
     var cb = function(err, list) {
       if (!err) {
-        res.json(list); //If went ok return the json of the query result
+        res.json(cleanUser(list)); //If went ok return the json of the query result
       } else {
         res.json(err);
       }
@@ -87,7 +151,7 @@ module.exports = function(app, db) {
         if (!err) {
           //If went ok return the json of the query result
           if (list.length) {
-            res.json(list[0]);
+            res.json(cleanUser(list[0]));
           } else {
             res.json({
               message: 'Object Not Found'
@@ -157,6 +221,7 @@ module.exports = function(app, db) {
               message: 'Object Not Found'
             });
           }
+          res.json(cleanUser(user));
         } else {
           res.json(err);
         }
@@ -167,9 +232,39 @@ module.exports = function(app, db) {
     db.user.remove(req.params.userID,
       function(err, user) {
         if (!err) {
-          res.json(user);
+          res.json(cleanUser(user));
         } else {
           res.send(err);
+        }
+      });
+  });
+
+  //request a new verification email
+  app.get('/api/user/verify/:userID', function(req, res) {
+    db.user.find({
+        id: req.params.userID
+      },
+      function(err, list) {
+        if (!err) {
+          if (list.length) {
+            verifyUser(req, db, mail, list[0]);
+          }
+        } else {
+          res.json(err);
+        }
+      });
+  });
+
+  //Process verification link and update user status to verify
+  app.get('/verify/:userID', function(req, res) {
+    db.user.update(req.params.userID, {
+        isVerify: true
+      },
+      function(err, user) {
+        if (!err) {
+          res.redirect('/');
+        } else {
+          res.redirect('/');
         }
       });
   });
