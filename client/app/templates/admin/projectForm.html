@@ -3,9 +3,7 @@
       <form name="projectForm" ng-submit="save()" novalidate>
         <fieldset>
           <legend>{{actionTitle}} Rootstrikers Projects</legend>
-          <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
-            <p>{{flash.message}}</p>
-          </div>
+          <notification></notification>
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter a Project Name" ng-model="project.name" required>

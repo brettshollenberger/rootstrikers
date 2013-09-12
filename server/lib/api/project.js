@@ -1,4 +1,4 @@
-module.exports = function(app, db) {
+module.exports = function(app, db, auth) {
   ////////////////////////////////////////////////////
   // Get active projects
   ////////////////////////////////////////////////////
@@ -35,8 +35,8 @@ module.exports = function(app, db) {
     });
   });
   
-  //Post to add new projects
-  app.post('/api/project', function(req, res) {
+  //Post to add new projects, auth only for admin
+  app.post('/api/project', auth.middleware(true), function(req, res) {
     var data = req.body;
 
     //Ask the db to create a new Project
@@ -98,8 +98,8 @@ module.exports = function(app, db) {
       });
   });
 
-  //Update a project ngResource use post not put
-  app.post('/api/project/:projectID', function(req, res) {
+  //Update a project, ngResource use post not put
+  app.post('/api/project/:projectID', auth.middleware(true), function(req, res) {
     if(req.body.InkBlob && typeof req.body.InkBlob === "object"){
       //Stringify InkBlob so we dont care if the db support JSON
       req.body.InkBlob = JSON.stringify(req.body.InkBlob);
@@ -115,7 +115,7 @@ module.exports = function(app, db) {
   });
 
   //Delete a project
-  app.del('/api/project/:projectID', function(req, res) {
+  app.del('/api/project/:projectID', auth.middleware(true), function(req, res) {
     db.project.remove(req.params.projectID,
       function(err, project) {
         if (!err) {

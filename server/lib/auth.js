@@ -1,13 +1,6 @@
 module.exports = function(app, db) {
   var passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    auth = function(req, res, next) {
-      if (!req.isAuthinticated()) {
-        res.send(401);
-      } else {
-        next();
-      }
-    };
+    LocalStrategy = require('passport-local').Strategy;
 
   app.use(passport.initialize());
   app.use(passport.session());
@@ -75,4 +68,16 @@ module.exports = function(app, db) {
     req.logOut();
     res.send(200);
   });
+
+  return {
+    middleware: function(admin) {
+      return function(req, res, next) {
+        console.log(req.user);
+        if (req.isAuthenticated() && req.user && req.user.isAdmin === admin)
+          next();
+        else
+          res.send(401, 'Unauthorized');
+      };
+    }
+  };
 };

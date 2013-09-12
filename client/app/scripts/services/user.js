@@ -97,7 +97,7 @@ angular
           user.isFacebook = true;
           user.isVerify = fbUser.verified;
           user.$save(function(user) {
-            updateUser(user);
+            createLoggedUser(user);
           });
         },
         login: function(user) {
@@ -110,12 +110,21 @@ angular
         },
         logout: function() {
           $http.get('/auth/logout').success(function() {
-          
+
             // remove the currently logged in user from cookie storage
             $cookieStore.remove('loggedUser');
-          
             destroyLoggedUser();
           });
+        },
+        hasAccess: function(type) {
+          switch (type) {
+            case 'isAdmin':
+              return $rootScope.loggedUser && $rootScope.loggedUser.isAdmin;
+            case 'isLogged':
+              return !!$rootScope.loggedUser;
+            default:
+            return false;
+          }
         }
       };
     }

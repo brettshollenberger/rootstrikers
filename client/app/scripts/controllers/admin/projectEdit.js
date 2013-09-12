@@ -2,25 +2,12 @@ angular
   .module('app')
   .controller('projectEditController', [
     '$scope',
-    '$rootScope',
+    'flash',
     '$routeParams',
     'projectService',
     '$location',
-    function($scope, $rootScope, $routeParams, projectAPI, $location) {
+    function($scope, notification, $routeParams, projectAPI, $location) {
       var model;
-
-      //Temporary notifiaction system
-      if ($rootScope.flash) {
-        //If a notification has been set on the root make it local and clear it
-        $scope.flash = $rootScope.flash;
-        $rootScope.flash = undefined;
-      } else {
-        //If there is no root notification create a local one that dont display
-        $scope.flash = {
-          show: false
-        };
-      }
-
 
       //Check for the ID to know if its an edit or a new
       if ($routeParams.projectID) {
@@ -50,25 +37,23 @@ angular
       };
 
       var saveModel = function(silent) {
-        $scope.flash = {
-          show: false
-        };
         model.$save(function(project, putResponseHeaders) {
           if (silent) {
             return;
           }
 
-          $scope.flash = {
-            message: 'Your Project has been successfully saved',
-            type: 'success',
-            show: true
-          };
-
           //If there is no projectID
           if ( !! !$routeParams.projectID) {
-            $rootScope.flash = $scope.flash;
+            notification.set({
+              body: 'Your Project has been successfully saved',
+              type: 'success'
+            });
             $location.path('/admin/project/edit/' + project.id).replace();
           }
+          notification.pop({
+            body: 'Your Project has been successfully saved',
+            type: 'success'
+          });
         });
       };
 
@@ -113,11 +98,10 @@ angular
             //Save without notification
             saveModel(true);
 
-            $scope.flash = {
-              message: 'The image has been removed',
-              type: 'success',
-              show: true
-            };
+            notification.pop({
+              body: 'The image has been removed',
+              type: 'success'
+            });
           }
         }, function(err) {
           //171 -> image dont exist
@@ -127,11 +111,10 @@ angular
             model.InkBlob = '';
             saveModel(true);
           }
-          $scope.flash = {
-            message: 'There have been a problem deleting your image',
-            type: 'error',
-            show: true
-          };
+          notification.pop({
+            body: 'There have been a problem deleting your image',
+            type: 'error'
+          });
         });
       };
 
@@ -139,11 +122,10 @@ angular
         var sure = confirm('U sure?');
         if (sure) {
           model.$remove(function() {
-            $scope.flash = {
-              message: 'Your Project has been successfully removed',
-              type: 'success',
-              show: true
-            };
+            notification.set({
+              body: 'Your Project has been successfully removed',
+              type: 'success'
+            });
             $location.path('/admin').replace();
           });
         }
@@ -152,11 +134,10 @@ angular
       $scope.publish = function(status) {
         model.publish = status;
         model.$save(function(project, putResponseHeaders) {
-          $scope.flash = {
-            message: 'Your Project has been successfully ' + ((status) ? 'published' : 'unpublished'),
-            type: 'success',
-            show: true
-          };
+          notification.pop({
+            body: 'Your Project has been successfully ' + ((status) ? 'published' : 'unpublished'),
+            type: 'success'
+          });
         });
       };
     }

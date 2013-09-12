@@ -1,16 +1,23 @@
 angular
   .module('app')
   .controller('authController', [
-    '$rootScope',
     '$scope',
+    '$location',
     'userService',
     'Facebook',
     'actionKitService',
-    function($rootScope, $scope, userAPI, FB, actionKitService) {
-      var inkBlob, inkBlobThumb;
+    'flash',
+    function($scope, $location, userAPI, FB, actionKitService, notification) {
+      var inkBlob, inkBlobThumb, saveSuccess = function() {
+        notification.pop({
+          body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
+          type: 'success'
+        });
+      };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
-      $scope.editFormUser = userAPI.newUser();
+      $scope.loginErrors = {};
+      $scope.loginUser = {};
 
       $scope.register = function() {
       
@@ -52,12 +59,12 @@ angular
                       'state': $scope.formUser.state,
                       'zip': $scope.formUser.zip.toString()
                   };
-                  
+
                   // commented out until the SSL certificate is renewed
                   //actionKitService.createUser(user).then(function (userResponse) {
                       //$scope.formUser.actionkitId = userResponse;
                       $scope.formUser.actionkitId = 123;
-                      $scope.formUser.$save();
+                      $scope.formUser.$save(saveSuccess);
                       $scope.login();
                   //});
               
@@ -65,7 +72,7 @@ angular
               
                   // get the location of the current ActionKit user
                   $scope.formUser.actionkitId = response.id;
-                  $scope.formUser.$save();
+                  $scope.formUser.$save(saveSuccess);
                   $scope.login();
               }
               
@@ -108,9 +115,8 @@ angular
 
       $scope.login = function() {
         _clearErrors();
-        
-        userAPI.login($scope.formUser).error(function(data, status) {
-          _addError('extra', 'Login Invalid');
+        userAPI.login($scope.loginUser).error(function(data, status) {
+          _addError('extra', 'Login Invalid', 'loginErrors');
         }).success(function() {
           _close();
         });
@@ -120,6 +126,7 @@ angular
         _clearErrors();
         _close();
         userAPI.logout();
+        $location.path('/');
       };
 
       $scope.cancel = function() {
@@ -181,8 +188,8 @@ angular
       }
 
       function _clearErrors() {
-        $scope.formErrors = null;
         $scope.formErrors = {};
+        $scope.loginErrors = {};
       }
 
       function _clearUser() {
@@ -190,8 +197,9 @@ angular
         $scope.formUser = {};
       }
 
-      function _addError(field, message) {
-        $scope.formErrors[field] = message;
+      function _addError(field, message, type) {
+        var form = type || 'formErrors';
+        $scope[form][field] = message;
       }
 
       function _errored(response) {

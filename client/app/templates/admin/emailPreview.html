@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row-fluid">
+      <p>From: {{email.from}}</p>
+      <p>To: {{test.email}}</p>
+      <hr/>
+      <p>{{email.subject}}</p>
+      <hr/>
+      <div ng-bind-html-unsafe="body"></div>
+      <div>
+          <a href="#/admin/emails" class="btn btn-info">Back</a>
+          <a href="#/admin/email/{{email.id}}" class="btn btn-info">Edit</a>
+      </div>
+    </div>
+</div>
