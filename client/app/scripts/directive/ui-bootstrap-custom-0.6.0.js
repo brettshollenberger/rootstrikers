@@ -206,7 +206,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
   }
   $scope.play = function() {
     if (!isPlaying) {
-      isPlaying = true;
+      isPlaying = false;
       restartTimer();
     }
   };
