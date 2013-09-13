@@ -11,11 +11,10 @@
             <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
             <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
             <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-large"></gravatar-image>
-            <a href="#/admin" class="btn">Projects</a>
-            <a href="#/admin/features" class="btn">Features</a>
-            <a href="#/admin/pages" class="btn">Pages</a>
+            <a href="admin/projects" class="btn">Projects</a>
+            <a href="admin/features" class="btn">Features</a>
+            <a href="admin/pages" class="btn">Pages</a>
           </span>
-
         </div>
       </div>
     </div>
