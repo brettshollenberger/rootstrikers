@@ -81,3 +81,17 @@ input[type="checkbox"] {
   opacity: 0;
 }
   
+.banner-grey input[type="checkbox"] + span:before {
+  content: "\f00c"; /* check-empty */
+  color: @white;
+}
+
+.banner-grey input[type="checkbox"]:checked + span:before {
+  content: "\f00c"; /* check */
+  color: @checkbox-blue;
+}
+
+.banner-grey.completed h2,
+.banner-grey.completed h3 {
+  color: @dark-grey
+}
