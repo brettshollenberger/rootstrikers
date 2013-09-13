@@ -37,9 +37,11 @@ input[type="radio"]:checked + span:before {
 }
 
 input[type="checkbox"] + span:before {
-  content: "\f096"; /* check-empty */
+  content: "\f00c"; /* check-empty */
+  color: @checkbox-blue;
 }
 
 input[type="checkbox"]:checked + span:before {
-  content: "\f046"; /* check */
+  content: "\f00c"; /* check */
+  color: @white;
 }

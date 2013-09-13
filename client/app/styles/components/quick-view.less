@@ -3,7 +3,8 @@
 ********************************************************************/ 
 
 @primary-color: @blue;
-@secondary-color: @border-grey;
+@secondary-color: @lightest-grey;
+@border-color: @border-grey;
 @hover-color: @dark-blue;
 @highlight-color: @white;
 @muted-color: @darkest-grey;
@@ -20,7 +21,7 @@
 
 /*******************************************************************/
 
-@quick-views-border: 1px solid @secondary-color;
+@quick-views-border: 1px solid @border-grey;
 
 // Every third image requires a clearfix, and an overriding shift
 // back to the left-hand side
@@ -112,6 +113,10 @@
 
 .completed .quick-view-cta:hover {
   background-color: black;
+}
+
+.completed .quick-view-footer {
+  background-color: @super-grey;
 }
 
 .completed h2,
