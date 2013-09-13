@@ -2,17 +2,18 @@
   <div class="navbar-inner">
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3 offset1 float-left-nav">
+        <div class="span5 offset1 float-left-nav">
           <img src="app/images/rsicon.png">
-          <a class="brand" href="./index.html"><p>Rootstrikers</p></a>
+          <a class="brand" href="./index.html">Rootstrikers</a>
         </div>
-        <div class="span7 float-right-nav"  ng-hide="onAdmin">
+        <div class="span5 float-right-nav">
           <span class="auth-links" ng-controller="authController">
-            <a class="btn" href="#/admin" ng-show="loggedUser && loggedUser.isAdmin">Admin</a>
-            <div class="btn" id="donate">Donate</div>
             <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
             <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
             <div class="btn" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
+            <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-large"></gravatar-image>
+            <div class="btn" id="donate">Donate</div>
+            <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login"><a>or Login</a></div>
           </span>
           <div class="tagline">
             Only the people can force lasting

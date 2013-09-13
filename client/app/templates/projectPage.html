@@ -14,7 +14,7 @@
               Project:
             </h2>
 
-            <h3>
+            <h3 class="project-title">
               {{project.name}}
             </h3>
           </div>
@@ -53,26 +53,21 @@
   </div><!-- End row-fluid -->
 
   <!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-  <div class="row-fluid section banner banner-blue" ng-hide="!project.actionkit">
+  <div class="row-fluid banner banner-blue">
     <div class="span10 offset1">
       <div class="row-fluid">
-        <div class="span8 content">
-          <div class="banner-image">
-            <img src="app/images/fistsmall.png">
+        <div class="span12">
+          <div class="banner-action">
+            <input type="checkbox"><span></span>
           </div>
           <h2>Attend Rally</h2>
           <h3>@ City Hall, Philadelphia, PA</h3>
         </div>
-        <div class="span2 offset1 rally-attendance">
-          <div class="banner-action">
-            <input type="checkbox" ng-click="signPledge()"><span></span>
-          </div>
-        </div>
       </div>
     </div>
-  </div> <!-- End row-fluid --> 
+  </div> <!-- End row-fluid -->
 
-  <div class="row-fluid section banner banner-grey">
+  <div class="row-fluid banner banner-grey">
     <div class="span10 offset1">
       <div class="row-fluid">
         <div class="span6">
@@ -83,7 +78,7 @@
           <h2>Share on Facebook</h2>
           <h3>and reach 738 people</h3>
         </div>
-        <div class="span5 twitter">
+        <div class="span6 twitter">
           <div class="banner-action">
             <input type="checkbox"><span></span>
           </div>
@@ -95,7 +90,7 @@
     </div>
   </div> <!-- End row-fluid -->
 
-  <div class="row-fluid section">
+  <div class="row-fluid section section-last">
     <div class="span10 offset1">
       <h2>Rootstrikers Taking Action:</h2>
       <div class="pill">

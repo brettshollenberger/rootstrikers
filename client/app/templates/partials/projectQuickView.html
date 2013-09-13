@@ -8,11 +8,11 @@
     <h2>Project:</h2>
     
     <h3 class="dark-grey">{{item.name}}</h3>
-
+    <br>
     <h2>Time Remaining:</h2>
 
-    <h4>{{item.end_date | timeRemaining}}</h4>
-
+    <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3>
+    <br>
     <h2>Goal:</h2>
     <p ng-bind-html-unsafe="item.goal">{{item.goal}}</p>
   </div>
@@ -33,7 +33,7 @@
 <div class="quick-view-cta">
   <div class="content">
     <a href="#/project/{{item.name}}">
-      Take Action
+      Take Action<i class="icon-arrow-right"></i>
     </a>
   </div>
 </div>

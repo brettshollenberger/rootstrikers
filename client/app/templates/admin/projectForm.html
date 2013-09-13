@@ -1,8 +1,13 @@
-<div class="container">
-    <div class="row-fluid project-form">
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <a href="#/admin/projects" class="btn btn-inverse float-right">View All Projects</a>
+    <a href="#/admin/project/new" class="btn btn-inverse float-right">New Project</a>
+    <h1>{{actionTitle}} Project</h1>
       <form name="projectForm" ng-submit="save()" novalidate>
         <fieldset>
-          <legend>{{actionTitle}} Rootstrikers Projects</legend>
+          <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
+            <p>{{flash.message}}</p>
+          </div>
           <notification></notification>
           <div class="form-group">
             <label for="name">Name</label>

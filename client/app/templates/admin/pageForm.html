@@ -1,9 +1,14 @@
-<div class="container">
-    <div class="row-fluid">
+<div class="row-fluid section">
+  <div class="span10 offset1">
+    <a href="#/admin/pages" class="btn btn-inverse float-right">View All Pages</a>
+    <a href="#/admin/page/new" class="btn btn-inverse float-right">New Page</a>
+    <notification></notification>
+    <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
+      <p>{{flash.message}}</p>
+    </div>
+    <h1>{{actionTitle}} Page</h1>
       <form ng-submit="save()">
         <fieldset>
-          <legend>{{actionTitle}} Rootstrikers Pages</legend>
-          <notification></notification>
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Enter a page Name" ng-model="page.name" required>

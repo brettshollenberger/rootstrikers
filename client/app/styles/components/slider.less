@@ -1,19 +1,22 @@
 @twice-gutter: (@global-gutter * 2);
 
-#homepage-carousel {
-  top: -20px;
+.carousel-caption h3 {
+  font-family: @oswald;
+  font-weight: 300;
 }
 
 .carousel {
   width: 100%;
   background-color: @jumbotron-black;
-  max-height: 350px;
+  height: 360px;
+  max-height: 360px;
+  min-height: 360px;
   margin-bottom: -25px;
 }
 
 .carousel img {
   margin: 0 auto;
-  max-height: 350px;
+  height: 360px;
   width: 100%;
   display: block;
 }
@@ -32,7 +35,7 @@
 
 .carousel-caption h3 {
   font-size: 80px;
-  line-height: 70px;
+  line-height: 90px;
 }
 
 .carousel-caption h2 {
@@ -40,9 +43,33 @@
   letter-spacing: 2px;
 }
 
+.carousel-caption a {
+  font-size: 18px;
+}
+
 .carousel-caption a [class^="icon-"] {
-  line-height: 38px;
+  line-height: 25px;
   margin-left: 5px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  top: 310px;
+  right: 20px;
+}
+
+.carousel-control {
+  background: none;
+  border: none;
+  line-height: 120px;
+}
+
+.carousel-control {
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1144px) {
