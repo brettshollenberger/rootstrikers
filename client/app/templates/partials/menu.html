@@ -13,7 +13,7 @@
             <div class="btn" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
             <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-large"></gravatar-image>
             <div class="btn" id="donate">Donate</div>
-            <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login"><em>or</em> <a>Login</a></div>
+            <div modal ng-click="loginUser = null;" template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login"><em>or</em> <a>Login</a></div>
           </span>
           <div class="tagline">
             Only the people can force lasting
