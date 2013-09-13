@@ -23,7 +23,7 @@
 }
 
 // Logo
-.navbar-inverse img {
+.navbar-inverse .float-left-nav img {
   margin-top: (@menu-height / 5);
   float: left;
 }
@@ -52,8 +52,14 @@
 }
 
 .auth-links .btn,
+.auth-links .gravatar-icon,
 .tagline {
   float: right;
+}
+
+.auth-links .gravatar-icon {
+  margin-left: 5px;
+  margin-top: -5px;
 }
 
 .tagline {
@@ -67,18 +73,29 @@
   margin: 42px 10px 0 0;
 }
 
-.login {
+.login, .logout {
   text-align: right;
-  color: @white;
   display: block;
   margin-top: 50px;
-  margin-right: 15px;
 }
 
-.login a {
+.login a,
+.logout a {
   color: @white;
   text-decoration: underline;
 }
+
+.login {
+  margin-right: 15px;
+}
+
+.logout {
+  position: relative;
+  top: 5px;
+  left: 55px;
+}
+
+
 
 @media only screen and (max-width: 1160px) {
   .tagline {
