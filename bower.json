@@ -5,6 +5,7 @@
     "angular": "~1.0.7",
     "angular-cookies": "~1.0.8",
     "angular-mocks": "~1.0.7",
+    "angular-sanitize": "~1.0.8",
     "angular-scenario": "~1.0.7",
     "angular-strap": "~0.7.4",
     "bootstrap": "~2.3.2",
