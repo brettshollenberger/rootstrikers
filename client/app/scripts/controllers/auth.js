@@ -65,7 +65,15 @@ angular
                       //$scope.formUser.actionkitId = userResponse;
                       $scope.formUser.actionkitId = 123;
                       $scope.formUser.$save(saveSuccess);
+                      
+                      $scope.loginUser = {
+                          email: $scope.formUser.email,
+                          password: $scope.formUser.password
+                      };
+                      
+                      console.log($scope.loginUser);
                       $scope.login();
+                      
                   //});
               
               } else {
