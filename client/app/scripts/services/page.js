@@ -96,19 +96,12 @@ angular
               }
             }
           };
-          //If we have fetched the page from the backend just return the published
-          if (pages.length) {
-            respond(pages.filter(function(element, index, array) {
-              return element.url === url;
-            }));
-          } else {
             //fetch the page to the server
             this.getAll({
               url: url
             }, function(result) {
               respond(result);
             });
-          }
         }
       };
     }
