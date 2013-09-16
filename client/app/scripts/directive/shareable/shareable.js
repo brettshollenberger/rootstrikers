@@ -21,7 +21,7 @@ angular
         };
       },
       link: function(scope, element, attr) {
-        scope.absUrl = $location.absUrl().replace('/#/', '');
+        scope.absUrl = $location.absUrl().replace(/#/, '');
 
         // n complexity function mimicking Ruby's include? function
         include = function(array, what) {

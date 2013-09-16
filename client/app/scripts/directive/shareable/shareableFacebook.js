@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('shareableFacebook', function() {
+  .directive('shareableFacebook', function($location) {
     return {
       restrict: 'A',
       // Load the shareable attributes in a slightly higher priority
@@ -9,8 +9,13 @@ angular
       priority: 1,
       replace: true,
       require: "^shareable",
-      link: function(scope, element, attr, shareableController) {
+      link: function(scope, element, attrs, shareableController) {
         shareableController.addFacebook();
+        scope.absUrl = $location.absUrl().replace(/#/, '');
+
+        // If no image is specified, it falls back on the FontAwesome icon
+        // in the layout
+        scope.facebookImage = attrs.shareableFacebook || null;
       }
     };
   });
