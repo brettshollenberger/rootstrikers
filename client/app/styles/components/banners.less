@@ -1,19 +1,18 @@
 .banner {
   width: 100%;
-  padding: 30px 0;
-}
 
-.banner h2 {
-  font-size: 25px;
-  margin-top: -5px;
-  letter-spacing: 5px;
-  margin-bottom: 0px;
-}
+  h2 {
+    font-size: 25px;
+    margin-top: -5px;
+    letter-spacing: 5px;
+    margin-bottom: 0px;
+  }
 
-.banner h3 {
-  margin-top: -15px;
-  font-size: 20px;
-  width: 100%;
+  h3 {
+    margin-top: -15px;
+    font-size: 20px;
+    width: 100%;
+  }
 }
 
 .banner-icon {
@@ -24,7 +23,6 @@
   color: @blue;
   display: inline;
   font-size: 60px;
-  top: 27px;
 }
 
 .banner-action span.action {
@@ -44,6 +42,14 @@
   background-color: @light-grey;
 }
 
+.banner-light-grey {
+  background-color: @lightest-grey; 
+}
+
+.banner-content {
+  margin: 0 14.5% 0 40px;
+}
+
 .attending {
   color: @pale-blue !important;
 }
@@ -57,27 +63,39 @@
   margin-bottom: -10px;
 }
 
-.banner-grey h2 {
-  color: @dark-grey;
+.banner-grey h2,
+.banner-light-grey h2 {
+  color: @blue;
 }
 
-.banner-grey h3 {
-  color: @darkest-grey;
+.banner-grey h3,
+.banner-light-grey h3 {
+  color: @medium-grey;
 }
 
-.banner-blue i {
+.banner i {
   position: relative;
-  top: 10px;
+  top: 5px;
 }
 
 .banner-action {
   position: relative;
-  top: 40px;
+  top: 30px;
   float: right;
 }
 
-.banner .row-fluid {
-  padding: 20px;
+.banner-info {
+  position: relative;
+  top: 10px;
+}
+
+.banner-blue .row-fluid {
+  padding: 30px;
+}
+
+.banner-grey .row-fluid,
+.banner-light-grey .row-fluid {
+  padding: 20px 30px;
 }
 
 .banner-blue span.action,
@@ -91,12 +109,14 @@ input[type="checkbox"] {
   opacity: 0;
 }
   
-.banner-grey input[type="checkbox"] + span:before {
+.banner-grey input[type="checkbox"] + span:before,
+.banner-light-grey input[type="checkbox"] + span:before {
   content: "\f00c"; /* check-empty */
   color: @white;
 }
 
-.banner-grey input[type="checkbox"]:checked + span:before {
+.banner-grey input[type="checkbox"]:checked + span:before,
+.banner-light-grey input[type="checkbox"]:checked + span:before {
   content: "\f00c"; /* check */
   color: @checkbox-blue;
 }
@@ -116,7 +136,11 @@ input[type="checkbox"] {
 
 .banner-blue.completed:hover {}
 
-.banner-grey.completed h2,
-.banner-grey.completed h3 {
-  color: @dark-grey
+.banner-grey .completed h2,
+.banner-grey .completed h3 ,
+.banner-grey .completed i,
+.banner-light-grey .completed h2,
+.banner-light-grey .completed h3,
+.banner-light-grey .completed i {
+  color: @fade-out-grey;
 }
