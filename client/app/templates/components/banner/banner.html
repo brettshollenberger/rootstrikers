@@ -1,0 +1,14 @@
+<div class="row-fluid banner" ng-class="{'banner-blue':bannerType == 'action', 'banner-grey':bannerType == 'social', 'completed':checked == true}" ng-click="check()">
+  <div class="span10 offset1">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="banner-action">
+          <span ng-show="showAdditionalAction()" style="float: right; position: absolute; top: -80px; left: -10px;"><cta>Donate More</cta></span>
+          <span ng-show="checked" class="action">{{bannerActionFulfilled}}</span><input type="checkbox" ng-checked="checked"><span class="root-checkbox"></span>
+        </div>
+        <h2>{{bannerAction}}</h2>
+        <h3>{{bannerSubheader}}</h3>
+      </div>
+    </div>
+  </div>
+</div> <!-- End row-fluid -->
