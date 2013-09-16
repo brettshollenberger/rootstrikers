@@ -279,4 +279,9 @@ for (entity in schema) {
   odmApi[entity] = genericAPI(entity);
 }
 
+// we need to pass these objects here to access them in our seed function
+// in ideal situations we'd have a different API setup that eliminated the need for this. :)
+odmApi.schema = schema;
+odmApi.mongoose = mongoose;
+
 module.exports = odmApi;
