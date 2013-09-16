@@ -31,8 +31,8 @@ var models = {};
 models.project = mongoose.model('project');
 models.feature = mongoose.model('feature');
 models.user = mongoose.model('user');
-//models.Vendor = mongoose.model('Vendor');
-//models.Program = mongoose.model('Program');
+models.email = mongoose.model('email');
+models.page = mongoose.model('page');
 
 
 /**
@@ -48,6 +48,9 @@ var resources = {};
 resources.project          = require('./seed_data/project').seed();
 resources.feature        = require('./seed_data/feature').seed();
 resources.user       = require('./seed_data/user').seed();
+resources.email        = require('./seed_data/email').seed();
+resources.page       = require('./seed_data/page').seed();
+
 
 db.connection = db.mongoose.connections[0];
 
