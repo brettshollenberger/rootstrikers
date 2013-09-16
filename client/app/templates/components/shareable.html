@@ -1,6 +1,6 @@
-<a href="http://www.facebook.com/share.php?u={{absUrl}}" target="_blank" class="social-icon">
+<a href="http://www.facebook.com/share.php?u={{absUrl}}" target="_blank" class="social-icon" ng-show="inShareableNetworks('Facebook')">
   <img src="https://static.hubspot.com/final/img/common/icons/social/facebook-24x24.png" alt="Share on Facebook">
 </a>
-<a href="https://twitter.com/intent/tweet?original_referer={{absUrl}}&amp;url={{absUrl}}&amp;source=tweetbutton" target="_blank" class="social-icon">
+<a href="https://twitter.com/intent/tweet?original_referer={{absUrl}}&amp;url={{absUrl}}&amp;source=tweetbutton" target="_blank" class="social-icon" ng-show="inShareableNetworks('Twitter')">
   <img src="https://static.hubspot.com/final/img/common/icons/social/twitter-24x24.png" class="hs-image-widget " alt="Share on Twitter">
 </a>
