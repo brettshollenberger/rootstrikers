@@ -8,7 +8,7 @@
         </div>
         <div class="span5 float-right-nav">
           <span class="auth-links" ng-controller="authController">
-            <gravatar-image data-email="loggedUser.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-small"></gravatar-image>
+            <a ng-show="loggedUser"><gravatar-image data-email="loggedUser.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-small" modal template="app/templates/auth/edit.html"></gravatar-image></a>
             <div class="btn" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
 
             <div class="btn" id="donate">Donate</div>
