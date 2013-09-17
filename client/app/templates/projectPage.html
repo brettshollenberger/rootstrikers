@@ -53,42 +53,9 @@
   </div><!-- End row-fluid -->
 
   <!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-  <div class="row-fluid banner banner-blue">
-    <div class="span10 offset1">
-      <div class="row-fluid">
-        <div class="span12">
-          <div class="banner-action">
-            <input type="checkbox"><span></span>
-          </div>
-          <h2>Attend Rally</h2>
-          <h3>@ City Hall, Philadelphia, PA</h3>
-        </div>
-      </div>
-    </div>
-  </div> <!-- End row-fluid -->
+  <div banner banner-type="action" banner-action="Sign the Pledge" banner-subheader="1,000 pledges needed" banner-action-fulfilled="Signed"></div>
 
-  <div class="row-fluid banner banner-grey completed">
-    <div class="span12 offset1">
-      <div class="row-fluid">
-        <div class="span4">
-          <div class="banner-action">
-            <input type="checkbox"><span></span>
-          </div>
-          <div facebook-shareable></div>
-          <h2>Share on Facebook</h2>
-          <h3>and reach 738 people</h3>
-        </div>
-        <div class="span4 offset2 twitter">
-          <div class="banner-action">
-            <input type="checkbox"><span></span>
-          </div>
-          <div twitter-shareable></div>
-          <h2>Share on Twitter</h2>
-          <h3>and reach 501 people</h3>
-        </div>
-      </div>
-    </div>
-  </div> <!-- End row-fluid -->
+  <div banner-halves></div>
 
   <div class="row-fluid section section-last">
     <div class="span10 offset1">
