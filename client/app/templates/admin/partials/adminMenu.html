@@ -1,23 +1,38 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top navbar-admin">
   <div class="navbar-inner">
     <div class="container-fluid">
       <div class="row-fluid">
+      
         <div class="span5 offset1 float-left-nav">
           <img src="app/images/rsicon.png">
           <a class="brand" href="./index.html">Rootstrikers Admin</a>
         </div>
+        
         <div class="span5 float-right-nav">
-          <span class="auth-links" ng-controller="authController">
-            <div class="btn" modal template="app/templates/auth/edit.html" ng-show="loggedUser">{{loggedUser.first_name}}</div>
-            <div class="btn" ng-click="logout()" ng-show="loggedUser">Logout</div>
-            <gravatar-image data-email="user.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-large"></gravatar-image>
+        
+          <span class="auth-links pull-right" ng-controller="authController">
+          
             <a href="admin/projects" class="btn">Projects</a>
             <a href="admin/features" class="btn">Features</a>
             <a href="admin/pages" class="btn">Pages</a>
+            
+            <br/>
+            
+            <div class="pull-right">
+                <div ng-click="#" modal template="app/templates/auth/edit.html" ng-show="loggedUser" class="logout pull-left"><a>Profile</a></div>
+                <div ng-click="logout()" ng-show="loggedUser" class="logout pull-left"><a>Log Out</a></div>
+            </div>
+            
           </span>
+          
+          <div class="tagline pull-right">
+            Only the people can force lasting
+            <br>
+            change on this broken system.
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
 </div>
-

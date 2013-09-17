@@ -8,7 +8,9 @@ angular
       templateUrl: 'app/templates/admin/partials/adminMenu.html',
       controller: ['$scope', '$routeParams',
       function($scope, $routeParams) {
-        $scope.onAdmin = /\/admin/.test($location.path());
+        $scope.$on('$routeChangeSuccess', function($event, $route, $previousRoute) {
+            $scope.onAdmin = /\/admin/.test($location.path());
+        });
       }
     ]};
   });

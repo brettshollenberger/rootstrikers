@@ -48,13 +48,6 @@
 
 .auth-links {
   margin-top: 35px;
-  float: right;
-}
-
-.auth-links .btn,
-.auth-links .gravatar-icon,
-.tagline {
-  float: right;
 }
 
 .auth-links .gravatar-icon {
@@ -73,29 +66,12 @@
   margin: 42px 10px 0 0;
 }
 
-.login, .logout {
-  text-align: right;
-  display: block;
-  margin-top: 50px;
-}
-
 .login a,
 .logout a {
   color: @white;
   text-decoration: underline;
-}
-
-.login {
   margin-right: 15px;
 }
-
-.logout {
-  position: relative;
-  top: 5px;
-  left: 55px;
-}
-
-
 
 @media only screen and (max-width: 1160px) {
   .tagline {
@@ -106,11 +82,6 @@
 // Media queries focus primarily on reducing the size of content and
 // margins proportionately such that the page "feels" the same at any size.
 @media only screen and (max-width: 1064px) {
-
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 15px;
-  }
-
   .tagline {
     font-size: .4rem;
   }
@@ -128,17 +99,21 @@
   .navbar-fixed-top {
     position: fixed;
   }
+  
+  .navbar-admin .brand {
+      font-size: 1.8rem;
+  }
+  
+  .navbar-admin .btn {
+      padding: 10px 10px;
+  }
 }
 
 @media only screen and (max-width: 896px) {
 
   .navbar-inverse .brand {
     letter-spacing: .1rem;
-    font-size: 1.6rem;
-  }
-
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 5px;
+    font-size: 1.5rem;
   }
 
   .tagline {
@@ -146,9 +121,13 @@
   }
 
   .navbar .btn {
-    width: 60px;
+    min-width: 60px;
     padding: 10px 5px;
     font-size: 10px;
+  }
+  
+  .navbar-admin .brand {
+      font-size: 1.4rem;
   }
 }
 
@@ -169,17 +148,13 @@
 
 @media only screen and (max-width: 625px) {
 
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 2px;
-  }
-
   .tagline {
     font-size: .3rem;
     line-height: 1.2rem;
   }
 
   .navbar .btn {
-    width: 40px;
+    min-width: 40px;
     padding: 10px 10px;
     font-size: .5rem;
   }
