@@ -9,12 +9,27 @@
     
     <h3 class="dark-grey">{{item.name}}</h3>
     <br>
-    <h2>Time Remaining:</h2>
+    <div ng-show="!completed">
+      <h2>Time Remaining:</h2>
+      <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3>
+      <br>
+      <h2>Goal:</h2>
+      <p ng-bind-html-unsafe="item.goal">{{item.goal}}</p>
+    </div>
 
-    <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3>
-    <br>
-    <h2>Goal:</h2>
-    <p ng-bind-html-unsafe="item.goal">{{item.goal}}</p>
+    <div ng-show="completed">
+      <!-- Change this in the future to display only when the goal is reached -->
+      <div ng-show="completed">
+        <img class="goal-reached-stamp" src="app/images/goalstamp@2x.png">
+      </div>
+      <!-- End goal reached stamp -->
+      <h2>Total Outreach:</h2>
+      <h3 class="dark-grey">2,246,170</h3>
+      <br>
+      <h2>New Rootstrikers:</h2>
+      <h3 class="dark-grey">1,928</h3>
+    </div>
+
   </div>
 </div>
 <div class="quick-view-footer">

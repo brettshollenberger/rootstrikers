@@ -33,6 +33,7 @@
   border: @quick-views-border;
   margin: 0 0 25px 0;
   padding: 4px;
+  position: relative;
 }
 
 // Crop the primary quick view image
@@ -95,7 +96,7 @@
   font-size: 18px;
 }
 
-.completed .quick-view img {
+.completed .quick-view-img img {
   .grayscale;
 }
 
@@ -124,4 +125,13 @@
 .completed h4,
 .completed h5 {
   color: @muted-color;
+}
+
+.goal-reached-stamp {
+  width: 250px;
+  height: 250px;
+  float: right;
+  position: absolute;
+  right: 10px;
+  .opacity(90);
 }

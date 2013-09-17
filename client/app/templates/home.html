@@ -38,7 +38,7 @@
     <hr>
     <div class="row-fluid quick-views">
       <div class="span4" ng-repeat="item in completed_projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
-        <project-quick-view class="completed"></project-quick-view>
+        <project-quick-view completed="true" class="completed"></project-quick-view>
       </div>
     </div>
   </div>
