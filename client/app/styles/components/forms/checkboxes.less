@@ -25,7 +25,6 @@ input[type="checkbox"] + span.blue:before {
   font-family: 'FontAwesome' !important;
   padding-right: 3px;
   font-size: 2.5rem;
-  color: @white;
 } 
 
 input[type="radio"] + span:before {
@@ -44,4 +43,12 @@ input[type="checkbox"] + span:before {
 input[type="checkbox"]:checked + span:before {
   content: "\f00c"; /* check */
   color: @white;
+}
+
+input[type="checkbox"].plain + span:before {
+  color: @light-grey;
+}
+
+input[type="checkbox"].plain:checked + span:before {
+  color: @checkbox-blue;
 }

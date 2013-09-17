@@ -5,6 +5,7 @@
   <div class="span10 offset1">
     <div class="row-fluid main-content">
       <div class="span4">
+        
         <h2>Rootstrikers by the numbers</h2>
         <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat cornhole mixtape labore proident direct trade. Chambray mlkshk Blue Bottle mixtape esse tattooed sint. Meggings Godard labore flexitarian laborum. Fingerstache master cleanse tousled mlkshk keytar.</p>
       </div>
@@ -38,7 +39,7 @@
     <hr>
     <div class="row-fluid quick-views">
       <div class="span4" ng-repeat="item in completed_projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
-        <project-quick-view class="completed"></project-quick-view>
+        <project-quick-view completed="true" class="completed"></project-quick-view>
       </div>
     </div>
   </div>

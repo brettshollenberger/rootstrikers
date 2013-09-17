@@ -4,6 +4,10 @@ angular
     return {
       restrict: 'E',
       replace: false,
-      templateUrl: 'app/templates/partials/projectQuickView.html'
+      templateUrl: 'app/templates/partials/projectQuickView.html',
+      link: function(scope, element, attrs) {
+        scope.completed = attrs.completed;
+        console.log(scope.completed);
+      }
     };
   });
