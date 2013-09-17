@@ -7,14 +7,20 @@ angular
     'userService',
     'featureService',
     'actionKitService',
+    'FormHelper',
     '$rootScope',
-    function($scope, $location, $routeParams, userAPI, Feature, actionKitService, $rootScope) {
+    function($scope, $location, $routeParams, userAPI, Feature, actionKitService, FormHelper, $rootScope) {
         $scope.feature = new Feature();
 
+        $scope.showError = FormHelper.showError;
+        $scope.showSuccess = FormHelper.showSuccess;
+
         $scope.create = function() {
-            $scope.feature.$save(function() {
+            // FormHelper.create(form, model, callback)
+            FormHelper.create($scope.NewFeatureForm, $scope.feature, function() {
                 $location.path('/admin/features/' + $scope.feature.id + "/edit");
                 alert("Feature saved successfully!");
             });
         };
+
     }]);
