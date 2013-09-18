@@ -27,7 +27,7 @@ angular
 
       // TinyMCE override options
       $scope.tinymceOptions = {
-          plugins: "paste",
+          plugins: "paste,code",
           paste_remove_styles: true
       };
 
