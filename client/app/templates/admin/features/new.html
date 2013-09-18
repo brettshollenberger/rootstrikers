@@ -3,18 +3,20 @@
     <div class="span10 offset1">
       <a href="#/admin/features" class="btn btn-inverse float-right">View All Features</a>
       <h1>New Feature</h1>
+      {{ feature | json }}
+      <br><br>
       <!-- ######################### Message Field ######################### -->
       <div name="message-errors" class="alert alert-error" ng-show="showError(NewFeatureForm.message)">
         Let's have an inspiring message for the readers.
       </div>
-      Message: <input type="text" name="message" ng-model="feature.message" required><br>
+      Message: <textarea rows="5" name="message" ng-model="feature.message" required></textarea><br>
       <!-- ####################### End Message Field ####################### -->
 
       <!-- ########################## Action Field ######################### -->
       <div name="action-errors" class="alert alert-error" ng-show="showError(NewFeatureForm.action)">
         How will the reader take action? Click a link? Read more?
       </div>
-      Action: <input type="text" name="action" ng-model="feature.action" required><br>
+      Action: <textarea rows="5" name="action" ng-model="feature.action" required></textarea><br>
       <!-- ######################## End Action Field ######################## -->
 
       <!-- ######################## Action Link Field ####################### -->
@@ -50,8 +52,8 @@
           <div class="item active">
             <img ng-src="{{feature.image}}" alt="" ng-show="feature.image"/>
             <div class="carousel-caption">
-              <h3 class="white headline-big">{{feature.message}}</h3>
-              <h2><a ng-href="{{feature.actionUrl}}" target="_blank">{{feature.action}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+              <h3 class="white headline-big" ng-bind-html-unsafe="feature.message | linebreaker">{{feature.message | linebreaker}}</h3>
+              <h2><a ng-href="{{feature.actionUrl}}" target="_blank" ng-bind-html-unsafe="feature.action | linebreaker">{{feature.action | linebreaker}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
             </div>
           </div>
         </div><!-- /.carousel-inner -->

@@ -11,7 +11,6 @@ angular
     '$rootScope',
     function($scope, $location, $routeParams, userAPI, Feature, actionKitService, FormHelper, $rootScope) {
         $scope.feature = new Feature();
-
         $scope.showError = FormHelper.showError;
         $scope.showSuccess = FormHelper.showSuccess;
         $scope.create = function() {
