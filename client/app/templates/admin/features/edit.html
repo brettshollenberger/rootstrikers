@@ -9,14 +9,14 @@
       <div name="message-errors" class="alert alert-error" ng-show="showError(EditFeatureForm.message)">
         Let's have an inspiring message for the readers.
       </div>
-      Message: <input type="text" name="message" ng-model="feature.message" required><br>
+      Message: <textarea rows="5" name="message" ng-model="feature.message" required></textarea><br>
       <!-- ####################### End Message Field ####################### -->
       
       <!-- ########################## Action Field ######################### -->
       <div name="action-errors" class="alert alert-error" ng-show="showError(EditFeatureForm.action)">
         How will the reader take action? Click a link? Read more?
       </div>
-      Action: <input type="text" name="action" ng-model="feature.action" required><br>
+      Action: <textarea rows="5" name="action" ng-model="feature.action" required></textarea><br>
       <!-- ######################## End Action Field ######################## -->
 
       <!-- ######################## Action Link Field ####################### -->

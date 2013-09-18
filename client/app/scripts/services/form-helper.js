@@ -33,7 +33,7 @@ angular
       },
       validateForm: function(form) {
         var errors = [];
-        for (f in form) {
+        for (var f in form) {
           var field = form[f];
           if (field.$error) {
             errors.push(field.$name);
