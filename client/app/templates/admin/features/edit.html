@@ -6,21 +6,21 @@
       <h1>Edit Feature</h1>
 
       <!-- ######################### Message Field ######################### -->
-      <div name="message-errors" class="alert" ng-show="showError(EditFeatureForm.message)">
+      <div name="message-errors" class="alert alert-error" ng-show="showError(EditFeatureForm.message)">
         Let's have an inspiring message for the readers.
       </div>
       Message: <input type="text" name="message" ng-model="feature.message" required><br>
       <!-- ####################### End Message Field ####################### -->
       
       <!-- ########################## Action Field ######################### -->
-      <div name="action-errors" class="alert" ng-show="showError(EditFeatureForm.action)">
+      <div name="action-errors" class="alert alert-error" ng-show="showError(EditFeatureForm.action)">
         How will the reader take action? Click a link? Read more?
       </div>
       Action: <input type="text" name="action" ng-model="feature.action" required><br>
       <!-- ######################## End Action Field ######################## -->
 
       <!-- ######################## Action Link Field ####################### -->
-      <div name="action-link-errors" class="alert" ng-show="showError(EditFeatureForm.actionLink)">
+      <div name="action-link-errors" class="alert alert-error" ng-show="showError(EditFeatureForm.actionLink)">
         This should be a valid URL. Usually those start with http:// or https://
       </div>
       <div name="action-link-success" class="alert alert-success" ng-show="showSuccess(EditFeatureForm.actionLink)">

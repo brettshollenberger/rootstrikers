@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .factory('FormHelper', function($location) {
+  .factory('FormHelper', function($location, $anchorScroll) {
     var FormHelper = {
       showError: function(property) {
         return property.$invalid && property.$dirty;
@@ -42,8 +42,13 @@ angular
         if (form.$error.email) {
           errors.push("Please enter a valid email address.");
         }
+        // Errors will display when the form fields are
+        // dirty an invalid. If a user has missed a field,
+        // the input will be invalid, but pristine. If we
+        // automatically set the whole field to dirty,
+        // the missed fields will be revealed.
         this.setDirty(form);
-        alert(errors.join("\n"));
+        $anchorScroll();
       },
       create: function(form, model, callback) {
         if (form.$valid) {
