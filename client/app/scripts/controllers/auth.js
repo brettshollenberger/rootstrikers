@@ -124,8 +124,9 @@ angular
       $scope.login = function() {
         _clearErrors();
         userAPI.login($scope.loginUser).error(function(data, status) {
-          _addError('extra', 'Login Invalid', 'loginErrors');
+          _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
+          _clearUser();
           _close();
         });
       };
@@ -203,6 +204,9 @@ angular
       function _clearUser() {
         $scope.formUser = null;
         $scope.formUser = {};
+        
+        $scope.loginUser = null;
+        $scope.loginUser = {};
       }
 
       function _addError(field, message, type) {

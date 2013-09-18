@@ -2,24 +2,55 @@
   <div class="navbar-inner">
     <div class="container-fluid">
       <div class="row-fluid">
+      
         <div class="span5 offset1 float-left-nav">
           <img src="app/images/rsicon.png">
           <a class="brand" href="./index.html">Rootstrikers</a>
         </div>
+        
         <div class="span5 float-right-nav">
-          <span class="auth-links" ng-controller="authController">
-            <a ng-show="loggedUser"><gravatar-image data-email="loggedUser.email" data-size="120" data-rating="pg" data-default="404" data-secure="true" class="avatar-circular avatar-small" modal template="app/templates/auth/edit.html"></gravatar-image></a>
-            <div class="btn" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
-
-            <div class="btn" id="donate">Donate</div>
-            <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login"><em>or</em> <a>Login</a></div>
-            <div ng-click="logout()" ng-show="loggedUser" class="logout"><a>Log Out</a></div>
-          </span>
-          <div class="tagline">
+        
+          <div class="pull-right" id="donate">
+              <a href="#" class="btn-group">
+                  <span type="button" class="btn btn-default">$</span>
+                  <span type="button" class="btn btn-default">Donate</span>
+              </a>
+          </div>
+        
+          <div class="auth-links pull-right" ng-controller="authController">
+            
+            <a ng-show="loggedUser">
+                <gravatar-image
+                    data-email="loggedUser.email"
+                    data-size="120"
+                    data-rating="pg"
+                    data-default="404"
+                    data-secure="true"
+                    class="avatar-circular avatar-small"
+                    modal
+                    template="app/templates/auth/edit.html">
+                </gravatar-image>
+            </a>
+            
+            <div class="btn pull-left" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">Join</div>
+            
+            <br/>
+            
+            <div class="pull-right">
+                <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login">
+                    <em>or</em> <a>Login</a>
+                </div>
+                <div ng-click="logout()" ng-show="loggedUser" class="logout"><a>Log Out</a></div>
+            </div>
+            
+          </div>
+          
+          <div class="tagline pull-right">
             Only the people can force lasting
             <br>
             change on this broken system.
           </div>
+          
         </div>
       </div>
     </div>
