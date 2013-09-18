@@ -14,7 +14,6 @@ angular
 
         $scope.showError = FormHelper.showError;
         $scope.showSuccess = FormHelper.showSuccess;
-
         $scope.create = function() {
             // FormHelper.create(form, model, callback)
             FormHelper.create($scope.NewFeatureForm, $scope.feature, function() {

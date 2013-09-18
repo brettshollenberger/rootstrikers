@@ -50,9 +50,8 @@
   clear: both;
 }
 
-.auth-links .gravatar-icon {
-  margin-left: 5px;
-  margin-top: -5px;
+.auth-links .btn {
+    padding: 10px 38px;
 }
 
 .tagline {
@@ -63,7 +62,7 @@
   letter-spacing: 2px !important;
   text-align: right;
   display: inline-block;
-  margin: 7px 10px 0 0;
+  margin: 6px 10px 0 0;
 }
 
 .login a,
@@ -73,9 +72,38 @@
   margin-right: 15px;
 }
 
+#donate {
+    margin-top: 3px;
+}
+
+#donate span {
+    background-color: #1a1a1a;
+    letter-spacing: 1px;
+    font-weight: normal;
+    padding: 8px 10px;
+    font-size: 9.09px;
+    line-height: 9.09px;
+    height: auto;
+}
+
+#donate span:first-child {
+    background-color: #141414;
+    font-size: 11px;
+    margin-right: 0;
+}
+
+.navbar .avatar-small img {
+    width: 40px;
+    margin: 6px 0;
+}
+
 // Admin Menu
 .navbar-admin .float-right-nav {
     margin-top: 37px;
+}
+
+.navbar-admin .btn {
+    padding: 10px 20px;
 }
 
 @media only screen and (max-width: 1160px) {}
@@ -102,7 +130,7 @@
 
 @media only screen and (max-width: 896px) {
   .tagline {
-    display: none;
+    font-size: .7rem;
   }
   
   .navbar-admin .brand {
@@ -117,6 +145,11 @@
 // of span- class so we have to get a little hack-y with the float-right 
 // portion of the nav to line it up again.
 @media only screen and (max-width: 768px) {
+
+  .tagline {
+    display: none;
+  }
+
   .navbar-inner .container-fluid {
     margin-left: 20px;
     margin-right: 20px;
