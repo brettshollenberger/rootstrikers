@@ -6,7 +6,8 @@ angular
     '$routeParams',
     'projectService',
     '$location',
-    function($scope, notification, $routeParams, projectAPI, $location) {
+    'MetaMachine',
+    function($scope, notification, $routeParams, projectAPI, $location, MetaMachine) {
       var model;
 
       //Check for the ID to know if its an edit or a new
@@ -17,11 +18,13 @@ angular
         projectAPI.get($routeParams.projectID, function(project) {
           model = project;
           $scope.project = model;
+          MetaMachine.title("Editing: " + $scope.project.name, "Admin");
         });
       } else {
         //Create a new resource
         model = projectAPI.newProject();
         $scope.actionTitle = 'New';
+        MetaMachine.title("New Project", "Admin");
       }
 
       //set the model on the scope so its filled by the form
@@ -35,6 +38,7 @@ angular
         statusbar: false,
         toolbar: 'undo redo | styleselect | bold italic'
       };
+
 
       var saveModel = function(silent) {
         model.$save(function(project, putResponseHeaders) {
