@@ -5,7 +5,7 @@ exports.seed = function() {
 var data = [{
     "first_name" : "Kyle",
     "last_name" : "Harrington",
-    "password" : "$2a$05$LB1WEwt.IWRW0N2tpGi0DO00Jv24LWa0cDX5Tl/S7JV/wEc3.oPkm",
+    "password" : "scrapple",
     "email" : "kyle.harrington@gmail.com",
     "actionkitId" : 2393226,
     "isAdmin" : false,
@@ -15,7 +15,7 @@ var data = [{
     "first_name" : "Rootstrikers",
     "last_name" : "Administrator",
     "email" : "admin@rootstrikers.com",
-    "password" : "$2a$05$cy333Du/QyZTIk3qWY7SA.cOSfkFA8NB14hlcXi4Qm5M8U4eNuatS",
+    "password" : "123123",
     "isFacebook" : false,
     "isAdmin" : true,
     "isVerify" : false,
