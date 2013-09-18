@@ -47,14 +47,7 @@
 }
 
 .auth-links {
-  margin-top: 35px;
-  float: right;
-}
-
-.auth-links .btn,
-.auth-links .gravatar-icon,
-.tagline {
-  float: right;
+  clear: both;
 }
 
 .auth-links .gravatar-icon {
@@ -70,57 +63,26 @@
   letter-spacing: 2px !important;
   text-align: right;
   display: inline-block;
-  margin: 42px 10px 0 0;
-}
-
-.login, .logout {
-  text-align: right;
-  display: block;
-  margin-top: 50px;
+  margin: 7px 10px 0 0;
 }
 
 .login a,
 .logout a {
   color: @white;
   text-decoration: underline;
-}
-
-.login {
   margin-right: 15px;
 }
 
-.logout {
-  position: relative;
-  top: 5px;
-  left: 55px;
+// Admin Menu
+.navbar-admin .float-right-nav {
+    margin-top: 37px;
 }
 
+@media only screen and (max-width: 1160px) {}
 
+@media only screen and (max-width: 1064px) {}
 
-@media only screen and (max-width: 1160px) {
-  .tagline {
-    font-size: .6rem;
-  }
-}
-
-// Media queries focus primarily on reducing the size of content and
-// margins proportionately such that the page "feels" the same at any size.
-@media only screen and (max-width: 1064px) {
-
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 15px;
-  }
-
-  .tagline {
-    font-size: .4rem;
-  }
-}
-
-@media only screen and (max-width: 1020px) {
-  .tagline {
-    display: none;
-  }
-}
+@media only screen and (max-width: 1020px) {}
 
 @media only screen and (max-width: 979px) {
   // Bootstrap default switches to static, which throws a nasty
@@ -128,27 +90,26 @@
   .navbar-fixed-top {
     position: fixed;
   }
+  
+  .navbar-admin .brand {
+      font-size: 1.8rem;
+  }
+  
+  .navbar-admin .btn {
+      padding: 10px 10px;
+  }
 }
 
 @media only screen and (max-width: 896px) {
-
-  .navbar-inverse .brand {
-    letter-spacing: .1rem;
-    font-size: 1.6rem;
-  }
-
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 5px;
-  }
-
   .tagline {
-    font-size: .5rem;
+    display: none;
   }
-
-  .navbar .btn {
-    width: 60px;
-    padding: 10px 5px;
-    font-size: 10px;
+  
+  .navbar-admin .brand {
+      font-size: 1.3rem;
+  }
+  .navbar-admin .btn {
+      padding: 10px 5px;
   }
 }
 
@@ -162,41 +123,18 @@
   }
 
   .float-right-nav {
-    position: relative;
-    top: -30px;
+    position: absolute;
+    top: 6px;
+    right: 20px;
   }
 }
 
-@media only screen and (max-width: 625px) {
-
-  .navbar-inner .container-fluid a {
-    margin: 0 0 0 2px;
-  }
-
-  .tagline {
-    font-size: .3rem;
-    line-height: 1.2rem;
-  }
-
-  .navbar .btn {
-    width: 40px;
-    padding: 10px 10px;
-    font-size: .5rem;
-  }
-}
+@media only screen and (max-width: 625px) {}
 
 @media only screen and (max-width: 592px) {
-  #donate { 
-    display: none;
-  }
-
   .login {
     margin-right: 0px;
   }
 }
 
-@media only screen and (max-width: 505px) {
-  .tagline { 
-    display: none;
-  }
-}
+@media only screen and (max-width: 505px) {}

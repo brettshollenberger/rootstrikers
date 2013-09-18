@@ -4,8 +4,10 @@ angular
     '$scope',
     'projectService',
     'flash',
-    function($scope, projectAPI, notification) {
+    'MetaMachine',
+    function($scope, projectAPI, notification, MetaMachine) {
       $scope.projects = projectAPI.getAll();
+      MetaMachine.title("Projects", "Admin");
 
       $scope.remove = function(id) {
         var sure = confirm('U sure?');
