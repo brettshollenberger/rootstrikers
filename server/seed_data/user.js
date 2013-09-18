@@ -12,20 +12,10 @@ var data = [{
     "__v" : 0
 },
 {
-    "first_name" : "Gross",
-    "last_name" : "Face",
-    "password" : "$2a$05$wgPusb/Q5SWjWUdl0kTpx.nE9XClPXaIDnGp9M7m0DA.jRFTwX5S.",
-    "email" : "grossface@gmail.com",
-    "zip" : "19454",
-    "actionkitId" : 2393250,
-    "isAdmin" : false,
-    "__v" : 0
-},
-{
     "first_name" : "Rootstrikers",
     "last_name" : "Administrator",
     "email" : "admin@rootstrikers.com",
-    "password" : "$2a$05$eYznmW7Kg8pnWnVbpojh1eUJ80aNXyhreAByoBHoaEFfH4dfcTZ6a",
+    "password" : "$2a$05$cy333Du/QyZTIk3qWY7SA.cOSfkFA8NB14hlcXi4Qm5M8U4eNuatS",
     "isFacebook" : false,
     "isAdmin" : true,
     "isVerify" : false,

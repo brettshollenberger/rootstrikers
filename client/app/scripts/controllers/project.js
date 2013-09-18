@@ -7,7 +7,8 @@ angular
     'projectService',
     'actionKitService',
     '$rootScope',
-    function($scope, $routeParams, userAPI, projectAPI, actionKitService, $rootScope) {
+    'MetaMachine',
+    function($scope, $routeParams, userAPI, projectAPI, actionKitService, $rootScope, MetaMachine) {
       projectAPI.getByName($routeParams.name, function(err, res) {
         
         // get the project from our backend
@@ -22,6 +23,14 @@ angular
             });
         }
         
+        if ($scope.project) {
+          MetaMachine.title($scope.project.name);
+          MetaMachine.description($scope.project.problem);
+        } else {
+          MetaMachine.title();
+          MetaMachine.description();
+        }
+
       });
       // Change to specific users signed up on project
       $scope.users = userAPI.getAll();
