@@ -32,13 +32,11 @@ angular
       //And for preview
       $scope.item = model;
 
-      //Opions to description and goal fields
+      // TinyMCE override options
       $scope.tinymceOptions = {
-        menubar: false,
-        statusbar: false,
-        toolbar: 'undo redo | styleselect | bold italic'
+          plugins: "paste",
+          paste_remove_styles: true
       };
-
 
       var saveModel = function(silent) {
         model.$save(function(project, putResponseHeaders) {
