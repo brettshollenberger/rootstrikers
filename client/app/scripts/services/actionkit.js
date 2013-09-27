@@ -1,5 +1,28 @@
 angular.module('app').factory('actionKitService', ['$http', function($http) {
 
+    var getPetitionForm = function(cms_url) {
+        var url = '/api/actionkit/getPetitionForm';
+
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                'petitionFormUrl': cms_url
+            }
+        }).
+        then(function(response) {
+
+            if (response.status === 200 && response.data.error === false) {
+                return response.data.response;
+            } else {
+                return false;
+            }
+
+        }, function() {
+            return false;
+        });
+    };
+
     return {
 
         createUser: function(user) {
@@ -63,31 +86,17 @@ angular.module('app').factory('actionKitService', ['$http', function($http) {
             then(function(response) {
 
                 if (response.status === 200 && response.data.error === false) {
-                    return response.data.response;
-                } else {
-                    return false;
-                }
-
-            }, function() {
-                return false;
-            });
-        },
-        
-        getPetitionForm: function(petitionFormUrl) {
-
-            var url = '/api/actionkit/getPetitionForm';
-
-            return $http({
-                method: 'GET',
-                url: url,
-                params: {
-                    'petitionFormUrl': petitionFormUrl
-                }
-            }).
-            then(function(response) {
-
-                if (response.status === 200 && response.data.error === false) {
-                    return response.data.response;
+                
+                    // get the petition information if it is one
+                    if(response.data.response.type === 'Petition') {
+                        return getPetitionForm(response.data.response.cms_form).then(function(petitionResponse) {
+                            response.data.response.petitionForm = petitionResponse;
+                            return response.data.response;
+                        });
+                    } else {
+                        return response.data.response;
+                    }
+                    
                 } else {
                     return false;
                 }
