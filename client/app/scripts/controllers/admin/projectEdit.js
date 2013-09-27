@@ -1,4 +1,4 @@
-angular.module('app').controller('projectEditController', ['$scope', 'flash', '$routeParams', 'projectService', '$location', 'MetaMachine', function($scope, notification, $routeParams, projectAPI, $location, MetaMachine) {
+angular.module('app').controller('projectEditController', ['$scope', 'flash', '$routeParams', 'projectService', '$location', 'MetaMachine', 'actionKitService', function($scope, notification, $routeParams, projectAPI, $location, MetaMachine, actionKitService) {
 
     var model;
 
@@ -12,7 +12,19 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
         projectAPI.get($routeParams.projectID, function(project) {
             model = project;
             $scope.project = model;
-            MetaMachine.title("Editing: " + $scope.project.name, "Admin");
+            
+            if($scope.project.shortname) {
+            
+                actionKitService.getPage($scope.project.shortname).then(function (response) {
+                    
+                    if(response !== false) {
+                        $scope.project.title = response.title;
+                        $scope.project.actionkit = response;
+                    }
+                });
+            }
+            
+            MetaMachine.title("Editing: " + $scope.project.title, "Admin");
         });
     } else {
         //Create a new resource
