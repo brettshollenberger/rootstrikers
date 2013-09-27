@@ -16,6 +16,13 @@ angular
                     ctrl.$setValidity('validpage', true);
                     $scope.project.shortname = viewValue;
                     $scope.project.actionkit = response;
+                    
+                    var petitionFormUrl = $scope.project.actionkit.cms_form;
+                    
+                    actionKitService.getPetitionForm(petitionFormUrl).then(function (response) {
+                        $scope.project.actionkit.petitionForm = response;
+                    });
+                    
                     return viewValue;
                 } else {
                     ctrl.$setValidity('validpage', false);

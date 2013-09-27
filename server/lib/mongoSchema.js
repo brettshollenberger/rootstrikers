@@ -74,7 +74,7 @@ schema.project = new mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
-    required: true
+    //required: true
   },
   problem: {
     type: String

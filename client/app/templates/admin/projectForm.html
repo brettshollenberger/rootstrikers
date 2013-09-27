@@ -104,7 +104,7 @@
             
             </form>
             
-            <form ng-show="activeTab == 1">
+            <form ng-submit="save()" ng-show="activeTab == 1">
             
                 <fieldset name="actionKitForm">
                 
@@ -121,11 +121,22 @@
                     
                     <div ng-show="project.actionkit">
                         
+                        <!--
+                        <label>Type</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.type}}" />
+                        -->
+                        
                         <label>Title</label>
                         <textarea class="input-xxlarge" disabled="true">{{project.actionkit.title}}</textarea>
                         
-                        <label>Type</label>
-                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.type}}" />
+                        <label>About</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.about_text}}</textarea>
+                        
+                        <label>Lead-in</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_leadin}}</textarea>
+                        
+                        <label>Text</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_text}}</textarea>
                         
                         <label>Goal Type</label>
                         <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal_type | uppercase}}" />
@@ -137,14 +148,14 @@
                         <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.status | uppercase}}" />                        
                     </div>
                     
-                    <pre>{{project.actionkit | json}}</pre>
+                    <pre>{{project | json}}</pre>
                     
                     <button type="submit" class="btn btn-primary" ng-disabled="actionKitForm.$invalid">Save</button>
                     <a href="#/admin" class="btn btn-warning">Cancel</a>
                     <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
                     <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>
                     <a class="btn btn-warning" ng-click="publish(false)" ng-show="project.id && project.publish">Unpublish</a>
-                    <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a>
+                    <!-- <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a> -->
                     
                 </fieldset>
                 

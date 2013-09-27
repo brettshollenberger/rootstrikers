@@ -72,6 +72,30 @@ angular.module('app').factory('actionKitService', ['$http', function($http) {
                 return false;
             });
         },
+        
+        getPetitionForm: function(petitionFormUrl) {
+
+            var url = '/api/actionkit/getPetitionForm';
+
+            return $http({
+                method: 'GET',
+                url: url,
+                params: {
+                    'petitionFormUrl': petitionFormUrl
+                }
+            }).
+            then(function(response) {
+
+                if (response.status === 200 && response.data.error === false) {
+                    return response.data.response;
+                } else {
+                    return false;
+                }
+
+            }, function() {
+                return false;
+            });
+        },
 
         doAction: function(action) {
 

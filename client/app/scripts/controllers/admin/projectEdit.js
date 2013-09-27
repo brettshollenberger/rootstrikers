@@ -53,14 +53,14 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             });
         };
 
-    $scope.activeTab = 0;
+    $scope.activeTab = 1;
 
     $scope.tabs = [{
         name: 'Custom Project',
-        active: true
+        active: false
     }, {
         name: 'ActionKit Project',
-        active: false
+        active: true
     }];
     
     $scope.changeTab = function(tab) {

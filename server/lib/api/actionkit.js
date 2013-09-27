@@ -2,11 +2,12 @@ var request = require('request');
 
 module.exports = function(app, db) {
     
-    var apiBase = 'https://facultycreative:F8CArey0FBQt@act.demandprogress.org/rest/v1/';
+    var apiBase = 'https://facultycreative:F8CArey0FBQt@act.demandprogress.org/';
+    var apiVersion = 'rest/v1';
     
     app.post('/api/actionkit/createUser', function(req, res, next) {
     
-        var url = apiBase + 'user/';
+        var url = apiBase + apiVersion + '/user/';
        
         request({method:'POST', uri:url, body:req.body, headers:{'Content-Type':'application/json'}, json:true}, function (error, response, body) {
           
@@ -28,7 +29,7 @@ module.exports = function(app, db) {
     
     app.get('/api/actionkit/getUser', function(req, res, next) {
     
-        var url = apiBase + 'user/?email=' + req.query.email;
+        var url = apiBase + apiVersion + '/user/?email=' + req.query.email;
        
         request({method:'GET', uri:url, json:true}, function (error, response, body) {
           
@@ -44,7 +45,7 @@ module.exports = function(app, db) {
     
     app.get('/api/actionkit/getPage', function(req, res, next) {
        
-        var url = apiBase + 'page/?name=' + req.query.shortname;
+        var url = apiBase + apiVersion + '/page/?name=' + req.query.shortname;
        
         request({uri:url, json:true}, function (error, response, body) {
           
@@ -58,9 +59,25 @@ module.exports = function(app, db) {
         
     });
     
+    app.get('/api/actionkit/getPetitionForm', function(req, res, next) {
+       
+        var url = apiBase + req.query.petitionFormUrl;
+       
+        request({uri:url, json:true}, function (error, response, body) {
+          
+          if (!error) {
+            res.send({error:false, response:body});
+          } else {
+            res.send({error:true});
+          }
+          
+        });
+        
+    });
+    
     app.post('/api/actionkit/doAction', function(req, res, next) {
     
-        var url = apiBase + 'action/';
+        var url = apiBase + apiVersion + '/action/';
        
         request({method:'POST', uri:url, body:req.body, headers:{'Content-Type':'application/json'}, json:true}, function (error, response, body) {      
           
