@@ -99,7 +99,7 @@ angular
             });
           }
         },
-        getByName: function(name, cb) {
+        getBySlug: function(name, cb) {
           var respond = function(results) {
             if (results.length) {
               if (cb) {
@@ -114,12 +114,12 @@ angular
           //If we have fetched the project from the backend just return the published
           if (projects.length) {
             respond(projects.filter(function(element, index, array) {
-              return element.name === name;
+              return element.slug === name;
             }));
           } else {
             //fetch the project to the server
             this.getAll({
-              name: name
+              slug: name
             }, function(result) {
               respond(result);
             });
