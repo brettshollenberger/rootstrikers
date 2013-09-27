@@ -102,7 +102,6 @@ module.exports = (grunt)->
       files:        [ '<%= SERVER_DIR + JS_FILES %>'
                       '<%= CLIENT_DIR + JS_FILES %>' ]
       options:
-        es5:        true
         laxcomma:   true  # Common in Express-derived libraries
 
     # Browser-based testing
@@ -127,6 +126,9 @@ module.exports = (grunt)->
     # Compile `app.less` -> `app.css`
     less:
       '<%= BUILD_DIR %>/app/styles/app.css': '<%= CLIENT_DIR %>/app/styles/app.less'
+      
+      options: 
+      	dumpLineNumbers: 'mediaquery'
 
     # Minify app `.css` resources -> `.min.css`
     mincss:

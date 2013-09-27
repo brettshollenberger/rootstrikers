@@ -1,11 +1,30 @@
 /**
  * Bootstrap
  */
-
 @import "../../../bower_components/bootstrap/less/bootstrap.less";
 @import "../../../bower_components/bootstrap/less/responsive.less";
 @iconSpritePath:          "/img/glyphicons-halflings.png";
 @iconWhiteSpritePath:     "/img/glyphicons-halflings-white.png";
+
+/**
+ * Prefixer
+ */
+@import "./prefixer.less";
+
+/**
+ * Base Styles
+ */
+@import "./base/base.less";
+
+/**
+ * Component Styles
+ */
+@import "./components/components.less";
+
+/**
+ * Module-specific Styles
+ */
+@import "./modules/modules.less";
 
 /**
  * Angular
@@ -14,28 +33,6 @@
   display: none;
 }
 
-/**
- * App
- */
-
-.jumbotron {
-  margin: 60px 0;
-  text-align: center;
+.float-right {
+  float: right;
 }
-.jumbotron h1 {
-  font-size: 72px;
-  line-height: 1;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 60px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-

@@ -1,0 +1,146 @@
+.banner {
+  width: 100%;
+
+  h2 {
+    font-size: 25px;
+    margin-top: -5px;
+    letter-spacing: 5px;
+    margin-bottom: 0px;
+  }
+
+  h3 {
+    margin-top: -15px;
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+.banner-icon {
+  float: left;
+  position: relative;
+  width: 50px;
+  margin-right: 20px;
+  color: @blue;
+  display: inline;
+  font-size: 60px;
+}
+
+.banner-action span.action {
+  color: @white;
+  text-transform: uppercase;
+  font-family: @oswald;
+  letter-spacing: 4px;
+  font-size: 16px;
+  line-height: 8px;
+}
+
+.banner-blue {
+  background-color: @blue;
+}
+
+.banner-grey {
+  background-color: @light-grey;
+}
+
+.banner-light-grey {
+  background-color: @lightest-grey; 
+}
+
+.banner-content {
+  margin: 0 14.5% 0 40px;
+}
+
+.attending {
+  color: @pale-blue !important;
+}
+
+.banner-blue h2 {
+  color: @white;
+}
+
+.banner-blue h3 {
+  color: @dark-grey;
+  margin-bottom: -10px;
+}
+
+.banner-grey h2,
+.banner-light-grey h2 {
+  color: @blue;
+}
+
+.banner-grey h3,
+.banner-light-grey h3 {
+  color: @medium-grey;
+}
+
+.banner i {
+  position: relative;
+  top: 5px;
+}
+
+.banner-action {
+  position: relative;
+  top: 30px;
+  float: right;
+}
+
+.banner-info {
+  position: relative;
+  top: 10px;
+}
+
+.banner-blue .row-fluid {
+  padding: 30px;
+}
+
+.banner-grey .row-fluid,
+.banner-light-grey .row-fluid {
+  padding: 20px 30px;
+}
+
+.banner-blue span.action,
+.banner-blue span.root-checkbox {
+  position: relative;
+  top: -20px;
+}
+
+input[type="checkbox"] { 
+  z-index: 200;
+  opacity: 0;
+}
+  
+.banner-grey input[type="checkbox"] + span:before,
+.banner-light-grey input[type="checkbox"] + span:before {
+  content: "\f00c"; /* check-empty */
+  color: @white;
+}
+
+.banner-grey input[type="checkbox"]:checked + span:before,
+.banner-light-grey input[type="checkbox"]:checked + span:before {
+  content: "\f00c"; /* check */
+  color: @checkbox-blue;
+}
+
+.banner-blue.completed h2,
+.banner-blue.completed h3 {
+  color: @pale-blue;
+}
+
+.banner-blue:hover {
+  background-color: #0090f0;
+}
+
+.banner-blue.completed {
+  background-color: #0090f0;
+}
+
+.banner-blue.completed:hover {}
+
+.banner-grey .completed h2,
+.banner-grey .completed h3 ,
+.banner-grey .completed i,
+.banner-light-grey .completed h2,
+.banner-light-grey .completed h3,
+.banner-light-grey .completed i {
+  color: @fade-out-grey;
+}

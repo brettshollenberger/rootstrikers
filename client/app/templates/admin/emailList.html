@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Rootstrikers Email Templates</h1>
+    <hr/>
+    <div class="row-fluid">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="email in emails">
+                    <td>{{email.name}}</td>
+                    <td>{{email.description}}</td>
+                    <td>
+                        <a href="#/admin/email/edit/{{email.id}}" class="btn btn-primary">Edit</a>
+                        <a href="#/admin/email/preview/{{email.id}}" class="btn btn-info">Preview</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

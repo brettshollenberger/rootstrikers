@@ -1,48 +1,47 @@
-<section class="jumbotron">
-  <h1>Rootstrikers</h1>
+<notification></notification>
+<root-carousel></root-carousel>
 
-  
-</section>
-
-<hr>
-
-<div class="row-fluid">
-  <div class="span12">
-    <h3 class="text-center">Current Projects</h3>
-  
-    <div class="row-fluid">
-        <div class="span4">
-            <div class="well well-small">
-                <h4>Project 1</h4>
-                <img class="img-polaroid" src="http://lorempixel.com/300/300/">
-                <hr>
-                <p>
-                A.J. Liebling nut graf Demand Media shoot a video news.me Knight Foundation, rubber cement AP but what's the business model The Work of Art in the Age of Mechanical Reproduction Neil Postman stream, morgue bot Voice of San Diego Mozilla.</p>
-            </div>
-        </div>
+<div class="row-fluid section section-last section-grey">
+  <div class="span10 offset1">
+    <div class="row-fluid main-content">
+      <div class="span4">
         
-        <div class="span4">
-            <div class="well well-small">
-                <h4>Project 2</h4>
-                <img class="img-polaroid" src="http://lorempixel.com/300/300/">
-                <hr>
-                <p>
-                A.J. Liebling nut graf Demand Media shoot a video news.me Knight Foundation, rubber cement AP but what's the business model The Work of Art in the Age of Mechanical Reproduction Neil Postman stream, morgue bot Voice of San Diego Mozilla.</p>
-            </div>
-        </div>
-        
-        <div class="span4 last">
-            <div class="well well-small">
-                <h4>Project 3</h4>
-                <img class="img-polaroid" src="http://lorempixel.com/300/300/">
-                 <hr>
-                <p>
-                A.J. Liebling nut graf Demand Media shoot a video news.me Knight Foundation, rubber cement AP but what's the business model The Work of Art in the Age of Mechanical Reproduction Neil Postman stream, morgue bot Voice of San Diego Mozilla.</p>
-            </div>
-        </div>
+        <h2>Rootstrikers by the numbers</h2>
+        <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat cornhole mixtape labore proident direct trade. Chambray mlkshk Blue Bottle mixtape esse tattooed sint. Meggings Godard labore flexitarian laborum. Fingerstache master cleanse tousled mlkshk keytar.</p>
+      </div>
+      <div class="span4">
+        <h2>Rootstrikers by the numbers</h2>
+        <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat cornhole mixtape labore proident direct trade. Chambray mlkshk Blue Bottle mixtape esse tattooed sint. Meggings Godard labore flexitarian laborum. Fingerstache master cleanse tousled mlkshk keytar.</p>
+      </div>
+      <div class="span4">
+        <h2>Rootstrikers by the numbers</h2>
+        <p>Photo booth chia literally deserunt ethnic. Velit gluten-free bespoke, nulla cliche esse aesthetic leggings ethnic vegan. 8-bit minim ugh consequat, ex Cosby sweater typewriter lo-fi. Yr excepteur actually plaid PBR, keytar distillery placeat cornhole mixtape labore proident direct trade. Chambray mlkshk Blue Bottle mixtape esse tattooed sint. Meggings Godard labore flexitarian laborum. Fingerstache master cleanse tousled mlkshk keytar.</p>
+      </div>
     </div>
-  
   </div>
-  
-  
+</div> <!-- End By the Numbers Section -->
+
+<div class="row-fluid section" >
+  <div class="span10 offset1">
+    <h2>Active Projects</h2>
+    <hr>
+    <div class="row-fluid quick-views">
+      <div class="span4" ng-repeat="item in projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
+        <project-quick-view></project-quick-view>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="row-fluid section section-last" >
+  <div class="span10 offset1">
+    <h2>Completed Projects</h2>
+    <hr>
+    <div class="row-fluid quick-views">
+      <div class="span4" ng-repeat="item in completed_projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
+        <project-quick-view completed="true" class="completed"></project-quick-view>
+      </div>
+    </div>
+  </div>
+</div>
+

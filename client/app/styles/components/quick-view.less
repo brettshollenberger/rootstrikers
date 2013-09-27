@@ -1,0 +1,137 @@
+/********************************************************************
+* Customize the colors and fonts of the quick-view module with LESS *
+********************************************************************/ 
+
+@primary-color: @blue;
+@secondary-color: @lightest-grey;
+@border-color: @border-grey;
+@hover-color: @dark-blue;
+@highlight-color: @white;
+@muted-color: @darkest-grey;
+
+.heading-typeface {
+  font-family: @oswald;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.body-typeface {
+  font-family: @opensans;
+}
+
+/*******************************************************************/
+
+@quick-views-border: 1px solid @border-grey;
+
+// Every third image requires a clearfix, and an overriding shift
+// back to the left-hand side
+.quick-views .clearfix {
+  margin-left: 0 !important;
+}
+
+.quick-view {
+  border: @quick-views-border;
+  margin: 0 0 25px 0;
+  padding: 4px;
+  position: relative;
+}
+
+// Crop the primary quick view image
+.quick-view-img {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.quick-view hr {
+  margin: 4px 0 0 0;
+}
+
+// Pad the project quick view details
+.quick-view .content,
+.quick-view-footer .content {
+  padding: 25px 20px 60px 20px;
+}
+
+.quick-view-footer .content {
+  margin-top: -50px;
+  padding-top: 10px;
+  background-color: @secondary-color;
+  border: @quick-views-border;
+  // Remove if floats not used for footer icons
+  padding-bottom: 70px;
+}
+
+.quick-view .content h2,
+.quick-view .content h3 {
+  line-height: 28px;
+}
+
+.quick-view-cta {
+  background-color: @primary-color;
+  padding: 20px 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quick-view-cta:hover {
+  background-color: @hover-color;
+}
+
+.quick-view-cta:hover .icon-arrow-right {
+  color: @primary-color;
+}
+
+.quick-view-cta .icon-arrow-right {
+  margin-left: 5px;
+  line-height: 25px;
+  color: @dark-blue;
+}
+
+.quick-view-cta .content,
+.quick-view-cta .content a {
+  color: @highlight-color;
+  text-transform: uppercase;
+  .heading-typeface;
+  font-size: 18px;
+}
+
+.completed .quick-view-img img {
+  .grayscale;
+}
+
+.completed .avatar {
+  .grayscale;
+}
+
+.completed .quick-view-cta .icon-arrow-right {
+  color: @white !important;
+}
+
+.completed .quick-view-cta {
+  background-color: @muted-color;
+}
+
+.completed .quick-view-cta:hover {
+  background-color: black;
+}
+
+.completed .quick-view-footer {
+  background-color: @super-grey;
+}
+
+.completed h2,
+.completed h3,
+.completed h4,
+.completed h5 {
+  color: @muted-color;
+}
+
+.goal-reached-stamp {
+  width: 250px;
+  height: 250px;
+  float: right;
+  position: absolute;
+  right: 10px;
+  .opacity(90);
+}

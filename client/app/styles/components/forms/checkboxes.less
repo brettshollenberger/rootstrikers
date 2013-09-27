@@ -1,0 +1,54 @@
+/********************************************************************
+* Replace the checkboxes with Font Awesome ones                     *
+********************************************************************/
+
+input[type="radio"],
+input[type="checkbox"] {
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  padding: 10px;
+
+    // Hide the default checkbox, but don't use display: none; since we
+  // still need to check it
+  .opacity(0);
+
+  // Transform the default to a larger checkbox so it is about the same size
+  // as the Font Awesome one
+  .scale(4);
+}
+
+input[type="radio"] + span:before,
+input[type="checkbox"] + span:before,
+input[type="radio"] + span.blue:before,
+input[type="checkbox"] + span.blue:before {
+  font-family: 'FontAwesome' !important;
+  padding-right: 3px;
+  font-size: 2.5rem;
+} 
+
+input[type="radio"] + span:before {
+  content: "\f10c"; /* circle-blank */
+}
+
+input[type="radio"]:checked + span:before {
+  content: "\f111"; /* circle */
+}
+
+input[type="checkbox"] + span:before {
+  content: "\f00c"; /* check-empty */
+  color: @checkbox-blue;
+}
+
+input[type="checkbox"]:checked + span:before {
+  content: "\f00c"; /* check */
+  color: @white;
+}
+
+input[type="checkbox"].plain + span:before {
+  color: @light-grey;
+}
+
+input[type="checkbox"].plain:checked + span:before {
+  color: @checkbox-blue;
+}

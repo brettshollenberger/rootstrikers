@@ -1,0 +1,89 @@
+/**
+ * Colors
+ */
+@import "./colors.less";
+
+/**
+ * Typography
+ */
+@import "./typography.less";
+
+// Gutters
+@global-gutter: 100px;
+
+html, body {
+  height: 100%;
+  border: 0 !important;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.grayscale {
+  .filter(100%);
+}
+
+.full-color {
+  .filter(0%);
+}
+
+.admin .admin-hide {
+  display: none;
+}
+
+.admin .admin-show {
+  display: block;
+}
+
+#dimensions {
+  display: inline;
+  color: @white;
+  margin: 10px 0 0 10px;
+}
+
+.float-right {
+  float: right;
+  margin-left: 5px;
+}
+
+.white {
+  color: @white;
+}
+
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12 {
+  height: 100%;
+}
+
+// Override Bootstrap default
+@media only screen and (max-width: 768px) {
+  .container-fluid {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+}

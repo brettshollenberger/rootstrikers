@@ -1,0 +1,108 @@
+/********************************************************************
+* Sticky Footer: Customize the footer size and colors with LESS     *
+********************************************************************/ 
+
+@footer-size: 75px;
+@footer-primary-color: @darkest-grey;
+
+/********************************************************************/
+
+.wrap {
+  min-height: 100%;
+  height: auto !important;
+  margin: 120px auto -@footer-size;
+}
+
+.push {
+  height: @footer-size;
+}
+
+footer {
+  background-color: @footer-primary-color;
+  width: 100%;
+  min-height: @footer-size;
+}
+
+footer, footer p {
+    font-size: 10px;
+    margin: 0 0 14px 0;
+}
+
+footer nav a, footer nav span {
+    float: left;
+}
+
+nav.footer-links a, nav.footer-links span {
+    display: block;
+    padding-right: 53px;
+}
+
+nav.footer-links.pull-right a {
+    padding: 0 0 0 30px;
+}
+
+nav.footer-links {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+nav.footer-links h6 {
+    font-family: @oswald;
+    font-size: 16px;
+    margin: 0;
+}
+
+.footer-links .coming-soon h6 {
+    color: gray !important;
+}
+
+footer .copyright {
+    padding-left: 31px;
+    letter-spacing: 0.5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+  }
+  footer p {
+      line-height: 14px;
+  }
+  nav.footer-links {
+    margin-top: 30px;
+    margin-bottom: 0;
+    float: none
+  }
+  nav.footer-links.pull-right a {
+      padding: 0;
+  }
+  nav.footer-links.pull-right a:first-child {
+    padding: 0 10px 0 0;
+  }
+  footer nav a, footer nav span {
+    float: none;
+  }
+  nav.footer-links, nav.footer-links h6 {
+    text-align: center;
+  }
+  nav.footer-links a, nav.footer-links span {
+    display: inline;
+  }
+  .copyright-row {
+    padding: 30px 65px 0 65px;
+  }
+  footer .copyright {
+    padding-left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+    nav.footer-links a, nav.footer-links span {
+        padding-right: 23px;
+    }
+    footer .copyright {
+        padding-left: 10px;
+    }
+}
