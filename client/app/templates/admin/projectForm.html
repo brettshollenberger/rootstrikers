@@ -119,6 +119,24 @@
                             ng-model="project.shortname" validpage>
                     </div>
                     
+                    <div ng-show="project.actionkit">
+                        
+                        <label>Title</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.title}}</textarea>
+                        
+                        <label>Type</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.type}}" />
+                        
+                        <label>Goal Type</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal_type | uppercase}}" />
+                        
+                        <label>Goal</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal}}" />
+                        
+                        <label>Status</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.status | uppercase}}" />                        
+                    </div>
+                    
                     <pre>{{project.actionkit | json}}</pre>
                     
                     <button type="submit" class="btn btn-primary" ng-disabled="actionKitForm.$invalid">Save</button>
