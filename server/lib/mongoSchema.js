@@ -19,6 +19,17 @@ if (process.env.MONGOLAB_URI) {
   mongoose.connect('mongodb://' + user + config.host + ':' + config.port + '/' + config.db);
 }
 
+function convertToSlug(text, maxLength) {
+
+maxLength = maxLength || 50;
+
+return text
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .substring(0, maxLength);
+}
+
 var schema = {}, odmApi = {}, i, entity,
   genericAPI = function(entity) {
     var Model = mongoose.model(entity, schema[entity]);
@@ -72,9 +83,14 @@ var schema = {}, odmApi = {}, i, entity,
 
 schema.project = new mongoose.Schema({
   id: mongoose.Schema.Types.ObjectId,
-  name: {
-    type: String,
-    //required: true
+  slug: {
+    type: String  
+  },
+  title: {
+    type: String
+  },
+  sub_title: {
+    type: String
   },
   problem: {
     type: String
@@ -100,10 +116,13 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
-  },
-  action_goal: {
-    type: Number
   }
+});
+
+schema.project.pre('save', function(next) {
+  var project = this;
+  project.slug = convertToSlug(project.title);
+  next(); 
 });
 
 schema.page = new mongoose.Schema({
