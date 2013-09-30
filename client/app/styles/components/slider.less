@@ -1,11 +1,8 @@
-@slider-height: 448px;
-
 .carousel {
   position: relative;
   line-height: 1;
   margin-bottom: 0;
   width: 100%;
-  height: @slider-height;
   background-color: @jumbotron-black;
 }
 .carousel-inner {
@@ -24,7 +21,6 @@
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  height: @slider-height;
   opacity: .4;
 }
 .carousel-inner > .active,
@@ -111,9 +107,9 @@
 }
 .carousel-caption {
   position: absolute;
-  top: 0;
+  top: 33%;
   background: none;
-  margin: 140px 300px 0;
+  margin: 0 24%;
 }
 .carousel-caption h4,
 .carousel-caption p {
@@ -165,91 +161,83 @@
   font-size: 25px;
 }
 
-@media only screen and (max-width: 1144px) {
-  .carousel-caption h3 {
-    font-size: 70px;
-    line-height: 70px;
-  }
-
-  .carousel-caption {
-    padding-top: 50px;
-  }
+@media only screen and (max-width: 1200px) {
+    .carousel-caption {
+      margin: 0 18%;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
-
-  .carousel-caption h3 {
-    font-size: 60px;
-    line-height: 60px;
-  }
+    .carousel-caption {
+      top: 25%;
+    }
+    
+    .carousel-control {
+        left: 10%
+    }
+    .carousel-control.right {
+        right: 10%;
+    }
 }
 
-@media only screen and (max-width: 768px) {
-
-  .carousel-caption h3 {
-    font-size: 40px;
-    line-height: 40px;
-  }
-
-  .carousel-caption h2 {
-    font-size: 20px;
-    letter-spacing: 1px;
-  }
-
-  .carousel-caption a [class^="icon-"] {
-    line-height: 30px;
-    margin-left: 5px;
-  }
-
+@media only screen and (max-width: 900px) {
+    .carousel-caption {
+      top: 30%;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 40px;
+        line-height: 40px;
+    }
 }
 
-@media only screen and (max-width: 695px) {
+@media only screen and (max-width: 700px) {
 
   .carousel-caption {
-    padding-top: 60px;
+    top: 30%;
   }
   .carousel-caption h3 {
     font-size: 30px;
     line-height: 30px;
   }
+  
+    .carousel-control {
+        left: 5%
+    }
+    .carousel-control.right {
+        right: 5%;
+    }
+}
 
-  .carousel-caption h2 {
-    font-size: 15px;
-    letter-spacing: 1px;
+@media only screen and (max-width: 600px) {
+
+  .carousel-caption {
+    top: 25%;
   }
 
-  .carousel-caption a [class^="icon-"] {
-    line-height: 22px;
-    margin-left: 3px;
+  .carousel-caption h3 {
+    font-size: 25px;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  .carousel-caption {
-    padding-top: 50px;
-    margin-top: 0px;
-  }
-  .carousel-caption h3 {
-    font-size: 20px;
-    line-height: 20px;
-  }
 
-  .carousel-caption h2 {
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
-
-  .carousel-caption a [class^="icon-"] {
-    line-height: 22px;
-    margin-left: 3px;
-  }
+    .carousel-caption {
+        margin: 0 10%;
+        top: 10%;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 25px;
+    }
 }
 
 @media only screen and (max-width: 482px) {
-  .carousel {
-    height: 180px;
-  }
-  .carousel-caption {
-    margin-top: -100px;
-  }
+    .carousel-caption h3 {
+        font-size: 15px;
+        letter-spacing: 5px;
+    }
+    .rootstrikers-carousel-indicators {
+        bottom: 15px;
+    }
 }
