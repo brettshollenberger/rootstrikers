@@ -4,7 +4,7 @@ angular
   
   return {
     require: 'ngModel',
-    link: function(scope, elm, attrs, ctrl) {
+    link: function($scope, elm, attrs, ctrl) {
       
         ctrl.$parsers.unshift(function(viewValue) {
           
@@ -14,7 +14,11 @@ angular
                 
                 if(response !== false) {
                     ctrl.$setValidity('validpage', true);
-                    scope.project.shortname = viewValue;
+                    
+                    $scope.project.title = response.title;
+                    $scope.project.shortname = viewValue;
+                    $scope.project.actionkit = response;
+                    
                     return viewValue;
                 } else {
                     ctrl.$setValidity('validpage', false);

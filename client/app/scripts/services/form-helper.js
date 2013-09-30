@@ -33,15 +33,16 @@ angular
       },
       validateForm: function(form) {
         var errors = [];
-        if (form.$error.required) {
-          errors.push("Please fill out all required fields.");
+        for (var f in form) {
+          var field = form[f];
+          if (field.$error) {
+            errors.push(field.$name);
+          }
         }
-        if (form.$error.url) {
-          errors.push("Please enter a valid URL.");
-        }
-        if (form.$error.email) {
-          errors.push("Please enter a valid email address.");
-        }
+        // We can move to a particular error message, if desired,
+        // and if the field has an ID equal to its name attribute.
+        // $location.hash(errors[0]);
+
         // Errors will display when the form fields are
         // dirty an invalid. If a user has missed a field,
         // the input will be invalid, but pristine. If we

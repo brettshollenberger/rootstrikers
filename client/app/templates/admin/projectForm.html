@@ -1,57 +1,173 @@
-<div class="row-fluid section">
-  <div class="span10 offset1">
-    <a href="#/admin/projects" class="btn btn-inverse float-right">View All Projects</a>
-    <a href="#/admin/project/new" class="btn btn-inverse float-right">New Project</a>
-    <h1>{{actionTitle}} Project</h1>
-      <form name="projectForm" ng-submit="save()" novalidate>
-        <fieldset>
-          <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
-            <p>{{flash.message}}</p>
-          </div>
-          <notification></notification>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter a Project Name" ng-model="project.name" required>
-            <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
-          </div>
-          <div class="form-group">
-            <label for="problem">The Problem</label>
-            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Describe the Problem" id="problem" ng-model="project.problem"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="action">The Action</label>
-            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Action We Need to Take" id="action" ng-model="project.action"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="goal">The Goal</label>
-            <textarea class="form-control" ui-tinymce="tinymceOptions" rows="3" placeholder="Describe the Goal" id="goal" ng-model="project.goal"></textarea>
-          </div>
-          <div class="form-group">
+<div class="section">
 
-            <label for="shortname">Action Kit Shortname</label>
-            <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Enter the Action Kit Shortname" ng-model="project.shortname" validpage>
-
-            <label for="end_date">End Date</label>
-            <input type="text" id="end_date" ng-model="project.end_date"></textarea>
-
-          </div>
-          <div class="form-group" ng-show="!!project.image">
-            <a class="btn" ng-click="removeImage()" ng-show="project.image"><i class="icon-trash"></i></a>
-            <img class="img-polaroid project-thumb" ng-src="{{project.image}}" ng-show="project.image" height="300" />
-          </div>
-          <div class="form-group">
-            <a class="btn" ng-click="selectImage()">Add an Image</a>
-          </div>
-          
-          <div>
-            <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save</button>
-            <a href="#/admin" class="btn btn-warning">Cancel</a>
-            <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
-            <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>
-            <a class="btn btn-warning" ng-click="publish(false)" ng-show="project.id && project.publish">Unpublish</a>
-            <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a>
-          </div>
-        </fieldset>
-      </form>
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <h1 class="pull-left">{{actionTitle}} Project</h1>
+            <a href="#/admin/projects" class="btn btn-inverse pull-right">View All Projects</a>
+            <a href="#/admin/project/new" class="btn btn-inverse pull-right">New Project</a>            
+        </div>
     </div>
+    
+    <div class="row-fluid">
+
+        <div class="span10 offset1">
+    
+            <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
+                <p>{{flash.message}}</p>
+            </div>
+        
+            <notification></notification>
+            
+            <ul class="nav nav-tabs">
+              <li ng-repeat="tab in tabs" ng-class="{active : tab.active}">
+                <a ng-click="changeTab($index)">{{tab.name}}</a>
+              </li>
+            </ul>
+    
+            <form name="projectForm" ng-submit="save()" ng-show="activeTab == 0" novalidate>
+            
+                <fieldset>
+                    
+                    <div class="form-group">
+                        <label for="name">Project Name</label>
+                        <input
+                            type="text"
+                            class="form-control input-xxlarge"
+                            id="name"
+                            name="name"
+                            placeholder="Enter a Project Name"
+                            ng-model="project.title" required>
+                            
+                        <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="problem">The Problem</label>
+                        <textarea
+                            class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            rows="3"
+                            placeholder="Describe the Problem"
+                            id="problem"
+                            ng-model="project.problem">
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="action">The Action</label>
+                        <textarea
+                            class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            rows="3"
+                            placeholder="Action We Need to Take"
+                            id="action"
+                            ng-model="project.action">
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goal">The Goal</label>
+                        <textarea
+                            class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            rows="3"
+                            placeholder="Describe the Goal"
+                            id="goal"
+                            ng-model="project.goal">
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="text" id="end_date" ng-model="project.end_date"></textarea>
+                    </div>
+                    
+                    <div class="form-group" ng-show="!!project.image">
+                        <a class="btn" ng-click="removeImage()" ng-show="project.image">
+                            <i class="icon-trash"></i>
+                        </a>
+                        <img class="img-polaroid project-thumb" ng-src="{{project.image}}" ng-show="project.image" height="300" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <a class="btn" ng-click="selectImage()">Add an Image</a>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save</button>
+                    <a href="#/admin" class="btn btn-warning">Cancel</a>
+                    <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
+                    <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>
+                    <a class="btn btn-warning" ng-click="publish(false)" ng-show="project.id && project.publish">Unpublish</a>
+                    <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a>
+
+                </fieldset>
+            
+            </form>
+            
+            <form ng-submit="save()" ng-show="activeTab == 1">
+            
+                <fieldset name="actionKitForm">
+                
+                    <div class="form-group">
+                        <label for="shortname">Action Kit Shortname</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="shortname"
+                            name="shortname"
+                            placeholder="Enter the Action Kit Shortname"
+                            ng-model="project.shortname" validpage>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="text" id="end_date" ng-model="project.end_date"></textarea>
+                    </div>
+                    
+                    <div ng-show="project.actionkit">
+                        
+                        <!--
+                        <label>Type</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.type}}" />
+                        -->
+                        
+                        <label>Title</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.title}}</textarea>
+                        
+                        <label>Sub-Title</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_leadin}}</textarea>
+                        
+                        <label>Problem</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.about_text}}</textarea>
+                        
+                        <label>Action</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_text}}</textarea>
+                        
+                        <label>Goal Type</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal_type | uppercase}}" />
+                        
+                        <label>Goal</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal}}" />
+                        
+                        <label>Status</label>
+                        <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.status | uppercase}}" />                        
+                    </div>
+                    
+                    <!-- <pre>{{project | json}}</pre> -->
+                    
+                    <button type="submit" class="btn btn-primary" ng-disabled="actionKitForm.$invalid">Save</button>
+                    <a href="#/admin" class="btn btn-warning">Cancel</a>
+                    <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
+                    <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>
+                    <a class="btn btn-warning" ng-click="publish(false)" ng-show="project.id && project.publish">Unpublish</a>
+                    <!-- <a href="#/admin/project/preview/{{project.id}}" class="btn btn-info">Preview</a> -->
+                    
+                </fieldset>
+                
+            </form>
+        
+        </div>
+    
+    </div>
+    
 </div>

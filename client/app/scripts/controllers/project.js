@@ -9,7 +9,8 @@ angular
     '$rootScope',
     'MetaMachine',
     function($scope, $routeParams, userAPI, projectAPI, actionKitService, $rootScope, MetaMachine) {
-      projectAPI.getByName($routeParams.name, function(err, res) {
+      
+      projectAPI.getBySlug($routeParams.name, function(err, res) {
         
         // get the project from our backend
         $scope.project = res;
@@ -19,6 +20,11 @@ angular
             actionKitService.getPage($scope.project.shortname).then(function(response){
                 if(response) {
                     $scope.project.actionkit = response;
+                    $scope.project.title = response.title;
+                    $scope.project.sub_title = response.petitionForm.statement_leadin;
+                    $scope.project.problem = response.petitionForm.about_text;
+                    $scope.project.action = response.petitionForm.statement_text;
+                    $scope.project.goal = response.goal;
                 }
             });
         }
@@ -32,6 +38,7 @@ angular
         }
 
       });
+      
       // Change to specific users signed up on project
       $scope.users = userAPI.getAll();
       
@@ -58,8 +65,6 @@ angular
               // prompt the user to log in
               console.log('USER NEEDS TO LOG IN');
           }
-          
       };
-      
     }
   ]);

@@ -25,6 +25,12 @@ angular
       //set the model on the scope so its filled by the form
       $scope.page = model;
 
+      // TinyMCE override options
+      $scope.tinymceOptions = {
+          plugins: "paste,code",
+          paste_remove_styles: true
+      };
+
       $scope.save = function() {
         model.$save(function(page, putResponseHeaders) {
 
