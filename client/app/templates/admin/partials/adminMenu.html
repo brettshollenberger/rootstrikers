@@ -19,7 +19,14 @@
             <br/>
             
             <div class="pull-right">
-                <div ng-click="#" modal template="app/templates/auth/edit.html" ng-show="loggedUser" class="logout pull-left"><a>Profile</a></div>
+                <div
+                    modal
+                    template="app/templates/auth/edit.html"
+                    ng-show="loggedUser"
+                    class="logout pull-left">
+                        <a>Profile</a>
+                </div>
+                
                 <div ng-click="logout()" ng-show="loggedUser" class="logout pull-left"><a>Log Out</a></div>
             </div>
             
