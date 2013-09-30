@@ -2,7 +2,9 @@
     
         <!-- We should have some attribute like project.state which can be open or closed or something, and can stand in for the class here, so we can style the black and white images / color versions -->
         <div class="quick-view-img">
-            <img src="app/images/hack_politics_aged.png">
+            <div>
+                <img src="app/images/hack_politics_aged.png">
+            </div>
         </div>
         
         <hr>
@@ -11,15 +13,13 @@
         
             <h2>Project:</h2>
 
-            <h3 class="dark-grey">{{item.title}}</h3><br>
-
-            <p>{{item.sub_title}}</p>
+            <h3 class="dark-grey">{{item.title}}</h3>
+            
+            <div ng-bind-html-unsafe="item.sub_title"></div>
 
             <div ng-show="!completed">
                 <h2>Time Remaining:</h2>
                 <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3><br>
-                <h2>Goal:</h2>
-                <p ng-bind-html-unsafe="item.goal">{{item.goal}}</p>
             </div>
 
             <div ng-show="completed">
@@ -62,7 +62,8 @@
     <a ng-href="#/project/{{item.slug}}">
         <div class="quick-view-cta">
             <div class="content">
-                Take Action
+                Read More & Share
+                <i class="icon-arrow-right"></i>
             </div>
         </div>
     </a>
