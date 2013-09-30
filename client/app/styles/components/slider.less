@@ -1,7 +1,12 @@
+@slider-height: 448px;
+
 .carousel {
   position: relative;
-  margin-bottom: 20px;
   line-height: 1;
+  margin-bottom: 0;
+  width: 100%;
+  height: @slider-height;
+  background-color: @jumbotron-black;
 }
 .carousel-inner {
   overflow: hidden;
@@ -19,7 +24,8 @@
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  line-height: 1;
+  height: @slider-height;
+  opacity: .4;
 }
 .carousel-inner > .active,
 .carousel-inner > .next,
@@ -54,7 +60,7 @@
 .carousel-control {
   position: absolute;
   top: 40%;
-  left: 15px;
+  left: 148px;
   width: 40px;
   height: 40px;
   margin-top: -20px;
@@ -72,8 +78,7 @@
   filter: alpha(opacity=50);
 }
 .carousel-control.right {
-  left: auto;
-  right: 15px;
+  right: 148px;
 }
 .carousel-control:hover,
 .carousel-control:focus {
@@ -89,8 +94,7 @@
   list-style: none;
   position: absolute;
   width: 100%;
-  left: 0px;
-  bottom: 40px;
+  bottom: 26px;
 }
 .rootstrikers-carousel-indicators span {
   display: inline-block;
@@ -107,12 +111,9 @@
 }
 .carousel-caption {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 15px;
-  background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  top: 0;
+  background: none;
+  margin: 140px 300px 0;
 }
 .carousel-caption h4,
 .carousel-caption p {
@@ -129,12 +130,9 @@
 .carousel-caption h3 {
   font-family: @oswald;
   font-weight: 300;
-}
-
-.carousel {
-  width: 100%;
-  background-color: @jumbotron-black;
-  margin-bottom: -25px;
+  font-size: 55px;
+  letter-spacing: 10px;
+  line-height: 65px;
 }
 
 .carousel img {
@@ -142,44 +140,27 @@
   display: block;
 }
 
-.carousel-caption {
-  background: none;
-  top: 0px;
-  padding: 50px 100px;
-}
-
 .carousel-caption h3,
 .carousel-caption h2 {
   width: 100%;
+  margin: 0;
   text-align: center;
 }
 
-.carousel-caption h3 {
-  font-size: 80px;
-  line-height: 90px;
-}
-
-.carousel-caption h2 {
-  font-size: 25px;
-  letter-spacing: 2px;
-}
-
-.carousel-caption a {
-  font-size: 18px;
+.carousel-caption h2 a {
+  font-size: 16px;
+  letter-spacing: 5px;
 }
 
 .carousel-caption a [class^="icon-"] {
   line-height: 25px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .carousel-control {
   background: none;
   border: none;
   line-height: 120px;
-}
-
-.carousel-control {
   cursor: pointer;
   font-size: 25px;
 }
