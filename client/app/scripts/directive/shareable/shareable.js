@@ -2,15 +2,13 @@ angular
   .module('app')
   .directive('shareable', function($location) {
     return {
-      restrict: 'E',
+      restrict: 'A',
       priority: 0,
       replace: false,
-      templateUrl: 'app/templates/components/shareable.html',
-      scope: {
-        shareable: "@"
-      },
       controller: function($scope) {
         $scope.shareableNetworks = [];
+        
+        this.absUrl = $location.absUrl().replace(/#/, '');
 
         this.addFacebook = function() {
           $scope.shareableNetworks.push("Facebook");
@@ -19,24 +17,16 @@ angular
         this.addTwitter = function() {
           $scope.shareableNetworks.push("Twitter");
         };
+
+        this.inShareableNetworks = function(network) {
+          return _.contains($scope.shareableNetworks, network);
+        };
+
+        $scope.absUrl = this.absUrl;
+        $scope.inShareableNetworks = this.inShareableNetworks;
       },
-      link: function(scope, element, attr) {
-        scope.absUrl = $location.absUrl().replace(/#/, '');
-
-        // n complexity function mimicking Ruby's include? function
-        include = function(array, what) {
-          for (i = 0; i < array.length; i++) {
-            if (array[i] == what) {
-              return true;
-            }
-          }
-          return false;
-        };
-
-        scope.inShareableNetworks = function(network) {
-          return include(scope.shareableNetworks, network);
-        };
-
+      link: function(scope, elements, attrs) {
+        
       }
     };
   });
