@@ -1,0 +1,39 @@
+@project-nav-border: 1px solid #0066aa;
+
+.project-nav {
+  height: 50px;
+  background-color: @blue;
+}
+
+.project-nav-button {
+  width: 60px;
+  height: 50px;
+  position: relative;
+  top: 0px;
+  border-right: @project-nav-border;
+  float: left;
+}
+
+.project-nav-button:first-child {
+  border-left: @project-nav-border;
+}
+
+.project-nav-icon {
+  color: @white;
+  font-size: 25px;
+  position: relative;
+  top: 16px;
+  left: 19px;
+}
+
+.project-nav-button:hover {
+  background-color: #0066aa;
+}
+
+.project-nav-project-title {
+  .tagline;
+  padding: 10px 10px 10px 20px;
+  width: 800px;
+  text-align: left;
+  overflow: hidden;
+}

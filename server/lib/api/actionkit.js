@@ -2,8 +2,8 @@ var request = require('request');
 
 module.exports = function(app, db) {
     
-    var apiBase = 'https://facultycreative:F8CArey0FBQt@act.demandprogress.org/';
-    var apiVersion = 'rest/v1';
+    var apiBase = 'https://facultycreative:F8CArey0FBQt@act.demandprogress.org';
+    var apiVersion = '/rest/v1';
     
     app.post('/api/actionkit/createUser', function(req, res, next) {
     
@@ -59,6 +59,22 @@ module.exports = function(app, db) {
         
     });
     
+    app.get('/api/actionkit/getPetitionActions', function(req, res, next) {
+       
+        var url = apiBase + req.query.petitionActionUrl;
+       
+        request({uri:url, json:true}, function (error, response, body) {
+          
+          if (!error) {
+            res.send({error:false, response:body});
+          } else {
+            res.send({error:true});
+          }
+          
+        });
+        
+    });
+    
     app.get('/api/actionkit/getPetitionForm', function(req, res, next) {
        
         var url = apiBase + req.query.petitionFormUrl;
@@ -73,6 +89,11 @@ module.exports = function(app, db) {
           
         });
         
+    });
+    
+    app.delete('/api/actionkit/deletePetitionAction', function(req, res, next) {
+        var url = apiBase + req.query.resourceUri;
+        request({method:'DELETE', uri:url, json:true}, function (error, response, body) {});
     });
     
     app.post('/api/actionkit/doAction', function(req, res, next) {

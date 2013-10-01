@@ -165,4 +165,9 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             });
         });
     };
+    
+    $scope.deleteActions = function(actions_url) {
+        actionKitService.deleteActions(actions_url);
+    };
+    
 }]);
