@@ -231,9 +231,9 @@ schema.user = new mongoose.Schema({
   fbID: {
     type: String
   },
-  actionkitId: {
-    type: Number
-  },
+  actionId: {
+    type: String
+  }
 });
 
 schema.user.pre('save', function(next) {
