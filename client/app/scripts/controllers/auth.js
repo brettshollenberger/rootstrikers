@@ -63,7 +63,7 @@ angular
                   // commented out until the SSL certificate is renewed
                   actionKitService.createUser(user).then(function (userResponse) {
                       
-                      $scope.formUser.actionkitId = userResponse;
+                      $scope.formUser.actionId = userResponse;
                       $scope.formUser.$save(saveSuccess);
                       
                       $scope.loginUser = {
@@ -71,16 +71,17 @@ angular
                           password: $scope.formUser.password
                       };
                       
-                      $scope.login();
+                      //$scope.login();
                       
                   });
               
               } else {
               
                   // get the location of the current ActionKit user
-                  $scope.formUser.actionkitId = response.id;
-                  $scope.formUser.$save(saveSuccess);
-                  $scope.login();
+                  $scope.formUser.actionId = response.id;
+                  $scope.formUser.$save();
+                  
+                  //$scope.login();
               }
               
               _close();
