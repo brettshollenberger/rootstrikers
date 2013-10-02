@@ -43,8 +43,8 @@ app.use(function(req, res, next) {
   // basically we are reverse engineering the _escaped_fragment_
   // to figure out which url the crawler hit in the first place. 
   var url = (req.secure ? 'https' : 'http') + '://';
-  url += 'rs002dev.herokuapp.com' + ':' + app.get('port') + req.path;
-  url += '#!/' + req.query._escaped_fragment_;
+  url += 'req.host' + ':' + app.get('port') + req.path;
+  url += req.query._escaped_fragment_;
 
   // start our page renderer 
   renderer.render(url, function(html) {
