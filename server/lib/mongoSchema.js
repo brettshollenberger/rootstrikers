@@ -293,6 +293,25 @@ schema.email = new mongoose.Schema({
   },
 });
 
+schema.action = new mongoose.Schema({
+  id: {
+    type: String,
+    index: {
+      unique: true
+    }
+  },
+  project_id: {
+    type: String
+  },
+  user_id: {
+    type: String
+  },
+  date_created: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 //Create an API for the models of the schema so db logic get isolate here 
 for (entity in schema) {
   odmApi[entity] = genericAPI(entity);
