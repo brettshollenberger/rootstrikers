@@ -1,28 +1,65 @@
+@banner-height: 120px;
+@screen-sm: 768px;
+@screen-md: 992px; 
+
 .banner {
   width: 100%;
+  height: @banner-height;
+  line-height: 115px;;
 
   h2 {
     font-size: 25px;
-    margin-top: -5px;
     letter-spacing: 5px;
-    margin-bottom: 0px;
   }
 
   h3 {
-    margin-top: -15px;
     font-size: 20px;
-    width: 100%;
+  }
+  
+  h2, h3 {
+      margin: 0;
   }
 }
 
+.banner .banner-fist {
+    height: 52px;
+    width: 52px;
+    background: url("../../app/images/fists.png") no-repeat -20px 0;
+    margin: 35px 32px 0 0;
+}
+
+.banner.completed .banner-fist {
+    background: url("../../app/images/fists.png") no-repeat -72px 0;
+}
+
+.banner-light-grey h2, .banner-light-grey h3 {
+    font-family: @oswald;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 4px;
+}
+
+.banner-grey {
+    height: @banner-height;
+    background-color: @light-grey;
+}
+
 .banner-icon {
-  float: left;
-  position: relative;
-  width: 50px;
-  margin-right: 20px;
-  color: @blue;
-  display: inline;
-  font-size: 60px;
+    float: left;
+}
+
+.banner-icon a { 
+    display: block;
+    margin-top: 5px;
+}
+
+.banner-icon i {
+    color: @blue;
+    font-size: 45px;
+}
+
+.banner-action {
+  height: @banner-height;
 }
 
 .banner-action span.action {
@@ -38,16 +75,12 @@
   background-color: @blue;
 }
 
-.banner-grey {
-  background-color: @light-grey;
-}
-
 .banner-light-grey {
   background-color: @lightest-grey; 
 }
 
-.banner-content {
-  margin: 0 14.5% 0 40px;
+.banner-light-grey h2 {
+  color: @blue;
 }
 
 .attending {
@@ -55,17 +88,12 @@
 }
 
 .banner-blue h2 {
+  line-height: @banner-height;
   color: @white;
 }
 
 .banner-blue h3 {
   color: @dark-grey;
-  margin-bottom: -10px;
-}
-
-.banner-grey h2,
-.banner-light-grey h2 {
-  color: @blue;
 }
 
 .banner-grey h3,
@@ -73,35 +101,8 @@
   color: @medium-grey;
 }
 
-.banner i {
-  position: relative;
-  top: 5px;
-}
-
-.banner-action {
-  position: relative;
-  top: 30px;
-  float: right;
-}
-
-.banner-info {
-  position: relative;
-  top: 10px;
-}
-
-.banner-blue .row-fluid {
-  padding: 30px;
-}
-
-.banner-grey .row-fluid,
-.banner-light-grey .row-fluid {
-  padding: 20px 30px;
-}
-
-.banner-blue span.action,
-.banner-blue span.root-checkbox {
-  position: relative;
-  top: -20px;
+.banner-text {
+    margin: 43px 0 0 25px;
 }
 
 input[type="checkbox"] { 
@@ -126,15 +127,9 @@ input[type="checkbox"] {
   color: @pale-blue;
 }
 
-.banner-blue:hover {
+.banner-blue:hover, .banner-blue.completed {
   background-color: #0090f0;
 }
-
-.banner-blue.completed {
-  background-color: #0090f0;
-}
-
-.banner-blue.completed:hover {}
 
 .banner-grey .completed h2,
 .banner-grey .completed h3 ,
@@ -143,4 +138,33 @@ input[type="checkbox"] {
 .banner-light-grey .completed h3,
 .banner-light-grey .completed i {
   color: @fade-out-grey;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: @screen-sm) {
+    .banner h2 {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+    .banner-text {
+        margin: 40px 0 0 25px !important;
+    }
+    
+    .banner-light-grey h2, .banner-light-grey h3 {
+        font-size: 14px !important;
+    }
+    
+    .banner .banner-fist {
+        margin: 35px 15px 0 0;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: @screen-md) {
+    .banner-text {
+        margin: 40px 0 0 10px;
+    }
+    .banner-light-grey h2, .banner-light-grey h3 {
+        font-size: 10px;
+    }
 }
