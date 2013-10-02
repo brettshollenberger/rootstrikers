@@ -17,7 +17,8 @@ angular
         scope.facebookImage = attrs.shareableFacebook || null;
         var facebookUrl = "http://www.facebook.com/share.php?u=" + shareableController.absUrl;
         element.on('click', function() {
-          $window.location.href = facebookUrl;
+          $window.open(facebookUrl, '_blank');
+          $window.focus();
         });
       }
     };
