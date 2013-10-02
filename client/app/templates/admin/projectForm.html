@@ -124,6 +124,17 @@
                         <input type="text" id="end_date" ng-model="project.end_date"></textarea>
                     </div>
                     
+                    <div class="form-group" ng-show="!!project.image">
+                        <a class="btn" ng-click="removeImage()" ng-show="project.image">
+                            <i class="icon-trash"></i>
+                        </a>
+                        <img class="img-polaroid project-thumb" ng-src="{{project.image}}" ng-show="project.image" height="300" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <a class="btn" ng-click="selectImage()">Add an Image</a>
+                    </div>
+                    
                     <div ng-show="project.actionkit">
                         
                         <!--
