@@ -109,7 +109,7 @@
                 <fieldset name="actionKitForm">
                 
                     <div class="form-group">
-                        <label for="shortname">Action Kit Shortname</label>
+                        <label for="shortname">Action Kit Short Name</label>
                         <input
                             type="text"
                             class="form-control"
@@ -148,17 +148,20 @@
                         <label>Title</label>
                         <textarea class="input-xxlarge" disabled="true">{{project.actionkit.title}}</textarea>
                         
-                        <label>Sub-Title</label>
+                        <label>Statement Lead-In (Sub-Title)</label>
                         <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_leadin}}</textarea>
                         
-                        <label>Problem</label>
+                        <label>About Text (Problem)</label>
                         <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.about_text}}</textarea>
                         
-                        <label>Action</label>
+                        <label>Statement Text (Action)</label>
                         <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.statement_text}}</textarea>
                         
                         <label>Goal Type</label>
                         <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal_type | uppercase}}" />
+                        
+                        <label>Thank You Text</label>
+                        <textarea class="input-xxlarge" disabled="true">{{project.actionkit.petitionForm.thank_you_text}}</textarea>
                         
                         <label>Goal</label>
                         <input type="text" class="input-xxlarge" disabled="true" value="{{project.actionkit.goal}}" />
