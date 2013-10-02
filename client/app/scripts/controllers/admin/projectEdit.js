@@ -39,6 +39,8 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
     //And for preview
     $scope.item = model;
 
+    $scope.signUrl = 'http://act.demandprogress.org/sign/';
+
     // TinyMCE override options
     $scope.tinymceOptions = {
         plugins: "paste,code",
