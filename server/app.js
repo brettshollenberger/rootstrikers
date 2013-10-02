@@ -33,6 +33,6 @@ if ('development' === app.get('env')) {
 app.use(function(req, res, next) {
     app.get('*', function(req, res, next) {
         //return res.ok('catch all');
-        res.redirect('/#!' + req.url);
+        res.redirect('/#' + req.url);
     });
 });
