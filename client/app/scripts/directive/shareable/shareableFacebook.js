@@ -15,7 +15,7 @@ angular
         // If no image is specified, it falls back on the FontAwesome icon
         // in the layout
         scope.facebookImage = attrs.shareableFacebook || null;
-        var facebookUrl = "http://www.facebook.com/share.php?u=" + shareableController.absUrl;
+        var facebookUrl = "http://www.facebook.com/#!/share.php?u=" + shareableController.absUrl;
         element.on('click', function() {
           $window.open(facebookUrl, '_blank');
           $window.focus();
