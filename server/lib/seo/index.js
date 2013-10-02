@@ -41,7 +41,8 @@ app.use(function(req, res, next) {
 
   // we do have a fragment, so lets assemble a URL that we can access within our app
   // basically we are reverse engineering the _escaped_fragment_
-  // to figure out which url the crawler hit in the first place. 
+  // to figure out which url the crawler hit in the first place.
+  console.log("WE DID IT YAYYYYY"); 
   var url = (req.secure ? 'https' : 'http') + '://';
   url += 'req.host' + ':' + app.get('port') + req.path;
   url += '#!/' + req.query._escaped_fragment_;
