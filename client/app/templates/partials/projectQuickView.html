@@ -3,7 +3,8 @@
         <!-- We should have some attribute like project.state which can be open or closed or something, and can stand in for the class here, so we can style the black and white images / color versions -->
         <div class="quick-view-img">
             <div>
-                <img src="app/images/hack_politics_aged.png">
+                <img ng-hide="item.image" src="app/images/hack_politics_aged.png">
+                <img ng-show="item.image" ng-src="{{item.image}}">
             </div>
         </div>
         

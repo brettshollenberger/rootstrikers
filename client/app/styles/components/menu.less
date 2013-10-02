@@ -9,6 +9,14 @@
 
 @menu-height: 120px;
 
+.navbar .brand {
+    padding: 10px 20px 0 0;
+}
+
+.navbar-fixed-top .navbar-inner {
+    padding: 0;
+}
+
 // Override Bootstrap defaults
 .navbar-inner, .navbar-inverse {
   background: @darkest-grey !important;
@@ -125,6 +133,11 @@
   
   .navbar-admin .btn {
       padding: 10px 10px;
+  }
+  
+  .navbar-inverse .brand {
+      margin-left: 17px;
+      font-size: 1.5rem;
   }
 }
 
