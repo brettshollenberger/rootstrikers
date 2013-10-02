@@ -1,7 +1,10 @@
 angular
   .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap', 'ngSanitize'])
-  .config(['$routeProvider', '$httpProvider',
-    function($router, $httpProvider) {
+  .config(['$routeProvider', '$httpProvider', '$locationProvider',
+    function($router, $httpProvider, $location) {
+
+      $location.hashPrefix('!');
+
       // allow for CORS
       $httpProvider.defaults.useXDomain = true;
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
