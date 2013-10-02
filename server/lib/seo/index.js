@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
   // to figure out which url the crawler hit in the first place. 
   var url = (req.secure ? 'https' : 'http') + '://';
   url += 'req.host' + ':' + app.get('port') + req.path;
-  url += req.query._escaped_fragment_;
+  url += '#!/' + req.query._escaped_fragment_;
 
   // start our page renderer 
   renderer.render(url, function(html) {
