@@ -77,8 +77,8 @@ module.exports = function(app, db, mail) {
           thumb: data.thumb,
           isFacebook: data.isFacebook,
           isVerify: data.isVerify,
-          fbID: data.fbID
-          //actionkitId: data.actionkitId
+          fbID: data.fbID,
+          actionId: data.actionId
         }, function(err, model) {
           if (!err) {
             req.logIn(model, function() {

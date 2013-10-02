@@ -1,4 +1,4 @@
-<div ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')">
+<div shareable shareable-facebook ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')">
   <div class="row-fluid" ng-class="{'completed':checked == true}">
     <div class="span9 offset2">
       <div class="banner-action">
@@ -6,7 +6,7 @@
       </div>
       <div class="banner-info">
         <div class="banner-icon">
-          <shareable shareable-facebook></shareable>
+          <shareable-template shareable shareable-facebook></shareable-template>
         </div>
         <h2>Share on Facebook</h2>
         <h3>and reach 738 people</h3>
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
+<div shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
   <div class="row-fluid" ng-class="{'completed':checked == true}">
     <div class="span10">
       <div class="banner-action">
@@ -23,7 +23,7 @@
       </div>
       <div class="banner-info">
         <div class="banner-icon">
-          <shareable shareable-twitter></shareable>
+          <shareable-template shareable shareable-twitter></shareable-template>
         </div>
         <h2>Share on Twitter</h2>
         <h3>and reach 501 people</h3>
