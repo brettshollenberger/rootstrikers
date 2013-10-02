@@ -51,46 +51,6 @@ angular
         });
       };
         
-      Project.get = function(id, cb) {
-        var project, i;
-
-        //If there is no callback I do nothing
-        if (!cb) {
-          return;
-        }
-
-        //If the project have been already fetch return that model
-        i = getIndex(id);
-        if (i >= 0 && cb) {
-          project = projects[i];
-          cb(project);
-        }
-
-        //If not ask the server
-        if (!project) {
-          Project.get({
-            projectID: id
-          }, function(result) {
-            cb(result);
-          });
-        }
-      };
-
-      Project.remove = function(id, cb) {
-        Project.remove({
-          projectID: id
-        }, function(result) {
-          if (result) {
-            if (projects.length && getIndex(id) >= 0) {
-              projects.splice(getIndex(id), 1);
-            }
-            if (cb) {
-              cb(projects);
-            }
-          }
-        });
-      };
-        
       Project.getPublished = function(cb) {
         //If we have fetched the project from the backend just return the published
         if (projects.length) {
