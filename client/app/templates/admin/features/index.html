@@ -4,7 +4,7 @@
         <hr>
         <div class="row-fluid">
             <div class="btn-group pull-right">
-              <a href="#/admin/features/new" class="btn btn-inverse">New</a>
+              <a href="/#!/admin/features/new" class="btn btn-inverse">New</a>
             </div>
         </div>
         <hr/>
@@ -20,7 +20,7 @@
                     <tr ng-repeat="feature in features">
                         <td>{{feature.message}}</td>
                         <td>
-                            <a href="#/admin/features/{{feature.id}}/edit" class="btn btn-primary">Edit</a>
+                            <a href="/#!/admin/features/{{feature.id}}/edit" class="btn btn-primary">Edit</a>
                             <a class="btn btn-danger" ng-click="destroy(feature.id)">Delete</a>
                             <a class="btn btn-success" ng-click="publish(feature.id, true)" ng-show="!feature.published">Publish</a>
                             <a class="btn btn-warning" ng-click="publish(feature.id, false)" ng-show="feature.published">Unpublish</a>

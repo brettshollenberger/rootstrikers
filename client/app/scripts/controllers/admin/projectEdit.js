@@ -58,7 +58,7 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
                         body: 'Your Project has been successfully saved',
                         type: 'success'
                     });
-                    $location.path('/admin/project/edit/' + project.id).replace();
+                    $location.path('admin/project/edit/' + project.id).replace();
                 }
                 notification.pop({
                     body: 'Your Project has been successfully saved',
@@ -153,7 +153,7 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
                     body: 'Your Project has been successfully removed',
                     type: 'success'
                 });
-                $location.path('/admin').replace();
+                $location.path('admin').replace();
             });
         }
     };

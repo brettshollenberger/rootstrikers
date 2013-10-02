@@ -21,7 +21,7 @@ angular
             // FormHelper.update(form, model, callback)
             FormHelper.update($scope.EditFeatureForm, $scope.feature, function() {
                 alert("Feature updated successfully");
-                $location.path('/admin/features');
+                $location.path('admin/features');
             });
         };
     }]);

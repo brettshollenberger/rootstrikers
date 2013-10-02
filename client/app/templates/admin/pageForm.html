@@ -1,7 +1,7 @@
 <div class="row-fluid section">
   <div class="span10 offset1">
-    <a href="#/admin/pages" class="btn btn-inverse float-right">View All Pages</a>
-    <a href="#/admin/page/new" class="btn btn-inverse float-right">New Page</a>
+    <a href="/#!/admin/pages" class="btn btn-inverse float-right">View All Pages</a>
+    <a href="/#!/admin/page/new" class="btn btn-inverse float-right">New Page</a>
     <notification></notification>
     <div class="alert alert-block alert-{{flash.type}}" ng-show="flash.show">
       <p>{{flash.message}}</p>
@@ -26,11 +26,11 @@
             <textarea class="form-control" rows="3" placeholder="Enter a page Body" id="body" ui-tinymce="tinymceOptions" ng-model="page.body"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
-          <a href="#/admin/pages" class="btn btn-warning">Cancel</a>
+          <a href="/#!/admin/pages" class="btn btn-warning">Cancel</a>
           <a class="btn btn-danger" ng-click="remove(page.id)" ng-show="page.id">Delete</a>
           <a class="btn btn-success" ng-click="publish(true)" ng-show="page.id && !page.publish">Publish</a>
           <a class="btn btn-warning" ng-click="publish(false)" ng-show="page.id && page.publish">Unpublish</a>
-          <a href="#/admin/page/preview/{{page.id}}" class="btn btn-info">Preview</a>
+          <a href="/#!/admin/page/preview/{{page.id}}" class="btn btn-info">Preview</a>
         </fieldset>
       </form>
     </div>

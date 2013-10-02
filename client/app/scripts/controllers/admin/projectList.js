@@ -12,13 +12,11 @@ angular
         MetaMachine.title("Projects", "Admin");
 
         $scope.remove = function(id) {
-            if(confirm('Are you sure you want to delete this Project?')) {                
-                projectAPI.remove(id, function(projects) {
-                    $scope.projects = projects;
-                    notification.pop({
-                        body: 'Your Project has been successfully remove',
-                        type: 'success'
-                    });
+            if(confirm('Are you sure you want to delete this Project?')) {
+
+                projectAPI.remove({id: id}, function(response) {
+                    console.log("confirm");
+                    $scope.projects.splice(id, 1);
                 });
             }
         };

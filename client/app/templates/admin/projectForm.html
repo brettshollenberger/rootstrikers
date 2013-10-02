@@ -3,8 +3,8 @@
     <div class="row-fluid">
         <div class="span10 offset1">
             <h1 class="pull-left">{{actionTitle}} Project</h1>
-            <a href="#/admin/projects" class="btn btn-inverse pull-right">View All Projects</a>
-            <a href="#/admin/project/new" class="btn btn-inverse pull-right">New Project</a>            
+            <a href="/#!/admin/projects" class="btn btn-inverse pull-right">View All Projects</a>
+            <a href="/#!/admin/project/new" class="btn btn-inverse pull-right">New Project</a>            
         </div>
     </div>
     
@@ -173,7 +173,7 @@
                     <!-- <pre>{{project | json}}</pre> -->
                     
                     <button type="submit" class="btn btn-primary" ng-disabled="actionKitForm.$invalid">Save</button>
-                    <a href="#/admin" class="btn btn-warning">Cancel</a>
+                    <a href="/#!/admin" class="btn btn-warning">Cancel</a>
                     <a class="btn btn-danger" ng-click="remove(project.id)" ng-show="project.id">Delete</a>
                     <a class="btn btn-success" ng-click="publish(true)" ng-show="project.id && !project.publish">Publish</a>
                     <a class="btn btn-warning" ng-click="publish(false)" ng-show="project.id && project.publish">Unpublish</a>

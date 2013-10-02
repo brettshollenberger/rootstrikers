@@ -10,7 +10,7 @@ angular
       controller: function($scope, $window) {
         $scope.nextProject = function() {
           var name = $scope.displayedProject.name;
-          $window.location.href = "/project/" + name;
+          $window.location.href = "/#!/project/" + name;
         };
       },
       link: function(scope, element, attrs, projectNavController) {
