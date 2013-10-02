@@ -7,8 +7,8 @@ angular
       replace: false,
       controller: function($scope) {
         $scope.shareableNetworks = [];
-        
-        this.absUrl = $location.absUrl.replace(/#!/, "");
+
+        this.absUrl = $location.absUrl().replace(/#!/, "");
 
         this.addFacebook = function() {
           $scope.shareableNetworks.push("Facebook");
