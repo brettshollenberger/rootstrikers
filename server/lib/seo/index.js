@@ -46,8 +46,6 @@ app.use(function(req, res, next) {
   url += 'req.host' + ':' + app.get('port') + req.path;
   url += '#!/' + req.query._escaped_fragment_;
 
-  console.log(req.query._escaped_fragment_);
-
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
