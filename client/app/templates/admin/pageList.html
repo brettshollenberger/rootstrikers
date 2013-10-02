@@ -4,7 +4,7 @@
         <hr>
         <div class="row-fluid">
             <div class="btn-group pull-right">
-              <a href="#/admin/page/new" class="btn btn-inverse">New</a>
+              <a href="/#!/admin/page/new" class="btn btn-inverse">New</a>
             </div>
         </div>
         <hr/>
@@ -22,11 +22,11 @@
                         <td>{{page.name}}</td>
                         <td>{{page.url}}</td>
                         <td>
-                            <a href="#/admin/page/edit/{{page.id}}" class="btn btn-primary">Edit</a>
+                            <a href="/#!/admin/page/edit/{{page.id}}" class="btn btn-primary">Edit</a>
                             <a class="btn btn-danger" ng-click="remove(page.id)">Delete</a>
                             <a class="btn btn-success" ng-click="publish(page.id, true)" ng-show="!page.publish">Publish</a>
                             <a class="btn btn-warning" ng-click="publish(page.id, false)" ng-show="page.publish">Unpublish</a>
-                            <a href="#/admin/page/preview/{{page.id}}" class="btn btn-info">Preview</a>
+                            <a href="/#!/admin/page/preview/{{page.id}}" class="btn btn-info">Preview</a>
                         </td>
                     </tr>
                 </tbody>

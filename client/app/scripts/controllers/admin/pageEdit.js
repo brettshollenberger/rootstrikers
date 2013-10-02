@@ -39,7 +39,7 @@ angular
               body: 'Your Page has been successfully saved',
               type: 'success'
             });
-            $location.path('/admin/page/edit/' + page.id).replace();
+            $location.path('admin/page/edit/' + page.id).replace();
           }
           notification.pop({
             body: 'Your Page has been successfully saved',
@@ -56,7 +56,7 @@ angular
               body: 'Your Page has been successfully removed',
               type: 'success',
             });
-            $location.path('/admin/pages').replace();
+            $location.path('/#!/admin/pages').replace();
           });
         }
       };
