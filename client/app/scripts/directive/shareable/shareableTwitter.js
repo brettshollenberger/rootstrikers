@@ -17,7 +17,8 @@ angular
         scope.twitterImage = attrs.shareableTwitter || null;
         var twitterUrl  = "https://twitter.com/intent/tweet?original_referer=" + shareableController.absUrl + "&amp;url=" + shareableController.absUrl + "&amp;source=tweetbutton";
         element.on('click', function() {
-          $window.location.href = twitterUrl;
+          $window.open(twitterUrl, '_blank');
+          $window.focus();
         });
       }
     };
