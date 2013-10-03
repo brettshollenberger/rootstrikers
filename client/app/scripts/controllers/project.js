@@ -9,8 +9,16 @@ angular
     'projectService',
     'userService',
     'MetaMachine',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine) {
+    'selectLocation',
+    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation) {
       
+      // our form model
+      $scope.signer = {};
+      
+      // get list of states and set state to be first item
+      // this prevents angular from adding an extra "blank" select to the beginning
+      $scope.states = selectLocation.states();
+      $scope.signer.state = $scope.states[0].abbreviation;
       
       var checkActionForUser = function() {
       
@@ -36,9 +44,11 @@ angular
         $scope.project = res;
         
         if($scope.project) {
+        
             MetaMachine.title($scope.project.name);
             MetaMachine.description($scope.project.problem);
             
+            // check if user has already performed the project action
             checkActionForUser();
             
             // check to see if there is an actionkit page set and get that page if so
@@ -55,15 +65,17 @@ angular
                 });
             }
             
+            // get all of the people who have acted on this project
+            actionService.getProjectActionUsers($scope.project.id).then(function(response) {
+                $scope.users = response;
+            });
+            
         } else {
             MetaMachine.title();
             MetaMachine.description();
         }
 
       });
-      
-      // Change to specific users signed up on project
-      $scope.users = userAPI.getAll();
       
       $scope.donateProject = function() {
           console.log('DONATE PROJECT');

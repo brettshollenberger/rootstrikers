@@ -20,7 +20,7 @@
                 </div>
 
                 <div>
-                    <h2>The Action</h2>
+                    <h2>The Action:</h2>
 
                     <p ng-bind-html-unsafe="project.action">{{project.action}}</p>
                 </div>
@@ -29,45 +29,59 @@
             <div class="span4">
                 <div class="callout">
                     <div class="fist-small"></div>
-                        <p><span>529</span> Taking Action</p>
+                        <p><span>{{users.length}}</span> Taking Action</p>
                     </div>
                     
                 <div>
-                <form name="signPetition" class="signPetition" ng-submit="signPledge()">
-                    
-                    <div ng-hide="loggedUser">
+                <form novalidate name="signPetition" class="signPetition" ng-submit="signPledge()">
+                            
+                    <div ng-hide="loggedUser" form-group form="signPetition">
                     
                         <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="First Name" value="" />
+                        <input form-field ng-blur="Validator.validateField(signPetition.firstName, signPetition)" required type="text" ng-model="signer.firstName" id="firstName" name="firstName" placeholder="First Name" value="" />
                         
+                        <div ng-show="signPetition.FacultyErrors.firstName" class="alert alert-error alert-tooltip">
+                            {{signPetition.FacultyErrors.firstName}}
+                        </div>
+
                         <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="" />
+                        <input form-field ng-blur="Validator.validateField(signPetition.lastName, signPetition)" required type="text" ng-model="signer.lastName" id="lastName" name="lastName" placeholder="Last Name" value="" />
                         
+                        <div ng-show="signPetition.FacultyErrors.lastName" class="alert alert-error alert-tooltip">
+                            {{signPetition.FacultyErrors.lastName}}
+                        </div>
+
                         <div class="row">
 	                        <div class="span3">
 		                        <label for="city">City *</label>
-								<input type="text" id="city" name="city" placeholder="City" value="" />
+                            <input form-field ng-blur="Validator.validateField(signPetition.city, signPetition)" required type="text" id="city" ng-model="signer.city" name="city" placeholder="City" value="" />
+                            
+                            <div ng-show="signPetition.FacultyErrors.city" class="alert alert-error alert-tooltip">
+                                {{signPetition.FacultyErrors.city}}
+                            </div>
 	                        </div>
 	                        <div class="span1">
-		                        <label for="state">State *</label>
-                        <state-picker></state-picker>
+		                        <label for="state">State *</label>                        
+                                <select form-field class="input-block" name="state" id="state" ng-model="signer.state" ng-options="state.abbreviation as state.name for state in states" ng-blur="Validator.validateField(signPetition.state, signPetition)" required></select>
+                        
+                                <div ng-show="signPetition.FacultyErrors.state" class="alert alert-error alert-tooltip">
+                                    {{signPetition.FacultyErrors.state}}
+                                </div>
 	                        </div>
                         </div>
-                        
-                        
-                        
-                        
+ 
                         <label for="zipCode">Zip Code *</label>
-                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" value="" />
+                        <input form-field ng-blur="Validator.validateField(signPetition.zipCode, signPetition)" required type="text" id="zipCode" ng-model="signer.zipCode" name="zipCode" placeholder="Zip Code" value="" />
                         
-                        <label for="country">Country *</label>
-                        <country-picker></country-picker>
-                        
-                        <p>*Required Information</p>
-                    
+                        <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
+                            {{signPetition.FacultyErrors.zipCode}}
+                        </div>
+        
+                        <p>* Required Information</p>
+
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary pull-right">Sign the Pledge</button>
+                                                
+                    <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right">Sign the Pledge</button>
                     
                 </form>
             </div>
@@ -91,12 +105,41 @@
 	            <h2>Rootstrikers Taking Action:</h2>
 	
 	            <div class="pill">
-	                <h3>529</h3>
+	                <h3>{{users.length * 3}}</h3>
 	
 	                <h2>Rootstrikers</h2>
 	            </div>
 	
-	            <div ng-repeat="user in users"></div>
+	            <gravatar-image
+                    ng-repeat="user in users"
+                    data-email="user.user_id.email"
+                    data-size="120"
+                    data-rating="pg"
+                    data-default="404"
+                    data-secure="true"
+                    class="avatar-circular span2">
+                </gravatar-image>
+                
+                <!-- Remove these after styling -->
+                <gravatar-image
+                    ng-repeat="user in users"
+                    data-email="user.user_id.email"
+                    data-size="120"
+                    data-rating="pg"
+                    data-default="404"
+                    data-secure="true"
+                    class="avatar-circular span2">
+                </gravatar-image>
+                
+                <gravatar-image
+                    ng-repeat="user in users"
+                    data-email="user.user_id.email"
+                    data-size="120"
+                    data-rating="pg"
+                    data-default="404"
+                    data-secure="true"
+                    class="avatar-circular span2">
+                </gravatar-image>
 	        </div>
 	    </div>
 
