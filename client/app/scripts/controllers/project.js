@@ -44,9 +44,11 @@ angular
         $scope.project = res;
         
         if($scope.project) {
+        
             MetaMachine.title($scope.project.name);
             MetaMachine.description($scope.project.problem);
             
+            // check if user has already performed the project action
             checkActionForUser();
             
             // check to see if there is an actionkit page set and get that page if so
@@ -63,15 +65,17 @@ angular
                 });
             }
             
+            // get all of the people who have acted on this project
+            actionService.getProjectActionUsers($scope.project.id).then(function(response) {
+                $scope.users = response;
+            });
+            
         } else {
             MetaMachine.title();
             MetaMachine.description();
         }
 
       });
-      
-      // Change to specific users signed up on project
-      $scope.users = userAPI.getAll();
       
       $scope.donateProject = function() {
           console.log('DONATE PROJECT');
