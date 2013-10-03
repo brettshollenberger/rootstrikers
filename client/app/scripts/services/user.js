@@ -60,6 +60,9 @@ angular
             });
           }
         },
+        ngGet: function(params, next) {
+          User.get(params, next);
+        },
         remove: function(id, cb) {
           User.remove({
             userID: id
