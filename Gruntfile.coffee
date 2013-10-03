@@ -162,7 +162,7 @@ module.exports = (grunt)->
       all:
         options:
           snapshotPath: 'public/snapshots/'
-          sitePath: 'http://localhost:3000'
+          sitePath: 'http://rs002dev.herokuapp.com/'
 
     # "watch" distinct types of files and re-prepare accordingly
     watch:

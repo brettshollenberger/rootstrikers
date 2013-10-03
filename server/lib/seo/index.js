@@ -43,12 +43,13 @@ app.use(function(req, res, next) {
   // we do have a fragment, so lets assemble a URL that we can access within our app
   // basically we are reverse engineering the _escaped_fragment_
   // to figure out which url the crawler hit in the first place.
-  var url = (req.secure ? 'https' : 'http') + '://';
-  url += 'req.host' + ':' + app.get('port') + req.path;
-  url += '#!/' + req.query._escaped_fragment_;
+  // var url = (req.secure ? 'https' : 'http') + '://';
+  // url += 'req.host' + ':' + app.get('port') + req.path;
+  var url = '#!/' + req.query._escaped_fragment_;
 
   grunt.tasks(['snapshot'], {url: url}, function(e) {
-    grunt.log.ok("done running grunt task " + e);
+    console.log("done running grunt task " + e);
+    res.send(e);
   });
 
   // start our page renderer 
