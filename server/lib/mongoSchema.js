@@ -84,7 +84,7 @@ var schema = {}, odmApi = {}, i, entity,
   };
 
 schema.project = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   slug: {
     type: String  
   },
@@ -128,7 +128,7 @@ schema.project.pre('save', function(next) {
 });
 
 schema.page = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   name: {
     type: String,
     required: true
@@ -150,7 +150,7 @@ schema.page = new mongoose.Schema({
 });
 
 schema.feature = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   message: {
     type: String,
     required: true
@@ -177,7 +177,7 @@ schema.feature = new mongoose.Schema({
 
 schema.user = new mongoose.Schema({
   id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     index: {
       unique: true
     }
@@ -303,10 +303,12 @@ schema.action = new mongoose.Schema({
     }
   },
   project_id: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'project'
   },
   user_id: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
   },
   type: {
       type: String,
