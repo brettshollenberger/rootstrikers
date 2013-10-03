@@ -136,7 +136,13 @@ module.exports = function(app, db, mail) {
     };
 
     if (req.query) {
-      db.user.find(req.query, cb);
+      db.user.find(req.query, function(error, response) {
+        if (!error) {
+          res.json(cleanUser(response)[0]);
+        } else {
+          res.json(error);
+        }
+      });
     } else {
       db.user.findAll(cb);
     }
