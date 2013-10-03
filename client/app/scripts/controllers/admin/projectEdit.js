@@ -32,6 +32,16 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
         $scope.actionTitle = 'New';
         MetaMachine.title("New Project", "Admin");
     }
+    
+/*
+    var get
+    
+    
+    
+    $scope.$watch('model', function(response) { 
+        
+    });
+*/
 
     //set the model on the scope so its filled by the form
     $scope.project = model;

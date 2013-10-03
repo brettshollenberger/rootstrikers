@@ -21,13 +21,15 @@ if (process.env.MONGOLAB_URI) {
 
 function convertToSlug(text, maxLength) {
 
-maxLength = maxLength || 50;
-
-return text
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .substring(0, maxLength);
+    maxLength = maxLength || 50;
+    
+    if(!text) return false;
+    
+    return text
+        .toLowerCase()
+        .replace(/ /g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .substring(0, maxLength);
 }
 
 var schema = {}, odmApi = {}, i, entity,
