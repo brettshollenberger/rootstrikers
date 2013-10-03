@@ -308,6 +308,10 @@ schema.action = new mongoose.Schema({
   user_id: {
     type: String
   },
+  action: {
+      type: String,
+      default: 'signed'
+  },
   date_created: {
     type: Date,
     default: Date.now
