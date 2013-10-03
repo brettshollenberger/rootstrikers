@@ -12,6 +12,7 @@ var data = [{
     "shortname" : "rstest",
     "id" : "524da0e1098b7f0000000003",
     "_id" : "524da0e1098b7f0000000004",
-    "publish" : false,
-    "__v" : 0
+    "publish" : true,
+    "__v" : 0,
+    "end_date" : "2013-10-20T04:00:00.000Z"
 }];
