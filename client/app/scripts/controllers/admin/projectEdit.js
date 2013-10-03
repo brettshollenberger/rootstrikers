@@ -9,7 +9,7 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
         $scope.actionTitle = 'Edit';
         
         //get the project from the API
-        projectAPI.get($routeParams.projectID, function(project) {
+        projectAPI.get({id: $routeParams.projectID}, function(project) {
             model = project;
             $scope.project = model;
             
