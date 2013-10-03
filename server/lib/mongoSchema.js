@@ -122,6 +122,7 @@ schema.project = new mongoose.Schema({
 });
 
 schema.project.pre('save', function(next) {
+  this.id = this._id;
   var project = this;
   project.slug = convertToSlug(project.title);
   next(); 
@@ -149,6 +150,11 @@ schema.page = new mongoose.Schema({
   }
 });
 
+schema.page.pre('save', function(next) {
+  this.id = this._id;
+  next(); 
+});
+
 schema.feature = new mongoose.Schema({
   id: String,
   message: {
@@ -173,6 +179,12 @@ schema.feature = new mongoose.Schema({
     type: Boolean,
     default: false
   }
+});
+
+
+schema.feature.pre('save', function(next) {
+  this.id = this._id;
+  next(); 
 });
 
 schema.user = new mongoose.Schema({
@@ -240,6 +252,8 @@ schema.user = new mongoose.Schema({
 
 schema.user.pre('save', function(next) {
   var user = this;
+  
+  this.id = this._id;
 
   // only hash the password if it has been modified (or is new)
   if (!user.isModified('password')) return next();
