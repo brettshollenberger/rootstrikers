@@ -5,8 +5,39 @@
   </div>
 
   <div class="modal-body row">
-    <div class="span3">
-      <h5>Register</h5>
+  
+  	<div class="span6" ng-show="registerStep == 1">
+  	   <label>Email</label>
+  	   <input ng-model="formUser.email"/>
+  	   <button ng-click="registerStep = 2">Start Registration</button>
+  	   
+  	   <a ng-click="fbLogin()" class="btn btn-primary">Login / Register with Facebook</a>
+  	</div>
+  	
+  	
+<!--
+    <div class="span6">
+      <h5>Login</h5>
+      <form name="form" ng-submit="login()">
+        <div class="alert alert-error" ng-show="loginErrors.extra">
+          <strong>{{loginErrors.extra}}</strong>
+        </div>
+        <fieldset>
+          <label>Username</label>
+          <input type="text" ng-model="loginUser.email" placeholder="Your Email" required/>
+
+          <label>Password</label>
+          <input type="password" ng-model="loginUser.password" placeholder="Your Password" required/>
+        </fieldset>
+        <button type="submit" id="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+-->
+  
+  	
+  
+    <div class="span6" ng-show="registerStep == 2">
+      <h5>Details</h5>
       <form name="form" ng-submit="register()">
           <div class="alert alert-error" ng-show="formErrors.extra">
              <strong>{{formErrors.extra}}</strong>
@@ -96,30 +127,17 @@
         <button type="submit" id="submit" class="btn btn-primary">Register</button>
       </form>
     </div>
-
-    <div class="span3">
-      <h5>Login</h5>
-      <form name="form" ng-submit="login()">
-        <div class="alert alert-error" ng-show="loginErrors.extra">
-          <strong>{{loginErrors.extra}}</strong>
-        </div>
-        <fieldset>
-          <label>Username</label>
-          <input type="text" ng-model="loginUser.email" placeholder="Your Email" required/>
-
-          <label>Password</label>
-          <input type="password" ng-model="loginUser.password" placeholder="Your Password" required/>
-        </fieldset>
-        <button type="submit" id="submit" class="btn btn-primary">Login</button>
-      </form>
+    
+    <div class="span6" ng-show="registerStep == 3">
+    
+        Thanks!
+        
+        <button ng-click="yourWelcome()">Close</button>
+    
     </div>
 
   </div>
 
-  <div class="modal-footer">
-      <button type="reset" class="btn" ng-click="cancel()">Cancel</button>
-      <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
-  </div>
 </div>
 
 

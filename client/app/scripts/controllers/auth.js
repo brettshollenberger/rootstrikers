@@ -19,6 +19,7 @@ angular
       $scope.formUser = userAPI.newUser();
       $scope.loginErrors = {};
       $scope.loginUser = {};
+      $scope.registerStep = 1;
 
       $scope.register = function() {
       
@@ -62,7 +63,8 @@ angular
                 password: $scope.formUser.password
               };
               $scope.login();
-              _close();
+              $scope.registerStep = 3;
+              //_close();
             // make a call to see if this user has already signed up with ActionKit
               actionKitService.getUser($scope.formUser.email).then(function(akUser) {
                 // the user has not already signed up with ActionKit
@@ -80,7 +82,7 @@ angular
                   actionKitService.createUser(user).then(function (userId) {
                     $scope.formUser.actionId = userId;
                     $scope.formUser.actionId = userId;
-                    $scope.formUser.$update();
+                    //$scope.formUser.$update();
                   });
                 } else {
                   $scope.formUser.actionId = akUser.id;
@@ -195,6 +197,10 @@ angular
           $scope.formUser.avatar = InkBlob.url;
         });
       };
+      
+      $scope.yourWelcome = function() {
+          _close();
+      }
 
       //private methods to handle common task
 
