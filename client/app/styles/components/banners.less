@@ -5,7 +5,8 @@
 .banner {
   width: 100%;
   height: @banner-height;
-  line-height: 115px;;
+  line-height: 115px;
+  overflow: hidden;
 
   h2 {
     font-size: 25px;
@@ -28,6 +29,8 @@
     margin: 35px 32px 0 0;
 }
 
+.banner .span6{position: relative; height: 120px;}
+
 .banner.completed .banner-fist {
     background: url("../../app/images/fists.png") no-repeat -72px 0;
 }
@@ -43,9 +46,14 @@
     background-color: @lightest-grey;
 }
 
-.banner-light-grey .span6:hover {
+.banner-light-grey .span6:hover .half-stretch-left{
     background: #e2e9ec;
 }
+
+.banner-light-grey .span6:hover .half-stretch-right{
+    background: #e2e9ec;
+}
+
 
 .banner-icon {
     float: left;
@@ -64,6 +72,11 @@
 .banner-action {
   height: @banner-height;
 }
+
+.banner-info{position: relative; z-index: 10; padding: 0 20px;}
+.half-stretch-left, .half-stretch-right{position: absolute; height: 100%; width: 10000px; top: 0;}
+.half-stretch-left{right: 0;}
+.half-stretch-right{left: -@gridGutterWidth; border-left: 1px solid #e2e9ec;}
 
 .banner-action span.action {
   color: @white;
@@ -143,6 +156,14 @@ input[type="checkbox"] {
   color: @fade-out-grey;
 }
 
+@media (min-width: 768px) and (max-width: 979px) {}
+@media (max-width: 767px) {}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {
+	.half-stretch-right{left: -@gridGutterWidth1200;}		
+}
+
+
 /* Small devices (tablets, 768px and up) */
 @media (max-width: @screen-sm) {
     .banner h2 {
@@ -150,7 +171,7 @@ input[type="checkbox"] {
         letter-spacing: 3px;
     }
     .banner-text {
-        margin: 40px 0 0 25px !important;
+        margin: 40px 0 0 15px !important;
     }
     
     .banner-light-grey h2, .banner-light-grey h3 {
@@ -160,6 +181,15 @@ input[type="checkbox"] {
     .banner .banner-fist {
         margin: 35px 15px 0 0;
     }
+    .banner{
+	    overflow: visible;
+	    height: auto;
+    }
+	.half-stretch-left, .half-stretch-right{
+		display: none;
+	}
+	
+	.banner-info{padding: 0;}
 }
 
 /* Medium devices (desktops, 992px and up) */
