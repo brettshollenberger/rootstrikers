@@ -21,13 +21,15 @@ if (process.env.MONGOLAB_URI) {
 
 function convertToSlug(text, maxLength) {
 
-maxLength = maxLength || 50;
-
-return text
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .substring(0, maxLength);
+    maxLength = maxLength || 50;
+    
+    if(!text) return false;
+    
+    return text
+        .toLowerCase()
+        .replace(/ /g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .substring(0, maxLength);
 }
 
 var schema = {}, odmApi = {}, i, entity,
@@ -217,7 +219,7 @@ schema.user = new mongoose.Schema({
     type: String
   },
   zip: {
-    type: String  
+    type: String
   },
   country: {
     type: String
@@ -232,7 +234,8 @@ schema.user = new mongoose.Schema({
     type: String
   },
   actionId: {
-    type: String
+    type: String,
+    index: true
   }
 });
 
