@@ -231,7 +231,7 @@ schema.user = new mongoose.Schema({
     type: String
   },
   zip: {
-    type: String  
+    type: String
   },
   country: {
     type: String
@@ -246,7 +246,8 @@ schema.user = new mongoose.Schema({
     type: String
   },
   actionId: {
-    type: String
+    type: String,
+    index: true
   }
 });
 
