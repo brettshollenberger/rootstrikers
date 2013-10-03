@@ -24,12 +24,12 @@ module.exports = function(app, db) {
   
     var data = req.body;
 
-    action = data.action || 'signed';
+    data.type = data.type || 'signed';
 
     db.action.create({
       project_id: data.project_id,
       user_id: data.user_id,
-      action: data.action
+      type: data.type
     }, function(error, feature) {
       if (!error) {
         res.json(feature);

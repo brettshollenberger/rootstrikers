@@ -16,7 +16,7 @@ angular
         // disable the checkbox if the user has already performed the action
         scope.$watch('bannerDisabled', function(newValue, oldValue) {
             scope.checked = scope.bannerDisabled;
-        })
+        });
       
         // Perform a call to register whether or not a user has 
         // previously interacted with this banner

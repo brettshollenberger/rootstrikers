@@ -308,7 +308,7 @@ schema.action = new mongoose.Schema({
   user_id: {
     type: String
   },
-  action: {
+  type: {
       type: String,
       default: 'signed'
   },
