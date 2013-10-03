@@ -30,26 +30,36 @@
 var express   = require('express');
 var app       = module.exports = express();
 var renderer  = require('./renderer');
+var grunt     = require('grunt');
 
 // use this function as middlware
 app.use(function(req, res, next) {
   
   // if we have no escaped fragement, move onto the next process
   if (!req.query || !req.query._escaped_fragment_) {
+    // var url2 = '#!' + req.path;
+    // grunt.tasks(['snapshot'], {url: url2}, function(e) {
+    //   grunt.log("done running grunt task " + e);
+    // });
     return next();
   }
 
   // we do have a fragment, so lets assemble a URL that we can access within our app
   // basically we are reverse engineering the _escaped_fragment_
-  // to figure out which url the crawler hit in the first place. 
-  console.log("cool dog!");
-  var url = (req.secure ? 'https' : 'http') + '://';
-  url += req.host + ':' + app.get('port') + req.path;
-  url += '#!/' + req.query._escaped_fragment_;
+  // to figure out which url the crawler hit in the first place.
+  // var url = (req.secure ? 'https' : 'http') + '://';
+  // url += 'req.host' + ':' + app.get('port') + req.path;
+  var url = '#!/' + req.query._escaped_fragment_;
+
+  grunt.tasks(['snapshot'], {url: url}, function(e) {
+    console.log("done running grunt task " + e);
+    res.send(e);
+  });
 
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
+    console.log(html);
     res.send(html);
   });
 });

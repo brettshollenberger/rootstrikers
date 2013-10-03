@@ -126,7 +126,6 @@ angular
       },
 
       setErrors: function(field, errors) {
-        console.log('VALIDATOR ERRORS');
         if (typeof field.$error === 'object') {
           for (var key in field.$error) {
             if (field.$error[key] === true) {
@@ -213,8 +212,6 @@ angular
 
         scope.fields.forEach(function(f) {
           f.bind('keyup', function(event) {
-            console.log(scope.$parent.Validator);
-            console.log(scope.$parent);
             scope.$parent.Validator.alertFieldSuccess(form);
             scope.$apply();
             scope.checkValidity();

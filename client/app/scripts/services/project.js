@@ -26,6 +26,31 @@ angular
         return -1;
       };
       
+      Project.get = function(id, cb) {
+        var project, i;
+ 
+        //If there is no callback I do nothing
+        if (!cb) {
+          return;
+        }
+ 
+        //If the project have been already fetch return that model
+        i = getIndex(id);
+        if (i >= 0 && cb) {
+          project = projects[i];
+          cb(project);
+        }
+ 
+        //If not ask the server
+        if (!project) {
+          Project.get({
+            projectID: id
+          }, function(result) {
+            cb(result);
+          });
+        }
+      };
+      
       Project.newProject = function() {
         return new Project();
       };

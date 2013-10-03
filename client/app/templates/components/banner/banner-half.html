@@ -1,33 +1,43 @@
-<div shareable shareable-facebook ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')">
-  <div class="row-fluid" ng-class="{'completed':checked == true}">
-    <div class="span9 offset2">
-      <div class="banner-action">
-        <input type="checkbox" ng-checked="checked"><span></span>
-      </div>
+<!-- <div > -->
+  <!-- <div class="row" ng-class="{'completed':checked == true}"> -->
+    <div class="span6" ng-class="{'completed':checked == true}"
+    shareable shareable-facebook ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')"
+    >
+      <div class="half-stretch-left"></div>
       <div class="banner-info">
-        <div class="banner-icon">
+        <div class="pull-left banner-icon">
           <shareable-template shareable shareable-facebook></shareable-template>
         </div>
-        <h2>Share on Facebook</h2>
-        <h3>and reach 738 people</h3>
+        <div class="pull-left banner-text">
+          <h2>Share on Facebook</h2>
+          <h3>and reach 738 people</h3>
+        </div>
+        <div class="pull-right banner-action">
+          <input type="checkbox" ng-checked="checked"><span></span>
+        </div>
       </div>
+      
     </div>
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 
-<div shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
-  <div class="row-fluid" ng-class="{'completed':checked == true}">
-    <div class="span10">
-      <div class="banner-action">
-        <input type="checkbox" ng-checked="checked"><span></span>
-      </div>
+<!-- <div > -->
+  <!-- <div class="row" ng-class="{'completed':checked == true}"> -->
+    <div class="span6" ng-class="{'completed':checked == true}" shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
+	  <div class="half-stretch-right"></div>
       <div class="banner-info">
-        <div class="banner-icon">
+        <div class="pull-left banner-icon">
           <shareable-template shareable shareable-twitter></shareable-template>
         </div>
-        <h2>Share on Twitter</h2>
-        <h3>and reach 501 people</h3>
+        <div class="pull-left banner-text">
+          <h2>Share on Twitter</h2>
+          <h3>and reach 501 people</h3>
+        </div>
+        <div class="pull-right banner-action">
+          <input type="checkbox" ng-checked="checked"><span></span>
+        </div>
       </div>
+            
     </div>
-  </div>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
