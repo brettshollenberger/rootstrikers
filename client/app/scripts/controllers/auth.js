@@ -20,6 +20,8 @@ angular
       $scope.loginUser = {};
 
       $scope.register = function() {
+
+        console.log("started register");
       
         _clearErrors();
 
@@ -43,12 +45,18 @@ angular
         }
 
         if (Object.keys($scope.formErrors).length === 0) {
+
+          console.log("no errors");
         
           // make a call to see if this user has already signed up with ActionKit
           actionKitService.getUser($scope.formUser.email).then(function(response) {
+
+              console.log("action kit service returned user: " + response);
               
               // the user has not already signed up
               if(response === false) {
+
+                  console.log("action kit service returned no user");
               
                   // make a call to add this user to ActionKit
                   var user = {
@@ -62,9 +70,11 @@ angular
 
                   // commented out until the SSL certificate is renewed
                   actionKitService.createUser(user).then(function (userResponse) {
+
+                      console.log("created user in action kit " + userResponse);
                       
-                      $scope.formUser.actionId = userResponse;
-                      $scope.formUser.$save(saveSuccess);
+                      // $scope.formUser.actionId = userResponse;
+                      // $scope.formUser.$save(saveSuccess);
                       
                       /*
                       $scope.loginUser = {
@@ -78,7 +88,9 @@ angular
                   });
               
               } else {
-              
+                    
+                    console.log("going to set the form user to the returned action");
+
                     // get the location of the current ActionKit user
                     $scope.formUser.actionId = response.id;
                     $scope.formUser.$save(saveSuccess);

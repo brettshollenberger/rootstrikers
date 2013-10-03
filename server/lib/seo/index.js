@@ -37,6 +37,10 @@ app.use(function(req, res, next) {
   
   // if we have no escaped fragement, move onto the next process
   if (!req.query || !req.query._escaped_fragment_) {
+    // var url2 = '#!' + req.path;
+    // grunt.tasks(['snapshot'], {url: url2}, function(e) {
+    //   grunt.log("done running grunt task " + e);
+    // });
     return next();
   }
 
