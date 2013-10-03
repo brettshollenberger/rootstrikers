@@ -261,6 +261,18 @@ module.exports = function(app, db, mail) {
       });
   });
 
+  //*****************************// Update //*********************************//
+  app.put('/api/user/:id', function(req, res) {
+    var data = req.body;
+    db.user.update(req.params.id, req.body, function(error, feature) {
+      if (error) {
+        return res.send(error);
+      } else {
+        res.json(feature);
+      }
+    });
+  });
+
   //Process verification link and update user status to verify
   app.get('/verify/:userID', function(req, res) {
     db.user.update(req.params.userID, {

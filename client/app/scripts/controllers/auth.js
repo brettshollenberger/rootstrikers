@@ -7,7 +7,8 @@ angular
     'Facebook',
     'actionKitService',
     'flash',
-    function($scope, $location, userAPI, FB, actionKitService, notification) {
+    '$anchorScroll',
+    function($scope, $location, userAPI, FB, actionKitService, notification, $anchorScroll) {
       var inkBlob, inkBlobThumb, saveSuccess = function() {
         notification.pop({
           body: 'Your account have been created and a message to verify your account has been send. Please check your email to finish the process',
@@ -32,25 +33,41 @@ angular
           _addError('password', 'Too short. Minimum of six characters.');
         }
         
-        var numbers = /^[0-9]+$/;  
+        var numbers = /^[0-9]+$/;
         
         if(!$scope.formUser.zip.match(numbers)) {
            _addError('zip', 'Zip must be all digits.');
         }
         
-        if ($scope.formUser.zip.toString().length != 5) {          
+        if ($scope.formUser.zip.toString().length != 5) {
           _addError('zip', 'Zip must be 5 digits long.');
         }
 
         if (Object.keys($scope.formErrors).length === 0) {
-        
-          // make a call to see if this user has already signed up with ActionKit
-          actionKitService.getUser($scope.formUser.email).then(function(response) {
-              
-              // the user has not already signed up
-              if(response === false) {
-              
-                  // make a call to add this user to ActionKit
+
+          userAPI.ngGet({email: $scope.formUser.email}, function(user) {
+
+            // If the user was already saved in our db, we must alert the user
+            // that the email address is already registered
+            if (user.email) {
+              userAlreadyRegistered();
+            } else {
+            // Start by saving the user, logging them in, and closing the modal so
+            // that the user can move on. The ActionKit API call is slow, so we
+            // can always add the ActionID later. 
+              $scope.formUser.$save();
+              // Show gravatar
+              $scope.loginUser = {
+                email: $scope.formUser.email,
+                password: $scope.formUser.password
+              };
+              $scope.login();
+              _close();
+            // make a call to see if this user has already signed up with ActionKit
+              actionKitService.getUser($scope.formUser.email).then(function(akUser) {
+                // the user has not already signed up with ActionKit
+                if(akUser === false) {
+                  
                   var user = {
                       'email': $scope.formUser.email,
                       'first_name': $scope.formUser.first_name,
@@ -60,45 +77,26 @@ angular
                       'zip': $scope.formUser.zip.toString()
                   };
 
-                  // commented out until the SSL certificate is renewed
                   actionKitService.createUser(user).then(function (userId) {
-                      
-                      $scope.formUser.actionId = userId;
-                      // Add in saveSuccess as a callback to save once
-                      // we have email validation working
-                      $scope.formUser.$save();
-                      
-                      $scope.loginUser = {
-                          email: $scope.formUser.email,
-                          password: $scope.formUser.password
-                      };
-                      
-                      $scope.login();
-                      
+                    $scope.formUser.actionId = userId;
+                    $scope.formUser.actionId = userId;
+                    $scope.formUser.$update();
                   });
-              
-              } else {
-                // get the location of the current ActionKit user
-                $scope.formUser.actionId = response.id;
-                userAPI.ngGet({actionId: $scope.formUser.actionId}, function(response) {
-                  // If the user is not yet in our db
-                  if (response.length === 0) {
-                    // Add in saveSuccess as a callback to save once
-                    // we have email validation working
-                    $scope.formUser.$save(function(response) {
-                      $scope.formUser = response;
-                    });
-                  } else {
-                    $scope.formUser = response;
-                  }
-                });
-                // Login the form user
-                $scope.login();
-              }
-              
-              _close();
+                } else {
+                  $scope.formUser.actionId = akUser.id;
+                  $scope.formUser.$update();
+                }
+                _clearUser();
+              });
+            }
           });
         }
+      };
+
+      var userAlreadyRegistered = function() {
+        _addError('email', 'Email address already registered');
+        $location.hash('registeremail');
+        $anchorScroll();
       };
 
       $scope.update = function() {
@@ -130,7 +128,7 @@ angular
             });
         } else {
             console.log("There were Errors on the User Form");
-        } 
+        }
       };
 
       $scope.login = function() {
@@ -138,7 +136,6 @@ angular
         userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
-          _clearUser();
           _close();
         });
       };
