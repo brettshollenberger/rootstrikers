@@ -21,6 +21,9 @@ module.exports = (grunt)->
   # Optimize pre-built, web-accessible resources for production, primarily `usemin`
   grunt.registerTask('optimize', [ 'useminPrepare', 'concat', 'uglify', 'mincss', 'usemin' ])
 
+  # HTML Snapshots for SEO
+  grunt.registerTask('snapshot', [ 'htmlSnapshot' ])
+
 
   # Configuration
   grunt.config.init
@@ -38,7 +41,6 @@ module.exports = (grunt)->
     IMG_FILES:      '**/*.{png,gif,jpg,jpeg}'
     JS_FILES:       '**/*.js'
     LESS_FILES:     '**/*.less'
-
 
     # Wipe the `build` directory
     clean:
@@ -155,6 +157,13 @@ module.exports = (grunt)->
     useminPrepare:
       html:         '<%= BUILD_DIR %>/index.html'
 
+    # HTML Snapshots w/ headless browser
+    htmlSnapshot:
+      all:
+        options:
+          snapshotPath: 'public/snapshots/'
+          sitePath: 'http://localhost:3000/'
+
     # "watch" distinct types of files and re-prepare accordingly
     watch:
       options:
@@ -205,3 +214,4 @@ module.exports = (grunt)->
   grunt.loadNpmTasks('grunt-express-server')
   grunt.loadNpmTasks('grunt-karma')
   grunt.loadNpmTasks('grunt-usemin')
+  grunt.loadNpmTasks('grunt-html-snapshot')

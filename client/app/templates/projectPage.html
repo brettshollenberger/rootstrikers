@@ -4,9 +4,8 @@
 </section>
 
 <section>
-    <div class="container">
+	<div class="container">
 	    <div class="row section project">
-	    	
             <div class="span8 project-information">
                 <div>
                     <h2>Project:</h2>
@@ -30,15 +29,51 @@
             <div class="span4">
                 <div class="callout">
                     <div class="fist-small"></div>
-
-                    <p><span>529</span> Taking Action</p>
-                </div>
+                        <p><span>529</span> Taking Action</p>
+                    </div>
+                    
+                <div>
+                <form name="signPetition" class="signPetition" ng-submit="signPledge()">
+                    
+                    <div ng-hide="loggedUser">
+                    
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" value="" />
+                        
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="" />
+                        
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" placeholder="City" value="" />
+                        
+                        <label for="state">State *</label>
+                        <state-picker></state-picker>
+                        
+                        <label for="zipCode">Zip Code *</label>
+                        <input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" value="" />
+                        
+                        <label for="country">Country *</label>
+                        <country-picker></country-picker>
+                        
+                        <p>*Required Information</p>
+                    
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary pull-right">Sign the Pledge</button>
+                    
+                </form>
             </div>
 
 	    </div><!-- End row -->
     </div><!-- .container -->
-    
+	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
+    <!--
+<div ng-click="performedAction || signPledge()" ng-show="loggedUser">
+        <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
+    </div>
+-->
+    
     <div banner="" banner-type="action" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
     <div banner-halves=""></div>
     
