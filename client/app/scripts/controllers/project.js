@@ -9,8 +9,16 @@ angular
     'projectService',
     'userService',
     'MetaMachine',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine) {
+    'selectLocation',
+    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation) {
       
+      // our form model
+      $scope.signer = {};
+      
+      // get list of states and set state to be first item
+      // this prevents angular from adding an extra "blank" select to the beginning
+      $scope.states = selectLocation.states();
+      $scope.signer.state = $scope.states[0].abbreviation;
       
       var checkActionForUser = function() {
       
