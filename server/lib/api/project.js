@@ -70,17 +70,7 @@ module.exports = function(app, db, auth) {
     };
 
     if (req.query) {
-      db.project.find(req.query, function(err, response) {
-          if(err) return res.send(500);
-          if(!response) return res.send('No results', 404);
-          
-          if(response.length === 1) {
-             return res.send(response[0]); 
-          } else {
-             return cb(err, response);
-          }
-          
-      });
+      db.project.find(req.query, cb);
     } else {
       db.project.findAll(cb);
     }
