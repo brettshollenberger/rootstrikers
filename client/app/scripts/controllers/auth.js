@@ -200,7 +200,7 @@ angular
       
       $scope.yourWelcome = function() {
           _close();
-      }
+      };
 
       //private methods to handle common task
 
