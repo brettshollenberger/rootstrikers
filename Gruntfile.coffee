@@ -162,8 +162,7 @@ module.exports = (grunt)->
       all:
         options:
           snapshotPath: 'public/snapshots/'
-          sitePath: 'http://localhost:3000' 
-          urls: [ '/', '#!/project/The%20Beast%20Project%20in%20the%20Mooniverse' ]
+          sitePath: 'http://localhost:3000'
 
     # "watch" distinct types of files and re-prepare accordingly
     watch:

@@ -30,6 +30,7 @@
 var express   = require('express');
 var app       = module.exports = express();
 var renderer  = require('./renderer');
+var grunt     = require('grunt');
 
 // use this function as middlware
 app.use(function(req, res, next) {
@@ -46,10 +47,14 @@ app.use(function(req, res, next) {
   url += 'req.host' + ':' + app.get('port') + req.path;
   url += '#!/' + req.query._escaped_fragment_;
 
+  grunt.tasks(['snapshot'], {url: url}, function(e) {
+    grunt.log.ok("done running grunt task " + e);
+  });
+
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
     console.log(html);
-    res.send('<html class="js no-flexbox flexboxlegacy canvas canvastext no-webgl touch no-geolocation postmessage websqldatabase no-indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent no-video no-audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths ng-scope" ng-app="app"><!--<![endif]--><head>    <meta charset="utf-8">    <title ng-bind="title" class="ng-binding">The Beast Project in the Mooniverse | Rootstrikers</title>    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="description" content="Wolf organic four loko fixie, sed aute sint selvage jean shorts Williamsburg est. Delectus Austin photo booth pug, Godard selfies Bushwick gentrify dreamcatcher try-hard single-origin coffee pour-over nihil street art. Enim Odd Future labore, polaroid stumptown skateboard keffiyeh shabby chic meh id messenger bag. Organic Shoreditch Tumblr Vice bicycle rights. Culpa 90\'s freegan anim in labore, put a bird on it Truffaut. Carles pickled master cleanse hashtag cred, Williamsburg 90\'s post-ironic. Est McSweeney\'s lomo pop-up.&lt;/p&gt;">    <meta name="author" content="Faculty Creative / Well Fed">    <meta name="fragment" content="!">    <!-- Fonts -->    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic" rel="stylesheet" type="text/css">    <link href="http://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet" type="text/css">  ');
+    res.send(html);
   });
 });
