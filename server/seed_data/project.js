@@ -10,8 +10,7 @@ var data = [{
     "action" : "",
     "goal" : "",
     "shortname" : "rstest",
-    "id" : "524da0e1098b7f0000000003",
-    "_id" : "524da0e1098b7f0000000004",
+    "_id" : "524da0e1098b7f0000000003",
     "publish" : false,
     "__v" : 0
 }];
