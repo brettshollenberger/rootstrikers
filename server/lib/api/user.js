@@ -136,7 +136,13 @@ module.exports = function(app, db, mail) {
     };
 
     if (req.query) {
-      db.user.find(req.query, cb);
+      db.user.find(req.query, function(error, response) {
+        if (!error) {
+          res.json(cleanUser(response)[0]);
+        } else {
+          res.json(error);
+        }
+      });
     } else {
       db.user.findAll(cb);
     }
@@ -253,6 +259,18 @@ module.exports = function(app, db, mail) {
           res.json(err);
         }
       });
+  });
+
+  //*****************************// Update //*********************************//
+  app.put('/api/user/:id', function(req, res) {
+    var data = req.body;
+    db.user.update(req.params.id, req.body, function(error, feature) {
+      if (error) {
+        return res.send(error);
+      } else {
+        res.json(feature);
+      }
+    });
   });
 
   //Process verification link and update user status to verify

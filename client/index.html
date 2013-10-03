@@ -11,7 +11,7 @@
     <meta name="viewport"               content="width=device-width, initial-scale=1.0">
     <meta name="description"            content="{{metaDescription}}">
     <meta name="author"                 content="Faculty Creative / Well Fed">
-    <meta name="fragment"               content="!" />
+    <meta name="fragment"               content="!">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic' rel='stylesheet' type='text/css'>
@@ -39,9 +39,9 @@
       <noscript>
         Please enable Javascript to experience this site :)
       </noscript>
-      <div class="container-fluid">
-        <div ng-view></div>
-      </div>
+      
+      <div ng-view></div>
+
       
       <div class="push"></div>
     </div>
@@ -72,6 +72,7 @@
     <script src="app/scripts/services/page.js"></script>
     <script src="app/scripts/services/user.js"></script>
     <script src="app/scripts/services/facebook.js"></script>
+    <script src="app/scripts/services/action.js"></script>
     <script src="app/scripts/services/actionkit.js"></script>
     <script src="app/scripts/services/md5-service.js"></script>
     <script src="app/scripts/services/email.js"></script>
@@ -107,8 +108,12 @@
     <script src="app/scripts/directive/validPage.js"></script>
     <script src="app/scripts/directive/carousel.js"></script>
     <script src="app/scripts/directive/footer.js"></script>
-    <script src="app/scripts/directive/imagePicker.js"></script>
+    <script src="app/scripts/directive/pickers/countryPicker.js"></script>
+    <script src="app/scripts/directive/pickers/imagePicker.js"></script>
+    <script src="app/scripts/directive/pickers/statePicker.js"></script>
     <script src="app/scripts/directive/form/ngBlur.js"></script>
+    <script src="app/scripts/directive/form/formhelper.js"></script>
+    <script src="app/scripts/directive/form/validator.js"></script>
     <script src="app/scripts/directive/shareable/shareable.js"></script>
     <script src="app/scripts/directive/shareable/shareableFacebook.js"></script>
     <script src="app/scripts/directive/shareable/shareableTwitter.js"></script>

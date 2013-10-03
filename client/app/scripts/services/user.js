@@ -6,8 +6,11 @@ angular
     '$rootScope',
     '$cookieStore',
     function($resource, $http, $rootScope, $cookieStore) {
-      var User = $resource('/api/user/:userID', {
-        userID: '@id'
+      var User = $resource('/api/user/:userID', { userID: '@id' },
+      {
+          update: {
+            method: 'PUT'
+          }
       }),
         users = [],
         getIndex = function(id) {
@@ -26,8 +29,11 @@ angular
           $rootScope.loggedUser = undefined;
         };
       return {
-        newUser: function() {
-          return new User();
+        newUser: function(args) {
+          return new User(args);
+        },
+        update: function(getters, setters, cb) {
+          return User.update(getters, setters, cb);
         },
         getAll: function(filters, cb) {
           users = User.query(filters, function() {
@@ -59,6 +65,9 @@ angular
               cb(result);
             });
           }
+        },
+        ngGet: function(params, next) {
+          User.get(params, next);
         },
         remove: function(id, cb) {
           User.remove({
