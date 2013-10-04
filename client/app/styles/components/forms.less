@@ -73,7 +73,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 
 form, form label, form p {
     color: #555555;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 label {
@@ -94,4 +94,11 @@ input::-webkit-input-placeholder {
 
 input:focus::-webkit-input-placeholder  { 
     opacity: 0;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .signPetition .span1, .signPetition .span3{display: block; float: none; width: 92%;}    
+}
+@media (max-width: 767px) {
+    
 }
