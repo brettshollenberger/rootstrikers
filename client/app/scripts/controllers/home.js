@@ -1,8 +1,5 @@
 angular.module('app').controller('homeController', ['$rootScope', '$scope', 'userService', 'projectService', 'featureService', 'MetaMachine', 'actionKitService', function($rootScope, $scope, userService, Project, Feature, MetaMachine, actionKitService) {
 
-    MetaMachine.title("Home");
-    MetaMachine.description("We fight the corrupting influence of money in politics");
-
     $scope.projects = Project.getActive();
     $scope.completed_projects = Project.getCompleted();
     $scope.features = Feature.getPublished();
