@@ -30,14 +30,21 @@
             <div class="span4">
             
                 <div class="callout">
-                    <div class="fist-small"></div>
+                
+                    <div>
+                        <div class="fist-small"></div>
                         <p><span>{{users.length | number}}</span> Taking Action</p>
                     </div>
-                <div>
+                    
+                    <!-- Status Bar for percent actions completed -->
+                    <div class="progress-bar">
+                        <div class="progress">
+                            <div class="bar" style="width: {{users.length / project.actionsNeeded * 100}}%;"></div>
+                        </div>
+                        <p class="text-right" ng-hide="!project.actionsNeeded"><span>{{project.actionsNeeded | number}}</span> Needed</p>
+                    </div>
                 
-                <div class="progress">
-                    <div class="bar" style="width: 60%;"></div>
-                </div>
+                <div>
                 
                 <form novalidate name="signPetition" class="signPetition" ng-submit="signPledge()">
                             
