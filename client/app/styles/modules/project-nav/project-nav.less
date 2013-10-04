@@ -1,7 +1,7 @@
 @project-nav-border: 1px solid #0066aa;
 
 .project-nav {
-  height: 50px;
+  min-height: 50px;
   background-color: @blue;
 }
 
@@ -28,12 +28,20 @@
 
 .project-nav-button:hover {
   background-color: #0066aa;
+  cursor: pointer;
 }
 
 .project-nav-project-title {
   .tagline;
+  display: block;
   padding: 10px 10px 10px 20px;
   text-align: left;
   overflow: hidden;
-  width: 800px;
+  
+  @media (max-width: 767px) {
+      float: left;
+      margin: 0;
+      padding: 8px 0;
+  }
+  
 }
