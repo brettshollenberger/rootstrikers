@@ -31,6 +31,10 @@
                 </div>
             </div>
 
+            <div class="span4" ng-show="isContentFromOldSite(project)">
+                <img src="app/images/projectcomplete@2x.png">
+            </div>
+
             <div class="span4" ng-hide="isContentFromOldSite(project)">
 
                 <div class="callout">
@@ -137,7 +141,7 @@
         <div banner-halves=""></div>
     </div>
     
-	<div class="container">
+	<div class="container" ng-hide="isContentFromOldSite(project)">
 	    <div class="row section section-last">
 	        <div class="span12">
 	            <h2>Rootstrikers Taking Action:</h2>
