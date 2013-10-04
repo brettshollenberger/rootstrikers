@@ -46,52 +46,57 @@
                 
                 <div>
 
-                <form novalidate ng-show="!performedAction && !loggedUser" name="signPetition" class="signPetition" ng-submit="signPledge()">
+                <form novalidate
+                    name="signPetition"
+                    class="signPetition"
+                    ng-show="!performedAction && !loggedUser"
+                    ng-submit="signPledge()">
                             
                     <div form-group form="signPetition">
                     
                         <label for="firstName">First Name *</label>
-                        <input form-field ng-blur="Validator.validateField(signPetition.firstName, signPetition)" required type="text" ng-model="signer.firstName" id="firstName" name="firstName" placeholder="First Name" value="" />
+                        <input
+                            form-field
+                            required
+                            type="text" name="firstName" id="firstName" placeholder="First Name" value=""
+                            ng-blur="Validator.validateField(signPetition.firstName, signPetition)"
+                            ng-model="signer.firstName" />
                         
                         <div ng-show="signPetition.FacultyErrors.firstName" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.firstName}}
                         </div>
 
                         <label for="lastName">Last Name *</label>
-                        <input form-field ng-blur="Validator.validateField(signPetition.lastName, signPetition)" required type="text" ng-model="signer.lastName" id="lastName" name="lastName" placeholder="Last Name" value="" />
+                        <input
+                            form-field
+                            required
+                            type="text" name="lastName" id="lastName" placeholder="Last Name" value=""
+                            ng-blur="Validator.validateField(signPetition.lastName, signPetition)"
+                            ng-model="signer.lastName" />
                         
                         <div ng-show="signPetition.FacultyErrors.lastName" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.lastName}}
                         </div>
                         
                         <label for="email">Email *</label>
-                        <input form-field ng-blur="Validator.validateField(signPetition.email, signPetition)" required type="text" ng-model="signer.email" id="email" name="email" placeholder="Email" value="" />
+                        <input
+                            form-field
+                            required
+                            type="text" name="email" id="email" placeholder="Email" value=""
+                            ng-blur="Validator.validateField(signPetition.email, signPetition)"
+                            ng-model="signer.email" />
                         
                         <div ng-show="signPetition.FacultyErrors.email" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.email}}
                         </div>
-                        
-                        <div class="row">
-	                        <div class="span3">
-		                        <label for="city">City *</label>
-                            <input form-field ng-blur="Validator.validateField(signPetition.city, signPetition)" required type="text" id="city" ng-model="signer.city" name="city" placeholder="City" value="" />
-                            
-                            <div ng-show="signPetition.FacultyErrors.city" class="alert alert-error alert-tooltip">
-                                {{signPetition.FacultyErrors.city}}
-                            </div>
-	                        </div>
-	                        <div class="span1">
-		                        <label for="state">State *</label>                        
-                                <select form-field class="input-block" name="state" id="state" ng-model="signer.state" ng-options="state.abbreviation as state.name for state in states" ng-blur="Validator.validateField(signPetition.state, signPetition)" required></select>
-                        
-                                <div ng-show="signPetition.FacultyErrors.state" class="alert alert-error alert-tooltip">
-                                    {{signPetition.FacultyErrors.state}}
-                                </div>
-	                        </div>
-                        </div>
  
                         <label for="zipCode">Zip Code *</label>
-                        <input form-field ng-blur="Validator.validateField(signPetition.zipCode, signPetition)" required type="text" id="zipCode" ng-model="signer.zipCode" name="zipCode" placeholder="Zip Code" value="" />
+                        <input
+                            form-field
+                            required
+                            type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
+                            ng-blur="Validator.validateField(signPetition.zipCode, signPetition)"
+                            ng-model="signer.zipCode" />
                         
                         <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.zipCode}}
@@ -105,14 +110,19 @@
                     
                 </form>
                 
-                <button ng-show="loggedUser && !performedAction"class="btn-block btn" ng-click="performedAction || signPledge()">Sign Me!</button>
+                <button
+                    class="btn-block btn"
+                    ng-show="loggedUser && !performedAction"
+                    ng-click="performedAction || signPledge()">Sign Me!</button>
                 
                 <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
                 
             </div><!-- .span4 -->
 
 	    </div><!-- End row -->
+	    
     </div><!-- .container -->
+    
 	</div>
 	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
@@ -151,5 +161,6 @@
 	        </div>
 	    </div>
 
-	</div><!-- .container -->        
+	</div><!-- .container -->
+	
 </section>

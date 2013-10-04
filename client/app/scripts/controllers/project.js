@@ -88,6 +88,21 @@ angular
           console.log('DONATE PROJECT');
       };
       
+      var doAction = function(action, user) {
+          
+          actionKitService.doAction(action).then(function (response) {
+                    
+              // if the call to Action Kit was a success
+              if(response === true) {
+              
+                  // add an action entry to our DB for easy reference later
+                  var myAction = new actionService({user: user, project_id: $scope.project.id});
+                  myAction.$save();
+                  $scope.performedAction = true;             
+              } 
+          });
+      };
+      
       $scope.signPledge = function() {
           
           var action = {};
@@ -101,36 +116,20 @@ angular
                   'zip': $rootScope.loggedUser.zip
               };
               
-          } else {
-              console.log('GET FORM DATA AND SEND REQUEST');
+              doAction(action, $rootScope.loggedUser);
               
+          } else {
+          
+              // check if the user exists in the database already 
               action = {
                   'page': $scope.project.shortname,
                   'email': $scope.signer.email,
                   'zip': $scope.signer.zipCode
               };
+              
+              doAction(action, $scope.signer);
           }
           
-          var userId = $rootScope.loggedUser ? $rootScope.loggedUser.id : '0000000000';
-          
-          console.log('USER ID');
-          console.log(userId);
-          
-          actionKitService.doAction(action).then(function (response) {
-          
-              console.log(response);
-                     
-              // if the call to Action Kit was a success
-              if(response === true) {
-              
-                  console.log('THIS IS SUCCESSFUL');
-              
-                  // add an action entry to our DB for easy reference later
-                  var myAction = new actionService({user_id: userId, project_id: $scope.project.id});
-                  myAction.$save();
-                  $scope.performedAction = true;             
-              } 
-          });
       };
     }
   ]);
