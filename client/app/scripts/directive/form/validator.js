@@ -204,6 +204,7 @@ angular
         this.addField = function(field) {
           $scope.fields.push(field);
         };
+        
       },
 
       link: function(scope, element, attrs) {
@@ -228,6 +229,7 @@ angular
           return validity;
         };
         scope.checkValidity();
+        
       }
     };
   })

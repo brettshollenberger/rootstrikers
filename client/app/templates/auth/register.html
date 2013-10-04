@@ -6,110 +6,163 @@
   </div>
 
   <div class="modal-body">
-    <form name="form" ng-submit="register()" novalidate>
-      	<div class="step step1" ng-show="registerStep == 1">
-      	   
-      	   <a ng-click="fbLogin()" class="btn btn-primary darkblue">Login / Register with Facebook</a>
-      	   <p class="text-center"><em>or</em></p>
-      	   <div class="row">
+    
+      	<form name="formStepOne" class="step step1" novalidate ng-show="registerStep == 1" ng-submit="advanceStep()">
+      	   <div class="row" form-group form="formStepOne">
           	   <div class="span3">
-              	   <input type="text" placeholder="Your Email Address" ng-model="formUser.email"/>
+              	   <input required
+              	      form-field 
+              	      type="text" 
+              	      placeholder="Your Email Address" 
+              	      ng-model="formUser.email" 
+              	      ng-blur="Validator.validateField(formStepOne.email, formStepOne)"
+              	      name="email"/>
+              	      
+                    <div ng-show="formStepOne.FacultyErrors.email" class="alert alert-error alert-tooltip">
+                        {{formStepOne.FacultyErrors.email}}
+                    </div>  
+                      
           	   </div>
           	   <div class="span3">
-              	   <a class="btn btn-primary" ng-click="registerStep = 2">Start Registration</a>
+              	   <button type="submit" ng-disabled="formStepOne.email.$invalid" class="btn btn-primary">Start Registration</button>
           	   </div>
       	   </div>
+       </form>
       	   
-      	</div>
 
     
-        <div class="step2 step" ng-show="registerStep == 2">
+        <form name="formStepTwo" novalidate class="step2 step" ng-show="registerStep == 2" ng-submit="advanceStep()">
             <div class="pad">    
-                <div class="alert alert-error" ng-show="formErrors.extra">
-                    <strong>{{formErrors.extra}}</strong>
-                </div>
-                <fieldset>
-                        <div class="row">
-                            <div class="control-group span6" ng-class="{error: formErrors.avatar}">
-                                <div class="controls">
-                                    
-                                    <a ng-click="uploadAvatar()" class="avatar">
-                                        <img class="avatar-thumb" ng-show="formUser.thumb" ng-src="{{formUser.thumb}}"/>
-                                        <i ng-show="!formUser.thumb" class="icon-plus-sign"></i> 
-                                        <span>Upload an avatar</span>
-                                    </a>
-                                    <span class="help-inline" ng-show="formErrors.avatar">{{formErrors.avatar}}</span>
-                                </div>
-                            </div>
+                <fieldset form-group form="formStepTwo">
+
+                    <div class="control-group">
+                        <label class="control-label" for="firstName">First Name</label>
+                        <div class="controls">
+                            <input 
+                                form-field
+                                type="text" 
+                                id="firstName" 
+                                name="first_name" 
+                                ng-model="formUser.first_name" 
+                                placeholder="First Name"
+                                ng-blur="Validator.validateField(formStepTwo.first_name, formStepTwo)" 
+                                required/>
+                                
+                            <div ng-show="formStepTwo.FacultyErrors.first_name" class="alert alert-error alert-tooltip">
+                                {{formStepTwo.FacultyErrors.first_name}}
+                            </div> 
+                            
                         </div>
-                        <div class="control-group" ng-class="{error: formErrors.first_name}">
-                            <label class="control-label" for="firstName">First Name</label>
-                            <div class="controls">
-                                <input type="text" id="firstName" name="first_name" ng-model="formUser.first_name" placeholder="First Name" required/>
-                                <span class="help-inline" ng-show="formErrors.first_name">{{formErrors.first_name}}</span>
-                            </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="lastName">Last Name</label>
+                        <div class="controls">
+                            <input 
+                                form-field 
+                                type="text" 
+                                id="registeremail" 
+                                name="last_name" 
+                                ng-model="formUser.last_name" 
+                                placeholder="Last Name" 
+                                ng-blur="Validator.validateField(formStepTwo.last_name, formStepTwo)"
+                                required/>
+                            
+                            <div ng-show="formStepTwo.FacultyErrors.last_name" class="alert alert-error alert-tooltip">
+                                {{formStepTwo.FacultyErrors.last_name}}
+                            </div> 
                         </div>
-                        
-                        <div class="control-group" ng-class="{error: formErrors.last_name}">
-                            <label class="control-label" for="lastName">Last Name</label>
-                            <div class="controls">
-                                <input type="text" id="registeremail" name="last_name" ng-model="formUser.last_name" placeholder="Last Name" required/>
-                                <span class="help-inline" ng-show="formErrors.last_name">{{formErrors.last_name}}</span>
-                            </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="zip">Zip</label>
+                        <div class="controls">
+                            <input 
+                                form-field 
+                                id="zip" 
+                                name="zip" 
+                                type="text" 
+                                ng-model="formUser.zip" 
+                                placeholder="Zip" 
+                                ng-blur="Validator.validateField(formStepTwo.zip, formStepTwo)"
+                                required/>
+                            
+                            <div ng-show="formStepTwo.FacultyErrors.zip" class="alert alert-error alert-tooltip">
+                                {{formStepTwo.FacultyErrors.zip}}
+                            </div> 
                         </div>
+                    </div>
                     
                 </fieldset>
                 
-                <button class="btn btn-primary" ng-click="registerStep = 3">Next</button>
+                {{formStepTwo.$valid}}
+                
+                <button type="submit" class="btn btn-primary">Next</button>
             </div>
-        </div>
+        </form>
         
         
-        <div class="step3 step" ng-show="registerStep == 3">
+        <form name="formStepThree" class="step3 step" ng-show="registerStep == 3" ng-submit="register()">
         
-            <div class="pad">
+            <div class="pad" form-group form="formStepThree">
 
-                <div class="control-group" ng-class="{error: formErrors.password}">
+                <div class="control-group">
                     <label class="control-label" for="registerPassword">Password</label>
                     <div class="controls">
-                        <input type="password" id="registerPassword" name="password" ng-model="formUser.password" placeholder="Desired password" required/>
-                        <span class="help-inline" ng-show="formErrors.password">{{formErrors.password}}</span>
+                        <input 
+                            form-field 
+                            type="password" 
+                            id="registerPassword" 
+                            name="password" 
+                            ng-model="formUser.password" 
+                            placeholder="Desired password" 
+                            required/>
+                            
+                            <div ng-show="formStepThree.FacultyErrors.password" class="alert alert-error alert-tooltip">
+                                {{formStepTwo.FacultyErrors.password}}
+                            </div>
+                        
                     </div>
                 </div>
                 
-                <div class="control-group" ng-class="{error: formErrors.passConfirmation}">
+                <div class="control-group">
                     <label class="control-label" for="registerConfirm">Password Confirmation</label>
                     <div class="controls">
-                        <input class="warning" id="registerConfirm" name="passConfirmation" type="password" ng-model="formUser.passConfirmation" placeholder="Confirm password" required/>
-                        <span class="help-inline" ng-show="formErrors.passConfirmation">{{formErrors.passConfirmation}}</span>
+                        <input 
+                            form-field 
+                            class="warning" 
+                            id="registerConfirm" 
+                            name="passConfirmation" 
+                            type="password" 
+                            ng-model="formUser.passConfirmation" 
+                            placeholder="Confirm password" 
+                            required/>
+                            
+                            <div ng-show="formStepThree.FacultyErrors.passConfirmation" class="alert alert-error alert-tooltip">
+                                {{formStepTwo.FacultyErrors.passConfirmation}}
+                            </div>
+                        
                     </div>
                 </div>
                 
-                <div class="control-group" ng-class="{error: formErrors.zip}">
-                    <label class="control-label" for="zip">Zip</label>
-                    <div class="controls">
-                        <input id="zip" name="zip" type="text" ng-model="formUser.zip" placeholder="Zip" required/>
-                        <span class="help-inline" ng-show="formErrors.zip">{{formErrors.zip}}</span>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary" ng-click="registerStep = 4">Submit</button>
+                <button type="submit" class="btn btn-primary">Complete Registration</button>
+            
             </div>
-        </div>
+            
+        </form>
         
-        
-            </form>
-    
-    <div class="step4 step" ng-show="registerStep == 4">
-        
+            
+        <div class="step4 step" ng-show="registerStep == 4">
+            
             <h3>Thanks!</h3>
             <p>You have successfully registered as a Rootstriker!<br/>
                 You have been automatically logged in.
             </p>
+                
+            <!-- <button type="submit" id="submit" class="btn btn-primary">Register</button> -->
+            <button class="btn btn-primary" ng-click="yourWelcome()">Close</button>
             
-        <!-- <button type="submit" id="submit" class="btn btn-primary">Register</button> -->
-        <button class="btn btn-primary" ng-click="yourWelcome()">Close</button>
-    </div>
+        </div>
 
   </div>
 
