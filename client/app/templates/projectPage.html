@@ -32,15 +32,27 @@
             </div>
 
             <div class="span4" ng-hide="isContentFromOldSite(project)">
+
                 <div class="callout">
-                    <div class="fist-small"></div>
-                        <p><span>{{users.length}}</span> Taking Action</p>
+                
+                    <div>
+                        <div class="fist-small"></div>
+                        <p><span>{{users.length | number}}</span> Taking Action</p>
                     </div>
                     
+                    <!-- Status Bar for percent actions completed -->
+                    <div class="progress-bar">
+                        <div class="progress">
+                            <div class="bar" style="width: {{users.length / project.actionsNeeded * 100}}%;"></div>
+                        </div>
+                        <p class="text-right" ng-hide="!project.actionsNeeded"><span>{{project.actionsNeeded | number}}</span> Needed</p>
+                    </div>
+                
                 <div>
-                <form novalidate name="signPetition" class="signPetition" ng-submit="signPledge()" ng-hide="isContentFromOldSite(project)">
+
+                <form novalidate ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project)" name="signPetition" class="signPetition" ng-submit="signPledge()">
                             
-                    <div ng-hide="loggedUser" form-group form="signPetition">
+                    <div form-group form="signPetition">
                     
                         <label for="firstName">First Name *</label>
                         <input form-field ng-blur="Validator.validateField(signPetition.firstName, signPetition)" required type="text" ng-model="signer.firstName" id="firstName" name="firstName" placeholder="First Name" value="" />
@@ -96,62 +108,49 @@
                     <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right">Sign the Pledge</button>
                     
                 </form>
+                
+                <button ng-show="loggedUser && !performedAction"class="btn-block btn" ng-click="performedAction || signPledge()">Sign Me!</button>
+                
+                <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
+                
             </div>
 
 	    </div><!-- End row -->
     </div><!-- .container -->
 	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-    <!--
-<div ng-click="performedAction || signPledge()" ng-show="loggedUser">
-        <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
+    <div class="container stretch">
+        <div ng-click="performedAction || signPledge()" ng-show="loggedUser">
+            <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
+        </div>
+        <div banner-halves=""></div>
     </div>
--->
-    
-    <div banner="" banner-type="action" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
-    <div banner-halves=""></div>
     
 	<div class="container">
 	    <div class="row section section-last">
 	        <div class="span12">
 	            <h2>Rootstrikers Taking Action:</h2>
 	
-	            <div class="pill">
-	                <h3>{{users.length * 3}}</h3>
+                <div class="row">
 	
-	                <h2>Rootstrikers</h2>
-	            </div>
-	
-	            <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
+    	            <div class="pill span4">
+    	                <h3>{{users.length | number}}</h3>
+    	
+    	                <h2>Rootstrikers</h2>
+    	            </div>
+    	
+    	            <gravatar-image
+                        ng-repeat="user in users"
+                        data-email="user.user_id.email"
+                        data-size="120"
+                        data-rating="pg"
+                        data-default="404"
+                        data-secure="true"
+                        class="avatar-circular span2">
+                    </gravatar-image>
                 
-                <!-- Remove these after styling -->
-                <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
+                </div>
                 
-                <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
 	        </div>
 	    </div>
 

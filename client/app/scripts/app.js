@@ -138,6 +138,11 @@ angular
         $rootScope.$watch('loggedUser', function(newValue, oldValue) {
             $cookieStore.put('loggedUser', newValue);
         });
+        
+        // use anywhere to goto a page :)
+        $rootScope.goTo = function(url) {
+            $location.url(url);
+        };
       
         // Handle updating page title
         $rootScope.$on('$routeChangeSuccess', function($event, $route, $previousRoute) {

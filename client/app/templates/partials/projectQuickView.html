@@ -1,7 +1,7 @@
 <div class="quick-view">
 
     <!-- We should have some attribute like project.state which can be open or closed or something, and can stand in for the class here, so we can style the black and white images / color versions -->
-    <div class="quick-view-img" ng-hide="isContentFromOldSite(item)">
+    <div class="quick-view-img" ng-hide="isContentFromOldSite(item)" ng-click="goTo('project/'+item.slug)">
         <div>
             <img ng-hide="item.image" src="app/images/hack_politics_aged.png">
             <img ng-show="item.image" ng-src="{{item.image}}">
@@ -52,26 +52,34 @@
 <div class="quick-view-footer">
 
     <div class="content" ng-hide="isContentFromOldSite(item)">
-    
+        
         <h2>Supporting Rootstrikers:</h2>
         <!-- We will have to change this ng-repeat call to user in supporters once we have a service for that -->
-
-        <div ng-repeat="user in users"></div>
-
-        <div class="supporter-count">
-            <h5>&amp; 1,293</h5>
-            <h6>more</h6>
-        </div>
         
+        <gravatar-image
+            ng-repeat="actionUser in item.actionUsers | limitTo:3"
+            data-email="actionUser.user_id.email"
+            data-size="50"
+            data-rating="pg"
+            data-default="404"
+            data-secure="true"
+            class="avatar-circular pull-left">
+        </gravatar-image>
+
+        <div ng-show="item.actionUserMore" class="supporter-count pull-left">
+            <h5>&amp; {{item.actionUserMore | number}}</h5>
+            <h6>more</h6>
+        </div>        
+
     </div>
-    
+        
 </div>
 
-<a ng-href="/#!/project/{{item.slug}}">
-    <div class="quick-view-cta">
-        <div class="content">
-            Read More & Share
-            <i class="icon-arrow-right"></i>
+    <a ng-click="goTo('project/'+item.slug)">
+        <div class="quick-view-cta">
+            <div class="content">
+                Read More & Share
+                <i class="icon-arrow-right"></i>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
