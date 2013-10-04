@@ -109,13 +109,14 @@
                 
                 <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
                 
-            </div>
+            </div><!-- .span4 -->
 
 	    </div><!-- End row -->
     </div><!-- .container -->
 	</div>
+	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-    <div class="container stretch">
+    <div class="stretch">
         <div ng-click="performedAction || signPledge()" ng-show="loggedUser">
             <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
         </div>
