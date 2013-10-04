@@ -1,7 +1,7 @@
 angular
   .module('app')
   .directive('projectNav',
-    function() {
+    function($location) {
       return {
         restrict: 'EA',
         templateUrl: 'app/templates/components/projectNav/projectNav.html',
@@ -13,7 +13,7 @@ angular
               this.projects = $scope.projects;
 
               $scope.currentProject = _.find($scope.projects, function(project) {
-                return project.name == $routeParams.name;
+                return project.slug == $routeParams.name;
               });
 
               $scope.displayedProject = $scope.currentProject;
@@ -31,6 +31,16 @@ angular
               };
             });
           })(this);
+        },
+        link: function(scope, element, attrs) {
+          scope.navigateProjects = function() {
+            var slug = scope.displayedProject.slug;
+            $location.path("/project/" + slug);
+
+            if(!scope.$$phase) {
+              scope.$apply();
+            }
+          };
         }
       };
   });
