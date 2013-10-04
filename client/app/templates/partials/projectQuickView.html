@@ -23,7 +23,7 @@
 
         <h3 class="dark-grey">{{item.title}}</h3>
         
-        <div ng-bind-html-unsafe="item.sub_title"></div>
+        <div ng-bind-html-unsafe="item.sub_title | characters:120" ng-hide="isContentFromOldSite(item)"></div>
 
         <div ng-show="!completed">
             <h2>Time Remaining:</h2>
