@@ -19,12 +19,14 @@ angular
       $scope.formUser = userAPI.newUser();
       $scope.loginErrors = {};
       $scope.loginUser = {};
+      $scope.registerStep = 1;
 
       $scope.register = function() {
       
         _clearErrors();
 
-        if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
+        /*
+if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
           _addError('password', 'Password mismatch');
           _addError('passConfirmation', 'Password mismatch');
         }
@@ -42,6 +44,7 @@ angular
         if ($scope.formUser.zip.toString().length != 5) {
           _addError('zip', 'Zip must be 5 digits long.');
         }
+*/
 
         if (Object.keys($scope.formErrors).length === 0) {
 
@@ -62,7 +65,8 @@ angular
                 password: $scope.formUser.password
               };
               $scope.login();
-              _close();
+              $scope.registerStep = 3;
+              //_close();
             // make a call to see if this user has already signed up with ActionKit
               actionKitService.getUser($scope.formUser.email).then(function(akUser) {
                 // the user has not already signed up with ActionKit
@@ -80,7 +84,7 @@ angular
                   actionKitService.createUser(user).then(function (userId) {
                     $scope.formUser.actionId = userId;
                     $scope.formUser.actionId = userId;
-                    $scope.formUser.$update();
+                    //$scope.formUser.$update();
                   });
                 } else {
                   $scope.formUser.actionId = akUser.id;
@@ -133,6 +137,7 @@ angular
 
       $scope.login = function() {
         _clearErrors();
+        console.log($scope.loginUser);
         userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
@@ -195,6 +200,10 @@ angular
           $scope.formUser.avatar = InkBlob.url;
         });
       };
+      
+      $scope.yourWelcome = function() {
+          _close();
+      };
 
       //private methods to handle common task
 
@@ -203,6 +212,8 @@ angular
         if ($scope.closeModal) {
           $scope.closeModal();
         }
+        console.log('CLOSING modalr');
+        $scope.registerStep = 1;
       }
 
       function _clearErrors() {
