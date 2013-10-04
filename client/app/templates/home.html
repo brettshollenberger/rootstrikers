@@ -28,8 +28,32 @@
 -->
 <!-- End By the Numbers Section -->
 
+
+
+<div class="stretch section-grey text-center" ng-show="visibleActivity" ng-controller="activityController" ng-init="findAll()">
+    <div class="row ">
+        <div class="span8 offset2">
+            <p>
+                <gravatar-image
+                    data-email="visibleActivity.user_id.email"
+                    data-size="50"
+                    data-rating="pg"
+                    data-default="404"
+                    data-secure="true"
+                    class="avatar-circular">
+                </gravatar-image>
+                {{visibleActivity.user_id.full_name}} just acted on 
+                <a ng-click="goTo('project/'+visibleActivity.project_id.slug)">{{visibleActivity.project_id.title}}</a> 
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="container">
-	<div class="row section" >
+	<div class="row section">
 		<div class="span12">
 			<h2>Active Projects</h2>
 			<hr>

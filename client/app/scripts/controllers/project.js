@@ -12,10 +12,10 @@ angular
     'selectLocation',
     '$location',
     function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
-      
+
       // our form model
       $scope.signer = {};
-      
+
       // get list of states and set state to be first item
       // this prevents angular from adding an extra "blank" select to the beginning
       $scope.states = selectLocation.states();
@@ -43,6 +43,10 @@ angular
         
         // get the project from our backend
         $scope.project = res;
+
+        $scope.isContentFromOldSite = function(item) {
+          return item.end_date == "2012-10-20T04:00:00.000Z";
+        };
         
         if($scope.project) {
         
@@ -88,6 +92,21 @@ angular
           console.log('DONATE PROJECT');
       };
       
+      var doAction = function(action, user) {
+          
+          actionKitService.doAction(action).then(function (response) {
+                    
+              // if the call to Action Kit was a success
+              if(response === true) {
+              
+                  // add an action entry to our DB for easy reference later
+                  var myAction = new actionService({user: user, project_id: $scope.project.id});
+                  myAction.$save();
+                  $scope.performedAction = true;             
+              } 
+          });
+      };
+      
       $scope.signPledge = function() {
           
           var action = {};
@@ -101,36 +120,20 @@ angular
                   'zip': $rootScope.loggedUser.zip
               };
               
-          } else {
-              console.log('GET FORM DATA AND SEND REQUEST');
+              doAction(action, $rootScope.loggedUser);
               
+          } else {
+          
+              // check if the user exists in the database already 
               action = {
                   'page': $scope.project.shortname,
                   'email': $scope.signer.email,
                   'zip': $scope.signer.zipCode
               };
+              
+              doAction(action, $scope.signer);
           }
           
-          var userId = $rootScope.loggedUser ? $rootScope.loggedUser.id : '0000000000';
-          
-          console.log('USER ID');
-          console.log(userId);
-          
-          actionKitService.doAction(action).then(function (response) {
-          
-              console.log(response);
-                     
-              // if the call to Action Kit was a success
-              if(response === true) {
-              
-                  console.log('THIS IS SUCCESSFUL');
-              
-                  // add an action entry to our DB for easy reference later
-                  var myAction = new actionService({user_id: userId, project_id: $scope.project.id});
-                  myAction.$save();
-                  $scope.performedAction = true;             
-              } 
-          });
       };
     }
   ]);
