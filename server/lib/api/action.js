@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
   , Action = mongoose.model('action')
+  , User = mongoose.model('user')
   ;
 
 module.exports = function(app, db) {
@@ -37,9 +38,6 @@ module.exports = function(app, db) {
   app.get('/api/projects/:projectId/actions', getActionUsers);
   app.get('/api/actions', getActionUsers);
   
-  
-  
-  
   //***************************// Has User Acted //*********************************//
   app.get('/api/actions/hasUserActed', function(req, res) {
   
@@ -60,23 +58,72 @@ module.exports = function(app, db) {
 
 
   //*****************************// Create //*********************************//
+  
+  var makeAction = function(res, data, userId) {
+    
+    Action
+        .findOne({user_id : userId, project_id: data.project_id})
+        .exec(function(err, action) {
+            
+            if(err) return res.json(error);
+              
+            if(!action) {
+               // no action found, make one 
+               db.action.create({
+                  project_id: data.project_id,
+                  user_id: userId,
+                  type: data.type
+                }, function(error, feature) {
+                  if (!error) {
+                    res.json(feature);
+                  } else {
+                    res.json(error);
+                  }
+                });
+                
+            } else {
+                return res.send('User already signed');
+            } 
+        });
+  };
+  
   app.post('/api/actions', function(req, res) {
   
     var data = req.body;
+    var user = data.user;
+    var userId;
 
     data.type = data.type || 'signed';
-
-    db.action.create({
-      project_id: data.project_id,
-      user_id: data.user_id,
-      type: data.type
-    }, function(error, feature) {
-      if (!error) {
-        res.json(feature);
-      } else {
-        res.json(error);
-      }
+        
+    // check if their email exists in the database
+    User
+    .findOne({ email: user.email })
+    .exec(function(err, dbUser) {
+    
+        if(err) return res.json(error);
+        
+        // if we returned a user
+        if(dbUser && dbUser.id) {
+            // add user id to the action object and save 
+            userId = dbUser.id;
+            makeAction(res, data, userId);            
+        } else {
+            // else make a new user and save
+            var makeUser = {
+                first_name: user.firstName,
+                last_name: user.lastName,
+                email: user.email
+            };
+            
+            var newUser = new User(makeUser);
+            newUser.save(function(err, item) {
+               userId = item.id;
+               makeAction(res, data, userId);
+            });
+        }
+        
     });
+    
   });
 
 };
