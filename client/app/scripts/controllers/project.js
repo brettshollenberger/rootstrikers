@@ -64,6 +64,10 @@ angular
                         $scope.project.problem = response.petitionForm.about_text;
                         $scope.project.action = response.petitionForm.statement_text;
                         $scope.project.goal = response.goal;
+                        
+                        if($scope.project.actionkit.goal_type === 'actions') {
+                            $scope.project.actionsNeeded = $scope.project.actionkit.goal;
+                        }
                     }
                 });
             }
