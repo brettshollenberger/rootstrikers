@@ -103,10 +103,12 @@
     </div><!-- .container -->
 	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-    <div ng-click="performedAction || signPledge()" ng-show="loggedUser">
-        <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
+    <div class="container stretch">
+        <div ng-click="performedAction || signPledge()" ng-show="loggedUser">
+            <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
+        </div>
+        <div banner-halves=""></div>
     </div>
-    <div banner-halves=""></div>
     
 	<div class="container">
 	    <div class="row section section-last">
