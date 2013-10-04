@@ -24,8 +24,9 @@ module.exports = function(app, db) {
         .limit(limit)
         .populate({
             path: 'user_id'
-          , select: 'email'
+          , select: 'email full_name'
         })
+        .populate('project_id')
         .exec(function(err, actions) {
             if(err) return res.json(error);
             
