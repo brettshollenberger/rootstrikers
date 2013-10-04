@@ -34,9 +34,9 @@
                     </div>
                     
                 <div>
-                <form novalidate name="signPetition" class="signPetition" ng-submit="signPledge()">
+                <form novalidate ng-show="!loggedUser" name="signPetition" class="signPetition" ng-submit="signPledge()">
                             
-                    <div ng-hide="loggedUser" form-group form="signPetition">
+                    <div form-group form="signPetition">
                     
                         <label for="firstName">First Name *</label>
                         <input form-field ng-blur="Validator.validateField(signPetition.firstName, signPetition)" required type="text" ng-model="signer.firstName" id="firstName" name="firstName" placeholder="First Name" value="" />
@@ -92,6 +92,11 @@
                     <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right">Sign the Pledge</button>
                     
                 </form>
+                
+                <button ng-show="loggedUser && !performedAction"class="btn-block btn" ng-click="performedAction || signPledge()">Sign Me!</button>
+                
+                <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
+                
             </div>
 
 	    </div><!-- End row -->
