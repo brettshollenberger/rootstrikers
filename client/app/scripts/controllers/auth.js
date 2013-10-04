@@ -25,7 +25,8 @@ angular
       
         _clearErrors();
 
-        if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
+        /*
+if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
           _addError('password', 'Password mismatch');
           _addError('passConfirmation', 'Password mismatch');
         }
@@ -43,6 +44,7 @@ angular
         if ($scope.formUser.zip.toString().length != 5) {
           _addError('zip', 'Zip must be 5 digits long.');
         }
+*/
 
         if (Object.keys($scope.formErrors).length === 0) {
 
@@ -135,6 +137,7 @@ angular
 
       $scope.login = function() {
         _clearErrors();
+        console.log($scope.loginUser);
         userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
@@ -209,6 +212,8 @@ angular
         if ($scope.closeModal) {
           $scope.closeModal();
         }
+        console.log('CLOSING modalr');
+        $scope.registerStep = 1;
       }
 
       function _clearErrors() {
