@@ -1,4 +1,4 @@
-    <div class="quick-view">
+    <div class="quick-view" ng-click="goTo('project/'+item.slug)">
     
         <!-- We should have some attribute like project.state which can be open or closed or something, and can stand in for the class here, so we can style the black and white images / color versions -->
         <div class="quick-view-img">
@@ -68,7 +68,7 @@
         
     </div>
     
-    <a ng-href="/#!/project/{{item.slug}}">
+    <a ng-click="goTo('project/'+item.slug)">
         <div class="quick-view-cta">
             <div class="content">
                 Read More & Share
