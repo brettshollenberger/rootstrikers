@@ -7,11 +7,20 @@ angular
       $scope.homepageInterval = 5000;
       var slides = $scope.slides = [];
 
+      /**
+      * Gets all published "features" from api
+      *
+      */
       Feature.getPublished().then(function(response) {
         $scope.features = response;
         startSlider();
       });
 
+      /**
+      * helper method which starts slider 
+      * by adding each slide to the slides array
+      *
+      */
       function startSlider() {
         $scope.features.forEach(function(feature) {
           $scope.addSlide(feature);

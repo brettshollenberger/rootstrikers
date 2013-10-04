@@ -4,6 +4,8 @@ angular
     function($router, $httpProvider, $location) {
 
       $location.hashPrefix('!');
+      
+      
 
       // allow for CORS
       $httpProvider.defaults.useXDomain = true;
@@ -21,10 +23,6 @@ angular
         .when('/page/:url', {
           controller: 'pageController',
           templateUrl: 'app/templates/page.html'
-        })
-        .when('/features/:id', {
-          controller: 'featureShowController',
-          templateUrl: 'app/templates/features/show.html'
         })
 
       //Admin
@@ -112,13 +110,17 @@ angular
         controller: 'emailEditController',
         templateUrl: 'app/templates/admin/emailPreview.html',
         access: 'isAdmin'
-      });
+      })
+      .otherwise({ redirectTo: '/' });
     }
   ])
-  .run(['$location', '$rootScope', '$cookieStore', 'userService', function($location, $rootScope, $cookieStore, userService) {
+  .run(['$location', '$rootScope', '$cookieStore', 'userService', 'Validator', function($location, $rootScope, $cookieStore, userService, Validator) {
         
         // Set location object for use throughout applications
         $rootScope.location = $location;
+        
+        // used for our custom validation jawn
+        $rootScope.Validator = Validator;
 
         // get loggedUser cookie and set it to $rootScope.loggedUser
         $rootScope.loggedUser = $cookieStore.get('loggedUser');

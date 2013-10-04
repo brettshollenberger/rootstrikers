@@ -9,8 +9,17 @@ angular
     'projectService',
     'userService',
     'MetaMachine',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine) {
+    'selectLocation',
+    '$location',
+    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
       
+      // our form model
+      $scope.signer = {};
+      
+      // get list of states and set state to be first item
+      // this prevents angular from adding an extra "blank" select to the beginning
+      $scope.states = selectLocation.states();
+      $scope.signer.state = $scope.states[0].abbreviation;
       
       var checkActionForUser = function() {
       
@@ -36,9 +45,13 @@ angular
         $scope.project = res;
         
         if($scope.project) {
+        
             MetaMachine.title($scope.project.name);
             MetaMachine.description($scope.project.problem);
+            MetaMachine.image($scope.project.image);
+            MetaMachine.url($location.absUrl());
             
+            // check if user has already performed the project action
             checkActionForUser();
             
             // check to see if there is an actionkit page set and get that page if so
@@ -55,6 +68,11 @@ angular
                 });
             }
             
+            // get all of the people who have acted on this project
+            actionService.getProjectActionUsers($scope.project.id).then(function(response) {
+                $scope.users = response;
+            });
+            
         } else {
             MetaMachine.title();
             MetaMachine.description();
@@ -62,37 +80,53 @@ angular
 
       });
       
-      // Change to specific users signed up on project
-      $scope.users = userAPI.getAll();
-      
       $scope.donateProject = function() {
           console.log('DONATE PROJECT');
       };
       
       $scope.signPledge = function() {
           
+          var action = {};
+          
           if($rootScope.loggedUser) {
           
               // make the call to ActionKit to sign the petition
-              var action = {
+              action = {
                   'page': $scope.project.shortname,
                   'email': $rootScope.loggedUser.email,
                   'zip': $rootScope.loggedUser.zip
               };
               
-              actionKitService.doAction(action).then(function (response) {             
-                  // if the call to Action Kit was a success
-                  if(response === true) {
-                      // add an action entry to our DB for easy reference later
-                      var myAction = new actionService({user_id: $rootScope.loggedUser.id, project_id: $scope.project.id});
-                      myAction.$save();
-                      $scope.performedAction = true;             
-                  } 
-              });
-              
           } else {
               console.log('GET FORM DATA AND SEND REQUEST');
+              
+              action = {
+                  'page': $scope.project.shortname,
+                  'email': $scope.signer.email,
+                  'zip': $scope.signer.zipCode
+              };
           }
+          
+          var userId = $rootScope.loggedUser ? $rootScope.loggedUser.id : '0000000000';
+          
+          console.log('USER ID');
+          console.log(userId);
+          
+          actionKitService.doAction(action).then(function (response) {
+          
+              console.log(response);
+                     
+              // if the call to Action Kit was a success
+              if(response === true) {
+              
+                  console.log('THIS IS SUCCESSFUL');
+              
+                  // add an action entry to our DB for easy reference later
+                  var myAction = new actionService({user_id: userId, project_id: $scope.project.id});
+                  myAction.$save();
+                  $scope.performedAction = true;             
+              } 
+          });
       };
     }
   ]);
