@@ -42,10 +42,25 @@
   text-align: left;
   overflow: hidden;
   
-  @media (max-width: 767px) {
-      float: left;
-      margin: 0;
-      padding: 8px 0;
-  }
-  
+}
+@media (max-width: 767px) {
+    .project-nav-project-title{
+            float: none;
+            clear: both;
+            display: block;
+            margin: 0;
+            padding: 8px 5px;
+        .tagline{margin-left: 0;}
+    }
+    
+    .project-nav .container{
+        padding: 0;
+    }
+    .project-nav-button:last-child{
+        margin-right: 10px;
+    }
+    
+    .project-nav-button{
+       border-right: none; 
+    }
 }
