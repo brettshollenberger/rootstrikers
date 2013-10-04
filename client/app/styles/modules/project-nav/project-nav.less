@@ -38,10 +38,17 @@
   text-align: left;
   overflow: hidden;
   
-  @media (max-width: 767px) {
-      float: left;
-      margin: 0;
-      padding: 8px 0;
-  }
-  
+}
+@media (max-width: 767px) {
+    .project-nav-project-title{
+            float: left;
+            display: block;
+            margin: 0;
+            padding: 8px 0;
+        .tagline{margin-left: 0;}
+    }
+    
+    .project-nav-button:last-child{
+        margin-right: 10px;
+    }
 }
