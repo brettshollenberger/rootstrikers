@@ -27,6 +27,15 @@ angular
         });
       };
       
+      Action.getAllActionUsers = function(project_id) {
+        return $http.get('/api/actions').then(function(response) {
+          if(response.status === 200) {
+              return response.data;
+          }
+          return false;
+        });
+      };
+      
       return Action;
       
     }]);
