@@ -46,7 +46,7 @@
                 
                 <div>
 
-                <form novalidate ng-show="!loggedUser" name="signPetition" class="signPetition" ng-submit="signPledge()">
+                <form novalidate ng-show="!performedAction && !loggedUser" name="signPetition" class="signPetition" ng-submit="signPledge()">
                             
                     <div form-group form="signPetition">
                     
