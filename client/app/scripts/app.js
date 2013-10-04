@@ -24,10 +24,6 @@ angular
           controller: 'pageController',
           templateUrl: 'app/templates/page.html'
         })
-        .when('/features/:id', {
-          controller: 'featureShowController',
-          templateUrl: 'app/templates/features/show.html'
-        })
 
       //Admin
       .when('/admin', {
@@ -114,7 +110,8 @@ angular
         controller: 'emailEditController',
         templateUrl: 'app/templates/admin/emailPreview.html',
         access: 'isAdmin'
-      });
+      })
+      .otherwise({ redirectTo: '/' });
     }
   ])
   .run(['$location', '$rootScope', '$cookieStore', 'userService', 'Validator', function($location, $rootScope, $cookieStore, userService, Validator) {
