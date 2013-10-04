@@ -14,7 +14,7 @@ var data = [{
     "name" : "About",
     "url" : "about-us",
     "header" : "About Us",
-    "body" : "<p>This is where the About Us page would have content.</p>",
+    "body" : "<p>Our government is corrupt. Not corrupt in any criminal sense. But corrupt in a perfectly legal sense: special interests bend the levers of power to benefit them at the expense of the rest of us. Both parties are part of the problem. Both have become dependent upon the campaign funding of the tiniest slice of the American people - not to mention the funding of corporations and other non-citizens. That dependency is this corruption.<br><br>Only the people can force lasting change on this broken system, and that change begins with understanding: The people must recognize that corruption is not just one among many important problems. Corruption is the root problem, that makes solving the others so difficult.<br><br>As Henry David Thoreau wrote - \"There are a thousand hacking at the branches of evil to one who is striking at the root.\" - so will we practice. <br><br>Join us.<br></p>",
     "publish" : true,
     "__v" : 0
 },
