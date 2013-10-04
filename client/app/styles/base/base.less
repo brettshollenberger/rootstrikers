@@ -90,18 +90,21 @@ a:hover {
 }
 
 // Override Bootstrap default
-@media only screen and (max-width: 768px) {
-  .container-fluid {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+   
 }
-@media (max-width: 979px){
-	body {
+
+@media (max-width: 767px) {
+     body {
 		padding-right: 0;
 		padding-left: 0;
 	}
 	.container{
 		padding: 0 20px;
 	}
+    
 }
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {}
