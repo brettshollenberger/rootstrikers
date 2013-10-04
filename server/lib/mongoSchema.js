@@ -202,6 +202,9 @@ schema.user = new mongoose.Schema({
     type: String,
     required: true
   },
+  full_name: {
+    type: String
+  },
   email: {
     type: String,
     required: true,
@@ -255,6 +258,8 @@ schema.user.pre('save', function(next) {
   var user = this;
   
   this.id = this._id;
+  
+  this.full_name = this.first_name + ' ' + this.last_name;
 
   // only hash the password if it has been modified (or is new)
   if (!user.isModified('password')) return next();
