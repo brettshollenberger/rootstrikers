@@ -1,4 +1,4 @@
-angular.module('app').controller('homeController', ['$rootScope', '$scope', 'userService', 'projectService', 'featureService', 'MetaMachine', 'actionKitService', function($rootScope, $scope, userService, Project, Feature, MetaMachine, actionKitService) {
+angular.module('app').controller('homeController', ['$rootScope', '$scope', 'userService', 'projectService', 'featureService', 'MetaMachine', 'actionKitService', 'actionService', function($rootScope, $scope, userService, Project, Feature, MetaMachine, actionKitService, actionService) {
 
     $scope.projects = Project.getActive();
     $scope.completed_projects = Project.getCompleted();
@@ -25,13 +25,26 @@ angular.module('app').controller('homeController', ['$rootScope', '$scope', 'use
     };
 
     $scope.$watch('projects', function(newValues, oldValues) {
-        if(newValues) {
-            for (var i = 0; i < newValues.length; i++) {
-                project = newValues[i];
-                if (project.shortname) {
-                    handleResponse(project);
-                }
+                
+        if(!newValues || !newValues.length) return;
+        
+        _.each(newValues, function(project) {
+                        
+            project.actionUsers = [];
+            
+            if (project.shortname) {
+                handleResponse(project);
             }
-        }
+            
+            // get the last activity for each project
+            actionService.getProjectActionUsers(project.id).then(function(response) {
+                project.actionUsers = response;
+                var actionUserCount = project.actionUsers.length;
+                project.actionUserMore = actionUserCount > 3 ? actionUserCount - 3 : 0; 
+            });
+                
+        });
+        
     });
+    
 }]);
