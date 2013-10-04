@@ -5,7 +5,7 @@ angular
     var metaDefaults = {
       metaTitle: "Home | Rootstrikers",
       metaDescription: "We fight the corrupting influence of money in politics",
-      metaImage: "http://facultycreative.com/img/icons/facultyicon114.png",
+      metaImage: "/app/images/favicon/apple-touch-icon-144x144-precomposed.png",
       metaUrl: "http://rs002dev.herokuapp.com/"
     };
 
@@ -22,7 +22,7 @@ angular
         $rootScope.metaDescription = description || "We fight the corrupting influence of money in politics";
       },
       image: function(url) {
-        $rootScope.metaImage = url || "http://facultycreative.com/img/icons/facultyicon114.png";
+        $rootScope.metaImage = url || "/app/images/favicon/apple-touch-icon-144x144-precomposed.png";
       },
       url: function(url) {
         $rootScope.metaUrl = url || "http://rs002dev.herokuapp.com/";
