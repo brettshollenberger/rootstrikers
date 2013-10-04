@@ -10,7 +10,8 @@ angular
     'userService',
     'MetaMachine',
     'selectLocation',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation) {
+    '$location',
+    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
       
       // our form model
       $scope.signer = {};
@@ -47,6 +48,8 @@ angular
         
             MetaMachine.title($scope.project.name);
             MetaMachine.description($scope.project.problem);
+            MetaMachine.image($scope.project.image);
+            MetaMachine.url($location.absUrl());
             
             // check if user has already performed the project action
             checkActionForUser();
