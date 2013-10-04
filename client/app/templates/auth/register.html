@@ -2,15 +2,11 @@
   <div class="modal-header">
     <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
     <h4>REGISTER</h4>
-    <!--
-<pre>
-        {{formUser}}
-    </pre>
--->
+
   </div>
 
   <div class="modal-body">
-    <form name="form" ng-submit="register()">
+    <form name="form" ng-submit="register()" novalidate>
       	<div class="step step1" ng-show="registerStep == 1">
       	   
       	   <a ng-click="fbLogin()" class="btn btn-primary darkblue">Login / Register with Facebook</a>
@@ -36,9 +32,11 @@
                         <div class="row">
                             <div class="control-group span6" ng-class="{error: formErrors.avatar}">
                                 <div class="controls">
-                                    <img class="avatar-thumb" height="60px" ng-src="{{formUser.thumb}}"/>
+                                    
                                     <a ng-click="uploadAvatar()" class="avatar">
-                                        <i class="icon-plus-sign"></i> <span>Upload an avatar</span>
+                                        <img class="avatar-thumb" ng-show="formUser.thumb" ng-src="{{formUser.thumb}}"/>
+                                        <i ng-show="!formUser.thumb" class="icon-plus-sign"></i> 
+                                        <span>Upload an avatar</span>
                                     </a>
                                     <span class="help-inline" ng-show="formErrors.avatar">{{formErrors.avatar}}</span>
                                 </div>
@@ -87,32 +85,6 @@
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" ng-click="registerStep = 4">Register</button>
-            </div>
-        </div>
-        
-        
-        <div class="step4 step" ng-show="registerStep == 4">
-            <div class="pad">
-                <!--
-<div class="control-group" ng-class="{error: formErrors.city}">
-                    <label class="control-label" for="city">City</label>
-                    <div class="controls">
-                        <input id="city" name="city" type="text" ng-model="formUser.city" placeholder="City"/>
-                        <span class="help-inline" ng-show="formErrors.city">{{formErrors.city}}</span>
-                    </div>
-                </div>
-                            
-                <div class="control-group" ng-class="{error: formErrors.state}">
-                    <label class="control-label" for="state">State</label>
-                    <div class="controls">
-                        <input id="state" name="state" type="text" ng-model="formUser.state" placeholder="State"/>
-                        <span class="help-inline" ng-show="formErrors.state">{{formErrors.state}}</span>
-                    </div>
-                </div>
--->
-
-        
                 <div class="control-group" ng-class="{error: formErrors.zip}">
                     <label class="control-label" for="zip">Zip</label>
                     <div class="controls">
@@ -121,23 +93,14 @@
                     </div>
                 </div>
                 
-                <!--
-<div class="control-group" ng-class="{error: formErrors.country}">
-                    <label class="control-label" for="country">Country</label>
-                    <div class="controls">
-                        <input id="country" name="country" type="text" ng-model="formUser.country" placeholder="Country"/>
-                        <span class="help-inline" ng-show="formErrors.country">{{formErrors.country}}</span>
-                    </div>
-                </div>
--->
-                
-                <button type="submit" id="submit" class="btn btn-primary" ng-click="registerStep = 4">Register</button>
+                <button class="btn btn-primary" ng-click="registerStep = 4">Submit</button>
             </div>
-            
         </div>
-    </form>
+        
+        
+            </form>
     
-    <div class="step5 step" ng-show="registerStep == 5">
+    <div class="step4 step" ng-show="registerStep == 4">
         Thanks!
         
         <button type="submit" id="submit" class="btn btn-primary">Register</button>

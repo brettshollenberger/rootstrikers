@@ -24,27 +24,37 @@
 */
     
     .step1{
-        
+        p{font-size: 16px; font-weight: 600;}
     }
     
     .step2{
         .avatar{
+            position: relative;
             display: block;
-            width: 60%;
-            padding: 30px 0 30px 3%;    
+            width: 50%;
+            padding: 30px 0 30px 84px;    
             border: 1px solid #bfd1dd;
             font-weight: 500;
             text-transform: uppercase;
             color: #000;
             .border-radius(2px);
             i{
+                top: 33px;
+                left: 10px;
                 font-size: 70px;
                 margin-right: 10px;
                 opacity: .25;
+                position: absolute;
+                
             }
         
         }
-        .avatar-thumb{margin-left: 10px; width: 50px;}
+        .avatar-thumb{margin-left: 10px; width: 60px;
+            .border-radius(50%);
+            top: 10px;
+            left: 5px;
+            position: absolute;
+        }
     }
     
     .btn{
