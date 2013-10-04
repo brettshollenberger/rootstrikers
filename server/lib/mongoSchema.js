@@ -86,7 +86,7 @@ var schema = {}, odmApi = {}, i, entity,
 schema.project = new mongoose.Schema({
   id: String,
   slug: {
-    type: String  
+    type: String
   },
   title: {
     type: String
@@ -118,6 +118,9 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
+  },
+  body: {
+    type: String
   }
 });
 
