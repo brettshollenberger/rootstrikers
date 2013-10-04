@@ -22,28 +22,28 @@ var data = [
         "image"     : "https://www.filepicker.io/api/file/BDexg0jRZra9rM9lsdgw",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "body"      : "<p>Wealth is not the only barrier to entry when it comes to contacting" +
-                      "members of Congress — it's also a lot more complicated than you'd think" +
-                      "to send a simple email. <br></p><p>For a public campaign to send any real amount of emails to members of" +
-                      "Congress, they need to either reverse engineer all 540-some contact" +
-                      "forms, or pay a campaign vendor a hefty sum of money for the service.</p><p>We don't think there should be money or technology barriers" +
-                      "preventing citizens from being able to contact their representatives, so" +
-                      "we, along with our friends at the Sunlight Foundation, are looking for" +
-                      "volunteers that can help improve the system.</p><p>Here's the deal:" +
-                      "we're building a public domain dataset that describes how to reverse" +
-                      "engineer each member's contact form. By creating this data publicly, and" +
-                      "distributing its maintenance among interested organizations and the" +
-                      "public, it will be much more feasible to operate public campaigns that" +
-                      "email members of Congress, without having to pay a vendor or embark on a" +
-                      "gargantuan technical investment.<em><strong><br></strong></em></p><p><em>" +
-                      "<strong>Sound exciting? You can learn more about the project, and join it," +
-                      "<a href='https://github.com/unitedstates/contact-congress/blob/master/documentation/how_to_contribute.md'>" +
-                      "here on GitHub</a>.</strong></em><em><strong></strong></em></p><p><em><strong>" +
+        "body"      : "<p>Wealth is not the only barrier to entry when it comes to contacting " +
+                      "members of Congress — it's also a lot more complicated than you'd think " +
+                      "to send a simple email. <br></p><p>For a public campaign to send any real amount of emails to members of " +
+                      "Congress, they need to either reverse engineer all 540-some contact " +
+                      "forms, or pay a campaign vendor a hefty sum of money for the service.</p><p>We don't think there should be money or technology barriers " +
+                      "preventing citizens from being able to contact their representatives, so " +
+                      "we, along with our friends at the Sunlight Foundation, are looking for " +
+                      "volunteers that can help improve the system.</p><p>Here's the deal: " +
+                      "we're building a public domain dataset that describes how to reverse " +
+                      "engineer each member's contact form. By creating this data publicly, and " +
+                      "distributing its maintenance among interested organizations and the " +
+                      "public, it will be much more feasible to operate public campaigns that " +
+                      "email members of Congress, without having to pay a vendor or embark on a " +
+                      "gargantuan technical investment.<em><strong><br></strong></em></p><p><em> " +
+                      "<strong>Sound exciting? You can learn more about the project, and join it, " +
+                      "<a href='https://github.com/unitedstates/contact-congress/blob/master/documentation/how_to_contribute.md'> " +
+                      "here on GitHub</a>.</strong></em><em><strong></strong></em></p><p><em><strong> " +
                       "Sound a little out of your league? No sweat. You can still show your support below, " +
-                      "and we'll make sure you're among the first to know when the whip tool is available." +
-                      "<br></strong></em></p><p>Either way, please consider sharing this message with your" +
-                      "friends. The more people that understand the challenges to democratic" +
-                      "participation, the more likely we are to succeed in overcoming them.</p><p>[button for people to show they like this?]<br></p>"
+                      "and we'll make sure you're among the first to know when the whip tool is available. " +
+                      "<br></strong></em></p><p>Either way, please consider sharing this message with your " +
+                      "friends. The more people that understand the challenges to democratic " +
+                      "participation, the more likely we are to succeed in overcoming them.</p><p>[button for people to show they like this?]<br></p> "
     },
     {
         "slug"      : "help-us-reach-1000000-citizens",
@@ -51,11 +51,11 @@ var data = [
         "image"     : "https://www.filepicker.io/api/file/ZW0jlmQRvSMA07U0MpYW",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "body"      : "<p><sub></sub>At the beginning of April, TED posted the talk I gave at their annual" +
-                      "conference. In the six weeks since, more than 800,000 people have viewed it across the" + 
+        "body"      : "<p><sub></sub>At the beginning of April, TED posted the talk I gave at their annual " +
+                      "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
                       "TED platform and YouTube.<br><br>I've been doing this for a long time, but nothing I've " +
-                      "ever done has spread like this. <br><br>So two weeks ago, I spoke at the TEDxYouth event in" +
-                      "Chicago. I began that talk in a similar way, with the same argument about the corruption our" +
+                      "ever done has spread like this. <br><br>So two weeks ago, I spoke at the TEDxYouth event in " +
+                      "Chicago. I began that talk in a similar way, with the same argument about the corruption our " +
                       "government suffers. But then I ended that talk by giving the talk away — to them. Each of the " +
                       "500 students in the audience got a thumb drive with the slides and the background information " +
                       "of the talk. Each thumb drive had a copy of the TED video, and the book I produced for that video. " +
