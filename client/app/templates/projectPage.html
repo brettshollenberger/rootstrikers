@@ -31,7 +31,7 @@
             
                 <div class="callout">
                     <div class="fist-small"></div>
-                        <p><span>{{users.length}}</span> Taking Action</p>
+                        <p><span>{{users.length | number}}</span> Taking Action</p>
                     </div>
                 <div>
                 
@@ -103,13 +103,9 @@
     </div><!-- .container -->
 	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
-    <!--
-<div ng-click="performedAction || signPledge()" ng-show="loggedUser">
+    <div ng-click="performedAction || signPledge()" ng-show="loggedUser">
         <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
     </div>
--->
-    
-    <div banner="" banner-type="action" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
     <div banner-halves=""></div>
     
 	<div class="container">
@@ -117,42 +113,26 @@
 	        <div class="span12">
 	            <h2>Rootstrikers Taking Action:</h2>
 	
-	            <div class="pill">
-	                <h3>{{users.length * 3}}</h3>
+                <div class="row">
 	
-	                <h2>Rootstrikers</h2>
-	            </div>
-	
-	            <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
+    	            <div class="pill span4">
+    	                <h3>{{users.length | number}}</h3>
+    	
+    	                <h2>Rootstrikers</h2>
+    	            </div>
+    	
+    	            <gravatar-image
+                        ng-repeat="user in users"
+                        data-email="user.user_id.email"
+                        data-size="120"
+                        data-rating="pg"
+                        data-default="404"
+                        data-secure="true"
+                        class="avatar-circular span2">
+                    </gravatar-image>
                 
-                <!-- Remove these after styling -->
-                <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
+                </div>
                 
-                <gravatar-image
-                    ng-repeat="user in users"
-                    data-email="user.user_id.email"
-                    data-size="120"
-                    data-rating="pg"
-                    data-default="404"
-                    data-secure="true"
-                    class="avatar-circular span2">
-                </gravatar-image>
 	        </div>
 	    </div>
 
