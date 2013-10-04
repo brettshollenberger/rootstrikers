@@ -103,19 +103,11 @@ angular
           }
         };
           
-        // If we have fetched the project from the backend just return the published
-        if (projects.length) {
-          respond(projects.filter(function(element, index, array) {
-            return element.slug === name;
-          }));
-        } else {
-          // fetch the project to the server
-          this.getAll({
-            slug: name
-          }, function(result) {
-            respond(result);
-          });
-        }
+        this.getAll({
+          slug: name
+        }, function(result) {
+          respond(result);
+        });
       };
 
       return Project;

@@ -12,10 +12,10 @@ angular
     'selectLocation',
     '$location',
     function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
-      
+
       // our form model
       $scope.signer = {};
-      
+
       // get list of states and set state to be first item
       // this prevents angular from adding an extra "blank" select to the beginning
       $scope.states = selectLocation.states();
@@ -43,6 +43,10 @@ angular
         
         // get the project from our backend
         $scope.project = res;
+
+        $scope.isContentFromOldSite = function(item) {
+          return item.end_date == "2012-10-20T04:00:00.000Z";
+        };
         
         if($scope.project) {
         

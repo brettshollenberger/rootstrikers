@@ -14,21 +14,25 @@
                     <h3 class="project-title">{{project.title}}</h3>
                 </div>
 
-                <div>
+                <div ng-hide="isContentFromOldSite(project)">
                     <h2>The Problem:</h2>
 
                     <p ng-bind-html-unsafe="project.problem">{{project.problem}}</p>
                 </div>
 
-                <div>
+                <div ng-hide="isContentFromOldSite(project)">
                     <h2>The Action:</h2>
 
                     <p ng-bind-html-unsafe="project.action">{{project.action}}</p>
                 </div>
+
+                 <div ng-show="isContentFromOldSite(project)">
+                    <p ng-bind-html-unsafe="project.body">{{project.body}}</p>
+                </div>
             </div>
 
-            <div class="span4">
-            
+            <div class="span4" ng-hide="isContentFromOldSite(project)">
+
                 <div class="callout">
                 
                     <div>
@@ -49,7 +53,7 @@
                 <form novalidate
                     name="signPetition"
                     class="signPetition"
-                    ng-show="!performedAction && !loggedUser"
+                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project)"
                     ng-submit="signPledge()">
                             
                     <div form-group form="signPetition">
