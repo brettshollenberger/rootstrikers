@@ -1,4 +1,5 @@
 <project-nav></project-nav>
+
 <section class="carousel">
     <div class="carousel-inner"><img ng-src="{{project.image}}"></div>
 </section>
@@ -50,7 +51,14 @@
                         <div ng-show="signPetition.FacultyErrors.lastName" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.lastName}}
                         </div>
-
+                        
+                        <label for="email">Email *</label>
+                        <input form-field ng-blur="Validator.validateField(signPetition.email, signPetition)" required type="text" ng-model="signer.email" id="email" name="email" placeholder="Email" value="" />
+                        
+                        <div ng-show="signPetition.FacultyErrors.email" class="alert alert-error alert-tooltip">
+                            {{signPetition.FacultyErrors.email}}
+                        </div>
+                        
                         <div class="row">
 	                        <div class="span3">
 		                        <label for="city">City *</label>

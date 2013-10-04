@@ -83,28 +83,47 @@ angular
       
       $scope.signPledge = function() {
           
+          var action = {};
+          
           if($rootScope.loggedUser) {
           
               // make the call to ActionKit to sign the petition
-              var action = {
+              action = {
                   'page': $scope.project.shortname,
                   'email': $rootScope.loggedUser.email,
                   'zip': $rootScope.loggedUser.zip
               };
               
-              actionKitService.doAction(action).then(function (response) {             
-                  // if the call to Action Kit was a success
-                  if(response === true) {
-                      // add an action entry to our DB for easy reference later
-                      var myAction = new actionService({user_id: $rootScope.loggedUser.id, project_id: $scope.project.id});
-                      myAction.$save();
-                      $scope.performedAction = true;             
-                  } 
-              });
-              
           } else {
               console.log('GET FORM DATA AND SEND REQUEST');
+              
+              action = {
+                  'page': $scope.project.shortname,
+                  'email': $scope.signer.email,
+                  'zip': $scope.signer.zipCode
+              };
           }
+          
+          var userId = $rootScope.loggedUser ? $rootScope.loggedUser.id : '0000000000';
+          
+          console.log('USER ID');
+          console.log(userId);
+          
+          actionKitService.doAction(action).then(function (response) {
+          
+              console.log(response);
+                     
+              // if the call to Action Kit was a success
+              if(response === true) {
+              
+                  console.log('THIS IS SUCCESSFUL');
+              
+                  // add an action entry to our DB for easy reference later
+                  var myAction = new actionService({user_id: userId, project_id: $scope.project.id});
+                  myAction.$save();
+                  $scope.performedAction = true;             
+              } 
+          });
       };
     }
   ]);
