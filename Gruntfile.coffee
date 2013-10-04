@@ -21,6 +21,9 @@ module.exports = (grunt)->
   # Optimize pre-built, web-accessible resources for production, primarily `usemin`
   grunt.registerTask('optimize', [ 'useminPrepare', 'concat', 'uglify', 'mincss', 'usemin' ])
 
+  # HTML Snapshots for SEO
+  grunt.registerTask('snapshot', [ 'htmlSnapshot' ])
+
 
   # Configuration
   grunt.config.init
@@ -38,7 +41,6 @@ module.exports = (grunt)->
     IMG_FILES:      '**/*.{png,gif,jpg,jpeg}'
     JS_FILES:       '**/*.js'
     LESS_FILES:     '**/*.less'
-
 
     # Wipe the `build` directory
     clean:
@@ -102,7 +104,6 @@ module.exports = (grunt)->
       files:        [ '<%= SERVER_DIR + JS_FILES %>'
                       '<%= CLIENT_DIR + JS_FILES %>' ]
       options:
-        es5:        true
         laxcomma:   true  # Common in Express-derived libraries
 
     # Browser-based testing
@@ -127,6 +128,9 @@ module.exports = (grunt)->
     # Compile `app.less` -> `app.css`
     less:
       '<%= BUILD_DIR %>/app/styles/app.css': '<%= CLIENT_DIR %>/app/styles/app.less'
+      
+      options: 
+      	dumpLineNumbers: 'mediaquery'
 
     # Minify app `.css` resources -> `.min.css`
     mincss:
@@ -152,6 +156,13 @@ module.exports = (grunt)->
     # Input for optimized app index
     useminPrepare:
       html:         '<%= BUILD_DIR %>/index.html'
+
+    # HTML Snapshots w/ headless browser
+    htmlSnapshot:
+      all:
+        options:
+          snapshotPath: 'public/snapshots/'
+          sitePath: 'http://localhost:3000/'
 
     # "watch" distinct types of files and re-prepare accordingly
     watch:
@@ -203,3 +214,4 @@ module.exports = (grunt)->
   grunt.loadNpmTasks('grunt-express-server')
   grunt.loadNpmTasks('grunt-karma')
   grunt.loadNpmTasks('grunt-usemin')
+  grunt.loadNpmTasks('grunt-html-snapshot')

@@ -1,0 +1,104 @@
+/********************************************************************
+* Replace the checkboxes with Font Awesome ones                     *
+********************************************************************/
+
+input[type="radio"],
+input[type="checkbox"] {
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+  padding: 10px;
+
+    // Hide the default checkbox, but don't use display: none; since we
+  // still need to check it
+  .opacity(0);
+
+  // Transform the default to a larger checkbox so it is about the same size
+  // as the Font Awesome one
+  .scale(4);
+}
+
+input[type="radio"] + span:before,
+input[type="checkbox"] + span:before,
+input[type="radio"] + span.blue:before,
+input[type="checkbox"] + span.blue:before {
+  font-family: 'FontAwesome' !important;
+  padding-right: 3px;
+  font-size: 2.5rem;
+} 
+
+input[type="radio"] + span:before {
+  content: "\f10c"; /* circle-blank */
+}
+
+input[type="radio"]:checked + span:before {
+  content: "\f111"; /* circle */
+}
+
+input[type="checkbox"] + span:before {
+  content: "\f00c"; /* check-empty */
+  color: @checkbox-blue;
+}
+
+input[type="checkbox"]:checked + span:before {
+  content: "\f00c"; /* check */
+  color: @white;
+}
+
+input[type="checkbox"].plain + span:before {
+  color: @light-grey;
+}
+
+input[type="checkbox"].plain:checked + span:before {
+  color: @checkbox-blue;
+}
+
+
+
+.signPetition select {
+	width: 100%;
+	height: 42px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select, textarea{
+	.border-radius(2px);
+	height: 32px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 2%;
+	padding-right: 2%;
+    width: 96%;
+    border-color: #bfd1dd;
+}
+
+form, form label, form p {
+    color: #555555;
+    font-size: 9px;
+}
+
+label {
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+::-webkit-input-placeholder {
+    color: #004978 !important;
+}
+
+
+input::-webkit-input-placeholder { 
+    opacity: 0.25;
+    .transition(opacity 0.5s);
+}
+
+input:focus::-webkit-input-placeholder  { 
+    opacity: 0;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .signPetition .span1, .signPetition .span3{display: block; float: none; width: 92%;}    
+}
+@media (max-width: 767px) {
+    
+}

@@ -1,12 +1,15 @@
-var express   = require('express');
-var app       = module.exports = express();
-var fs        = require('fs');
-var path      = require('path');
+var express = require('express');
+var app = module.exports = express();
+var db = require('./../mongoSchema');
+var mail = require('./../sendgrid')(app);
+var auth = require('../auth')(app, db);
+var path = require('path');
+require('./action')(app, db, auth);
+require('./actionkit')(app, db);
+require('./email')(app, db, auth);
+require('./feature')(app, db);
+require('./page')(app, db, auth);
+require('./project')(app, db, auth);
+require('./user')(app, db, mail);
 
-app.get('/api/bower', function(req, res) {
-  res.send(fs.readFileSync(__dirname + '/../../../bower.json'));
-});
-
-app.get('/api/package', function(req, res) {
-  res.send(fs.readFileSync(__dirname + '/../../../package.json'));
-});
+app.use(express.static(path.resolve('./public')));

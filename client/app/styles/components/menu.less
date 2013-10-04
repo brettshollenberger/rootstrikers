@@ -1,0 +1,117 @@
+// Navbar consists of left and right sides which are aligned to the sides
+// of the page. The both sides have the equivalent of an offset1, and so
+// content on each side floats left and right respectively. The defined
+// gutters mixed with the floats make the navbar easy to scale and reuse
+// for new content that doesn't follow the traditional link-orientation.
+
+// Media queries shrink the content and at mobile/tablet levels we lose
+// the Donate button in favor of more space for the more important content. 
+
+@menu-height: 120px;
+
+
+.header-fixed{
+    top: 0;
+    left: 0;
+    padding: 5px 0 9px;
+    position: fixed;
+    background: @darkest-grey !important;
+    background-color: @darkest-grey !important;
+    z-index: 501;
+    
+    a.brand{
+        display: block;
+        margin-top: 27px;
+    }
+    
+}
+
+.auth-links .btn {
+    padding: 10px 38px;
+}
+
+.tagline {
+  color: @white;
+  text-transform: uppercase;
+  font-family: @oswald;
+  font-weight: 300;
+  letter-spacing: 2px !important;
+  text-align: right;
+  display: inline-block;
+  margin: 6px 10px 0 0;
+}
+
+.login a,
+.logout a {
+  color: @white;
+  text-decoration: underline;
+  margin-right: 15px;
+}
+
+#donate {
+    margin-top: 3px;
+}
+
+#donate span {
+    background-color: #1a1a1a;
+    letter-spacing: 1px;
+    font-weight: normal;
+    padding: 8px 10px;
+    font-size: 9.09px;
+    line-height: 9.09px;
+    height: auto;
+}
+
+#donate span:first-child {
+    background-color: #141414;
+    font-size: 11px;
+    margin-right: 0;
+}
+
+.navbar .avatar-small img {
+    width: 40px;
+    margin: 6px 0;
+}
+
+// Admin Menu
+.navbar-admin .float-right-nav {
+    margin-top: 37px;
+}
+
+.navbar-admin .btn {
+    padding: 10px 20px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .header-fixed{
+        position: relative;
+    }
+    .wrap{
+        margin-top: 0;
+    }
+    .navbar-fixed-top{
+        margin-bottom: 0;
+    }
+}
+@media (max-width: 767px) {
+    
+    .brand img{width: 200px;}
+    .tagline{display: none;}
+    .wrap{
+        margin-top: 0;
+    }
+    .header-fixed{
+        position: relative;
+        .pull-right{
+            text-align: left;
+            float: none;
+        }
+        .btn{margin: 0 0 10px 0;}
+        .donate, .join, .login{float: left; width: 95px;}
+        .join{width: 65px;}
+        .login{margin-top: 2px;}
+        .join .btn{padding: 2px 12px; margin-top: 4px; font-size: 9px;}
+    }
+}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {}

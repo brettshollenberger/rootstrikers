@@ -1,0 +1,36 @@
+<div class="modal hide fade">
+
+  <div class="modal-header">
+    <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+    <h4>Login</h4>
+  </div>
+  
+  <form name="form" ng-submit="login()" class="form-horizontal">
+  
+    <div class="modal-body">
+    
+      <div class="alert alert-error" ng-show="loginErrors.extra">
+        <strong>{{loginErrors.extra}}</strong>
+      </div>
+      
+      <fieldset>
+        <label>Username</label>
+        <input type="text" ng-model="loginUser.email" placeholder="Your Email" required/>
+        <label>Password</label>
+        <input type="password" ng-model="loginUser.password" placeholder="Your Password" required/>
+      </fieldset>
+      
+    </div>
+    
+    <div class="modal-footer">
+      <button type="reset" class="btn" ng-click="cancel()">Cancel</button>
+      <button type="submit" id="submit" class="btn btn-primary">Login</button>
+      <!--
+OR
+      <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
+-->
+    </div>
+    
+  </form>
+  
+</div>

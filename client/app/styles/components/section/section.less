@@ -1,0 +1,29 @@
+.section {
+  padding: 60px 0 0 0;
+  position: relative;
+  top: 0px;
+}
+
+.section-grey {
+  background-color: @light-grey;
+  border-top: 2px solid @light-grey;
+}
+
+.section-last {
+  padding-bottom: 60px;
+}
+
+/**
+ * Section Typography
+ */
+@import "./section-typography.less";
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+@media (max-width: 767px) {
+    .section{
+        padding: 20px 0 0 0;
+    }    
+}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {}

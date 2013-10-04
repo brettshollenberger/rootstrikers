@@ -1,0 +1,72 @@
+<form name="NewFeatureForm" novalidate>
+  <div class="row-fluid section">
+    <div class="span10 offset1">
+      <a href="/#!/admin/features" class="btn btn-inverse float-right">View All Features</a>
+      <h1>New Feature</h1>
+      {{ feature | json }}
+      <br><br>
+      <!-- ######################### Message Field ######################### -->
+      <div name="message-errors" class="alert alert-error" ng-show="showError(NewFeatureForm.message)">
+        Let's have an inspiring message for the readers.
+      </div>
+      Message: <textarea rows="5" name="message" ng-model="feature.message" required></textarea><br>
+      <!-- ####################### End Message Field ####################### -->
+
+      <!-- ########################## Action Field ######################### -->
+      <div name="action-errors" class="alert alert-error" ng-show="showError(NewFeatureForm.action)">
+        How will the reader take action? Click a link? Read more?
+      </div>
+      Action: <textarea rows="5" name="action" ng-model="feature.action" required></textarea><br>
+      <!-- ######################## End Action Field ######################## -->
+
+      <!-- ######################## Action Link Field ####################### -->
+      <div name="action-link-errors" class="alert alert-error" ng-show="showError(NewFeatureForm.actionLink)">
+        This should be a valid URL. Usually those start with http:// or https://
+      </div>
+      <div name="action-link-success" class="alert alert-success" ng-show="showSuccess(NewFeatureForm.actionLink)">
+        URL looks good!
+      </div>
+      Action Link: <input type="url" name="actionLink" ng-model="feature.actionUrl" required>
+      <br>
+      <!-- ###################### End Action Link Field ##################### -->
+      <div name="image-alert" class="alert alert-info">
+        <strong>Optimize your images</strong>
+        <ul>
+          <li>Upload an image that's 1024px x 360px</li>
+          <li>Or upload an image with a transparent background</li>
+          <li>Or upload an image with the background color #030301</li>
+          <li>Or use the default image provided below</li>
+          <li>Check out the feature preview before you publish to see what it will look like.</li>
+          <li>You can save without publishing; your work won't be live until you publish!</li>
+        </ul>
+      </div>
+      <div image-picker="feature" default-img="app/images/axesbaxes.gif"></div>
+    </div>
+  </div>
+
+  <div class="row-fluid section">
+    <div class="span10 offset1">
+      <h1>Preview</h1>
+      <div class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img ng-src="{{feature.image}}" alt="" ng-show="feature.image"/>
+            <div class="carousel-caption">
+              <h3 class="white headline-big" ng-bind-html-unsafe="feature.message | linebreaker">{{feature.message | linebreaker}}</h3>
+              <h2><a ng-href="{{feature.actionUrl}}" target="_blank" ng-bind-html-unsafe="feature.action | linebreaker">{{feature.action | linebreaker}}<i class="icon-arrow-right" class="white" style="position: relative; top: 3px;" ng-show="feature.action"></i></a></h2>
+            </div>
+          </div>
+        </div><!-- /.carousel-inner -->
+      </div><!-- /.carousel -->
+    </div>
+  </div>
+
+  <div class="row-fluid section section-last">
+    <div class="span10 offset1">
+      <h1>Publish or Save</h1>
+      Published: <input type="checkbox" class="plain" ng-model="feature.published"><span class="blue"></span>
+      <br><br>
+      <a type="submit" class="btn" ng-click="create();">Submit</a>
+    </div>
+  </div>
+</form>

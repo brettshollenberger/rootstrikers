@@ -1,0 +1,33 @@
+<div class="row-fluid section">
+    <div class="span10 offset1">
+        <h1>Features</h1>
+        <hr>
+        <div class="row-fluid">
+            <div class="btn-group pull-right">
+              <a href="/#!/admin/features/new" class="btn btn-inverse">New</a>
+            </div>
+        </div>
+        <hr/>
+        <div class="row-fluid">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="feature in features">
+                        <td>{{feature.message}}</td>
+                        <td>
+                            <a href="/#!/admin/features/{{feature.id}}/edit" class="btn btn-primary">Edit</a>
+                            <a class="btn btn-danger" ng-click="destroy(feature.id)">Delete</a>
+                            <a class="btn btn-success" ng-click="publish(feature.id, true)" ng-show="!feature.published">Publish</a>
+                            <a class="btn btn-warning" ng-click="publish(feature.id, false)" ng-show="feature.published">Unpublish</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

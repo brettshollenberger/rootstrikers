@@ -1,0 +1,120 @@
+.modal{
+    /* overflow: hidden; */
+    .modal-header{
+        .border-radius(3px 3px 0 0);
+        background: @blue;
+        
+        button.close{
+            color: #fff;
+            opacity: 1.0;
+            position: relative;
+            top: 4px;    
+        }
+        h4{
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #fff;    
+            font-weight: 300;
+        }
+    }
+/*
+    .modal-body{
+        padding: 20px 40px;
+    }
+*/
+    
+    .step1{
+        p{font-size: 16px; font-weight: 600;}
+    }
+    
+    .step2{
+        .avatar{
+            position: relative;
+            display: block;
+            width: 50%;
+            padding: 30px 0 30px 84px;    
+            border: 1px solid #bfd1dd;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #000;
+            .border-radius(2px);
+            i{
+                top: 33px;
+                left: 10px;
+                font-size: 70px;
+                margin-right: 10px;
+                opacity: .25;
+                position: absolute;
+                
+            }
+        
+        }
+        .avatar-thumb{margin-left: 10px; width: 60px;
+            .border-radius(50%);
+            top: 10px;
+            left: 5px;
+            position: absolute;
+        }
+    }
+    
+    .btn{
+        width: 90%;
+        padding: 13px 5%;
+        margin: 0 0 10px;
+    }
+    
+    .span3{width: 47%; margin-left: 3%;}
+    .span6{width: 97%; margin-left: 3%;}
+    .row{margin-left: -3%;}
+    .pad{width: 75%; margin: 0 auto;}
+}
+
+.pageModal {
+    background: transparent;
+    color: white;
+    .box-shadow(none);
+    border: none;
+    
+    p {
+        font-size: 13px;
+        line-height: 22px;
+    }
+    
+    &.modal.in {
+        top: 22%;
+    }
+    
+    h4 {
+        font-size: 2em;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: @blue;
+    }
+    
+    .close {
+        font-weight: 100 !important;
+        position: absolute;
+        top: -40px;
+        color: white;
+        opacity: 1;
+        height: 35px;
+        font-weight: normal;
+        font-size: 40px;
+        
+    }
+    
+}
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+@media (max-width: 767px) {
+    .modal{
+        .span3{float: left;}
+        .span6{}
+    }
+
+}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {}

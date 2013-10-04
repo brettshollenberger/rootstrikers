@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row-fluid">
+      <form ng-submit="save()">
+        <fieldset>
+          <legend>Rootstrikers Email Template</legend>
+          <notification></notification>
+          <div class="form-group">
+            <label for="name">Name</label>
+            {{email.name}}
+          </div>
+          <div class="form-group">
+            <label for="url">Description</label>
+            {{email.description}}
+          </div>
+          <div class="form-group">
+            <label for="header">Variables</label>
+            {{email.vars}}
+          </div>
+          <div class="form-group">
+            <label for="from">From</label>
+            <input type="email" class="form-control" id="from" placeholder="Enter From who display the email" ng-model="email.from" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" placeholder="Enter a Subject for the email" ng-model="email.subject" required>
+          </div>
+          <div class="form-group">
+            <label for="body">Body (Images are going to be display only if they are from remote urls like http://link.to/image.jpg)</label>
+            <textarea class="form-control" rows="3" placeholder="Enter a email Body" id="body" ui-tinymce="tinymceOptions" ng-model="email.body"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a href="/#!/admin/emails" class="btn btn-warning">Cancel</a>
+          <a href="/#!/admin/email/preview/{{email.id}}" class="btn btn-info">Preview</a>
+        </fieldset>
+      </form>
+    </div>
+</div>

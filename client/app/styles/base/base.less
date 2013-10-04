@@ -1,0 +1,116 @@
+/**
+ * Colors
+ */
+@import "./colors.less";
+
+/**
+ * Typography
+ */
+@import "./typography.less";
+
+// Gutters
+@global-gutter: 100px;
+
+html, body {
+  height: 100%;
+  border: 0 !important;
+}
+
+p {
+  font-size: 16px;
+  line-height: 25px;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.grayscale {
+  .filter(100%);
+}
+
+.full-color {
+  .filter(0%);
+}
+
+.admin .admin-hide {
+  display: none;
+}
+
+.admin .admin-show {
+  display: block;
+}
+
+#dimensions {
+  display: inline;
+  color: @white;
+  margin: 10px 0 0 10px;
+}
+
+.float-right {
+  float: right;
+  margin-left: 5px;
+}
+
+.white {
+  color: @white;
+}
+
+.stretch{
+	width: 100%;
+}
+
+
+
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12 {
+  height: 100%;
+}
+
+// Override Bootstrap default
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .stretch.slider{
+
+    min-height: 255px;
+    }
+}
+
+@media (max-width: 767px) {
+     body {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.container{
+		padding: 0 20px;
+	}
+	.stretch.slider{
+
+    min-height: 215px;
+    }
+    
+}
+@media (max-width: 480px) {
+    .stretch.slider{display: none;}
+}
+@media (min-width: 1200px) {}

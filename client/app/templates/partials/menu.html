@@ -1,0 +1,68 @@
+<div class="header-fixed stretch">
+
+    <div class="container">
+        <div class="row">            
+            <div class="span3 logo">
+                <a class="brand" href="/">
+                    <img alt="Root Strikers" src="app/images/logo-rootstrikers.png">
+                </a>
+            </div>
+            
+            <div class="span9 options">
+                <div class="row">
+                   
+                    
+                    <div class="auth-links" ng-controller="authController">
+                        
+                        <div class="span9 donate">
+                            
+                            <div id="donate">
+                                <a href="#" class="btn-group pull-right">
+                                    <span type="button" class="btn btn-default">$</span>
+                                    <span type="button" class="btn btn-default">Donate</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="span9 join">           
+                            <a class="pull-right" ng-show="loggedUser">
+                                <gravatar-image
+                                data-email="loggedUser.email"
+                                data-size="120"
+                                data-rating="pg"
+                                data-default="404"
+                                data-secure="true"
+                                class="avatar-circular avatar-small"
+                                modal
+                                template="app/templates/auth/edit.html">
+                                </gravatar-image>
+                            </a>
+                            
+                            <div class="btn pull-right" id="join" modal template="app/templates/auth/register.html" title="Register" ng-hide="loggedUser">
+                                Join
+                            </div><!-- #join -->
+                            <div class="tagline pull-right">
+                                Only the people can force lasting
+                                <br>
+                                change on this broken system.
+                            </div><!-- .tagline -->
+                        </div>
+                   
+                        
+                        <div class="pull-right login">
+                            <div modal template="app/templates/auth/login.html" title="Login" ng-hide="loggedUser" class="login">
+                                <em>or</em> <a>Login</a>
+                            </div>
+                            <div ng-click="logout()" ng-show="loggedUser" class="logout">
+                                <a>Log Out</a>
+                            </div>
+                        </div><!-- .pull-right -->
+                    
+                    </div> <!-- .auth-links -->
+                    
+                    
+                </div>
+            </div><!-- .float-right-nav -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+
+</div>
