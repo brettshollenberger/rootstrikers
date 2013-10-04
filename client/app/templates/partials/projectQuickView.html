@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="old-content-quick-view-img" ng-show="isContentFromOldSite(item)">
+    <div class="old-content-quick-view-img" ng-show="isContentFromOldSite(item)" ng-click="goTo('project/'+item.slug)">
         <div>
             <img ng-hide="item.image" src="app/images/hack_politics_aged.png">
             <img ng-show="item.image" ng-src="{{item.image}}">
