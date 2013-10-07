@@ -51,6 +51,11 @@ angular
         };
         
         if($scope.project) {
+
+
+            $scope.isPledge = function(project) {
+              return project.type == 'pledge';
+            };
         
             MetaMachine.title($scope.project.title);
 

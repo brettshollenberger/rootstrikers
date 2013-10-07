@@ -18,8 +18,6 @@
     <hr>
 
     <div class="content">
-    
-        <h2>Campaign</h2>
 
         <h3 class="dark-grey">{{item.title}}</h3>
         
@@ -28,8 +26,7 @@
         <div ng-bind-html-unsafe="item.preview | characters:120" ng-show="isContentFromOldSite(item)"></div>
 
         <div ng-show="hasDate() && !completed">
-            <h2>Time Remaining</h2>
-            <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3><br>
+            <h3 class="dark-grey">{{item.end_date | timeRemaining}} Left</h3><br>
         </div>
 
         <div ng-show="completed">
@@ -54,9 +51,6 @@
 <div class="quick-view-footer">
 
     <div class="content" ng-hide="isContentFromOldSite(item)">
-        
-        <h2>Supporting Rootstrikers</h2>
-        <!-- We will have to change this ng-repeat call to user in supporters once we have a service for that -->
         
         <gravatar-image
             ng-repeat="actionUser in item.actionUsers | limitTo:3"
