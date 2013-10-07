@@ -10,7 +10,6 @@ angular
         
     var base = $location.absUrl().replace($location.path(), '');
     base = removeHash(base);
-    console.log(base);            
 
     var metaDefaults = {
       metaType: "website",
@@ -31,7 +30,6 @@ angular
         $rootScope.metaTitle = typeof pageTitle != 'undefined' ? pageTitle + " | " + baseTitle : baseTitle;
       },
       description: function(description) {
-        console.log(description);
         $rootScope.metaDescription = description || metaDefaults.metaDescription;
       },
       image: function(url) {

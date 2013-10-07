@@ -15,7 +15,7 @@ var binPath = null;
 fs.existsSync = fs.existsSync || path.existsSync;
 
 if (env !== 'development') {
-    console.log('We are not in development');
+    //console.log('We are not in development');
     binPath = join(__dirname, '/../../../', 'vendor/phantomjs/bin/phantomjs');
 } else {
     binPath = require('phantomjs').path;

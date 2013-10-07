@@ -60,9 +60,7 @@ angular
             MetaMachine.image($scope.project.image);
             
             MetaMachine.url($location.absUrl());
-            
-            console.log($location.absUrl());
-      
+                  
             
             // check if user has already performed the project action
             checkActionForUser();

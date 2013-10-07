@@ -68,7 +68,6 @@ app.use(function(req, res, next) {
   
   url += '#!/' + frag;
   
-  console.log(url);
 /*
 
   grunt.tasks(['snapshot'], {url: url}, function(e) {
@@ -80,7 +79,7 @@ app.use(function(req, res, next) {
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
-    console.log(html);
+    //console.log(html);
     res.send(html);
   });
 });
