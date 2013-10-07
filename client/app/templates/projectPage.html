@@ -123,7 +123,7 @@
                     ng-show="loggedUser && !performedAction && !signedPledge"
                     ng-click="performedAction || signPledge()">Sign Me!</button>
                 
-                <h2 ng-show="performedAction || signedPledge">You've signed the pledge, share below</h2>
+                <h2 style="line-height:20px;" class="form-thanks" ng-show="performedAction || signedPledge"><i class="icon-ok"></i> You're awesome,<br/><span style="margin-left:33px; color:#888;">thanks for taking action</span></h2>
                 
             </div><!-- .span4 -->
 
