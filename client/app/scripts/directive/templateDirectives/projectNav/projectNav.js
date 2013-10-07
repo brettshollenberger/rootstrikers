@@ -29,6 +29,16 @@ angular
                   _.indexOf($scope.projects, $scope.displayedProject) - 1] || _.last($scope.projects);
                 $scope.$apply();
               };
+
+              t.viewAllCampaigns = function() {
+                $scope.displayedProject = {title: "View All Campaigns"};
+                $scope.$apply();
+              };
+
+              t.noAction = function() {
+                $scope.displayedProject = {title: ""};
+                $scope.$apply();
+              };
             });
           })(this);
         },

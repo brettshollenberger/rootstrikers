@@ -14,7 +14,7 @@ angular
         element.hover(function() {
           projectNavController.findPreviousProject();
         }, function() {
-          projectNavController.findNextProject();
+          projectNavController.noAction();
         });
       }
     };
