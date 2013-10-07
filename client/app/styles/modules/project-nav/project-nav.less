@@ -7,7 +7,8 @@
 
 .project-nav-button {
   width: 60px;
-  height: 50px;
+  padding: 15px 0;
+  text-align: center;
   position: relative;
   top: 0px;
   border-right: @project-nav-border;
@@ -16,14 +17,16 @@
 
 .project-nav-button:first-child {
   border-left: @project-nav-border;
+  i{
+      position: relative;
+      top: 2px;
+  }
 }
 
 .project-nav-icon {
   color: @white;
+  width: auto;
   font-size: 25px;
-  position: relative;
-  top: 16px;
-  left: 19px;
 }
 
 .project-nav-button:hover {
@@ -62,5 +65,8 @@
     
     .project-nav-button{
        border-right: none; 
+    }
+    .project-nav-button:first-child{
+        border-left: none;
     }
 }
