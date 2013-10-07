@@ -57,7 +57,7 @@
                 <form novalidate
                     name="signPetition"
                     class="signPetition"
-                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project)"
+                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge"
                     ng-submit="signPledge()">
                             
                     <div form-group form="signPetition">
@@ -120,10 +120,10 @@
                 
                 <button
                     class="btn-block btn"
-                    ng-show="loggedUser && !performedAction"
+                    ng-show="loggedUser && !performedAction && !signedPledge"
                     ng-click="performedAction || signPledge()">Sign Me!</button>
                 
-                <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
+                <h2 ng-show="performedAction || signedPledge">You've signed the pledge, share below</h2>
                 
             </div><!-- .span4 -->
 
