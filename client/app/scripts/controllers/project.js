@@ -4,6 +4,7 @@ angular
     '$scope',
     '$rootScope',
     '$routeParams',
+    '$cookieStore',
     'actionService',
     'actionKitService',
     'projectService',
@@ -11,7 +12,7 @@ angular
     'MetaMachine',
     'selectLocation',
     '$location',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
+    function($scope, $rootScope, $routeParams, $cookieStore, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
 
       // our form model
       $scope.signer = {};
@@ -76,6 +77,8 @@ angular
                 });
             }
             
+            $scope.signedPledge = $cookieStore.get('signedPledge');
+            
             // get all of the people who have acted on this project
             actionService.getProjectActionUsers($scope.project.id).then(function(response) {
                 $scope.users = response;
@@ -98,6 +101,10 @@ angular
                     
               // if the call to Action Kit was a success
               if(response === true) {
+              
+                  // add a cookie to say the user has already signed
+                  $cookieStore.put('signedPledge', true);
+                  $scope.signedPledge = true;
               
                   // add an action entry to our DB for easy reference later
                   var myAction = new actionService({user: user, project_id: $scope.project.id});
