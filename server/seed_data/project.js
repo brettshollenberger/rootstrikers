@@ -52,6 +52,7 @@ var data = [
         "slug"      : "help-us-reach-1000000-citizens",
         "title"     : "Help Us Reach 1,000,000 Citizens",
         "image"     : "https://www.filepicker.io/api/file/ZW0jlmQRvSMA07U0MpYW",
+        "end_date"  : "2012-10-20T04:00:00.000Z",
         "publish"   : true,
         "preview"   : "At the beginning of April, TED posted the talk I gave at their annual " +
                       "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
