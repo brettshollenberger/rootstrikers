@@ -7,11 +7,19 @@
 var childProcess = require('child_process');
 var fs = require('fs');
 var path = require('path');
+var join = path.join;
+var env = process.env.NODE_ENV || 'development';
+
+var binPath = null;
 
 fs.existsSync = fs.existsSync || path.existsSync;
 
-// @note on heroku this will be different! Set in config settings 
-var binPath = require('phantomjs').path;
+if (env !== 'development') {
+    console.log('We are not in development');
+    binPath = join(__dirname, '/../../../', 'vendor/phantomjs/bin/phantomjs');
+} else {
+    binPath = require('phantomjs').path;
+}
 
 module.exports.render = function(url, callback) {
 
@@ -21,7 +29,7 @@ module.exports.render = function(url, callback) {
       path.join(__dirname, 'loadpage.js'),
       url
     ];
-
+    
     // start a child processs
     // @note this is non-blocking
     childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {

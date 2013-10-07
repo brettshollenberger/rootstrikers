@@ -31,6 +31,7 @@ var express   = require('express');
 var app       = module.exports = express();
 var renderer  = require('./renderer');
 var grunt     = require('grunt');
+var env       = process.env.NODE_ENV || 'development';
 
 // use this function as middlware
 app.use(function(req, res, next) {
@@ -49,9 +50,14 @@ app.use(function(req, res, next) {
   // we do have a fragment, so lets assemble a URL that we can access within our app
   // basically we are reverse engineering the _escaped_fragment_
   // to figure out which url the crawler hit in the first place.
+  
   var url = (req.secure ? 'https' : 'http') + '://';
-  url += req.host + req.path;
-  //url += req.host + ':' + app.get('port') + req.path;
+  
+  if (env === 'development') {
+     url += req.host + ':' + app.get('port') + req.path;
+  } else {
+     url += req.host + req.path;
+  }
   
   // remove the first slash, if present
   // this gives us some flexability in our templates
