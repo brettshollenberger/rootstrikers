@@ -17,7 +17,7 @@ angular
       metaName: "Rootstrikers",
       metaTitle: "Home | Rootstrikers",
       metaDescription: "We fight the corrupting influence of money in politics",
-      metaImage: base + "app/images/favicon/apple-touch-icon-144x144-precomposed.png",
+      metaImage: base + "app/images/favicon/RS_Facebook_Icon.jpg",
       metaUrl: base
     };
 
