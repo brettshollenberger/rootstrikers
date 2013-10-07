@@ -62,7 +62,7 @@
                             
                     <div form-group form="signPetition">
                     
-                        <label for="firstName">First Name *</label>
+                        <label for="firstName">First Name</label>
                         <input
                             form-field
                             required
@@ -74,7 +74,7 @@
                             {{signPetition.FacultyErrors.firstName}}
                         </div>
 
-                        <label for="lastName">Last Name *</label>
+                        <label for="lastName">Last Name</label>
                         <input
                             form-field
                             required
@@ -86,7 +86,7 @@
                             {{signPetition.FacultyErrors.lastName}}
                         </div>
                         
-                        <label for="email">Email *</label>
+                        <label for="email">Email</label>
                         <input
                             form-field
                             required
@@ -98,20 +98,19 @@
                             {{signPetition.FacultyErrors.email}}
                         </div>
  
-                        <label for="zipCode">Zip Code *</label>
+                        <label for="zipCode">Zip Code</label>
                         <input
                             form-field
                             required
                             type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
                             ng-blur="Validator.validateField(signPetition.zipCode, signPetition)"
+                            simple-validate="{zip: {exp: 'Validator.validateZip($value, signPetition.zip)', message: 'Please enter a valid zip code'}}"
                             ng-model="signer.zipCode" />
                         
                         <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.zipCode}}
                         </div>
         
-                        <p>* Required Information</p>
-
                     </div>
                                                 
                     <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Take Action</button>
