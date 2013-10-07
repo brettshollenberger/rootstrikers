@@ -9,7 +9,7 @@ angular
         
         // options
         var timeDelay = 5000;
-        var timePause = 1000;
+        var timePause = 500;
         
         // available scope items
         $scope.activity = [];
