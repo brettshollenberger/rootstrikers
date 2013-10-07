@@ -50,9 +50,12 @@ angular
         
         if($scope.project) {
         
-            MetaMachine.title($scope.project.name);
-            MetaMachine.description($scope.project.problem);
-            MetaMachine.image($scope.project.image);
+            MetaMachine.title($scope.project.title);
+            
+            if($scope.project.image) {
+                MetaMachine.image($scope.project.image);
+            }
+            
             MetaMachine.url($location.absUrl());
             
             // check if user has already performed the project action

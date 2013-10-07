@@ -1,8 +1,12 @@
+// @todo @release change metaUrl
+
 angular
   .module('app')
   .factory('MetaMachine', function($rootScope) {
 
     var metaDefaults = {
+      metaType: "website",
+      metaName: "Rootstrikers",
       metaTitle: "Home | Rootstrikers",
       metaDescription: "We fight the corrupting influence of money in politics",
       metaImage: "/app/images/favicon/apple-touch-icon-144x144-precomposed.png",

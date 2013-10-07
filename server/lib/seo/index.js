@@ -43,23 +43,37 @@ app.use(function(req, res, next) {
     // });
     return next();
   }
+  
+  var frag = req.query._escaped_fragment_;
 
   // we do have a fragment, so lets assemble a URL that we can access within our app
   // basically we are reverse engineering the _escaped_fragment_
   // to figure out which url the crawler hit in the first place.
-  // var url = (req.secure ? 'https' : 'http') + '://';
-  // url += 'req.host' + ':' + app.get('port') + req.path;
-  var url = '#!/' + req.query._escaped_fragment_;
+  var url = (req.secure ? 'https' : 'http') + '://';
+  url += req.host + ':' + app.get('port') + req.path;
+  
+  // remove the first slash, if present
+  // this gives us some flexability in our templates
+  // and makes this function a little less picky.
+  if(frag.charAt(0) === '/') {
+      frag = frag.slice(1,frag.length);
+  }
+  
+  url += '#!/' + frag;
+  
+  console.log(url);
+/*
 
   grunt.tasks(['snapshot'], {url: url}, function(e) {
     console.log("done running grunt task " + e);
     res.send(e);
   });
+*/
 
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
-    console.log(html);
+    //console.log(html);
     res.send(html);
   });
 });
