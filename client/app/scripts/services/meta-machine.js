@@ -2,15 +2,25 @@
 
 angular
   .module('app')
-  .factory('MetaMachine', function($rootScope) {
+  .factory('MetaMachine', function($rootScope, $location) {
+     
+        
+    var base = $location.absUrl().replace($location.path(), '');
+    base = base.replace('#!', '');
+    console.log(base);
+    
+    var removeHash = function(url) {
+        return url.replace('#!/', '');
+    };
+            
 
     var metaDefaults = {
       metaType: "website",
       metaName: "Rootstrikers",
       metaTitle: "Home | Rootstrikers",
       metaDescription: "We fight the corrupting influence of money in politics",
-      metaImage: "/app/images/favicon/apple-touch-icon-144x144-precomposed.png",
-      metaUrl: "http://rs002dev.herokuapp.com/"
+      metaImage: base + "app/images/favicon/apple-touch-icon-144x144-precomposed.png",
+      metaUrl: base
     };
 
     (function setDefaults() {
@@ -23,13 +33,14 @@ angular
         $rootScope.metaTitle = typeof pageTitle != 'undefined' ? pageTitle + " | " + baseTitle : baseTitle;
       },
       description: function(description) {
-        $rootScope.metaDescription = description || "We fight the corrupting influence of money in politics";
+        console.log(description);
+        $rootScope.metaDescription = description || metaDefaults.metaDescription;
       },
       image: function(url) {
-        $rootScope.metaImage = url || "/app/images/favicon/apple-touch-icon-144x144-precomposed.png";
+        $rootScope.metaImage = url || metaDefaults.metaImage;
       },
       url: function(url) {
-        $rootScope.metaUrl = url || "http://rs002dev.herokuapp.com/";
+        $rootScope.metaUrl = removeHash(url) || metaDefaults.metaUrl;
       }
     };
     return MetaMachine;

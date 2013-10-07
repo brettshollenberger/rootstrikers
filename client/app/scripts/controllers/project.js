@@ -51,10 +51,12 @@ angular
         if($scope.project) {
         
             MetaMachine.title($scope.project.title);
-            
-            if($scope.project.image) {
-                MetaMachine.image($scope.project.image);
-            }
+
+            // we need to set this every time, even if image is undfined
+            // to ensure default image appears
+            // the metaMachine will check if project.image exists, and if not will
+            // apply default. 
+            MetaMachine.image($scope.project.image);
             
             MetaMachine.url($location.absUrl());
             
