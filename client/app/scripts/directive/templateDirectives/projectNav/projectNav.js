@@ -16,7 +16,7 @@ angular
                 return project.slug == $routeParams.name;
               });
 
-              $scope.displayedProject = $scope.currentProject;
+              $scope.displayedProject = "";
 
               t.findNextProject = function() {
                 $scope.displayedProject = $scope.projects[
