@@ -47,7 +47,9 @@ page.open(address, function (status) {
     html = html.replace(/ng-app=\".*?\"/,'');
     
     // logging it will imitate "return html" and make it accessible in our parent function
-    //console.log(html);
+    // !!!!!! IMPORTANT DONT REMOVE THIS LOG !!!!!!  
+    console.log(html);
+    // !!!!!! IMPORTANT DONT REMOVE THIS LOG !!!!!!
     
     // stop the phantom process
     phantom.exit();
