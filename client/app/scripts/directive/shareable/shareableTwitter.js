@@ -22,11 +22,14 @@ angular
         
         // build the url for sharing
         var twitterUrl = 'https://twitter.com/intent/tweet?hashtags=rootstrikers' + 
-        '&original_referer=' +
-        encodeURIComponent((shareableController.absUrl)) + 
+        '&text=Testing' + 
+        '&tw_p=tweetbutton' + 
+        '&original_referer=' + encodeURIComponent((shareableController.absUrl)) +
         '&url=' + encodeURIComponent(removeHash(shareableController.absUrl));
         
      /*
+     
+        https://twitter.com/intent/tweet?hashtags=rootstrikers&original_referer=https%3A%2F%2Ftwitter.com%2Fabout%2Fresources%2Fbuttons&text=Twitter%20%2F%20Twitter%20buttons&tw_p=tweetbutton&url=http%3A%2F%2Frs002dev.herokuapp.com%2F%23!%2Fproject%2Fvoters-not-donors
    
         https://twitter.com/intent/tweet?hashtags=rootstrikers&original_referer=https%3A%2F%2Ftwitter.com%2Fabout%2Fresources%2Fbuttons&text=Twitter%20%2F%20Twitter%20buttons&tw_p=tweetbutton&url=http%3A%2F%2Frs.com%2Fproject&via=mattmillerart
         
