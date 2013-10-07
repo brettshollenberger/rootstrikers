@@ -15,7 +15,15 @@ angular
         // If no image is specified, it falls back on the FontAwesome icon
         // in the layout
         scope.twitterImage = attrs.shareableTwitter || null;
-        var twitterUrl  = "https://twitter.com/intent/tweet?original_referer=" + shareableController.absUrl + "&amp;url=" + shareableController.absUrl + "&amp;source=tweetbutton";
+        
+        // build the url for sharing
+        var twitterUrl = 'https://twitter.com/intent/tweet?hashtags=rootstrikers' + 
+        '&original_referer=' +
+        encodeURIComponent(shareableController.absUrl) + 
+        '&url=' + encodeURIComponent(shareableController.absUrl);
+            
+        console.log(twitterUrl);
+        
         element.on('click', function() {
           $window.open(twitterUrl, '_blank');
           $window.focus();
