@@ -25,6 +25,8 @@
         
         <div ng-bind-html-unsafe="item.sub_title | characters:120" ng-hide="isContentFromOldSite(item)"></div>
 
+        <div ng-bind-html-unsafe="item.body | characters:110" ng-show="isContentFromOldSite(item)"></div>
+
         <div ng-show="hasDate() && !completed">
             <h2>Time Remaining:</h2>
             <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3><br>
@@ -63,7 +65,7 @@
             data-rating="pg"
             data-default="404"
             data-secure="true"
-            class="avatar-circular pull-left">
+            class="avatar-circular avatar-small pull-left">
         </gravatar-image>
 
         <div ng-show="item.actionUserMore" class="supporter-count pull-left">
@@ -78,7 +80,7 @@
     <a ng-click="goTo('project/'+item.slug)">
         <div class="quick-view-cta">
             <div class="content">
-                Read More & Share
+                Take Action
                 <i class="icon-arrow-right"></i>
             </div>
         </div>
