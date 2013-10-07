@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="app"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:ng="http://angularjs.org"> <![endif]-->
+
   <head>
     <meta charset="utf-8">
     <title ng-bind="metaTitle"></title>
@@ -32,12 +32,26 @@
     <!-- build:css app/styles/app.min.css -->
     <link rel="stylesheet" href="app/styles/app.css">
     <!-- endbuild -->
-
+    
+    <!--[if lte IE 8]>
+      <script>
+      window.html5 = { 'elements': 'rootCarousel adminNavMenu banner bannerHalf bannerHalves cta rootFooter gravatarImage navMenu notification pageItem countryPicker statePicker projectItem projectQuickView shareableTemplate projectBackButton projectForwardButton projectHomeButton projectNav carousel slide datepicker datepickerPopup datepickerPopupWrap windows markers window marker markdown userTray abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video', 'shivCSS': false, 'shivMethods': false };
+      </script>
+    <![endif]-->  
+    
+    <script>
+     (function(a){function b(){}for(var c="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","),d;!!(d=c.pop());){a[d]=a[d]||b;}})
+     (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
+    </script>
+    
+    
     <!--[if lt IE 9]>
-    <script src="components/html5shiv-dist/html5shiv.js"></script>
+    <script src="bower_components/html5shiv-dist/html5shiv.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/event-shim.js/event-shim.js"></script>
     <![endif]-->
   </head>
-  <body ng-class="pageSlug">
+  <body ng-class="pageSlug" id="ng-app" ng-app="app">
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -59,6 +73,10 @@
     <root-footer></root-footer>
 
     <script src="vendor/underscore.js"></script>
+    
+    <!--[if lte IE 8]>
+      <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
 
     <!-- build:js app/scripts/all.min.js -->
     <script src="bower_components/jquery/jquery.js"></script>
