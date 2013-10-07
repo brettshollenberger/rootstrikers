@@ -104,6 +104,7 @@
                             required
                             type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
                             ng-blur="Validator.validateField(signPetition.zipCode, signPetition)"
+                            simple-validate="{zip: {exp: 'Validator.validateZip($value, signPetition.zip)', message: 'Please enter a valid zip code'}}"
                             ng-model="signer.zipCode" />
                         
                         <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
