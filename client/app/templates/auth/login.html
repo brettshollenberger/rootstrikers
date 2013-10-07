@@ -1,11 +1,11 @@
-<div class="modal hide fade">
+<div class="modal hide fade" ng-controller="authController">
 
   <div class="modal-header">
-    <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">&times;</button>
+    <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">&times;</button>
     <h4>Login</h4>
   </div>
   
-  <form name="form" ng-submit="login()" class="form-horizontal">
+  <form name="form" ng-submit="login()" class="form-horizontal" novalidate>
   
     <div class="modal-body">
     
@@ -23,8 +23,8 @@
     </div>
     
     <div class="modal-footer">
-      <button type="reset" class="btn" ng-click="cancel()">Cancel</button>
-      <button type="submit" id="submit" class="btn btn-primary">Login</button>
+      <button type="reset" class="btn" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">Cancel</button>
+      <button type="submit" id="submit" class="btn btn-primary" style="margin:0;">Login</button>
       <!--
 OR
       <a ng-click="fbLogin()" class="btn btn-primary">Login with Facebook</a>
