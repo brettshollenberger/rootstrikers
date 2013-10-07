@@ -4,8 +4,8 @@ exports.seed = function() {
 
 var data = [{
     "message" : "New feature",
-    "action" : "new action",
-    "actionUrl" : "http://google.com",
+    "action" : "take action",
+    "actionUrl" : "#!/project/you-dont-need-a-law-degree-to-know-right-from-wron",
     "image" : "https://www.filepicker.io/api/file/QGrGsRjLRg21O7PE3wPZ",
     "InkBlob" : "{\"url\":\"https://www.filepicker.io/api/file/QGrGsRjLRg21O7PE3wPZ\",\"filename\":\"headerexample.jpg\",\"mimetype\":\"image/jpeg\",\"size\":176462,\"isWriteable\":true}",
     "published" : true
