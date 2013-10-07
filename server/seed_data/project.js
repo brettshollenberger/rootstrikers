@@ -22,6 +22,9 @@ var data = [
         "title"     : "Dear Congress: Email Should Not Be This Difficult",
         "image"     : "https://www.filepicker.io/api/file/sw0JuzRvSSuyS58Rrt1h",
         "publish"   : true,
+        "preview"   : "<p>Wealth is not the only barrier to entry when it comes to contacting " +
+                      "members of Congress — it's also a lot more complicated than you'd think " +
+                      "to send a simple email. For a public campaign to send any real amount of emails to members of</p>",
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "body"      : "<p>Wealth is not the only barrier to entry when it comes to contacting " +
                       "members of Congress — it's also a lot more complicated than you'd think " +
@@ -52,6 +55,10 @@ var data = [
         "image"     : "https://www.filepicker.io/api/file/1OUTWvfFSiZmZuUEMkrG",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
+        "publish"   : true,
+        "preview"   : "<p>At the beginning of April, TED posted the talk I gave at their annual " +
+                      "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
+                      "TED platform and YouTube.</p>",
         "body"      : "<p><sub></sub>At the beginning of April, TED posted the talk I gave at their annual " +
                       "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
                       "TED platform and YouTube.<br><br>I've been doing this for a long time, but nothing I've " +
@@ -84,6 +91,8 @@ var data = [
         "slug"      : "voters-not-donors",
         "title"     : "Voters Not Donors",
         "image"     : "https://www.filepicker.io/api/file/9cXEC5R3ShO31Co9z8w9",
+        "preview"   : "<p>The pending election will put a long campaign season to rest. Voters will have to pick a side, the media will trot out their very best blue, red and purple maps, and we'll await news of the winner, perhaps wondering what changes are ahead, if any.<br><br>While it's your civic duty to exercise</p>",
+
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "goal"      : "accomplished",
@@ -92,6 +101,7 @@ var data = [
     {
         "slug"      : "infographic-whos-paying-for-the-president",
         "title"     : "Infographic: Who's Paying for the President?",
+        "preview"   : "<p>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/TtpOaW8SQ9SSYoPdsVx8",
@@ -100,6 +110,7 @@ var data = [
     {
         "slug"      : "infographic-the-true-identity-behind-super-pacs",
         "title"     : "Infographic: The True Identity Behind Super PACs",
+        "preview"   : "",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/AYe3hu3RQaNDjSodfcoM",
@@ -108,6 +119,7 @@ var data = [
     {
         "slug"      : "infographic-who-can-afford-our-congress",
         "title"     : "Infographic: Who Can Afford Our Congress?",
+        "preview"   : "<p>Who can afford the high price tag of our government? Unfortunately, only the privileged few. Until it makes&nbsp;sense for politicians to opt into a system where they are not dependent upon the 0.26% of Americans wealthy enough to pay for their time, we will not have a government by the people, for the&nbsp;people.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/wjMhA6p6SJWZ4DfezO7s",
@@ -116,6 +128,7 @@ var data = [
     {
         "slug"      : "infographic-why-new-yorks-fight-matters",
         "title"     : "Infographic: Why New York's Fight Matters",
+        "preview"   : "<p>New York is fighting back against the undue influence of big money interests on their elections, and they need our help, <em>Rootstrikers</em>.</p><p>Citizens led by over 100 reform groups are campaigning for Fair Elections for New York: public financing of elections, lower contribution limits, and strong enforcement. If they succeed, they will not only change politics as usual in Albany, they will also send a strong message across the country that despite Congress's inaction, citizens are not waiting to take back their democracy.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/FLxLJR7ARaagOwvpVSgB",
@@ -124,6 +137,7 @@ var data = [
     {
         "slug"      : "citizens-united-just-the-tip-of-the-iceberg",
         "title"     : "Citizens United: Just the Tip of The Iceberg",
+        "preview"   : "<p>The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/mFb52fC4QsW8uoICyfEk",
