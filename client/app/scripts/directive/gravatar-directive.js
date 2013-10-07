@@ -9,7 +9,7 @@ angular.module('ui-gravatar', ['md5']).
             }
         };
     }).
-    directive('gravatar-image', ['gravatarImageService', function (gravatarImageService) {
+    directive('gravatarImage', ['gravatarImageService', function (gravatarImageService) {
         return {
             restrict:"EAC",
             link:function (scope, elm, attrs) {
