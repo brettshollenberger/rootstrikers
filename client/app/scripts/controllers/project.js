@@ -33,6 +33,7 @@ angular
       
       var watcher1 = $rootScope.$watch('loggedUser', checkActionForUser);
       
+     
       /*
       $scope.$on('$routeChangeSuccess', function() {
           watcher1();
@@ -59,6 +60,9 @@ angular
             MetaMachine.image($scope.project.image);
             
             MetaMachine.url($location.absUrl());
+            
+            console.log($location.absUrl());
+      
             
             // check if user has already performed the project action
             checkActionForUser();

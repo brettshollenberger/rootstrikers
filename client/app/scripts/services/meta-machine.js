@@ -4,15 +4,13 @@ angular
   .module('app')
   .factory('MetaMachine', function($rootScope, $location) {
      
-        
-    var base = $location.absUrl().replace($location.path(), '');
-    base = base.replace('#!', '');
-    console.log(base);
-    
     var removeHash = function(url) {
         return url.replace('#!/', '');
     };
-            
+        
+    var base = $location.absUrl().replace($location.path(), '');
+    base = removeHash(base);
+    console.log(base);            
 
     var metaDefaults = {
       metaType: "website",
@@ -40,7 +38,7 @@ angular
         $rootScope.metaImage = url || metaDefaults.metaImage;
       },
       url: function(url) {
-        $rootScope.metaUrl = removeHash(url) || metaDefaults.metaUrl;
+        $rootScope.metaUrl = url || metaDefaults.metaUrl;
       }
     };
     return MetaMachine;
