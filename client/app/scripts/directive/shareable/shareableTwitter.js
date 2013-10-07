@@ -1,3 +1,5 @@
+// @note shareableController.absUrl is already url escaped
+
 angular
   .module('app')
   .directive('shareableTwitter', function($location, $window) {
@@ -11,7 +13,7 @@ angular
       require: "^shareable",
       link: function(scope, element, attrs, shareableController) {
         shareableController.addTwitter();
-        
+                                
         var removeHash = function(url) {
             return url.replace('#!/', '');
         };
@@ -22,10 +24,10 @@ angular
         
         // build the url for sharing
         var twitterUrl = 'https://twitter.com/intent/tweet?hashtags=rootstrikers' + 
-        '&text=Testing' + 
+        //'&text=Testing' + 
         '&tw_p=tweetbutton' + 
-        '&original_referer=' + encodeURIComponent((shareableController.absUrl)) +
-        '&url=' + encodeURIComponent(removeHash(shareableController.absUrl));
+        '&original_referer=' + shareableController.absUrl +
+        '&url=' + shareableController.absUrl;
         
      /*
      
@@ -35,9 +37,7 @@ angular
         
         https://twitter.com/intent/tweet?hashtags=rootstrikers&original_referer=http%3A%2F%2Frs002dev.herokuapp.com%252F%2523%2521%252Fproject%2Fvoters-not-donors&url=http%3A%2F%2Frs002dev.herokuapp.com%252F%2523%2521%252Fproject%2Fvoters-not-donors
 */
-            
-        console.log(twitterUrl);
-        
+                    
         element.on('click', function() {
           $window.open(twitterUrl, '_blank');
           $window.focus();

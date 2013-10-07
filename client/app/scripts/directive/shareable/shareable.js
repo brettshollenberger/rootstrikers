@@ -8,7 +8,12 @@ angular
       controller: function($scope) {
         $scope.shareableNetworks = [];
 
-        this.absUrl = $location.absUrl().replace(/\/#!\//, "%2F%23%21%2F");
+        // @note this was replaced with encodeURIComponent
+        //       which does this same thing but is more robust and accounts for more than just
+        //       the hashbang
+        // 
+        //this.absUrl = $location.absUrl().replace(/\/#!\//, "%2F%23%21%2F");
+        this.absUrl = encodeURIComponent($location.absUrl());
 
         this.addFacebook = function() {
           $scope.shareableNetworks.push("Facebook");
