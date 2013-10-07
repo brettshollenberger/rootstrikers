@@ -50,7 +50,8 @@ app.use(function(req, res, next) {
   // basically we are reverse engineering the _escaped_fragment_
   // to figure out which url the crawler hit in the first place.
   var url = (req.secure ? 'https' : 'http') + '://';
-  url += req.host + ':' + app.get('port') + req.path;
+  url += req.host + req.path;
+  //url += req.host + ':' + app.get('port') + req.path;
   
   // remove the first slash, if present
   // this gives us some flexability in our templates
@@ -73,7 +74,7 @@ app.use(function(req, res, next) {
   // start our page renderer 
   renderer.render(url, function(html) {
     //console.log('Callback has been called');
-    //console.log(html);
+    console.log(html);
     res.send(html);
   });
 });
