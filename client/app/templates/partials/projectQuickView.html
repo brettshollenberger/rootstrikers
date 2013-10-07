@@ -25,7 +25,7 @@
         
         <div ng-bind-html-unsafe="item.sub_title | characters:120" ng-hide="isContentFromOldSite(item)"></div>
 
-        <div ng-show="isContentFromOldSite(item)"><p>{{item.preview | characters: 120}}</p></div>
+        <div ng-bind-html-unsafe="item.preview | characters:120" ng-show="isContentFromOldSite(item)"></div>
 
         <div ng-show="hasDate() && !completed">
             <h2>Time Remaining</h2>

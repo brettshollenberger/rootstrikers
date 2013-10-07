@@ -124,6 +124,9 @@ schema.project = new mongoose.Schema({
   },
   body: {
     type: String
+  },
+  type: {
+    type: String
   }
 });
 
