@@ -39,11 +39,22 @@
 .btn.darkblue {
   background-color: @dark-blue;
   letter-spacing: 3px;
-  font-size: 10px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 50px;
 }
 
-.btn.facebook {
+.btn.darkblue:hover {
+  background-color: #005a93;
+}
+
+.italic-share {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 10px;
+}
+
+.btn.facebook,
+.btn.twitter {
   width: 250px;
 }
 
@@ -117,6 +128,36 @@ button.btn {
 
 .banner:hover {
   cursor:pointer;
+}
+
+.shareable-btn {
+  height: 50px;
+  position: relative;
+}
+
+.modal .btn.shareable-btn {
+  padding: 0;
+  width: 100%;
+}
+
+.shareable-facebook,
+.shareable-twitter {
+  width: 60px;
+  height: 100%;
+  background-color: #005a93;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.shareable-facebook .icon-facebook-sign,
+.shareable-twitter .icon-twitter-sign {
+  font-size: 32px;
+  position: absolute;
+  left: 15px;
+  top: 17px;
 }
 
 @media only screen and (max-width: 625px) {

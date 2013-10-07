@@ -93,17 +93,16 @@ angular
       };
       
       var doAction = function(action, user) {
-          
           actionKitService.doAction(action).then(function (response) {
-                    
+              
               // if the call to Action Kit was a success
               if(response === true) {
               
                   // add an action entry to our DB for easy reference later
                   var myAction = new actionService({user: user, project_id: $scope.project.id});
                   myAction.$save();
-                  $scope.performedAction = true;             
-              } 
+                  $scope.performedAction = true;
+              }
           });
       };
       
