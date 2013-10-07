@@ -17,10 +17,14 @@
                         <div class="span9 donate">
                             
                             <div id="donate">
-                                <a href="#" class="btn-group pull-right">
-                                    <span type="button" class="btn btn-default">$</span>
-                                    <span type="button" class="btn btn-default">Donate</span>
-                                </a>
+                                <div class="btn-group pull-right">
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="VM9D4J3WQTVQW">
+                                        <button type="submit" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" class="btn btn-default"><span>$</span> <span>DONATE</span></button>
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="span9 join">           
