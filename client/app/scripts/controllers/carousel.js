@@ -28,6 +28,8 @@ angular
       }
 
       $scope.addSlide = function(feature) {
+
+       
         var newWidth = 200 + ((slides.length + (25 * slides.length)) % 150);
         slides.push({
           image: feature.image,
@@ -35,6 +37,7 @@ angular
           action: feature.action,
           actionUrl: feature.actionUrl
         });
+     
       };
     }]);
 

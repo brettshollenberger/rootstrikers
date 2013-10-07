@@ -9,7 +9,7 @@
 	    <div class="row section project">
             <div class="span8 project-information">
                 <div>
-                    <h2>Project:</h2>
+                    <h2>Campaign:</h2>
 
                     <h3 class="project-title">{{project.title}}</h3>
                 </div>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="span4" ng-show="isContentFromOldSite(project)">
-                <img src="app/images/projectcomplete@2x.png">
+                <img src="app/images/campaigncomplete@2x.png">
             </div>
 
             <div class="span4" ng-hide="isContentFromOldSite(project)">
@@ -57,7 +57,7 @@
                 <form novalidate
                     name="signPetition"
                     class="signPetition"
-                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project)"
+                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge"
                     ng-submit="signPledge()">
                             
                     <div form-group form="signPetition">
@@ -120,10 +120,10 @@
                 
                 <button
                     class="btn-block btn"
-                    ng-show="loggedUser && !performedAction"
+                    ng-show="loggedUser && !performedAction && !signedPledge"
                     ng-click="performedAction || signPledge()">Sign Me!</button>
                 
-                <h2 ng-show="performedAction">You've signed the pledge, share below</h2>
+                <h2 ng-show="performedAction || signedPledge">You've signed the pledge, share below</h2>
                 
             </div><!-- .span4 -->
 
@@ -141,7 +141,7 @@
         <div banner-halves=""></div>
     </div>
     
-	<div class="container" ng-hide="isContentFromOldSite(project)">
+	<div class="container taking-action" ng-hide="isContentFromOldSite(project)">
 	    <div class="row section section-last">
 	        <div class="span12">
 	            <h2>Rootstrikers Taking Action:</h2>

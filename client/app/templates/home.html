@@ -33,7 +33,7 @@
 <div class="stretch section-grey text-center activity" ng-show="visibleActivity" ng-controller="activityController" ng-init="findAll()">
     <div class="container">
         <div class="row ">
-            <div class="span12 text-center">
+            <div class="span12 text-center fade" ng-class="{ 'in' : animateIn }">
                 <p>
                     <gravatar-image
                         data-email="visibleActivity.user_id.email"
@@ -57,7 +57,7 @@
 <div class="container">
 	<div class="row section">
 		<div class="span12">
-			<h2>Active Projects</h2>
+			<h2>These Campaigns Need Your Help Now</h2>
 			<hr>
 			<div class="quick-views">
 				<div class="span4" ng-repeat="item in projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
@@ -71,7 +71,7 @@
 <div class="container completed-projects">
     <div ng-show="completed_projects.length" class="row section section-last" >
       <div class="span12">
-        <h2>Completed Projects</h2>
+        <h2>Completed Campaigns</h2>
         <hr>
         <div class="row quick-views">
           <div class="span4" ng-repeat="item in completed_projects">
