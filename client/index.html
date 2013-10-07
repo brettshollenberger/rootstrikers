@@ -5,10 +5,20 @@
 <!--[if gt IE 8]><!--> <html class="no-js" ng-app="app"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title ng-bind="title"></title>
+    <title ng-bind="metaTitle"></title>
 
     <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
     <meta name="viewport"               content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/app/images/favicon/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/app/images/favicon/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/app/images/favicon/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/app/images/favicon/apple-touch-icon-144x144-precomposed.png">
+    <link rel="shortcut icon" href="/app/images/favicon/favicon.png">
+    <meta property="og:title" content="{{metaTitle}}">
+    <meta property="og:site_name" content="{{metaTitle}}">
+    <meta property="og:url" content="{{metaUrl}}">
+    <meta property="og:image" content="{{metaImage}}">
+
     <meta name="description"            content="{{metaDescription}}">
     <meta name="author"                 content="Faculty Creative / Well Fed">
     <meta name="fragment"               content="!">
@@ -32,16 +42,16 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="wrap">
+    <div class="wrap" id="wrap">
       <nav-menu></nav-menu>
       <admin-nav-menu ng-show="onAdmin"></admin-nav-menu>
 
       <noscript>
         Please enable Javascript to experience this site :)
       </noscript>
-      <div class="container-fluid">
-        <div ng-view></div>
-      </div>
+      
+      <div ng-view></div>
+
       
       <div class="push"></div>
     </div>
@@ -72,12 +82,14 @@
     <script src="app/scripts/services/page.js"></script>
     <script src="app/scripts/services/user.js"></script>
     <script src="app/scripts/services/facebook.js"></script>
+    <script src="app/scripts/services/action.js"></script>
     <script src="app/scripts/services/actionkit.js"></script>
     <script src="app/scripts/services/md5-service.js"></script>
     <script src="app/scripts/services/email.js"></script>
     <script src="app/scripts/services/flash.js"></script>
     <script src="app/scripts/services/form-helper.js"></script>
     <script src="app/scripts/services/meta-machine.js"></script>
+    <script src="app/scripts/services/selectLocation.js"></script>
 
     <script src="app/scripts/controllers/home.js"></script>
     <script src="app/scripts/controllers/page.js"></script>
@@ -94,6 +106,7 @@
     <script src="app/scripts/controllers/carousel.js"></script>
     <script src="app/scripts/controllers/admin/emailTemplateEdit.js"></script>
     <script src="app/scripts/controllers/admin/emailTemplateList.js"></script>
+    <script src="app/scripts/controllers/activity.js"></script>
     
     <script src="app/scripts/directive/templateDirectives/projectNav/projectNav.js"></script>
     <script src="app/scripts/directive/templateDirectives/projectNav/homeButton.js"></script>
@@ -107,9 +120,10 @@
     <script src="app/scripts/directive/validPage.js"></script>
     <script src="app/scripts/directive/carousel.js"></script>
     <script src="app/scripts/directive/footer.js"></script>
-    <script src="app/scripts/directive/imagePicker.js"></script>
+    <script src="app/scripts/directive/pickers/countryPicker.js"></script>
+    <script src="app/scripts/directive/pickers/imagePicker.js"></script>
+    <script src="app/scripts/directive/pickers/statePicker.js"></script>
     <script src="app/scripts/directive/form/ngBlur.js"></script>
-    <script src="app/scripts/directive/form/formhelper.js"></script>
     <script src="app/scripts/directive/form/validator.js"></script>
     <script src="app/scripts/directive/shareable/shareable.js"></script>
     <script src="app/scripts/directive/shareable/shareableFacebook.js"></script>
@@ -130,6 +144,7 @@
 
     <script src="app/scripts/filters/timeRemaining.js"></script>
     <script src="app/scripts/filters/linebreaker.js"></script>
+    <script src="app/scripts/filters/characters.js"></script>
 
     <!-- endbuild -->
 

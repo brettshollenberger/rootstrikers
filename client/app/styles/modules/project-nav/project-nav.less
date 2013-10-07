@@ -1,7 +1,7 @@
 @project-nav-border: 1px solid #0066aa;
 
 .project-nav {
-  height: 50px;
+  min-height: 50px;
   background-color: @blue;
 }
 
@@ -28,12 +28,39 @@
 
 .project-nav-button:hover {
   background-color: #0066aa;
+  cursor: pointer;
+}
+
+.project-nav-button:active {
+  background-color: #004A7A;
 }
 
 .project-nav-project-title {
   .tagline;
+  display: block;
   padding: 10px 10px 10px 20px;
-  width: 800px;
   text-align: left;
   overflow: hidden;
+  
+}
+@media (max-width: 767px) {
+    .project-nav-project-title{
+            float: none;
+            clear: both;
+            display: block;
+            margin: 0;
+            padding: 8px 5px;
+        .tagline{margin-left: 0;}
+    }
+    
+    .project-nav .container{
+        padding: 0;
+    }
+    .project-nav-button:last-child{
+        margin-right: 10px;
+    }
+    
+    .project-nav-button{
+       border-right: none; 
+    }
 }

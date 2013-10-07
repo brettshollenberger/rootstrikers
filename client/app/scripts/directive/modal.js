@@ -14,9 +14,13 @@ angular
                 element.on('click', function(e) {
                   e.preventDefault();
                   $element.modal('show');
+                  angular.element(document.getElementById('wrap')).addClass('openModal');
                   scope.$parent.closeModal = function() {
                     $element.modal('hide');
+                    console.log('hide');
+                    angular.element(document.getElementById('wrap')).removeClass('openModal');
                   };
+                  
                 });
             };
             

@@ -1,10 +1,12 @@
 <div class="project-nav">
   <div class="container">
     <div class="row">
-      <div class="project-nav-button" project-home-button></div>
-      <div class="project-nav-button" project-back-button ng-show="projects.length > 1"></div>
-      <div class="project-nav-button" project-forward-button ng-show="projects.length > 1"></div>
-      <div class="project-nav-project-title">{{displayedProject.name}}</div>
+      <div class="span12">
+	      <div class="project-nav-button" project-home-button></div>
+	      <div class="project-nav-button" project-back-button ng-show="projects.length > 1"></div>
+	      <div class="project-nav-button" project-forward-button ng-show="projects.length > 1"></div>
+	      <div class="project-nav-project-title">{{displayedProject.title}}</div>
+      </div>
     </div>
   </div>
 </div>

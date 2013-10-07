@@ -6,8 +6,10 @@ module.exports = function(app, db, auth) {
   ////////////////////////////////////////////////////
   app.get('/api/project/active', function(req, res) {
     db.project.find({
-      publish: true,
-      end_date: {"$gte": new Date()}
+      $and: [
+        { publish: true },
+        { $or: [{end_date: undefined}, {end_date: {"$gte" : new Date()}}] }
+      ]
     }, function(err, list) {
       if (!err) { 
         res.json(list);

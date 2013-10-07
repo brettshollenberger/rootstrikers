@@ -29,8 +29,13 @@
   margin-left: 0 !important;
 }
 
+.completed-projects .quick-view {
+    min-height: 400px;
+}
+
 .quick-view {
   border: @quick-views-border;
+  cursor: pointer;
 }
 
 // Crop the primary quick view image
@@ -137,4 +142,10 @@
   right: 10px;
   .opacity(90);
   z-index: 1000;
+}
+
+@media (max-width: 767px) {
+   .completed-projects .quick-view {
+        min-height: 0;
+    } 
 }

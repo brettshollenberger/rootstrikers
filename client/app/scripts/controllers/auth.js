@@ -19,32 +19,14 @@ angular
       $scope.formUser = userAPI.newUser();
       $scope.loginErrors = {};
       $scope.loginUser = {};
+      $scope.registerStep = 1;
+      
+      $scope.advanceStep = function() {
+         $scope.registerStep++; 
+      };
 
       $scope.register = function() {
-      
-        _clearErrors();
-
-        if ($scope.formUser.password !== $scope.formUser.passConfirmation) {
-          _addError('password', 'Password mismatch');
-          _addError('passConfirmation', 'Password mismatch');
-        }
-
-        if ($scope.formUser.password.length < 6) {
-          _addError('password', 'Too short. Minimum of six characters.');
-        }
-        
-        var numbers = /^[0-9]+$/;
-        
-        if(!$scope.formUser.zip.match(numbers)) {
-           _addError('zip', 'Zip must be all digits.');
-        }
-        
-        if ($scope.formUser.zip.toString().length != 5) {
-          _addError('zip', 'Zip must be 5 digits long.');
-        }
-
-        if (Object.keys($scope.formErrors).length === 0) {
-
+    
           userAPI.ngGet({email: $scope.formUser.email}, function(user) {
 
             // If the user was already saved in our db, we must alert the user
@@ -61,8 +43,9 @@ angular
                 email: $scope.formUser.email,
                 password: $scope.formUser.password
               };
-              $scope.login();
-              _close();
+              $scope.login(false);
+              $scope.registerStep = 4;
+              //_close();
             // make a call to see if this user has already signed up with ActionKit
               actionKitService.getUser($scope.formUser.email).then(function(akUser) {
                 // the user has not already signed up with ActionKit
@@ -80,7 +63,7 @@ angular
                   actionKitService.createUser(user).then(function (userId) {
                     $scope.formUser.actionId = userId;
                     $scope.formUser.actionId = userId;
-                    $scope.formUser.$update();
+                    //$scope.formUser.$update();
                   });
                 } else {
                   $scope.formUser.actionId = akUser.id;
@@ -90,12 +73,16 @@ angular
               });
             }
           });
-        }
+          
       };
 
       var userAlreadyRegistered = function() {
-        _addError('email', 'Email address already registered');
-        $location.hash('registeremail');
+         _addError('email', 'Email address already registered');
+         $location.hash('registeremail');
+        
+         console.log($scope);
+         $scope.registerStep = 1;
+        
         $anchorScroll();
       };
 
@@ -120,7 +107,7 @@ angular
               response.$save(function(user) {
                   // update the logged user in the rootScope so the loggedUser cookie updates
                   $rootScope.loggedUser = user;
-                  _close();
+                 // _close();
               }, function(err) {
                   console.log('The User was not Updated');
               });
@@ -131,12 +118,16 @@ angular
         }
       };
 
-      $scope.login = function() {
+      $scope.login = function(closeModal) {
+        
+        closeModal = closeModal || true;
+        
         _clearErrors();
+        console.log($scope.loginUser);
         userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
-          _close();
+          if(closeModal) _close();
         });
       };
 
@@ -171,7 +162,7 @@ angular
         _clearErrors();
         FB.login().then(function(user) {
           userAPI.facebookLogin(user);
-          _close();
+          //_close();
         }, function() {
           _addError('extra', "Facebook Login Fail");
         });
@@ -195,6 +186,10 @@ angular
           $scope.formUser.avatar = InkBlob.url;
         });
       };
+      
+      $scope.yourWelcome = function() {
+          _close();
+      };
 
       //private methods to handle common task
 
@@ -203,6 +198,9 @@ angular
         if ($scope.closeModal) {
           $scope.closeModal();
         }
+        console.log('CLOSING modalr');
+        $scope.registerStep = 1;
+        console.log($scope.registerStep);
       }
 
       function _clearErrors() {

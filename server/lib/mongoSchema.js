@@ -84,9 +84,9 @@ var schema = {}, odmApi = {}, i, entity,
   };
 
 schema.project = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   slug: {
-    type: String  
+    type: String
   },
   title: {
     type: String
@@ -118,17 +118,21 @@ schema.project = new mongoose.Schema({
   publish: {
     type: Boolean,
     default: false
+  },
+  body: {
+    type: String
   }
 });
 
 schema.project.pre('save', function(next) {
+  this.id = this._id;
   var project = this;
   project.slug = convertToSlug(project.title);
   next(); 
 });
 
 schema.page = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   name: {
     type: String,
     required: true
@@ -149,8 +153,13 @@ schema.page = new mongoose.Schema({
   }
 });
 
+schema.page.pre('save', function(next) {
+  this.id = this._id;
+  next(); 
+});
+
 schema.feature = new mongoose.Schema({
-  id: mongoose.Schema.Types.ObjectId,
+  id: String,
   message: {
     type: String,
     required: true
@@ -175,9 +184,15 @@ schema.feature = new mongoose.Schema({
   }
 });
 
+
+schema.feature.pre('save', function(next) {
+  this.id = this._id;
+  next(); 
+});
+
 schema.user = new mongoose.Schema({
   id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     index: {
       unique: true
     }
@@ -189,6 +204,9 @@ schema.user = new mongoose.Schema({
   last_name: {
     type: String,
     required: true
+  },
+  full_name: {
+    type: String
   },
   email: {
     type: String,
@@ -241,6 +259,10 @@ schema.user = new mongoose.Schema({
 
 schema.user.pre('save', function(next) {
   var user = this;
+  
+  this.id = this._id;
+  
+  this.full_name = this.first_name + ' ' + this.last_name;
 
   // only hash the password if it has been modified (or is new)
   if (!user.isModified('password')) return next();
@@ -294,6 +316,31 @@ schema.email = new mongoose.Schema({
   vars: {
     type: String
   },
+});
+
+schema.action = new mongoose.Schema({
+  id: {
+    type: String,
+    index: {
+      unique: true
+    }
+  },
+  project_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'project'
+  },
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  },
+  type: {
+      type: String,
+      default: 'signed'
+  },
+  date_created: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 //Create an API for the models of the schema so db logic get isolate here 

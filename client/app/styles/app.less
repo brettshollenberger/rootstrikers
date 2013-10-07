@@ -6,6 +6,11 @@
 @iconSpritePath:          "/img/glyphicons-halflings.png";
 @iconWhiteSpritePath:     "/img/glyphicons-halflings-white.png";
 
+// Links
+// -------------------------
+@linkColor:             @blue;
+@linkColorHover:        darken(@blue, 15%);
+
 /**
  * Prefixer
  */
@@ -189,4 +194,62 @@
   -o-animation-name: fadeOutUp;
   animation-name: fadeOutUp;
 }
+
+
+// -------------------------------------------
+//
+// Validator Service Styles
+// These build on bootstrap styles, adding calsses
+//
+// -------------------------------------------
+
+// HTML5 invalid states
+// Shares styles with the .control-group.error above
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid,
+input:focus.ng-invalid,
+textarea.ng-invalid:focus,
+select.ng-invalid:focus,
+input.ng-invalid:focus {
+  border-color: @blue;
+}
+
+input.ng-valid.ng-dirty,
+textarea.ng-valid.ng-dirty,
+select.ng-valid.ng-dirty,
+input.ng-valid.ng-dirty:focus,
+textarea.ng-valid.ng-dirty:focus,
+select.ng-valid.ng-dirty:focus {
+  border-color: @green;
+};
+
+input.ng-invalid.ng-dirty,
+textarea.ng-invalid.ng-dirty,
+select.ng-invalid.ng-dirty {
+  border-color: @red;
+};
+
+.alert-tooltip {
+  position: relative;
+  top: 5px;
+  background-color: #f6dde7;
+  border: 0;
+  border-radius: 2px;
+  color: #e83f82;
+  text-align: center;
+}
+
+.alert-tooltip:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent #f6dde7 transparent;
+  top: -20px;
+  left: 50%;
+}
+
 

@@ -29,6 +29,7 @@ var db = require('./lib/mongoSchema');
 // @todo make dynamic to load models automatically.
 var models = {};
 models.project = mongoose.model('project');
+models.project = mongoose.model('action');
 models.feature = mongoose.model('feature');
 models.user = mongoose.model('user');
 models.email = mongoose.model('email');
@@ -49,6 +50,7 @@ resources.project          = require('./seed_data/project').seed();
 resources.feature        = require('./seed_data/feature').seed();
 resources.user       = require('./seed_data/user').seed();
 resources.email        = require('./seed_data/email').seed();
+resources.action        = require('./seed_data/action').seed();
 resources.page       = require('./seed_data/page').seed();
 
 

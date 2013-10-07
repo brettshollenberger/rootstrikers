@@ -1,3 +1,39 @@
+/**
+* A validation helper for angular apps
+* ---------------------
+*
+* This service extends the angular validation methods to provide a simple and consistant 
+* way to handle validation. It: 
+* 
+* - Provides extra validation methods, such as cash and zip code
+*   these can be used by setting `simple-validate` or `ui-validate` if using angular ui
+*
+*   @example <input ui-validate="{zip: 'Validator.validateZip($value)'}" />
+*   @example <input simple-validate="{numericality: {exp: 'Validator.validateCash($value, QuoterToolForm.cost)', message: 'Must be a number'}}" />
+*
+* @todo how are multiple valiations handled?
+*
+* - Provides a method for setting default validation messages
+*   Currently angular requires that you create an html element and message for each input
+*   This can get taxing if you are using the same validations over and over, thus
+*   repeating the same error message at multiple places in the DOM. Changing one requires a 
+*   complex find and replace. 
+* 
+* - Provides a consistant formName.$setPristine() method. 
+*   Anular 1.2 provides this method, but apparently there are still issues with it
+*   @todo add @see link to a discussion for ref. 
+*
+* - Provides method to validatie an entire form (and change class based on validitiy)
+* 
+* - Provides mehtod to validate form field. 
+*
+* @note did we basically create our own version of ui-validate with simple-validate? 
+* @note how does ui-validate-watch get supported? 
+* 
+* @todo what other fields are missing? 
+* 
+*/
+
 angular
   .module('app')
   .factory('Validator',
@@ -63,6 +99,7 @@ angular
         }
       },
 
+      // @note this will be useful on the server too for the quoting
       validateCash: function(number, field) {
         if (typeof number === 'string') {
             if (!isNaN(Number(number)) && number.length > 0) {
@@ -107,6 +144,11 @@ angular
 
       validateField: function(field, form) {
         var errors = form.FacultyErrors = form.FacultyErrors || {};
+        
+        // @note checking for $pristine will prevent errors from being displayed if user
+        // has NOT entered any content in the field
+        //if(field.$pristine) return;
+        
         this.setErrors(field, errors);
       },
 
@@ -162,6 +204,7 @@ angular
         this.addField = function(field) {
           $scope.fields.push(field);
         };
+        
       },
 
       link: function(scope, element, attrs) {
@@ -186,9 +229,23 @@ angular
           return validity;
         };
         scope.checkValidity();
+        
       }
     };
   })
+  
+  /**
+  * Used of form inputs, selects, etc. to register with a `form-group` area
+  * formGroup will validate all child `form-field` inputs to check validity. 
+  *
+  * @note that inputs where model props are not objects, for example:
+  *   ng-model='variable' instead of ng-model='object.variable' 
+  *   will have trouble with scope. To avoid this specify ng-model='$parent.variable' or
+  *   use as an object. 
+  * 
+  * @see https://github.com/FacultyCreative/MRL001/commit/9ff4f7b48f6eb1ffa5724921c1f2525b0193e938
+  *
+  */
   .directive('formField', [
     function() {
       return {
@@ -208,7 +265,6 @@ angular
     link: function (scope, elm, attrs, ctrl) {
       var validateFn, watch, validators = {},
         validateExpr = scope.$eval(attrs.simpleValidate);
-      console.log(scope.Validator);
 
       Object.keys(validateExpr).forEach(function(key) {
         if (!validateExpr[key]){ return;}

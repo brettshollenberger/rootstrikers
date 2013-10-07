@@ -9,53 +9,21 @@
 
 @menu-height: 120px;
 
-.navbar .brand {
-    padding: 10px 20px 0 0;
-}
 
-.navbar-fixed-top .navbar-inner {
-    padding: 0;
-}
-
-// Override Bootstrap defaults
-.navbar-inner, .navbar-inverse {
-  background: @darkest-grey !important;
-  background-color: @darkest-grey !important;
-  height: @menu-height;
-};
-
-.navbar-inner .container-fluid,
-.navbar-inner .container-fluid .row-fluid .span3
-.navbar-inner .container-fluid .row-fluid .span7 {
-  height: 100%;
-}
-
-// Logo
-.navbar-inverse .float-left-nav img {
-  margin-top: (@menu-height / 5);
-  float: left;
-}
-
-// Override Bootstrap defaults
-.navbar-inverse .brand {
-  font-family: @oswald;
-  color: @white;
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: .12rem;
-  font-size: 2rem;
-  line-height: 100px;
-  padding-left: 0px;
-  margin-left: 20px;
-}
-
-// Override Bootstrap defaults
-.navbar-inverse .brand, .navbar-inverse .nav > li > a {
-  text-shadow: none;
-}
-
-.auth-links {
-  clear: both;
+.header-fixed{
+    top: 0;
+    left: 0;
+    padding: 5px 0 9px;
+    position: fixed;
+    background: @darkest-grey !important;
+    background-color: @darkest-grey !important;
+    z-index: 501;
+    
+    a.brand{
+        display: block;
+        margin-top: 27px;
+    }
+    
 }
 
 .auth-links .btn {
@@ -114,73 +82,36 @@
     padding: 10px 20px;
 }
 
-@media only screen and (max-width: 1160px) {}
-
-@media only screen and (max-width: 1064px) {}
-
-@media only screen and (max-width: 1020px) {}
-
-@media only screen and (max-width: 979px) {
-  // Bootstrap default switches to static, which throws a nasty
-  // border above the navbar.
-  .navbar-fixed-top {
-    position: fixed;
-  }
-  
-  .navbar-admin .brand {
-      font-size: 1.8rem;
-  }
-  
-  .navbar-admin .btn {
-      padding: 10px 10px;
-  }
-  
-  .navbar-inverse .brand {
-      margin-left: 17px;
-      font-size: 1.5rem;
-  }
+@media (min-width: 768px) and (max-width: 979px) {
+    .header-fixed{
+        position: relative;
+    }
+    .wrap{
+        margin-top: 0;
+    }
+    .navbar-fixed-top{
+        margin-bottom: 0;
+    }
 }
-
-@media only screen and (max-width: 896px) {
-  .tagline {
-    font-size: .7rem;
-  }
-  
-  .navbar-admin .brand {
-      font-size: 1.3rem;
-  }
-  .navbar-admin .btn {
-      padding: 10px 5px;
-  }
+@media (max-width: 767px) {
+    
+    .brand img{width: 200px;}
+    .tagline{display: none;}
+    .wrap{
+        margin-top: 0;
+    }
+    .header-fixed{
+        position: relative;
+        .pull-right{
+            text-align: left;
+            float: none;
+        }
+        .btn{margin: 0 0 10px 0;}
+        .donate, .join, .login{float: left; width: 95px;}
+        .join{width: 65px;}
+        .login{margin-top: 2px;}
+        .join .btn{padding: 2px 12px; margin-top: 4px; font-size: 9px;}
+    }
 }
-
-// At 768px width, Bootstrap transforms all rows into full-width, regardless 
-// of span- class so we have to get a little hack-y with the float-right 
-// portion of the nav to line it up again.
-@media only screen and (max-width: 768px) {
-
-  .tagline {
-    display: none;
-  }
-
-  .navbar-inner .container-fluid {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .float-right-nav {
-    position: absolute;
-    top: 6px;
-    right: 20px;
-  }
-}
-
-@media only screen and (max-width: 625px) {}
-
-@media only screen and (max-width: 592px) {
-  .login {
-    margin-right: 0px;
-  }
-}
-
-@media only screen and (max-width: 505px) {}
+@media (max-width: 480px) {}
+@media (min-width: 1200px) {}
