@@ -7,6 +7,7 @@ var data = [
     {
         "slug"      : "you-dont-need-a-law-degree-to-know-right-from-wrong",
         "title"     : "You don’t need a law degree to know right from wrong",
+        "image"     : "https://www.filepicker.io/api/file/QGrGsRjLRg21O7PE3wPZ",
         "problem"   : "",
         "action"    : "",
         "goal"      : "",

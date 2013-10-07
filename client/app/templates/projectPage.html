@@ -9,19 +9,19 @@
 	    <div class="row section project">
             <div class="span8 project-information">
                 <div>
-                    <h2>Campaign:</h2>
+                    <h2>Campaign</h2>
 
                     <h3 class="project-title">{{project.title}}</h3>
                 </div>
 
                 <div ng-hide="isContentFromOldSite(project)">
-                    <h2>The Problem:</h2>
+                    <h2>The Problem</h2>
 
                     <p ng-bind-html-unsafe="project.problem">{{project.problem}}</p>
                 </div>
 
                 <div ng-hide="isContentFromOldSite(project)">
-                    <h2>The Action:</h2>
+                    <h2>The Action</h2>
 
                     <p ng-bind-html-unsafe="project.action">{{project.action}}</p>
                 </div>
@@ -62,7 +62,7 @@
                             
                     <div form-group form="signPetition">
                     
-                        <label for="firstName">First Name *</label>
+                        <label for="firstName">First Name</label>
                         <input
                             form-field
                             required
@@ -74,7 +74,7 @@
                             {{signPetition.FacultyErrors.firstName}}
                         </div>
 
-                        <label for="lastName">Last Name *</label>
+                        <label for="lastName">Last Name</label>
                         <input
                             form-field
                             required
@@ -86,7 +86,7 @@
                             {{signPetition.FacultyErrors.lastName}}
                         </div>
                         
-                        <label for="email">Email *</label>
+                        <label for="email">Email</label>
                         <input
                             form-field
                             required
@@ -98,20 +98,19 @@
                             {{signPetition.FacultyErrors.email}}
                         </div>
  
-                        <label for="zipCode">Zip Code *</label>
+                        <label for="zipCode">Zip Code</label>
                         <input
                             form-field
                             required
                             type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
                             ng-blur="Validator.validateField(signPetition.zipCode, signPetition)"
+                            simple-validate="{zip: {exp: 'Validator.validateZip($value, signPetition.zip)', message: 'Please enter a valid zip code'}}"
                             ng-model="signer.zipCode" />
                         
                         <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
                             {{signPetition.FacultyErrors.zipCode}}
                         </div>
         
-                        <p>* Required Information</p>
-
                     </div>
                                                 
                     <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Take Action</button>
@@ -144,7 +143,7 @@
 	<div class="container taking-action" ng-hide="isContentFromOldSite(project)">
 	    <div class="row section section-last">
 	        <div class="span12">
-	            <h2>Rootstrikers Taking Action:</h2>
+	            <h2>Rootstrikers Taking Action</h2>
 	
                 <div class="row">
 	
