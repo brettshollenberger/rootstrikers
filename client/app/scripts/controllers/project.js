@@ -34,6 +34,7 @@ angular
       
       var watcher1 = $rootScope.$watch('loggedUser', checkActionForUser);
       
+     
       /*
       $scope.$on('$routeChangeSuccess', function() {
           watcher1();
@@ -51,10 +52,16 @@ angular
         
         if($scope.project) {
         
-            MetaMachine.title($scope.project.name);
-            MetaMachine.description($scope.project.problem);
+            MetaMachine.title($scope.project.title);
+
+            // we need to set this every time, even if image is undfined
+            // to ensure default image appears
+            // the metaMachine will check if project.image exists, and if not will
+            // apply default. 
             MetaMachine.image($scope.project.image);
+            
             MetaMachine.url($location.absUrl());
+                  
             
             // check if user has already performed the project action
             checkActionForUser();
