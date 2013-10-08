@@ -17,12 +17,27 @@ angular
       };
       $scope.formErrors = {};
       $scope.formUser = userAPI.newUser();
+      $scope.joinSigner = {};
       $scope.loginErrors = {};
       $scope.loginUser = {};
       $scope.registerStep = 1;
       
       $scope.advanceStep = function() {
          $scope.registerStep++; 
+      };
+
+      $scope.join = function() {
+      
+          var joinUser = {
+              first_name: $scope.joinSigner.firstName,
+              last_name: $scope.joinSigner.lastName,
+              email: $scope.joinSigner.email,
+              zip: $scope.joinSigner.zipCode
+          };
+          
+          var user = userAPI.newUser(joinUser);
+          user.$save();
+      
       };
 
       $scope.register = function() {
