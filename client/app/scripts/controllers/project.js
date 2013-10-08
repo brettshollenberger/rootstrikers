@@ -93,7 +93,7 @@ angular
             
             // get all of the people who have acted on this project
             actionService.getProjectActionUsers($scope.project.id).then(function(response) {
-                $scope.users = response;
+                $scope.users = _.take(response, 22);
             });
             
         } else {
