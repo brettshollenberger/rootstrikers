@@ -5,7 +5,8 @@ angular
     'projectService',
     'flash',
     'MetaMachine',
-    function($scope, projectAPI, notification, MetaMachine) {
+    '$location',
+    function($scope, projectAPI, notification, MetaMachine, $location) {
       
         $scope.projects = projectAPI.getAll();
         
@@ -13,11 +14,13 @@ angular
 
         $scope.remove = function(item) {
             if(confirm('Are you sure you want to delete this Project?')) {
-               /*
- console.log(item);
-
-                item.$remove();
-*/
+                item.$remove(function() {
+                    notification.set({
+                        body: 'Your Project has been successfully removed',
+                        type: 'success'
+                    });
+                    $location.path('admin').replace();
+                });
             }
         };
 
