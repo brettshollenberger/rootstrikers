@@ -22,6 +22,10 @@ app.use(seo);
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(app.router);
 
+app.get('/loaderio-995e64d5aae415e1f10d60c9391e37ac/', function(req, res, next) {
+   res.send('loaderio-995e64d5aae415e1f10d60c9391e37ac'); 
+});
+
 if ('development' === app.get('env')) {
     app.use(express.errorHandler());
 }
