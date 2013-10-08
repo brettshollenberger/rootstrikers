@@ -14,9 +14,9 @@ angular
       },
       link: function(scope, element, attrs, projectNavController) {
         element.hover(function() {
-          projectNavController.viewAllCampaigns();
+          scope.displayAllCampaigns();
         }, function() {
-          projectNavController.noAction();
+          scope.displayNone();
         });
       }
     };
