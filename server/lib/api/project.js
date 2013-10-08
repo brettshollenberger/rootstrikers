@@ -61,23 +61,6 @@ module.exports = function(app, db, auth) {
     });
   });
 
-  //Get of all project
-  app.get('/api/project', function(req, res) {
-    var cb = function(err, list) {
-      if (!err) {
-        res.json(list); //If went ok return the json of the query result
-      } else {
-        res.json(err);
-      }
-    };
-
-    if (req.query) {
-      db.project.find(req.query, cb);
-    } else {
-      db.project.findAll(cb);
-    }
-  });
-
   //Get of a single project
   app.get('/api/project/:projectID', function(req, res) {
     db.project.find({
@@ -97,6 +80,24 @@ module.exports = function(app, db, auth) {
           res.json(err);
         }
       });
+  });
+
+  //Get of all project
+  app.get('/api/project', function(req, res) {
+    console.log("THINGS ARE HAPPENING!!!");
+    var cb = function(err, list) {
+      if (!err) {
+        res.json(list); //If went ok return the json of the query result
+      } else {
+        res.json(err);
+      }
+    };
+
+    if (req.query) {
+      db.project.find(req.query, cb);
+    } else {
+      db.project.findAll(cb);
+    }
   });
 
   //Update a project, ngResource use post not put
