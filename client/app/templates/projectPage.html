@@ -9,7 +9,9 @@
 	    <div class="row section project">
             <div class="span8 project-information">
                 <div>
-                    <h2>Campaign</h2>
+                    
+                    <h2 ng-hide="project.is_info">Campaign</h2>
+                    <h2 ng-show="project.is_info">Infographic</h2>
 
                     <h3 class="project-title">{{project.title}}</h3>
                 </div>

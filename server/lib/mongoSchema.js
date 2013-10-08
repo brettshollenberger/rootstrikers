@@ -127,6 +127,10 @@ schema.project = new mongoose.Schema({
   },
   type: {
     type: String
+  },
+  is_info: {
+    type: Boolean,
+    default: false
   }
 });
 
