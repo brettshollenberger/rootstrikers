@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap', 'ngSanitize'])
+  .module('app', ['angulartics', 'angulartics.google.analytics', 'ngResource', 'ui.tinymce', 'md5', 'ui-gravatar', 'ngCookies', 'ui.bootstrap', 'ngSanitize'])
   .config(['$routeProvider', '$httpProvider', '$locationProvider',
     function($router, $httpProvider, $location) {
 
