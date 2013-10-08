@@ -13,6 +13,8 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             model = project;
 
             $scope.project = model;
+
+            $scope.projectTypes = [{value: "pledge", text: "Pledge"}, {value: undefined, text: "None"}];
             
             if($scope.project.shortname) {
             

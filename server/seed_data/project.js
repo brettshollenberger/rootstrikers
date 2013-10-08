@@ -146,4 +146,22 @@ var data = [
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/mFb52fC4QsW8uoICyfEk",
         "body"      : "<p><a href='app/images/infographics/iceberg-citizens-united.png' target='_blank'><img src='app/images/infographics/iceberg-citizens-united.png' alt='Just the Tip of the Iceberb' style='width:50%;float:right;padding-left:20px;'></a><strong>The problem:</strong> The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion. Rootstrikers is supporting <a href='http://www.rootstrikers.org/citizens_united_actions_around_the_country'>largescale actions in collaboration with other organizations in San Francisco, New York, and DC, and you can join one, or act locally in solidarity</a>. Wherever you act, you'll send a message to activists, politicians, and ordinary citizens everywhere that Rootstrikers are driving real reform in 2013.</p><p><strong><strong>The solution:</strong> </strong>Even though it's just one piece of the puzzle, <em>Citizens United</em>brought a sense of urgency to our movement. By raising the stakes of campaign finance reform, this Supreme Court ruling pronounced the corrupting influence of money in politics the most fundamental threat toour civil rights this century. Now, it's up to us to spread that message and make sure real change is a priority this term.</p><br>"
+    },
+    {
+        "slug"      : "arms-across-the-aisle-against-corruption",
+        "title"     : "Arms Across the Aisle Against Corruption",
+        "preview"   : "",
+        "publish"   : false,
+        "end_date"  : "2012-10-20T04:00:00.000Z",
+        "image"     : "",
+        "body"      : "<p>We hosted meetups [http://www.meetup.com/rootstrikers/] in 63 cities across the country themed around crosspartisanship. Can we pull some stats from meetup.com or something? The guide: https://d3n8a8pro7vhmx.cloudfront.net/rootstrikers/pages/15/attachments/original/1338999196/Rootstrikers_ArmsAcross.pdf?1338999196</p>"
+    },
+    {
+        "slug"      : "goodnight-democracy",
+        "title"     : "Goodnight Democracy",
+        "preview"   : "",
+        "publish"   : false,
+        "end_date"  : "2012-10-20T04:00:00.000Z",
+        "image"     : "",
+        "body"      : "<p>http://www.goodnightdemocracy.com/</p>"
     }];
