@@ -3,16 +3,25 @@
 .project-nav {
   min-height: 50px;
   background-color: @blue;
+  
+  &.hover {
+      
+     .project-nav-project-title {
+         opacity: 1;
+     } 
+      
+  }
+  
 }
 
 .project-nav-button {
   width: 60px;
-  padding: 15px 0;
   text-align: center;
   position: relative;
   top: 0px;
   border-right: @project-nav-border;
   float: left;
+  
 }
 
 .project-nav-button:first-child {
@@ -27,6 +36,7 @@
   color: @white;
   width: auto;
   font-size: 25px;
+  padding: 18px 0;
 }
 
 .project-nav-button:hover {
@@ -44,6 +54,8 @@
   padding: 10px 10px 10px 20px;
   text-align: left;
   overflow: hidden;
+  .transition(opacity 120ms ease);
+  //opacity: 0;
   
 }
 @media (max-width: 767px) {
