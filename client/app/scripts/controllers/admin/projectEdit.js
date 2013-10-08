@@ -9,8 +9,9 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
         $scope.actionTitle = 'Edit';
         
         //get the project from the API
-        projectAPI.get($routeParams.projectID, function(project) {
+        projectAPI.get({projectID: $routeParams.projectID}, function(project) {
             model = project;
+
             $scope.project = model;
             
             if($scope.project.shortname) {
@@ -25,6 +26,10 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             }
             
             MetaMachine.title("Editing: " + $scope.project.title, "Admin");
+
+            $scope.isContentFromOldSite = function(project) {
+                return project.end_date == "2012-10-20T04:00:00.000Z";
+            };
         });
     } else {
         //Create a new resource

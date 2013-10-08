@@ -56,7 +56,7 @@
                 
                 <div>
 
-                <button class="btn btn-primary pull-right" modal template="app/templates/pledge/form.html" ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge">Take Action</button>
+                <button class="btn-block btn btn-primary pull-right" modal template="app/templates/pledge/form.html" ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge">Take Action</button>
                 
                 <button
                     class="btn-block btn"
@@ -75,7 +75,7 @@
 	</div>
 	<!-- When we have a rallies-user table or property, add ng-class="user.attending?" or some such -->
     <div class="stretch">
-        <div ng-click="performedAction || signPledge()" ng-show="loggedUser && isPledge(project)">
+        <div ng-click="performedAction || signPledge()" ng-show="loggedUser && isPetition(project)">
             <div banner="" banner-type="action" banner-disabled="performedAction" banner-action="Sign the Pledge" banner-action-fulfilled="Signed"></div>
         </div>
         <div banner-halves=""></div>
