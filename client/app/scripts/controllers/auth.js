@@ -37,7 +37,6 @@ angular
           
           var user = userAPI.newUser(joinUser);
           user.$save();
-      
       };
 
       $scope.register = function() {
