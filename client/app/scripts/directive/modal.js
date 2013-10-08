@@ -7,7 +7,7 @@ angular
         compile: function(element, cAtts) {
 
           return function(scope, element, lAtts) {
-            console.log(scope);
+            
             var $element, template;
             
             var bindClick = function() {
