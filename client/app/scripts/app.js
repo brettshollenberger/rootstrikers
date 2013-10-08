@@ -111,7 +111,9 @@ angular
         templateUrl: 'app/templates/admin/emailPreview.html',
         access: 'isAdmin'
       })
-      .otherwise({ redirectTo: '/' });
+      .otherwise({ redirectTo: function(url, path){
+          window.location.href = "http://archive.rootstrikers.org/www.rootstrikers.org"+path+".html";
+      } });
     }
   ])
   .run(['$location', '$rootScope', '$cookieStore', 'userService', 'Validator', function($location, $rootScope, $cookieStore, userService, Validator) {
