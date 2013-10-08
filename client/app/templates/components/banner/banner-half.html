@@ -1,6 +1,10 @@
 <!-- <div > -->
   <!-- <div class="row" ng-class="{'completed':checked == true}"> -->
-    <div ng-class="{'completed':checked == true}"
+    <div 
+    analytics-on="click" 
+    analytics-event="Share Facebook Start" 
+    analytics-category="Social" 
+    ng-class="{'completed':checked == true}"
     shareable shareable-facebook ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')"
     >
       <div class="half-stretch-left"></div>
@@ -23,7 +27,11 @@
 
 <!-- <div > -->
   <!-- <div class="row" ng-class="{'completed':checked == true}"> -->
-    <div ng-class="{'completed':checked == true}" shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
+    <div 
+    analytics-on="click" 
+    analytics-event="Share Twitter Start" 
+    analytics-category="Social"
+    ng-class="{'completed':checked == true}" shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
 	  <div class="half-stretch-right"></div>
       <div class="banner-info">
         <div class="pull-left banner-icon">
