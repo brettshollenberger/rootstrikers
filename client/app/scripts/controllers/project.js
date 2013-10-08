@@ -144,6 +144,8 @@ angular
           
               // check if the user exists in the database already 
               action = {
+                  'first_name': $scope.signer.firstName,
+                  'last_name': $scope.signer.lastName,
                   'page': $scope.project.shortname,
                   'email': $scope.signer.email,
                   'zip': $scope.signer.zipCode
