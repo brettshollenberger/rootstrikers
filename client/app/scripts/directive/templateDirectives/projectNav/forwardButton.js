@@ -9,9 +9,9 @@ angular
       require: '^projectNav',
       link: function(scope, element, attrs, projectNavController) {
         element.hover(function() {
-          projectNavController.findNextProject();
+          scope.displayNextProject();
         }, function() {
-          projectNavController.findPreviousProject();
+          scope.displayNone();
         });
       }
     };

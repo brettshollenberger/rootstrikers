@@ -18,6 +18,7 @@
     "angular-ui-tinymce": "https://github.com/angular-ui/ui-tinymce.git#4f1b63124c4d16580ce5c9b964ab79b8399661bd",
     "angular-sanitize" : "~1.0.7",
     "jquery-migrate": "~1.2.1",
-    "json3": "3.2.5"
+    "json3": "3.2.5",
+    "angulartics" : "latest"
   }
 }

@@ -1,3 +1,5 @@
+// @note shareableController.absUrl is already url escaped
+
 angular
   .module('app')
   .directive('shareableTwitter', function($location, $window) {
@@ -11,11 +13,22 @@ angular
       require: "^shareable",
       link: function(scope, element, attrs, shareableController) {
         shareableController.addTwitter();
+                                
+        var removeHash = function(url) {
+            return url.replace('#!/', '');
+        };
 
         // If no image is specified, it falls back on the FontAwesome icon
         // in the layout
         scope.twitterImage = attrs.shareableTwitter || null;
-        var twitterUrl  = "https://twitter.com/intent/tweet?original_referer=" + shareableController.absUrl + "&amp;url=" + shareableController.absUrl + "&amp;source=tweetbutton";
+        
+        // build the url for sharing
+        var twitterUrl = 'https://twitter.com/intent/tweet?hashtags=rootstrikers' + 
+        //'&text=Testing' + 
+        '&tw_p=tweetbutton' + 
+        '&original_referer=' + shareableController.absUrl +
+        '&url=' + shareableController.absUrl;
+                    
         element.on('click', function() {
           $window.open(twitterUrl, '_blank');
           $window.focus();

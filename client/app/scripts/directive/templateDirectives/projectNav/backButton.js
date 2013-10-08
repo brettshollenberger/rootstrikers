@@ -7,14 +7,11 @@ angular
       templateUrl: 'app/templates/components/projectNav/backButton.html',
       replace: false,
       require: '^projectNav',
-      controller: function($scope, $window) {
-
-      },
       link: function(scope, element, attrs, projectNavController) {
         element.hover(function() {
-          projectNavController.findPreviousProject();
+          scope.displayPreviousProject();
         }, function() {
-          projectNavController.findNextProject();
+          scope.displayNone();
         });
       }
     };

@@ -7,20 +7,25 @@ var data = [
     {
         "slug"      : "you-dont-need-a-law-degree-to-know-right-from-wrong",
         "title"     : "You don’t need a law degree to know right from wrong",
+        "image"     : "https://www.filepicker.io/api/file/YNymetVyRdyoXs5sYSgQ",
         "problem"   : "",
         "action"    : "",
         "goal"      : "",
         "shortname" : "rstest",
         "_id"       : "524da0e1098b7f0000000003",
         "publish"   : true,
+        "type"      : "pledge",
         "__v"       : 0,
         "end_date"  : "2013-10-20T04:00:00.000Z"
     },
     {
         "slug"      : "dear-congress-email-should-not-be-this-difficult",
         "title"     : "Dear Congress: Email Should Not Be This Difficult",
-        "image"     : "https://www.filepicker.io/api/file/BDexg0jRZra9rM9lsdgw",
+        "image"     : "https://www.filepicker.io/api/file/sw0JuzRvSSuyS58Rrt1h",
         "publish"   : true,
+        "preview"   : "<p>Wealth is not the only barrier to entry when it comes to contacting " +
+                      "members of Congress — it's also a lot more complicated than you'd think " +
+                      "to send a simple email. For a public campaign to send any real amount of emails to members of</p>",
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "body"      : "<p>Wealth is not the only barrier to entry when it comes to contacting " +
                       "members of Congress — it's also a lot more complicated than you'd think " +
@@ -48,9 +53,12 @@ var data = [
     {
         "slug"      : "help-us-reach-1000000-citizens",
         "title"     : "Help Us Reach 1,000,000 Citizens",
-        "image"     : "https://www.filepicker.io/api/file/ZW0jlmQRvSMA07U0MpYW",
-        "publish"   : true,
+        "image"     : "https://www.filepicker.io/api/file/1OUTWvfFSiZmZuUEMkrG",
         "end_date"  : "2012-10-20T04:00:00.000Z",
+        "publish"   : true,
+        "preview"   : "<p>At the beginning of April, TED posted the talk I gave at their annual " +
+                      "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
+                      "TED platform and YouTube.</p>",
         "body"      : "<p><sub></sub>At the beginning of April, TED posted the talk I gave at their annual " +
                       "conference. In the six weeks since, more than 800,000 people have viewed it across the " +
                       "TED platform and YouTube.<br><br>I've been doing this for a long time, but nothing I've " +
@@ -82,7 +90,9 @@ var data = [
     {
         "slug"      : "voters-not-donors",
         "title"     : "Voters Not Donors",
-        "image"     : "https://www.filepicker.io/api/file/RbzVKBJnQRKF047D4bUy",
+        "image"     : "https://www.filepicker.io/api/file/9cXEC5R3ShO31Co9z8w9",
+        "preview"   : "<p>The pending election will put a long campaign season to rest. Voters will have to pick a side, the media will trot out their very best blue, red and purple maps, and we'll await news of the winner, perhaps wondering what changes are ahead, if any.<br><br>While it's your civic duty to exercise</p>",
+
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "goal"      : "accomplished",
@@ -90,41 +100,68 @@ var data = [
     },
     {
         "slug"      : "infographic-whos-paying-for-the-president",
-        "title"     : "Infographic: Who's Paying for the President?",
+        "title"     : "Who's Paying for the President?",
+        "is_info"   : true,
+        "preview"   : "<p>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "image"     : "https://www.filepicker.io/api/file/a6BNHr2vTk2RfYVjcK7B",
-        "body"      : "<p><a href='app/images/infographics/infographic-whos-paying-for-the-president.png' class='infographic' target='_blank'><img src='app/images/infographics/infographic-whos-paying-for-the-president.png' alt='Who's Paying for the President?' style='width:100%;'></a>Even though <a href='http://www.good.is/posts/what-you-won-t-hear-in-the-presidential-debates-getting-dark-money-corruption-out-of-politics?logged_in=true'>87% of Americans</a>agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p><p>Our third infographic in the Capital in the Capitol series compares the sources of revenue upon which the candidates depend in their race tothe oval office. The numbers are a crucial reminder that the candidatesdon’t have to talk about money this election—<em>the money talks for them</em>.</p><p>Perhapsneither Barack Obama nor Mitt Romney want to speak out about our government’s crippling dependence on special interest cash because both of their campaigns hinge on it. Contrary to what some might suspect, Barack Obama’s campaign has raised more money than Mitt Romney’s campaign. However, Romney’s super PAC has collected nearly four times asmuch money as Obama, whose primary source of election money is direct contributions.<br><br>But there are differences in who’s funding the candidates, and just because they won’t talk about it doesn’t mean we can’t. While the candidates talk about their stand on various issues of domestic policy, their campaigns will tell a different story: As long aspoliticians need tons of money to run for office, they’ll be indebted to the few who can afford to give it to them. <br><br>We know who’s paying for the president. Do you?</p><br>"
+        "image"     : "https://www.filepicker.io/api/file/TtpOaW8SQ9SSYoPdsVx8",
+        "body"      : "<p><a href='app/images/infographics/infographic-whos-paying-for-the-president.png' class='infographic' target='_blank'><img src='app/images/infographics/infographic-whos-paying-for-the-president.png' alt='Who's Paying for the President?' style='width:100%;'></a>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p><p>Our third infographic in the Capital in the Capitol series compares the sources of revenue upon which the candidates depend in their race tothe oval office. The numbers are a crucial reminder that the candidatesdon’t have to talk about money this election—<em>the money talks for them</em>.</p><p>Perhapsneither Barack Obama nor Mitt Romney want to speak out about our government’s crippling dependence on special interest cash because both of their campaigns hinge on it. Contrary to what some might suspect, Barack Obama’s campaign has raised more money than Mitt Romney’s campaign. However, Romney’s super PAC has collected nearly four times asmuch money as Obama, whose primary source of election money is direct contributions.<br><br>But there are differences in who’s funding the candidates, and just because they won’t talk about it doesn’t mean we can’t. While the candidates talk about their stand on various issues of domestic policy, their campaigns will tell a different story: As long aspoliticians need tons of money to run for office, they’ll be indebted to the few who can afford to give it to them. <br><br>We know who’s paying for the president. Do you?</p><br>"
     },
     {
         "slug"      : "infographic-the-true-identity-behind-super-pacs",
-        "title"     : "Infographic: The True Identity Behind Super PACs",
+        "title"     : "The True Identity Behind Super PACs",
+        "is_info"   : true,
+        "preview"   : "",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "image"     : "https://www.filepicker.io/api/file/YaZROH9LTuil00uTfxZL",
+        "image"     : "https://www.filepicker.io/api/file/AYe3hu3RQaNDjSodfcoM",
         "body"      : "<p><a href='app/images/infographics/infographic-the-true-identity-behind-super-pacs.png' class='infographic' target='_blank'><img src='app/images/infographics/infographic-the-true-identity-behind-super-pacs.png' alt='The True Identity Behind Super PACs' style='width:100%;'></a><img src='app/images/infographics/superpaclogo-withdollars.png' alt='superpaclogo-withdollars.png' width='200'>Our second infographic in the<a href='http://www.rootstrikers.org/capital_in_the_capitol'> Capital in the Capitol series</a>explains why Super PACs are super powerful this presidential election, and tells you who really holds that power—26 individuals.&nbsp;</p><p>Some of their names have appeared here and there in the news, but their collective identities tell a more impressive tale. What do all of these people have in common? While a large pocket of Romney supporters seem to be financial tycoons, and another subset of Obama supporters areHollywood elite, altogether <strong>what unites these folks is their wealth—and the shared belief that it can win an election</strong>.&nbsp;</p><p>How?</p><p>By pumping money into Super PACs, who then churn out prime time smear campaigns. You've likely seen or heard of those ads about Romney and Obama paid for by 'Americans for&nbsp;<em>American Happiness'&nbsp;</em>orsomething equally as benign and meaningless. Those ads are really by Super PACs, and their real message is that a few rich people are trying to change the course of public elections for their own interests.</p><p><strong>We know that what wins an election is votes, not dollars, so we're asking you to help us expose those ads. Send us your favorite Super PAC ad, and we'll bust it.</strong></p><p>We're telling you who's bankrolling the major presidential Super PACs—now help us uncover how they're trying to buy this election. Share alink to an ad as a comment below, or email us at <a href='mailto:info@rootstrikers.org'>info@rootstrikers.org</a></p><br>"
     },
     {
         "slug"      : "infographic-who-can-afford-our-congress",
-        "title"     : "Infographic: Who Can Afford Our Congress?",
+        "title"     : "Who Can Afford Our Congress?",
+        "is_info"   : true,
+        "preview"   : "<p>Who can afford the high price tag of our government? Unfortunately, only the privileged few. Until it makes&nbsp;sense for politicians to opt into a system where they are not dependent upon the 0.26% of Americans wealthy enough to pay for their time, we will not have a government by the people, for the&nbsp;people.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "image"     : "https://www.filepicker.io/api/file/e1VYeslpRL2bPxJrQmiV",
+        "image"     : "https://www.filepicker.io/api/file/wjMhA6p6SJWZ4DfezO7s",
         "body"      : "<p><a href='app/images/infographics/infographic-who-can-afford-our-congress.png' class='infographic' target='_blank'><img src='app/images/infographics/infographic-who-can-afford-our-congress.png' alt='Who Can Afford Our Congress' style='width:100%;'></a>Who can afford the high price tag of our government? Unfortunately, only the privileged few. Until it makes&nbsp;sense for politicians to opt into a system where they are not dependent upon the 0.26% of Americans wealthy enough to pay for their time, we will not have a government by the people, for the&nbsp;people.</p><p>Our mission is clear: We need an anti-corruption movement in this country.&nbsp;We won't make progress on the most important problems facing our country unless we fix the corruption first.</p><p><strong>Check out the infographic, then help us spread the word by <a href='http://www.facebook.com/sharer.php?u=http://www.good.is/post/infographic-what-s-the-cost-of-getting-into-congress&amp;t=What's%20the%20Cost%20of%20Getting%20Into%20Congress?'>sharing it on Facebook</a>, <a href='http://twitter.com/intent/tweet?text=What's%20the%20Cost%20of%20Getting%20Into%20Congress?%20http://www.good.is/post/infographic-what-s-the-cost-of-getting-into-congress/%20#rootstrikers'>tweeting it</a>, and<a href='http://www.rootstrikers.org/login'> becoming a Rootstriker</a> — and please encourage your friends to do the same.</strong></p><p>We're asking all those who agree that the corruption has to stop add their name to&nbsp;<strong><a href='http://www.theanticorruptionpledge.org/'>The Anti-Corruption Pledge</a></strong>. Our goal: find&nbsp;and connect one million citizens who are willing to strike at the root of corruption in this country.</p><br>"
     },
     {
         "slug"      : "infographic-why-new-yorks-fight-matters",
-        "title"     : "Infographic: Why New York's Fight Matters",
+        "title"     : "Why New York's Fight Matters",
+        "is_info"   : true,
+        "preview"   : "<p>New York is fighting back against the undue influence of big money interests on their elections, and they need our help, <em>Rootstrikers</em>.</p><p>Citizens led by over 100 reform groups are campaigning for Fair Elections for New York: public financing of elections, lower contribution limits, and strong enforcement. If they succeed, they will not only change politics as usual in Albany, they will also send a strong message across the country that despite Congress's inaction, citizens are not waiting to take back their democracy.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "image"     : "https://www.filepicker.io/api/file/0XWKS3q7T26MwisgOJze",
+        "image"     : "https://www.filepicker.io/api/file/FLxLJR7ARaagOwvpVSgB",
         "body"      : "<p>New York is fighting back against the undue influence of big money interests on their elections, and they need our help, <em>Rootstrikers</em>.</p><p>Citizens led by over 100 reform groups are campaigning for Fair Elections for New York: public financing of elections, lower contribution limits, and strong enforcement. If they succeed, they will not only change politics as usual in Albany, they will also send a strong message across the country that despite Congress's inaction, citizens are not waiting to take back their democracy.</p><p>What the campaign needs more than anything is citizens willing to tell their legislators that they want campaign finance reform now. If you're in New York:<a title='See full size image' href='app/images/infographics/infographic-why-new-yorks-fight-matters.png' target='_blank'><img style='float:right; width:400px; margin:15px;' src='app/images/infographics/infographic-why-new-yorks-fight-matters.png' alt='NY Fairelex Smalll'></a></p><p><a href='http://salsa.wiredforchange.com/o/1648/p/salsa/event/common/public/search.sjs?distributed_event_KEY=355'>Join the lobbying day in Albany on 5/29</a></p><p><a href='http://www.rootstrikers.org/rally_and_press_conference_for_new_york_fair_elections'>Join the rally and press conference on 6/5</a></p><p>Even if you're not a New York resident, you can still help by <a href='mailto:YOURFRIEND@example.com?subject=I'm%20joining%20Rootstrikers%20to%20help%20New%20York%20fight%20for%20Fair%20Elections.%20Will%20you?&amp;body=%7B%7B%20page.default_face_tweet_text%20%7D%7D%20%7B%7Bpage.full_url%7D%7D'>sending this message to all your NY friends</a> and asking them to sign on.</p><p>Now is the time to act. Please support our friends at <a href='http://www.fairelectionsny.org/'>Fair Elections NY</a> who are leading the effort, and do whatever you can to help pass this groundbreaking legislation.</p><br>"
     },
     {
         "slug"      : "citizens-united-just-the-tip-of-the-iceberg",
         "title"     : "Citizens United: Just the Tip of The Iceberg",
+        "preview"   : "<p>The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
-        "image"     : "https://www.filepicker.io/api/file/xN7nLjZSb206l741ksxl",
-        "body"      : "<p></p><p><strong>The problem:</strong> The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion. Rootstrikers is supporting <a href='http://www.rootstrikers.org/citizens_united_actions_around_the_country'>largescale actions in collaboration with other organizations in San Francisco, New York, and DC, and you can join one, or act locally in solidarity</a>. Wherever you act, you'll send a message to activists, politicians, and ordinary citizens everywhere that Rootstrikers are driving real reform in 2013.</p><p><strong><strong>The solution:</strong> </strong>Even though it's just one piece of the puzzle, <em>Citizens United</em>brought a sense of urgency to our movement. By raising the stakes of campaign finance reform, this Supreme Court ruling pronounced the corrupting influence of money in politics the most fundamental threat toour civil rights this century. Now, it's up to us to spread that message and make sure real change is a priority this term.</p><br>"
+        "image"     : "https://www.filepicker.io/api/file/mFb52fC4QsW8uoICyfEk",
+        "body"      : "<p><a href='app/images/infographics/iceberg-citizens-united.png' target='_blank'><img src='app/images/infographics/iceberg-citizens-united.png' alt='Just the Tip of the Iceberb' style='width:50%;float:right;padding-left:20px;'></a><strong>The problem:</strong> The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion. Rootstrikers is supporting <a href='http://www.rootstrikers.org/citizens_united_actions_around_the_country'>largescale actions in collaboration with other organizations in San Francisco, New York, and DC, and you can join one, or act locally in solidarity</a>. Wherever you act, you'll send a message to activists, politicians, and ordinary citizens everywhere that Rootstrikers are driving real reform in 2013.</p><p><strong><strong>The solution:</strong> </strong>Even though it's just one piece of the puzzle, <em>Citizens United</em>brought a sense of urgency to our movement. By raising the stakes of campaign finance reform, this Supreme Court ruling pronounced the corrupting influence of money in politics the most fundamental threat toour civil rights this century. Now, it's up to us to spread that message and make sure real change is a priority this term.</p><br>"
+    },
+    {
+        "slug"      : "arms-across-the-aisle-against-corruption",
+        "title"     : "Arms Across the Aisle Against Corruption",
+        "preview"   : "",
+        "publish"   : false,
+        "end_date"  : "2012-10-20T04:00:00.000Z",
+        "image"     : "",
+        "body"      : "<p>We hosted meetups [http://www.meetup.com/rootstrikers/] in 63 cities across the country themed around crosspartisanship. Can we pull some stats from meetup.com or something? The guide: https://d3n8a8pro7vhmx.cloudfront.net/rootstrikers/pages/15/attachments/original/1338999196/Rootstrikers_ArmsAcross.pdf?1338999196</p>"
+    },
+    {
+        "slug"      : "goodnight-democracy",
+        "title"     : "Goodnight Democracy",
+        "preview"   : "",
+        "publish"   : false,
+        "end_date"  : "2012-10-20T04:00:00.000Z",
+        "image"     : "",
+        "body"      : "<p>http://www.goodnightdemocracy.com/</p>"
     }];

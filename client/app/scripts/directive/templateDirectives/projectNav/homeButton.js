@@ -6,10 +6,18 @@ angular
       restrict: 'EA',
       templateUrl: 'app/templates/components/projectNav/homeButton.html',
       replace: false,
+      require: '^projectNav',
       controller: function($scope, $window) {
         $scope.goHome = function() {
           $window.location.href = "/";
         };
+      },
+      link: function(scope, element, attrs, projectNavController) {
+        element.hover(function() {
+          scope.displayAllCampaigns();
+        }, function() {
+          scope.displayNone();
+        });
       }
     };
   });

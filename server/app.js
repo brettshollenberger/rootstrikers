@@ -23,8 +23,18 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.use(app.router);
 
 if ('development' === app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
+
+var cacheBuster = function(req, res, next){
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    next();
+};
+
+// @todo isolate to api routes...
+app.use(cacheBuster);
 
 // catch all which sends all urls to index page, thus starting our app
 // @note that because Express routes are registered in order, and we already defined our api routes

@@ -4,6 +4,7 @@ angular
     '$scope',
     '$rootScope',
     '$routeParams',
+    '$cookieStore',
     'actionService',
     'actionKitService',
     'projectService',
@@ -11,7 +12,7 @@ angular
     'MetaMachine',
     'selectLocation',
     '$location',
-    function($scope, $rootScope, $routeParams, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
+    function($scope, $rootScope, $routeParams, $cookieStore, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
 
       // our form model
       $scope.signer = {};
@@ -33,6 +34,7 @@ angular
       
       var watcher1 = $rootScope.$watch('loggedUser', checkActionForUser);
       
+     
       /*
       $scope.$on('$routeChangeSuccess', function() {
           watcher1();
@@ -49,11 +51,22 @@ angular
         };
         
         if($scope.project) {
+
+
+            $scope.isPetition = function(project) {
+              return project.type == 'petition';
+            };
         
-            MetaMachine.title($scope.project.name);
-            MetaMachine.description($scope.project.problem);
+            MetaMachine.title($scope.project.title);
+
+            // we need to set this every time, even if image is undfined
+            // to ensure default image appears
+            // the metaMachine will check if project.image exists, and if not will
+            // apply default. 
             MetaMachine.image($scope.project.image);
+            
             MetaMachine.url($location.absUrl());
+                  
             
             // check if user has already performed the project action
             checkActionForUser();
@@ -76,6 +89,8 @@ angular
                 });
             }
             
+            $scope.signedPledge = $cookieStore.get('signedPledge');
+            
             // get all of the people who have acted on this project
             actionService.getProjectActionUsers($scope.project.id).then(function(response) {
                 $scope.users = response;
@@ -93,17 +108,20 @@ angular
       };
       
       var doAction = function(action, user) {
-          
           actionKitService.doAction(action).then(function (response) {
-                    
+              
               // if the call to Action Kit was a success
               if(response === true) {
+              
+                  // add a cookie to say the user has already signed
+                  $cookieStore.put('signedPledge', true);
+                  $scope.signedPledge = true;
               
                   // add an action entry to our DB for easy reference later
                   var myAction = new actionService({user: user, project_id: $scope.project.id});
                   myAction.$save();
-                  $scope.performedAction = true;             
-              } 
+                  $scope.performedAction = true;
+              }
           });
       };
       

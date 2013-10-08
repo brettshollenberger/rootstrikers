@@ -18,16 +18,15 @@
     <hr>
 
     <div class="content">
-    
-        <h2>Campaign:</h2>
 
         <h3 class="dark-grey">{{item.title}}</h3>
         
         <div ng-bind-html-unsafe="item.sub_title | characters:120" ng-hide="isContentFromOldSite(item)"></div>
 
+        <div ng-bind-html-unsafe="item.preview | characters:120" ng-show="isContentFromOldSite(item)"></div>
+
         <div ng-show="hasDate() && !completed">
-            <h2>Time Remaining:</h2>
-            <h3 class="dark-grey">{{item.end_date | timeRemaining}}</h3><br>
+            <h3 class="dark-grey">{{item.end_date | timeRemaining}} Left</h3><br>
         </div>
 
         <div ng-show="completed">
@@ -36,11 +35,11 @@
             <div ng-show="completedStamp(item)"><img class="goal-reached-stamp" src="app/images/goalstamp@2x.png"></div>
             <!-- End goal reached stamp -->
             
-            <h2 ng-hide="isContentFromOldSite(item)">Total Outreach:</h2>
+            <h2 ng-hide="isContentFromOldSite(item)">Total Outreach</h2>
 
             <h3 class="dark-grey" ng-hide="isContentFromOldSite(item)">2,246,170</h3><br>
 
-            <h2 ng-hide="isContentFromOldSite(item)">New Rootstrikers:</h2>
+            <h2 ng-hide="isContentFromOldSite(item)">New Rootstrikers</h2>
 
             <h3 class="dark-grey" ng-hide="isContentFromOldSite(item)">1,928</h3>
         </div>
@@ -53,9 +52,6 @@
 
     <div class="content" ng-hide="isContentFromOldSite(item)">
         
-        <h2>Supporting Rootstrikers:</h2>
-        <!-- We will have to change this ng-repeat call to user in supporters once we have a service for that -->
-        
         <gravatar-image
             ng-repeat="actionUser in item.actionUsers | limitTo:3"
             data-email="actionUser.user_id.email"
@@ -63,10 +59,10 @@
             data-rating="pg"
             data-default="404"
             data-secure="true"
-            class="avatar-circular pull-left">
+            class="avatar-circular avatar-small">
         </gravatar-image>
 
-        <div ng-show="item.actionUserMore" class="supporter-count pull-left">
+        <div ng-show="item.actionUserMore" class="supporter-count">
             <h5>&amp; {{item.actionUserMore | number}}</h5>
             <h6>more</h6>
         </div>        
@@ -78,7 +74,7 @@
     <a ng-click="goTo('project/'+item.slug)">
         <div class="quick-view-cta">
             <div class="content">
-                Read More & Share
+                Take Action
                 <i class="icon-arrow-right"></i>
             </div>
         </div>

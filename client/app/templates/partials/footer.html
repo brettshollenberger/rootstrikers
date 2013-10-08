@@ -6,15 +6,27 @@
             
             <nav class="footer-links span10">
             
-                <a href="/#!/page/about-us">
+                <a 
+                analytics-on="click" 
+                analytics-event="About Us Modal" 
+                analytics-category="General"
+                href="/#!/page/about-us">
                     <h6 class="white">About Us</h6>
                 </a>
                 
-                <a href="http://vimeo.com/rootstrikers" target="_blank">
+                <a 
+                analytics-on="click" 
+                analytics-event="Visit Vimeo" 
+                analytics-category="General"
+                href="http://vimeo.com/rootstrikers" target="_blank">
                     <h6 class="white">Our Videos</h6>
                 </a>
                 
-                <a href="mailto:info@rootstrikers.com">
+                <a 
+                analytics-on="click" 
+                analytics-event="Contact Us" 
+                analytics-category="General"
+                href="mailto:info@rootstrikers.com" target="_blank">
                     <h6 class="white">Contact Us</h6>
                 </a>
                 
@@ -22,17 +34,35 @@
                     <h6 class="white">Join Our Press List</h6>
                 </span>
                 
-                <a href="#" target="_blank">
-                    <h6 class="white">Donate</h6>
-                </a>
+                <div class="donate white">
+                    
+                    <form 
+                    analytics-on="submit" 
+                    analytics-event="Donate Footer Start" 
+                    analytics-category="General" 
+                    action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="VM9D4J3WQTVQW">
+                        <button type="submit" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" class="btn"><h6 class="white">Donate</h6></button>
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
             
             </nav><!-- .footer-links -->
           
             <nav class="footer-links span2 pull-right">
-                <a href="https://www.facebook.com/rootstrikers" target="_blank" class="footer-facebook">
+                <a 
+                analytics-on="click" 
+                analytics-event="Visit Facebook" 
+                analytics-category="General"
+                href="https://www.facebook.com/rootstrikers" target="_blank" class="footer-facebook">
                     <img src="app/images/footer-facebook.png" alt="Facebook">
                 </a>
-                <a href="https://twitter.com/rootstrikers" target="_blank" class="footer-twitter">
+                <a 
+                analytics-on="click" 
+                analytics-event="Visit Twitter" 
+                analytics-category="General"
+                href="https://twitter.com/rootstrikers" target="_blank" class="footer-twitter">
                     <img src="app/images/footer-twitter.png" alt="Twitter">
                 </a>
             </nav>
@@ -43,15 +73,23 @@
             
             <div class="span12">
                         
-                <a href="#" class="pull-left white" modal page="privacy-policy">
+                <a 
+                analytics-on="click" 
+                analytics-event="Privacy Policy Modal" 
+                analytics-category="General"
+                href="#" class="pull-left white" modal page="privacy-policy">
                     Privacy Policy
                 </a>
                 
-                <a href="#" class="pull-left white" style="padding-left:10px;" modal template="app/templates/auth/login.html">
+                <a 
+                analytics-on="click" 
+                analytics-event="Admin Login Attempt" 
+                analytics-category="General"
+                href="#" class="pull-left white" style="padding-left:10px;" modal template="app/templates/auth/login.html">
                     Admin Login
                 </a>
                         
-                <p class="pull-left copyright">Rootstrikers is a Campaign of Demand Progress &#169; All Rootstrikers Content is licensed as Creative Commons Attribution 3.0</p>
+                <p class="pull-left copyright">Rootstrikers is a Project of Demand Progress &#169; All Rootstrikers Content is licensed as Creative Commons Attribution 3.0</p>
                 
             </div>
             

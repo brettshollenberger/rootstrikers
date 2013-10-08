@@ -106,6 +106,9 @@ schema.project = new mongoose.Schema({
   shortname: {
     type: String
   },
+  preview: {
+    type: String
+  },
   end_date: {
     type: Date
   },
@@ -121,6 +124,13 @@ schema.project = new mongoose.Schema({
   },
   body: {
     type: String
+  },
+  type: {
+    type: String
+  },
+  is_info: {
+    type: Boolean,
+    default: false
   }
 });
 
