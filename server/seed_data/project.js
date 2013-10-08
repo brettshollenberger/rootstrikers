@@ -100,16 +100,18 @@ var data = [
     },
     {
         "slug"      : "infographic-whos-paying-for-the-president",
-        "title"     : "Infographic: Who's Paying for the President?",
+        "title"     : "Who's Paying for the President?",
+        "is_info"   : true,
         "preview"   : "<p>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/TtpOaW8SQ9SSYoPdsVx8",
-        "body"      : "<p>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p><p>Our third infographic in the Capital in the Capitol series compares the sources of revenue upon which the candidates depend in their race tothe oval office. The numbers are a crucial reminder that the candidatesdon’t have to talk about money this election—<em>the money talks for them</em>.</p><p>Perhapsneither Barack Obama nor Mitt Romney want to speak out about our government’s crippling dependence on special interest cash because both of their campaigns hinge on it. Contrary to what some might suspect, Barack Obama’s campaign has raised more money than Mitt Romney’s campaign. However, Romney’s super PAC has collected nearly four times asmuch money as Obama, whose primary source of election money is direct contributions.<br><br>But there are differences in who’s funding the candidates, and just because they won’t talk about it doesn’t mean we can’t. While the candidates talk about their stand on various issues of domestic policy, their campaigns will tell a different story: As long aspoliticians need tons of money to run for office, they’ll be indebted to the few who can afford to give it to them. <br><br>We know who’s paying for the president. Do you?</p><br>"
+        "body"      : "<p><a href='app/images/infographics/infographic-whos-paying-for-the-president.png' class='infographic' target='_blank'><img src='app/images/infographics/infographic-whos-paying-for-the-president.png' alt='Who's Paying for the President?' style='width:100%;'></a>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p><p>Our third infographic in the Capital in the Capitol series compares the sources of revenue upon which the candidates depend in their race tothe oval office. The numbers are a crucial reminder that the candidatesdon’t have to talk about money this election—<em>the money talks for them</em>.</p><p>Perhapsneither Barack Obama nor Mitt Romney want to speak out about our government’s crippling dependence on special interest cash because both of their campaigns hinge on it. Contrary to what some might suspect, Barack Obama’s campaign has raised more money than Mitt Romney’s campaign. However, Romney’s super PAC has collected nearly four times asmuch money as Obama, whose primary source of election money is direct contributions.<br><br>But there are differences in who’s funding the candidates, and just because they won’t talk about it doesn’t mean we can’t. While the candidates talk about their stand on various issues of domestic policy, their campaigns will tell a different story: As long aspoliticians need tons of money to run for office, they’ll be indebted to the few who can afford to give it to them. <br><br>We know who’s paying for the president. Do you?</p><br>"
     },
     {
         "slug"      : "infographic-the-true-identity-behind-super-pacs",
-        "title"     : "Infographic: The True Identity Behind Super PACs",
+        "title"     : "The True Identity Behind Super PACs",
+        "is_info"   : true,
         "preview"   : "",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
@@ -118,7 +120,8 @@ var data = [
     },
     {
         "slug"      : "infographic-who-can-afford-our-congress",
-        "title"     : "Infographic: Who Can Afford Our Congress?",
+        "title"     : "Who Can Afford Our Congress?",
+        "is_info"   : true,
         "preview"   : "<p>Who can afford the high price tag of our government? Unfortunately, only the privileged few. Until it makes&nbsp;sense for politicians to opt into a system where they are not dependent upon the 0.26% of Americans wealthy enough to pay for their time, we will not have a government by the people, for the&nbsp;people.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
@@ -127,7 +130,8 @@ var data = [
     },
     {
         "slug"      : "infographic-why-new-yorks-fight-matters",
-        "title"     : "Infographic: Why New York's Fight Matters",
+        "title"     : "Why New York's Fight Matters",
+        "is_info"   : true,
         "preview"   : "<p>New York is fighting back against the undue influence of big money interests on their elections, and they need our help, <em>Rootstrikers</em>.</p><p>Citizens led by over 100 reform groups are campaigning for Fair Elections for New York: public financing of elections, lower contribution limits, and strong enforcement. If they succeed, they will not only change politics as usual in Albany, they will also send a strong message across the country that despite Congress's inaction, citizens are not waiting to take back their democracy.</p>",
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
@@ -141,5 +145,5 @@ var data = [
         "publish"   : true,
         "end_date"  : "2012-10-20T04:00:00.000Z",
         "image"     : "https://www.filepicker.io/api/file/mFb52fC4QsW8uoICyfEk",
-        "body"      : "<p></p><p><strong>The problem:</strong> The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion. Rootstrikers is supporting <a href='http://www.rootstrikers.org/citizens_united_actions_around_the_country'>largescale actions in collaboration with other organizations in San Francisco, New York, and DC, and you can join one, or act locally in solidarity</a>. Wherever you act, you'll send a message to activists, politicians, and ordinary citizens everywhere that Rootstrikers are driving real reform in 2013.</p><p><strong><strong>The solution:</strong> </strong>Even though it's just one piece of the puzzle, <em>Citizens United</em>brought a sense of urgency to our movement. By raising the stakes of campaign finance reform, this Supreme Court ruling pronounced the corrupting influence of money in politics the most fundamental threat toour civil rights this century. Now, it's up to us to spread that message and make sure real change is a priority this term.</p><br>"
+        "body"      : "<p><a href='app/images/infographics/iceberg-citizens-united.png' target='_blank'><img src='app/images/infographics/iceberg-citizens-united.png' alt='Just the Tip of the Iceberb' style='width:50%;float:right;padding-left:20px;'></a><strong>The problem:</strong> The controversial court ruling in <em>Citizens United v. FEC</em>is just the tip of the iceberg when it comes to corruption in our government. It's one of the most recognizable terms regarding money in politics, so it's a natural segue to explaining the breadth of corruption plaguing our government.</p><p><strong>The strategy</strong>: Whether you want to hold a banner, putup posters, or hand out fliers, you're free to use this image to raise awareness on this historic occasion. Rootstrikers is supporting <a href='http://www.rootstrikers.org/citizens_united_actions_around_the_country'>largescale actions in collaboration with other organizations in San Francisco, New York, and DC, and you can join one, or act locally in solidarity</a>. Wherever you act, you'll send a message to activists, politicians, and ordinary citizens everywhere that Rootstrikers are driving real reform in 2013.</p><p><strong><strong>The solution:</strong> </strong>Even though it's just one piece of the puzzle, <em>Citizens United</em>brought a sense of urgency to our movement. By raising the stakes of campaign finance reform, this Supreme Court ruling pronounced the corrupting influence of money in politics the most fundamental threat toour civil rights this century. Now, it's up to us to spread that message and make sure real change is a priority this term.</p><br>"
     }];
