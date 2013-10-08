@@ -2,7 +2,7 @@
   <div class="modal-header">
 
     <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">&times;</button>
-    <h4>Sign the Pledge</h4>
+    <h4>Sign the Petition</h4>
 
   </div>
 
@@ -48,7 +48,7 @@
             <input
                 form-field
                 required
-                type="text" name="email" id="email" placeholder="Email" value=""
+                type="email" name="email" id="email" placeholder="Email" value=""
                 ng-blur="Validator.validateField(signPetition.email, signPetition)"
                 ng-model="signer.email" />
             
