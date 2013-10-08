@@ -275,7 +275,7 @@ schema.user.pre('save', function(next) {
   this.full_name = this.first_name + ' ' + this.last_name;
 
   // only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) return next();
+  if (typeof user.password === 'undefined' || !user.isModified('password')) return next();
 
   // generate a salt
   bcrypt.genSalt(5, function(err, salt) {

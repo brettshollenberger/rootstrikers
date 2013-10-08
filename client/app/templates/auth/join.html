@@ -1,0 +1,77 @@
+<div class="modal hide fade">
+
+  <div class="modal-header">
+    <button type="reset" class="close" data-dismiss="modal" aria-hidden="true" ng-click="closeModal()">&times;</button>
+    <h4>Join Rootstrikers</h4>
+  </div>
+
+  <div class="modal-body">
+
+    <form novalidate
+        analytics-on="submit" 
+        analytics-event="Join Rootstrikers" 
+        analytics-category="General"
+        analytics-label="joinSigner.email"
+        name="joinRootstrikers"
+        class="signPetition"
+        ng-submit="join()">
+                
+        <div form-group form="joinRootstrikers">
+        
+            <label for="firstName">First Name</label>
+            <input
+                form-field
+                required
+                type="text" name="firstName" id="firstName" placeholder="First Name" value=""
+                ng-blur="Validator.validateField(joinRootstrikers.firstName, joinRootstrikers)"
+                ng-model="joinSigner.firstName" />
+            
+            <div ng-show="joinRootstrikers.FacultyErrors.firstName" class="alert alert-error alert-tooltip">
+                {{joinRootstrikers.FacultyErrors.firstName}}
+            </div>
+
+            <label for="lastName">Last Name</label>
+            <input
+                form-field
+                required
+                type="text" name="lastName" id="lastName" placeholder="Last Name" value=""
+                ng-blur="Validator.validateField(joinRootstrikers.lastName, joinRootstrikers)"
+                ng-model="joinSigner.lastName" />
+            
+            <div ng-show="joinRootstrikers.FacultyErrors.lastName" class="alert alert-error alert-tooltip">
+                {{joinRootstrikers.FacultyErrors.lastName}}
+            </div>
+            
+            <label for="email">Email</label>
+            <input
+                form-field
+                required
+                type="text" name="email" id="email" placeholder="Email" value=""
+                ng-blur="Validator.validateField(joinRootstrikers.email, joinRootstrikers)"
+                ng-model="joinSigner.email" />
+            
+            <div ng-show="joinRootstrikers.FacultyErrors.email" class="alert alert-error alert-tooltip">
+                {{joinRootstrikers.FacultyErrors.email}}
+            </div>
+
+            <label for="zipCode">Zip Code</label>
+            <input
+                form-field
+                required
+                type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
+                ng-blur="Validator.validateField(joinRootstrikers.zipCode, joinRootstrikers)"
+                simple-validate="{zip: {exp: 'Validator.validateZip($value, joinRootstrikers.zip)', message: 'Please enter a valid zip code'}}"
+                ng-model="joinSigner.zipCode" />
+            
+            <div ng-show="joinRootstrikers.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
+                {{joinRootstrikers.FacultyErrors.zipCode}}
+            </div>
+
+        </div>
+              
+        <button type="submit" ng-click="closeModal()" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right" modal template="app/templates/auth/thankyou.html">Join</button>
+                                    
+        <!-- <button type="submit" ng-click="closeModal()" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Join</button> -->
+    </form>
+    </div>
+</div>
