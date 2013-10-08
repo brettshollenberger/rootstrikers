@@ -58,6 +58,7 @@ angular
             };
         
             MetaMachine.title($scope.project.title);
+            // MetaMachine.description($scope.project.action);
 
             // we need to set this every time, even if image is undfined
             // to ensure default image appears
@@ -93,7 +94,8 @@ angular
             
             // get all of the people who have acted on this project
             actionService.getProjectActionUsers($scope.project.id).then(function(response) {
-                $scope.users = _.take(response, 22);
+                $scope.users        = response;
+                $scope.displayUsers = _.take(response, 2);
             });
             
         } else {
