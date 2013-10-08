@@ -18,7 +18,11 @@
                             
                             <div id="donate">
                                 <div class="btn-group pull-right">
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                    <form 
+                                    analytics-on="submit" 
+                                    analytics-event="Donate Header Start" 
+                                    analytics-category="General" 
+                                    action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                                         <input type="hidden" name="cmd" value="_s-xclick">
                                         <input type="hidden" name="hosted_button_id" value="VM9D4J3WQTVQW">
                                         <button type="submit" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" class="btn btn-default"><span>$</span> <span>DONATE</span></button>

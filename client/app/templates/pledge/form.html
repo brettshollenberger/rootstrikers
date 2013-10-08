@@ -9,6 +9,10 @@
   <div class="modal-body">
 
     <form novalidate
+        analytics-on="submit" 
+        analytics-event="Sign Pledge Complete" 
+        analytics-category="Campaigns"
+        analytics-label="{{project.title}}"
         name="signPetition"
         class="signPetition"
         ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge"

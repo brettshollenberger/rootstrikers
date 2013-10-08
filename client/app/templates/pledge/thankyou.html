@@ -11,9 +11,17 @@
 
     <p style="margin-bottom: 20px;">Please inspire others to take action!</p>
 
-    <div shareable shareable-facebook class="btn darkblue shareable-btn"><span class="shareable-facebook"><i class="icon-facebook-sign" alt="Share on Facebook" ng-hide="facebookImage"></i></span><span class="shareable-btn-text">Share <span class="italic-share">on</span> Facebook</span></div>
+    <div 
+    analytics-on="click" 
+    analytics-event="Share Facebook Modal Start" 
+    analytics-category="Social"
+    shareable shareable-facebook class="btn darkblue shareable-btn"><span class="shareable-facebook"><i class="icon-facebook-sign" alt="Share on Facebook" ng-hide="facebookImage"></i></span><span class="shareable-btn-text">Share <span class="italic-share">on</span> Facebook</span></div>
 
-    <div shareable shareable-twitter class="btn darkblue shareable-btn"><span class="shareable-twitter"><i class="icon-twitter-sign" alt="Share on Twitter" ng-hide="twitterImage"></i></span><span class="shareable-btn-text">Share <span class="italic-share">on</span> Twitter</span></div>
+    <div 
+    analytics-on="click" 
+    analytics-event="Share Twitter Modal Start" 
+    analytics-category="Social"
+    shareable shareable-twitter class="btn darkblue shareable-btn"><span class="shareable-twitter"><i class="icon-twitter-sign" alt="Share on Twitter" ng-hide="twitterImage"></i></span><span class="shareable-btn-text">Share <span class="italic-share">on</span> Twitter</span></div>
 
   </div>
 
