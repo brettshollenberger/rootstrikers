@@ -1,4 +1,4 @@
-<project-nav></project-nav>
+<div project-nav></div>
 
 <section class="carousel">
     <div class="carousel-inner"><img ng-src="{{project.image}}"></div>
@@ -102,15 +102,15 @@
     	                <h2>Rootstrikers</h2>
     	            </div>
     	
-    	            <gravatar-image
-                        ng-repeat="user in users"
+    	            <div gravatar-image
+    	                ng-repeat="user in users"
                         data-email="user.user_id.email"
                         data-size="120"
                         data-rating="pg"
                         data-default="404"
                         data-secure="true"
                         class="avatar-circular span2">
-                    </gravatar-image>
+                    </div>
                 
                 </div>
                 

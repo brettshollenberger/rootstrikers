@@ -12,6 +12,7 @@ angular.module('ui-gravatar', ['md5']).
     directive('gravatarImage', ['gravatarImageService', function (gravatarImageService) {
         return {
             restrict:"EAC",
+            replace: false,
             link:function (scope, elm, attrs) {
                 // by default the values will come in as undefined so we need to setup a
                 // watch to notify us when the value changes

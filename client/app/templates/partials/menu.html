@@ -36,15 +36,14 @@
                             <!-- TODO: Add modal directive back to this when we use it again -->
                             <!-- and remove the inline style from the a tag -->
                             <a class="pull-right" ng-show="loggedUser" style="cursor:default;">
-                                <gravatar-image
-                                data-email="loggedUser.email"
-                                data-size="120"
-                                data-rating="pg"
-                                data-default="404"
-                                data-secure="true"
-                                class="avatar-circular avatar-small"
-                                template="app/templates/auth/edit.html">
-                                </gravatar-image>
+                                <div gravatar-image
+                                    data-email="loggedUser.email"
+                                    data-size="120"
+                                    data-rating="pg"
+                                    data-default="404"
+                                    data-secure="true"
+                                    class="avatar-circular avatar-small">
+                                </div>
                             </a>
                             
                             <!--

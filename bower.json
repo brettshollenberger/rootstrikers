@@ -6,7 +6,7 @@
     "angular": "~1.0.7",
     "angular-cookies": "~1.0.8",
     "angular-mocks": "~1.0.7",
-    "angular-sanitize": "~1.0.8",
+    "angular-sanitize": "~1.0.7",
     "angular-scenario": "~1.0.7",
     "angular-strap": "~0.7.4",
     "bootstrap": "~2.3.2",
@@ -16,9 +16,9 @@
     "modernizr": "~2.6.2",
     "angular-resource": "~1.0.7",
     "angular-ui-tinymce": "https://github.com/angular-ui/ui-tinymce.git#4f1b63124c4d16580ce5c9b964ab79b8399661bd",
-    "angular-sanitize" : "~1.0.7",
     "jquery-migrate": "~1.2.1",
     "json3": "3.2.5",
-    "angulartics" : "latest"
+    "angulartics": "latest",
+    "respond": "~1.3.0"
   }
 }

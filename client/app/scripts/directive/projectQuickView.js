@@ -2,7 +2,7 @@ angular
   .module('app')
   .directive('projectQuickView', function() {
     return {
-      restrict: 'E',
+      restrict: 'EA',
       replace: false,
       templateUrl: 'app/templates/partials/projectQuickView.html',
       link: function(scope, element, attrs) {
