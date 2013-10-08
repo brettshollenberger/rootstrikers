@@ -2,7 +2,7 @@ angular
   .module('app')
   .directive('navMenu', function($location) {
     return {
-      restrict: 'E',
+      restrict: 'EA',
       replace: true,
       scope: true,
       templateUrl: 'app/templates/partials/menu.html',

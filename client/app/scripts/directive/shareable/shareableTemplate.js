@@ -2,7 +2,7 @@ angular
   .module('app')
   .directive('shareableTemplate', function($location) {
     return {
-      restrict: 'E',
+      restrict: 'EA',
       replace: false,
       scope: {},
       templateUrl: 'app/templates/components/shareable.html',

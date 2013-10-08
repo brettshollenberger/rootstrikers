@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="app"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:ng="http://angularjs.org"> <![endif]-->
   <head>
     <meta charset="utf-8">
     <title ng-bind="metaTitle"></title>
@@ -37,20 +36,45 @@
     <!-- build:css app/styles/app.min.css -->
     <link rel="stylesheet" href="app/styles/app.css">
     <!-- endbuild -->
+    
+    <!--[if lte IE 8]>
 
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      
+        window.html5 = { 'elements': 'shareableTemplate rootCarousel adminNavMenu banner bannerHalf bannerHalves cta rootFooter gravatarImage navMenu notification pageItem countryPicker statePicker projectItem projectQuickView shareableFacebook shareable projectBackButton projectForwardButton projectHomeButton projectNav carousel slide datepicker datepickerPopup datepickerPopupWrap windows markers window marker markdown userTray abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup main mark meter nav output progress section summary time video', 'shivCSS': false, 'shivMethods': false };
+      </script>
+    <![endif]-->  
+    
+    <script>
+     (function(a){function b(){}for(var c="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","),d;!!(d=c.pop());){a[d]=a[d]||b;}})
+     (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
+    </script>
+    
     <!--[if lt IE 9]>
-    <script src="components/html5shiv-dist/html5shiv.js"></script>
+    <script src="bower_components/respond/respond.min.js"></script>
+    <script src="bower_components/html5shiv-dist/html5shiv.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/event-shim.js/event-shim.js"></script>
     <![endif]-->
+
     <script id="redline_js" type="text/javascript">var redline = {}; redline.project_id = 110264436;var b,d;b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===document.location.protocol?"https://data":"http://www")+'.redline.cc/assets/button.js';d=document.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);</script>
+
   </head>
-  <body ng-class="pageSlug">
+  <body ng-class="pageSlug" id="ng-app" ng-app="app">
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
 
     <div class="wrap" id="wrap">
-      <nav-menu></nav-menu>
-      <admin-nav-menu ng-show="onAdmin"></admin-nav-menu>
+      <div nav-menu></div>
+      <div admin-nav-menu ng-show="onAdmin"></div>
 
       <noscript>
         Please enable Javascript to experience this site :)
@@ -62,12 +86,21 @@
       <div class="push"></div>
     </div>
 
-    <root-footer></root-footer>
+    <div root-footer></div>
 
-    <script src="vendor/underscore.js"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    
+    <script src="//api.filepicker.io/v1/filepicker.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    
+    <!--[if lte IE 8]>
+      <script src="bower_components/json3/lib/json3.js"></script>
+      <script src="bower_components/jquery-migrate/jquery-migrate.js"></script>
+    <![endif]-->
+    
+    
 
     <!-- build:js app/scripts/all.min.js -->
-    <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/tinymce/tinymce.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -77,14 +110,12 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
     <script src="bower_components/angulartics/dist/angulartics-google-analytics.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-    <script src="//api.filepicker.io/v1/filepicker.js"></script>
 
     <script src="app/scripts/libs/facebook.js"></script>
+    <script src="vendor/underscore.js"></script>
 
     <script src="app/scripts/app.js"></script>
-
+    <script src="app/scripts/app.templates.js"></script>
     <script src="app/scripts/services/project.js"></script>
     <script src="app/scripts/services/feature.js"></script>
     <script src="app/scripts/services/page.js"></script>
@@ -148,8 +179,6 @@
     <script src="app/scripts/directive/banners/bannerHalf.js"></script>
     <script src="app/scripts/directive/cta.js"></script>
 
-    <script src="app/scripts/app.templates.js"></script>
-
     <script src="app/scripts/filters/timeRemaining.js"></script>
     <script src="app/scripts/filters/linebreaker.js"></script>
     <script src="app/scripts/filters/characters.js"></script>
@@ -167,9 +196,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-      $(document).ready(function(){
-        $('.carousel').carousel();
-      });
     </script>
     <div id="fb-root"></div>
   </body>

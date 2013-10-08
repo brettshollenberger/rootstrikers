@@ -2,7 +2,7 @@ angular
   .module('app')
   .directive('pageItem', function() {
     return {
-      restrict: 'E',
+      restrict: 'EA',
       replace: false,
       templateUrl: 'app/templates/partials/pageDetail.html',
       scope: true

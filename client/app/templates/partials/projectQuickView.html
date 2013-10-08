@@ -52,7 +52,7 @@
 
     <div class="content" ng-hide="isContentFromOldSite(item)">
         
-        <gravatar-image
+        <div gravatar-image
             ng-repeat="actionUser in item.actionUsers | limitTo:3"
             data-email="actionUser.user_id.email"
             data-size="50"
@@ -60,7 +60,7 @@
             data-default="404"
             data-secure="true"
             class="avatar-circular avatar-small">
-        </gravatar-image>
+        </div>
 
         <div ng-show="item.actionUserMore" class="supporter-count">
             <h5>&amp; {{item.actionUserMore | number}}</h5>

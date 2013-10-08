@@ -1,7 +1,7 @@
 <div class="stretch slider">
     <div class="container">
     	<notification></notification>
-        <root-carousel></root-carousel>
+        <div root-carousel></div>
     </div>
 </div>
 <!--
@@ -35,14 +35,14 @@
         <div class="row ">
             <div class="span12 text-center fade" ng-class="{ 'in' : animateIn }">
                 <p>
-                    <gravatar-image
+                    <div gravatar-image
                         data-email="visibleActivity.user_id.email"
                         data-size="50"
                         data-rating="pg"
                         data-default="404"
                         data-secure="true"
                         class="avatar-circular avatar-small">
-                    </gravatar-image>
+                    </div>
                     {{visibleActivity.user_id.full_name}} just acted on 
                     <a ng-click="goTo('project/'+visibleActivity.project_id.slug)">{{visibleActivity.project_id.title}}</a> 
                 </p>
@@ -61,7 +61,7 @@
 			<hr>
 			<div class="quick-views">
 				<div class="span4" ng-repeat="item in projects" ng-class="{ 'clearfix' : $index % 3 == 0 }">
-					<project-quick-view></project-quick-view>
+					<div project-quick-view></div>
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@
         <hr>
         <div class="row quick-views">
           <div class="span4" ng-repeat="item in completed_projects">
-            <project-quick-view completed="true" class="completed"></project-quick-view>
+            <div project-quick-view completed="true" class="completed"></div>
           </div>
         </div>
       </div>
