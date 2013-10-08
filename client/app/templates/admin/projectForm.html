@@ -41,7 +41,7 @@
                         <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="problem">The Problem</label>
                         <textarea
                             class="form-control"
@@ -53,7 +53,7 @@
                         </textarea>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="action">The Action</label>
                         <textarea
                             class="form-control"
@@ -65,7 +65,7 @@
                         </textarea>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="goal">The Goal</label>
                         <textarea
                             class="form-control"
@@ -74,6 +74,19 @@
                             placeholder="Describe the Goal"
                             id="goal"
                             ng-model="project.goal">
+                        </textarea>
+                    </div>
+
+                    <div class="form-group" ng-show="isContentFromOldSite(project)">
+                        <label for="goal">Body Content</label>
+                        <textarea
+                            class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            rows="3"
+                            placeholder="Add some body content"
+                            id="goal"
+                            ng-bind-html="project.body"
+                            ng-model="project.body">
                         </textarea>
                     </div>
                     
