@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if lt IE 7]>      <html id="ng-app" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 7]>         <html id="ng-app" ng-app="app" class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if IE 8]>         <html id="ng-app" ng-app="app" class="no-js lt-ie9" xmlns:ng="http://angularjs.org"> <![endif]-->
+<!--[if gt IE 8]><!--> <html id="ng-app" ng-app="app" class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <title ng-bind="metaTitle"></title>
@@ -65,7 +66,7 @@
     <![endif]-->
 
   </head>
-  <body ng-class="pageSlug" id="ng-app" ng-app="app">
+  <body ng-class="pageSlug">
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
