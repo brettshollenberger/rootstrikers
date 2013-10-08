@@ -54,68 +54,7 @@
                 
                 <div>
 
-                <form novalidate
-                    name="signPetition"
-                    class="signPetition"
-                    ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge"
-                    ng-submit="signPledge()">
-                            
-                    <div form-group form="signPetition">
-                    
-                        <label for="firstName">First Name</label>
-                        <input
-                            form-field
-                            required
-                            type="text" name="firstName" id="firstName" placeholder="First Name" value=""
-                            ng-blur="Validator.validateField(signPetition.firstName, signPetition)"
-                            ng-model="signer.firstName" />
-                        
-                        <div ng-show="signPetition.FacultyErrors.firstName" class="alert alert-error alert-tooltip">
-                            {{signPetition.FacultyErrors.firstName}}
-                        </div>
-
-                        <label for="lastName">Last Name</label>
-                        <input
-                            form-field
-                            required
-                            type="text" name="lastName" id="lastName" placeholder="Last Name" value=""
-                            ng-blur="Validator.validateField(signPetition.lastName, signPetition)"
-                            ng-model="signer.lastName" />
-                        
-                        <div ng-show="signPetition.FacultyErrors.lastName" class="alert alert-error alert-tooltip">
-                            {{signPetition.FacultyErrors.lastName}}
-                        </div>
-                        
-                        <label for="email">Email</label>
-                        <input
-                            form-field
-                            required
-                            type="text" name="email" id="email" placeholder="Email" value=""
-                            ng-blur="Validator.validateField(signPetition.email, signPetition)"
-                            ng-model="signer.email" />
-                        
-                        <div ng-show="signPetition.FacultyErrors.email" class="alert alert-error alert-tooltip">
-                            {{signPetition.FacultyErrors.email}}
-                        </div>
- 
-                        <label for="zipCode">Zip Code</label>
-                        <input
-                            form-field
-                            required
-                            type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value=""
-                            ng-blur="Validator.validateField(signPetition.zipCode, signPetition)"
-                            simple-validate="{zip: {exp: 'Validator.validateZip($value, signPetition.zip)', message: 'Please enter a valid zip code'}}"
-                            ng-model="signer.zipCode" />
-                        
-                        <div ng-show="signPetition.FacultyErrors.zipCode" class="alert alert-error alert-tooltip">
-                            {{signPetition.FacultyErrors.zipCode}}
-                        </div>
-        
-                    </div>
-                                                
-                    <button type="submit" ng-disabled="signPetition.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Take Action</button>
-                    
-                </form>
+                <button class="btn btn-primary pull-right" modal template="app/templates/pledge/form.html" ng-show="!performedAction && !loggedUser && !isContentFromOldSite(project) && !signedPledge">Take Action</button>
                 
                 <button
                     class="btn-block btn"
