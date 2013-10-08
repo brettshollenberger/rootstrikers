@@ -100,7 +100,7 @@ var data = [
     },
     {
         "slug"      : "infographic-whos-paying-for-the-president",
-        "title"     : "Infographic: Who's Paying for the President?",
+        "title"     : "Who's Paying for the President?",
         "is_info"   : true,
         "preview"   : "<p>Even though 87% of Americans agree that corruption is the most important challenge our next president will face, neither candidate has made it their issue, and we expect tonight’s debate to be no different. While Barack Obama and Mitt Romney square off on some of the most divisive topics of domestic policy, we want you to see how they measure up on the issue upon which all others depend: the corrupting influence of money in politics.</p>",
         "publish"   : true,
@@ -110,7 +110,7 @@ var data = [
     },
     {
         "slug"      : "infographic-the-true-identity-behind-super-pacs",
-        "title"     : "Infographic: The True Identity Behind Super PACs",
+        "title"     : "The True Identity Behind Super PACs",
         "is_info"   : true,
         "preview"   : "",
         "publish"   : true,
@@ -120,7 +120,7 @@ var data = [
     },
     {
         "slug"      : "infographic-who-can-afford-our-congress",
-        "title"     : "Infographic: Who Can Afford Our Congress?",
+        "title"     : "Who Can Afford Our Congress?",
         "is_info"   : true,
         "preview"   : "<p>Who can afford the high price tag of our government? Unfortunately, only the privileged few. Until it makes&nbsp;sense for politicians to opt into a system where they are not dependent upon the 0.26% of Americans wealthy enough to pay for their time, we will not have a government by the people, for the&nbsp;people.</p>",
         "publish"   : true,
@@ -130,7 +130,7 @@ var data = [
     },
     {
         "slug"      : "infographic-why-new-yorks-fight-matters",
-        "title"     : "Infographic: Why New York's Fight Matters",
+        "title"     : "Why New York's Fight Matters",
         "is_info"   : true,
         "preview"   : "<p>New York is fighting back against the undue influence of big money interests on their elections, and they need our help, <em>Rootstrikers</em>.</p><p>Citizens led by over 100 reform groups are campaigning for Fair Elections for New York: public financing of elections, lower contribution limits, and strong enforcement. If they succeed, they will not only change politics as usual in Albany, they will also send a strong message across the country that despite Congress's inaction, citizens are not waiting to take back their democracy.</p>",
         "publish"   : true,
