@@ -13,8 +13,6 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             model = project;
 
             $scope.project = model;
-
-            $scope.projectTypes = [{value: "pledge", text: "Pledge"}, {value: undefined, text: "None"}];
             
             if($scope.project.shortname) {
             
@@ -30,7 +28,6 @@ angular.module('app').controller('projectEditController', ['$scope', 'flash', '$
             MetaMachine.title("Editing: " + $scope.project.title, "Admin");
 
             $scope.isContentFromOldSite = function(project) {
-                console.log(project);
                 return project.end_date == "2012-10-20T04:00:00.000Z";
             };
         });

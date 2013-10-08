@@ -84,7 +84,6 @@ module.exports = function(app, db, auth) {
 
   //Get of all project
   app.get('/api/project', function(req, res) {
-    console.log("THINGS ARE HAPPENING!!!");
     var cb = function(err, list) {
       if (!err) {
         res.json(list); //If went ok return the json of the query result
