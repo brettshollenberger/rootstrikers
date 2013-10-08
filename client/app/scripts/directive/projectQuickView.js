@@ -9,7 +9,7 @@ angular
         scope.completed = attrs.completed;
 
         scope.hasDate = function() {
-          return scope.item.end_date !== null;
+          return scope.item.end_date && scope.item.end_date !== null;
         };
 
         scope.isContentFromOldSite = function(item) {

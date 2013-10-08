@@ -41,7 +41,7 @@
                         <span ng-show="projectForm.name.$dirty && projectForm.name.$error.required">Name is required</span>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="problem">The Problem</label>
                         <textarea
                             class="form-control"
@@ -53,7 +53,7 @@
                         </textarea>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="action">The Action</label>
                         <textarea
                             class="form-control"
@@ -65,7 +65,7 @@
                         </textarea>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="isContentFromOldSite(project)">
                         <label for="goal">The Goal</label>
                         <textarea
                             class="form-control"
@@ -75,6 +75,27 @@
                             id="goal"
                             ng-model="project.goal">
                         </textarea>
+                    </div>
+
+                    <div class="form-group" ng-show="isContentFromOldSite(project)">
+                        <label for="project.body">Body Content</label>
+                        <textarea
+                            class="form-control"
+                            ui-tinymce="tinymceOptions"
+                            rows="3"
+                            placeholder="Add some body content"
+                            id="project.body"
+                            ng-bind-html="project.body"
+                            ng-model="project.body">
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select ng-model="project.type">
+                            <option value="petition" ng-selected="project.type=='petition'">Petition</option>
+                            <option value="undefined" ng-selected="project.type=='undefined'">None</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">

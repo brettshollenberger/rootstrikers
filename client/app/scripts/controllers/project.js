@@ -53,8 +53,8 @@ angular
         if($scope.project) {
 
 
-            $scope.isPledge = function(project) {
-              return project.type == 'pledge';
+            $scope.isPetition = function(project) {
+              return project.type == 'petition';
             };
         
             MetaMachine.title($scope.project.title);
