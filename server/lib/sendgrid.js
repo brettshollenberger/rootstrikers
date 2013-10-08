@@ -8,10 +8,10 @@ module.exports = function(app) {
     return {
         send: function(params) {
             if ('development' === app.get('env')) {
-                params.to = 'matt@facultycreative.com';
-                console.info('App is in development, we are overriding the email addresses');
+                //params.to = 'matt@facultycreative.com';
+                //console.info('App is in development, we are overriding the email addresses');
             } else {
-                sendgrid.send(params);   
+                //sendgrid.send(params);   
             }
         }
     };
