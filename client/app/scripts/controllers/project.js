@@ -75,7 +75,6 @@ angular
                         MetaMachine.description($scope.project.action);
                         MetaMachine.image($scope.project.image);
                         MetaMachine.url($location.absUrl());
-                        console.log($rootScope.metaDescription);
                         
                         if($scope.project.actionkit.goal_type === 'actions') {
                             $scope.project.actionsNeeded = $scope.project.actionkit.goal;
