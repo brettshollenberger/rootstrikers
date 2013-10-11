@@ -3,14 +3,10 @@
 angular
   .module('app')
   .factory('MetaMachine', function($rootScope, $location) {
-     
-    var removeHash = function(url) {
-        return url.replace('#!/', '');
-    };
-        
-    var base = $location.absUrl().replace($location.path(), '');
-    base = removeHash(base);
 
+    // ************************************************************************ //
+    // *************************** PRIVATE METHODS **************************** //
+    // ************************************************************************ //
     var metaDefaults = {
       metaType: "website",
       metaName: "Rootstrikers",
@@ -20,23 +16,40 @@ angular
       metaUrl: base
     };
 
-    (function setDefaults() {
-      _.each(metaDefaults, function(val, key) { $rootScope[key] = val; });
-    })();
+    var removeHash = function(url) {
+        return url.replace('#!/', '');
+    };
+        
+    var base = $location.absUrl().replace($location.path(), '');
+    base = removeHash(base);
 
+    var stripHTML = function(text) {
+      return text.replace(/(<([^>]+)>)/ig,"");
+    };
+
+    // ************************************************************************ //
+    // ************************** PUBLIC INTERFACE  *************************** //
+    // ************************************************************************ //
     var MetaMachine = {
       title: function(pageTitle, baseTitle) {
         baseTitle = typeof baseTitle != 'undefined' ? baseTitle : "Rootstrikers";
-        $rootScope.metaTitle = typeof pageTitle != 'undefined' ? pageTitle + " | " + baseTitle : baseTitle;
+        fullTitle = typeof pageTitle != 'undefined' ? pageTitle + " | " + baseTitle : baseTitle;
+        $('title').text(fullTitle);
+        $('meta[property="og:title"]').attr('content', fullTitle);
       },
       description: function(description) {
-        $rootScope.metaDescription = description || metaDefaults.metaDescription;
+        description = stripHTML(description) || metaDefaults.metaDescription;
+        $('meta[property="og:description"]').attr('content', description);
+        $('meta[name="description"]').attr('content', description);
       },
       image: function(url) {
-        $rootScope.metaImage = url || metaDefaults.metaImage;
+        metaImage = url || metaDefaults.metaImage;
+        $('link[rel="image_src"]').attr('href', metaImage);
+        $('meta[property="og:image"]').attr('content', metaImage);
       },
       url: function(url) {
-        $rootScope.metaUrl = url || metaDefaults.metaUrl;
+        metaUrl = url || metaDefaults.metaUrl;
+        $('meta[property="og:url"]').attr('content', metaUrl);
       }
     };
     return MetaMachine;

@@ -50,24 +50,12 @@ angular
           return item.end_date == "2012-10-20T04:00:00.000Z";
         };
         
-        if($scope.project) {
+        if($scope.project !== undefined) {
 
 
             $scope.isPetition = function(project) {
               return project.type == 'petition';
             };
-        
-            MetaMachine.title($scope.project.title);
-            // MetaMachine.description($scope.project.action);
-
-            // we need to set this every time, even if image is undfined
-            // to ensure default image appears
-            // the metaMachine will check if project.image exists, and if not will
-            // apply default. 
-            MetaMachine.image($scope.project.image);
-            
-            MetaMachine.url($location.absUrl());
-                  
             
             // check if user has already performed the project action
             checkActionForUser();
@@ -82,12 +70,27 @@ angular
                         $scope.project.problem = response.petitionForm.about_text;
                         $scope.project.action = response.petitionForm.statement_text;
                         $scope.project.goal = response.goal;
+
+                        MetaMachine.title($scope.project.title);
+                        MetaMachine.description($scope.project.action);
+                        MetaMachine.image($scope.project.image);
+                        MetaMachine.url($location.absUrl());
                         
                         if($scope.project.actionkit.goal_type === 'actions') {
                             $scope.project.actionsNeeded = $scope.project.actionkit.goal;
                         }
                     }
+            
                 });
+            } else {
+              MetaMachine.title($scope.project.title);
+              if ($scope.project.body) {
+                MetaMachine.description($scope.project.body);
+              } else {
+                MetaMachine.description($scope.project.action);
+              }
+              MetaMachine.image($scope.project.image);
+              MetaMachine.url($location.absUrl());
             }
             
             $scope.signedPledge = $cookieStore.get('signedPledge');
