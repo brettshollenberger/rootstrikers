@@ -84,8 +84,11 @@ angular
                 });
             } else {
               MetaMachine.title($scope.project.title);
-              console.log($scope.project);
-              MetaMachine.description($scope.project.action);
+              if ($scope.project.body) {
+                MetaMachine.description($scope.project.body);
+              } else {
+                MetaMachine.description($scope.project.action);
+              }
               MetaMachine.image($scope.project.image);
               MetaMachine.url($location.absUrl());
             }
@@ -99,7 +102,6 @@ angular
             });
             
         } else {
-            console.log($scope.project);
             MetaMachine.title();
             MetaMachine.description();
         }
