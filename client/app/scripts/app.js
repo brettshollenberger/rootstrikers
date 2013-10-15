@@ -16,6 +16,9 @@ angular
           controller: 'homeController',
           templateUrl: 'app/templates/home.html'
         })
+        .when('/donate', {
+            redirectTo: '/'
+        })
         .when('/project/:name', {
           controller: 'projectController',
           templateUrl: 'app/templates/projectPage.html'
