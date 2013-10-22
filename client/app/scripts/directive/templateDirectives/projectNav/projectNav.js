@@ -1,6 +1,7 @@
 angular
   .module('app')
   .directive('projectNav',
+    ['$location',
     function($location) {
       return {
         restrict: 'EA',
@@ -62,4 +63,4 @@ angular
           };
         }
       };
-  });
+  }]);

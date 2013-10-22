@@ -1,4 +1,12 @@
-angular.module('app').controller('projectEditController', ['$scope', 'flash', '$routeParams', 'projectService', '$location', 'MetaMachine', 'actionKitService', function($scope, notification, $routeParams, projectAPI, $location, MetaMachine, actionKitService) {
+angular.module('app').controller('projectEditController', [
+    '$scope',
+    'flash',
+    '$routeParams',
+    'projectService',
+    '$location',
+    'MetaMachine',
+    'actionKitService',
+    function($scope, notification, $routeParams, projectAPI, $location, MetaMachine, actionKitService) {
 
     var model;
 

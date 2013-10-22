@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('shareable', function($location) {
+  .directive('shareable', ['$location', function($location) {
     return {
       restrict: 'A',
       priority: 0,
@@ -34,5 +34,5 @@ angular
         
       }
     };
-  });
+  }]);
 

@@ -12,7 +12,17 @@ angular
     'MetaMachine',
     'selectLocation',
     '$location',
-    function($scope, $rootScope, $routeParams, $cookieStore, actionService, actionKitService, projectAPI, userAPI, MetaMachine, selectLocation, $location) {
+    function($scope,
+              $rootScope,
+              $routeParams,
+              $cookieStore,
+              actionService,
+              actionKitService,
+              projectAPI,
+              userAPI,
+              MetaMachine,
+              selectLocation,
+              $location) {
 
       // our form model
       $scope.signer = {};

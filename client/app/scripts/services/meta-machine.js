@@ -2,7 +2,10 @@
 
 angular
   .module('app')
-  .factory('MetaMachine', function($rootScope, $location) {
+  .factory('MetaMachine', [
+    '$rootScope',
+    '$location',
+    function($rootScope, $location) {
 
     // ************************************************************************ //
     // *************************** PRIVATE METHODS **************************** //
@@ -53,4 +56,4 @@ angular
       }
     };
     return MetaMachine;
-  });
+  }]);

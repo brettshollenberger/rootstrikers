@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('navMenu', function($location) {
+  .directive('navMenu', ['$location', function($location) {
     return {
       restrict: 'EA',
       replace: true,
@@ -40,4 +40,4 @@ angular
         });
       }
     };
-  });
+  }]);
