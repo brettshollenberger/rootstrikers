@@ -16,7 +16,7 @@ angular
         element.hover(function() {
           scope.displayAllCampaigns();
         }, function() {
-          scope.displayNone();
+          scope.displayCurrentProject();
         });
       }
     };

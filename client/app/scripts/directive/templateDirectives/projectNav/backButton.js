@@ -11,7 +11,7 @@ angular
         element.hover(function() {
           scope.displayPreviousProject();
         }, function() {
-          scope.displayNone();
+          scope.displayCurrentProject();
         });
       }
     };

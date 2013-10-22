@@ -15,10 +15,17 @@ angular
               $scope.currentProject = _.find($scope.projects, function(project) {
                 return project.slug == $routeParams.name;
               });
+
+              $scope.displayedProject = $scope.currentProject;
             });
           })(this);
         },
         link: function(scope, element, attrs) {
+
+          scope.displayCurrentProject = function() {
+            scope.displayedProject = scope.currentProject;
+            scope.$apply();
+          };
 
           scope.displayNextProject = function() {
             scope.displayedProject = scope.projects[
@@ -29,11 +36,6 @@ angular
           scope.displayPreviousProject = function() {
             scope.displayedProject = scope.projects[
               _.indexOf(scope.projects, scope.currentProject) - 1] || _.last(scope.projects);
-            scope.$apply();
-          };
-
-          scope.displayNone = function() {
-            scope.displayedProject = {title: ""};
             scope.$apply();
           };
 
