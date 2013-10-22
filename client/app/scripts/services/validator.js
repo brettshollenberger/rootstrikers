@@ -36,7 +36,9 @@
 
 angular
   .module('app')
-  .factory('Validator',
+  .factory('Validator',[
+  '$location',
+  '$anchorScroll',
   function($location, $anchorScroll) {
 
     var isEmpty = function(x) {
@@ -192,8 +194,8 @@ angular
       }
     };
     return Validator;
-  }
-).directive('formGroup',
+  }])
+.directive('formGroup',
   function() {
     return {
       restrict: 'EA',

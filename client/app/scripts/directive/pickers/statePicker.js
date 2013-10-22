@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('statePicker', function($rootScope) {
+  .directive('statePicker', ['$rootScope', function($rootScope) {
     return {
       restrict: 'E',
       replace: true,
@@ -12,4 +12,4 @@ angular
 
       }
     };
-  });
+  }]);

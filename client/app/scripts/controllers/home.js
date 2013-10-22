@@ -1,4 +1,20 @@
-angular.module('app').controller('homeController', ['$rootScope', '$scope', 'userService', 'projectService', 'featureService', 'MetaMachine', 'actionKitService', 'actionService', function($rootScope, $scope, userService, Project, Feature, MetaMachine, actionKitService, actionService) {
+angular.module('app').controller('homeController', [
+    '$rootScope',
+    '$scope',
+    'userService',
+    'projectService',
+    'featureService',
+    'MetaMachine',
+    'actionKitService',
+    'actionService',
+    function($rootScope,
+                $scope,
+                userService,
+                Project,
+                Feature,
+                MetaMachine,
+                actionKitService,
+                actionService) {
 
     $scope.projects = Project.getActive();
     $scope.completed_projects = Project.getCompleted();

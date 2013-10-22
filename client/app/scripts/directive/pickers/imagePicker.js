@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('imagePicker', function($rootScope) {
+  .directive('imagePicker', ['$rootScope', function($rootScope) {
     return {
       restrict: 'A',
       replace: true,
@@ -60,4 +60,4 @@ angular
         };
       }
     };
-  });
+  }]);

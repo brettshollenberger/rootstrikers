@@ -1,6 +1,9 @@
 angular
   .module('app')
-  .factory('FormHelper', function($location, $anchorScroll) {
+  .factory('FormHelper', [
+    '$location',
+    '$anchorScroll',
+    function($location, $anchorScroll) {
     var FormHelper = {
       showError: function(property) {
         return property.$invalid && property.$dirty;
@@ -71,4 +74,4 @@ angular
       }
     };
     return FormHelper;
-  });
+  }]);

@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .factory('flash', function($rootScope) {
+  .factory('flash', ['$rootScope', function($rootScope) {
     //Not a big deal of notification but now with the logic on the factory and directive we can improve it
     var queue = [],
       currentMessage,
@@ -32,4 +32,4 @@ angular
       //Show a notification
       pop: pop
     };
-  });
+  }]);

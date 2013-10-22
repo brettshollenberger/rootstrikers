@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('shareableTemplate', function($location) {
+  .directive('shareableTemplate', ['$location', function($location) {
     return {
       restrict: 'EA',
       replace: false,
@@ -11,5 +11,5 @@ angular
         scope.inShareableNetworks = shareableController.inShareableNetworks;
       }
     };
-  });
+  }]);
 

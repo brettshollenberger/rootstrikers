@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .directive('shareableFacebook', function($location, $window) {
+  .directive('shareableFacebook', ['$location', '$window', function($location, $window) {
     return {
       restrict: 'A',
       // Load the shareable attributes in a slightly higher priority
@@ -22,4 +22,4 @@ angular
         });
       }
     };
-  });
+  }]);
