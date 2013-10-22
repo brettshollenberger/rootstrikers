@@ -52,17 +52,9 @@ angular
       };
         
       Project.getPublished = function(cb) {
-        //If we have fetched the project from the backend just return the published
-        if (projects.length) {
-          return projects.filter(function(element, index, array) {
-            return element.publish;
-          });
-        } else {
-          //fetch the published only
-          return this.getAll({
-            publish: true
-          }, cb);
-        }
+        return this.getAll({
+          publish: true
+        }, cb);
       };
         
       Project.getBySlug = function(name, cb) {
