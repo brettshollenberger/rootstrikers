@@ -21,6 +21,7 @@ angular
       $scope.loginErrors = {};
       $scope.loginUser = {};
       $scope.registerStep = 1;
+      $scope.join_success = false;
       
       $scope.advanceStep = function() {
          $scope.registerStep++; 
@@ -37,6 +38,7 @@ angular
           
           var user = userAPI.newUser(joinUser);
           user.$save();
+          $scope.join_success = true;
       };
 
       $scope.register = function() {

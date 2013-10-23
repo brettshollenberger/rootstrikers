@@ -31,6 +31,7 @@ angular
       // this prevents angular from adding an extra "blank" select to the beginning
       $scope.states = selectLocation.states();
       $scope.signer.state = $scope.states[0].abbreviation;
+      $scope.action_complete = false;
       
       var checkActionForUser = function() {
       
@@ -123,6 +124,7 @@ angular
       };
       
       var doAction = function(action, user) {
+          
           actionKitService.doAction(action).then(function (response) {
               
               // if the call to Action Kit was a success
@@ -137,6 +139,9 @@ angular
                   myAction.$save();
                   $scope.performedAction = true;
               }
+
+              $scope.action_complete = true;
+
           });
       };
       
