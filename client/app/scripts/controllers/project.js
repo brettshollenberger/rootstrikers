@@ -51,7 +51,7 @@ angular
       });
       */
       
-      projectAPI.getBySlug($routeParams.name, function(err, res) {
+      projectAPI.getBySlug($routeParams.name).then(function(res) {
         
         // get the project from our backend
         $scope.project = res;
