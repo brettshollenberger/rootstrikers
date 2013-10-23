@@ -19,6 +19,25 @@ angular
         .when('/donate', {
             redirectTo: '/'
         })
+        
+        /* Temporary redirects to existing Projects with old links still in the wild */
+        .when('/dear_congress_email_should_not_be_this_difficult', {
+            redirectTo: '/project/dear-congress-email-should-not-be-this-difficult'
+        })
+        .when('/who_s-paying_for_the_president', {
+            redirectTo: '/project/whos-paying-for-the-president'
+        })
+        .when('/who_can_afford_congress', {
+            redirectTo: '/project/who-can-afford-our-congress'
+        })
+        .when('/ny', {
+            redirectTo: '/project/why-new-yorks-fight-matters'
+        })
+        .when('/the_true_identity_behind_superpacs', {
+            redirectTo: '/project/the-true-identity-behind-super-pacs'
+        })
+        /* End Temporary Redirects */
+        
         .when('/project/:name', {
           controller: 'projectController',
           templateUrl: 'app/templates/projectPage.html'
