@@ -211,7 +211,7 @@ module.exports = function(app, db, mail) {
                  
                 currentUser.save(function(err, user) {
                     if (!err) {
-                      res.json(user);
+                      res.json(cleanUser(user));
                     } else {
                       res.send(err);
                     }
@@ -227,7 +227,6 @@ module.exports = function(app, db, mail) {
               message: 'Object Not Found'
             });
           }
-          res.json(cleanUser(user));
         } else {
           res.json(err);
         }

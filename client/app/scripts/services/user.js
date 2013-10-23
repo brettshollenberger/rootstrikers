@@ -125,6 +125,21 @@ angular
             destroyLoggedUser();
           });
         },
+        updateUser: function(user, cb) {
+        
+            user = new User(user);
+        
+            // save any changes made to the current user
+            user.$save(function(user) {
+              
+              // add the logged in user to cookie storage
+              $cookieStore.put('loggedUser', user);
+              createLoggedUser(user);
+              cb(user);
+            }, function(err) {
+              cb(err);
+            });
+        },
         hasAccess: function(type) {
           switch (type) {
             case 'isAdmin':
