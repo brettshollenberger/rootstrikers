@@ -1,4 +1,49 @@
+var mongoose = require('mongoose')
+  , Project = mongoose.model('project')
+  ;
+
 module.exports = function(app, db, auth) {
+  
+  /**
+   * Find / query function, allows us to pass a mongodb style query over rest
+   *
+   * @todo change to GET!!! might require querystring module and will def require modifying angular service
+   * @todo add to remaining controllers, currently only in application controller.
+   *
+   * @example { 'status' : 'open' } // gets all with status open
+   * @example { 'status' : { '$nin' : ['open', 'archived', 'denied'] } } // gets all where status not in array
+   *
+   * @note these must be passed through JSON.stringify on the angular app side
+   *
+   */
+  app.get('/api/project/find', function(req, res, next) {
+
+      // currently query is just request body
+      var query = {};
+
+      if(req.query.query) {
+        query = JSON.parse(req.query.query);
+      }
+
+  /*
+      if (req.userHasRole('salesRep')) {
+          query.salesRep = req.user._id;
+      } else if (req.userHasRole('vendorRep')) {
+          query.vendorRep = req.user._id;
+      }
+  */
+
+      Project
+          .find(query)
+          .exec(function(err, results) {
+              if (err) {
+                  res.json(err);
+              } else {
+                  res.json(results);
+              }
+          });
+  });
+
   ////////////////////////////////////////////////////
   // Get active projects
   ////////////////////////////////////////////////////
