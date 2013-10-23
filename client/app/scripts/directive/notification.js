@@ -1,12 +1,12 @@
 angular
   .module('app')
-  .directive('notification', ['flash',
-    function(notification) {
+  .directive('notification',
+    function() {
       return {
         restrict: 'E',
         replace: true,
         templateUrl: 'app/templates/partials/notification.html',
-        controller: function($scope, $element, $attrs) {
+        controller: ['$scope', '$element', '$attrs', 'flash', function($scope, $element, $attrs, notification) {
           $scope.message = notification.get();
           $scope.$on('flash', function(event, message) {
             $scope.message = message;
@@ -15,7 +15,7 @@ angular
           $scope.close = function() {
             $scope.message = undefined;
           };
-        }
+        }]
       };
     }
-  ]);
+  );
