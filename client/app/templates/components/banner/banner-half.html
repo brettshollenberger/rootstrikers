@@ -4,8 +4,8 @@
     analytics-on="click" 
     analytics-event="Share Facebook Start" 
     analytics-category="Social" 
-    ng-class="{'completed':checked == true}"
-    shareable shareable-facebook ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('facebook')"
+    ng-class="{'completed':facebookChecked == true}"
+    shareable shareable-facebook ng-class="socialClasses" ng-click="setFacebookChecked()" ng-show="isSocialType('facebook')"
     >
       <div class="half-stretch-left"></div>
       <div class="banner-info">
@@ -31,7 +31,7 @@
     analytics-on="click" 
     analytics-event="Share Twitter Start" 
     analytics-category="Social"
-    ng-class="{'completed':checked == true}" shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
+    ng-class="{'completed':twitterChecked == true}" shareable shareable-twitter ng-class="socialClasses" ng-click="check()" ng-show="isSocialType('twitter')">
 	  <div class="half-stretch-right"></div>
       <div class="banner-info">
         <div class="pull-left banner-icon">
