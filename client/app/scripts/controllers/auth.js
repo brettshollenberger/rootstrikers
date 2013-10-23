@@ -144,6 +144,8 @@ angular
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
           if(closeModal) _close();
+          // redirect the admin user to the admin dashboard
+          $location.path('/admin');
         });
       };
 
