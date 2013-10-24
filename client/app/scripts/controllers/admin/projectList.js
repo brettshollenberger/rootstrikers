@@ -13,16 +13,16 @@ angular
         MetaMachine.title("Projects", "Admin");
 
         $scope.remove = function(item) {
-        
-            var confirm = confirm('Are you sure you want to delete this Project?');
-        
-            if(confirm) {
+                
+            if(confirm('Are you sure you want to delete this Project?')) {
                 item.$remove(function() {
+                
+                    $scope.projects = projectAPI.getAll();
+                
                     notification.set({
                         body: 'Your Project has been successfully removed',
                         type: 'success'
                     });
-                    $location.path('admin').replace();
                 });
             }
         };
