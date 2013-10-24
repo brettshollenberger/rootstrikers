@@ -96,7 +96,6 @@ angular
          _addError('email', 'Email address already registered');
          $location.hash('registeremail');
         
-         console.log($scope);
          $scope.registerStep = 1;
         
         $anchorScroll();
@@ -108,27 +107,15 @@ angular
         
         // perform if there were no user form errors
         if (Object.keys($scope.formErrors).length === 0) {
-        
-            // get the user from the DB based on the logged in users ID
-            userAPI.get($scope.loggedUser.id, function(response) {
               
-              if($scope.loggedUser.newPassword) {
-                  $scope.loggedUser.password = $scope.loggedUser.newPassword;
-              }
+          if($scope.loggedUser.newPassword) {
+              $scope.loggedUser.password = $scope.loggedUser.newPassword;
+          }
+          
+          userAPI.updateUser($scope.loggedUser, function(updateResponse) {
+              _close();
+          });
               
-              // merge any changes from the current user into the existing user
-              response = angular.extend(response, $scope.loggedUser);
-              
-              // save any changes made to the current user
-              response.$save(function(user) {
-                  // update the logged user in the rootScope so the loggedUser cookie updates
-                  $rootScope.loggedUser = user;
-                 // _close();
-              }, function(err) {
-                  console.log('The User was not Updated');
-              });
-              
-            });
         } else {
             console.log("There were Errors on the User Form");
         }
@@ -139,7 +126,7 @@ angular
         closeModal = closeModal || true;
         
         _clearErrors();
-        console.log($scope.loginUser);
+
         userAPI.login($scope.loginUser).error(function(data, status) {
           _addError('extra', 'Login failed. Please check your Username and Password.', 'loginErrors');
         }).success(function() {
@@ -214,11 +201,10 @@ angular
       function _close() {
         _clearErrors();
         if ($scope.closeModal) {
+          
           $scope.closeModal();
         }
-        console.log('CLOSING modalr');
         $scope.registerStep = 1;
-        console.log($scope.registerStep);
       }
 
       function _clearErrors() {
