@@ -120,7 +120,7 @@ angular
           });
               
         } else {
-            console.log("There were Errors on the User Form");
+           //console.log("There were Errors on the User Form");
         }
       };
 
