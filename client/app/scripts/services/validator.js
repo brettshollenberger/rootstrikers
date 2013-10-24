@@ -202,12 +202,12 @@ angular
       transclude: true,
       template: "<div ng-transclude ng-class='{formGroupFinished: checkValidity()}'></div>",
       scope: {},
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.fields = [];
         this.addField = function(field) {
           $scope.fields.push(field);
         };
-      },
+      }],
 
       link: function(scope, element, attrs) {
         var form = scope.$parent[attrs.form];

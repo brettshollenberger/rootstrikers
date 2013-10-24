@@ -5,7 +5,7 @@ angular
       restrict: 'A',
       priority: 0,
       replace: false,
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         $scope.shareableNetworks = [];
 
         // @note this was replaced with encodeURIComponent
@@ -29,7 +29,7 @@ angular
 
         $scope.absUrl = this.absUrl;
         $scope.inShareableNetworks = this.inShareableNetworks;
-      },
+      }],
       link: function(scope, elements, attrs) {
         
       }

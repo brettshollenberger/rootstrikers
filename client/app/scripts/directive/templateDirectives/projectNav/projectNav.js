@@ -8,7 +8,7 @@ angular
         scope: {},
         templateUrl: 'app/templates/components/projectNav/projectNav.html',
         replace: false,
-        controller: function($scope, projectService, $routeParams) {
+        controller: ['$scope', 'projectService', '$routeParams', function($scope, projectService, $routeParams) {
           (function projectNavConstructor(t) {
             projectService.getPublished(function(result) {
               $scope.projects = result;
@@ -21,7 +21,7 @@ angular
               $scope.displayedProject = $scope.currentProject;
             });
           })(this);
-        },
+        }],
         link: function(scope, element, attrs) {
 
           scope.displayCurrentProject = function() {
