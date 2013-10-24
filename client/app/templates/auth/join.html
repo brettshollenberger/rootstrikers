@@ -5,7 +5,7 @@
     <h4>Join Rootstrikers</h4>
   </div>
 
-  <div class="modal-body">
+  <div class="modal-body" ng-show="!join_success">
 
     <form novalidate
         analytics-on="submit" 
@@ -69,10 +69,19 @@
 
         </div>
               
-        <button type="submit" ng-click="closeModal()" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right" modal template="app/templates/auth/thankyou.html">Join</button>
+        <button type="submit" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right">Join</button>
         <p>We do not share your email address without your permission. We will send you updates on this and other important campaigns by email. If at any time you would like to unsubscribe from our email list, you may do so.</p>
                                     
         <!-- <button type="submit" ng-click="closeModal()" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Join</button> -->
     </form>
+    </div>
+
+    <div class="modal-body " ng-show="join_success">
+        <div class="text-center">
+            <br /><br />
+            <h4>Thanks for Joining Rootstrikers!</h4>
+            <br />
+            <a class="btn btn-primary" ng-click="closeModal()">Take Action!</a>
+        </div>
     </div>
 </div>
