@@ -26,10 +26,9 @@ angular.module('app').controller('projectEditController', [
         
         //get the project from the API
         projectAPI.get({projectID: $routeParams.projectID}, function(project) {
-        
-            model = project;
-
-            $scope.project = model;
+            
+            // update the scope model with the returned project
+            updateScopeModel(project);
             
             if($scope.project.shortname) {
             
@@ -57,15 +56,22 @@ angular.module('app').controller('projectEditController', [
             };
         });
     } else {
-        //Create a new resource
-        model = projectAPI.newProject();
-        $scope.project = model;
+        // Create a new resource and save it to scope
+        updateScopeModel(projectAPI.newProject());
+
         $scope.actionTitle = 'New';
         MetaMachine.title("New Project", "Admin");
     }
-
-    //And for preview
-    $scope.item = model;
+    
+    var updateScopeModel = function (newModel) {
+        model = newModel;
+        
+        // set the model for the admin edit page
+        $scope.project = model;
+        
+        // set model for the preview page
+        $scope.item = model;
+    };
 
     $scope.signUrl = 'http://act.demandprogress.org/sign/';
 
