@@ -2,7 +2,7 @@
 
 angular
   .module('app')
-  .directive('shareableTwitter', ['$location', '$window', function($location, $window) {
+  .directive('shareableTwitter', ['$location', '$window', '$cookieStore', '$rootScope', function($location, $window, $cookieStore, $rootScope) {
     return {
       restrict: 'A',
       // Load the shareable attributes in a slightly higher priority
@@ -32,6 +32,12 @@ angular
         element.on('click', function() {
           $window.open(twitterUrl, '_blank');
           $window.focus();
+
+          cookie = $cookieStore.get('twitterShared') || [];
+          if (!_.include(cookie, $location.absUrl())) { cookie.push($location.absUrl()); }
+          $cookieStore.put('twitterShared', cookie);
+          
+          $rootScope.$broadcast('twitterShared', cookie);
         });
       }
     };

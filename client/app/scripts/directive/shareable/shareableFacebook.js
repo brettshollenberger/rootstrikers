@@ -1,6 +1,7 @@
 angular
   .module('app')
-  .directive('shareableFacebook', ['$location', '$window', function($location, $window) {
+  .directive('shareableFacebook', ['$location', '$window', '$cookieStore', '$rootScope',
+    function($location, $window, $cookieStore, $rootScope) {
     return {
       restrict: 'A',
       // Load the shareable attributes in a slightly higher priority
@@ -10,6 +11,7 @@ angular
       replace: false,
       require: "^shareable",
       link: function(scope, element, attrs, shareableController) {
+        var cookie;
         shareableController.addFacebook();
 
         // If no image is specified, it falls back on the FontAwesome icon
@@ -19,6 +21,11 @@ angular
         element.on('click', function() {
           $window.open(facebookUrl, '_blank');
           $window.focus();
+          cookie = $cookieStore.get('facebookShared') || [];
+          if (!_.include(cookie, $location.absUrl())) { cookie.push($location.absUrl()); }
+          $cookieStore.put('facebookShared', cookie);
+          
+          $rootScope.$broadcast('facebookShared', cookie);
         });
       }
     };
