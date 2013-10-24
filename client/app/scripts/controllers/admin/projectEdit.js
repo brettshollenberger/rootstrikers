@@ -10,6 +10,14 @@ angular.module('app').controller('projectEditController', [
 
     var model;
 
+    $scope.tabs = [{
+        name: 'Custom Project',
+        active: false
+    }, {
+        name: 'ActionKit Project',
+        active: false
+    }];
+
     //Check for the ID to know if its an edit or a new
     if ($routeParams.projectID) {
         
@@ -18,19 +26,28 @@ angular.module('app').controller('projectEditController', [
         
         //get the project from the API
         projectAPI.get({projectID: $routeParams.projectID}, function(project) {
+        
             model = project;
 
             $scope.project = model;
             
             if($scope.project.shortname) {
             
+                // get the ActionKit page information
                 actionKitService.getPage($scope.project.shortname).then(function (response) {
-                    
                     if(response !== false) {
                         $scope.project.title = response.title;
                         $scope.project.actionkit = response;
                     }
                 });
+                
+                // change the active tab to be an actionkit project
+                $scope.activeTab = 1;
+                $scope.tabs[1].active = true;
+            } else {
+                // change the active tab to be a custom project
+                $scope.activeTab = 0;
+                $scope.tabs[0].active = true;
             }
             
             MetaMachine.title("Editing: " + $scope.project.title, "Admin");
@@ -42,22 +59,10 @@ angular.module('app').controller('projectEditController', [
     } else {
         //Create a new resource
         model = projectAPI.newProject();
+        $scope.project = model;
         $scope.actionTitle = 'New';
         MetaMachine.title("New Project", "Admin");
     }
-    
-/*
-    var get
-    
-    
-    
-    $scope.$watch('model', function(response) { 
-        
-    });
-*/
-
-    //set the model on the scope so its filled by the form
-    $scope.project = model;
 
     //And for preview
     $scope.item = model;
@@ -71,34 +76,24 @@ angular.module('app').controller('projectEditController', [
     };
 
     var saveModel = function(silent) {
-            model.$save(function(project, putResponseHeaders) {
-                if (silent) {
-                    return;
-                }
-                //If there is no projectID
-                if ( !! !$routeParams.projectID) {
-                    notification.set({
-                        body: 'Your Project has been successfully saved',
-                        type: 'success'
-                    });
-                    $location.path('admin/project/edit/' + project.id).replace();
-                }
-                notification.pop({
+        model.$save(function(project, putResponseHeaders) {
+            if (silent) {
+                return;
+            }
+            // If there is no projectID
+            if ( !! !$routeParams.projectID) {
+                notification.set({
                     body: 'Your Project has been successfully saved',
                     type: 'success'
                 });
+                $location.path('admin/project/edit/' + project.id).replace();
+            }
+            notification.pop({
+                body: 'Your Project has been successfully saved',
+                type: 'success'
             });
-        };
-
-    $scope.activeTab = 1;
-
-    $scope.tabs = [{
-        name: 'Custom Project',
-        active: false
-    }, {
-        name: 'ActionKit Project',
-        active: true
-    }];
+        });
+    };
     
     $scope.changeTab = function(tab) {
         $scope.tabs[$scope.activeTab].active = false;
