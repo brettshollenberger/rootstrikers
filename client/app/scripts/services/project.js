@@ -57,23 +57,14 @@ angular
         }, cb);
       };
         
-      Project.getBySlug = function(name, cb) {
-        var respond = function(results) {
-          if (results.length) {
-            if (cb) {
-              cb(undefined, results[0]);
-            }
-          } else {
-            if (cb) {
-              cb("Not Found");
-            }
-          }
+      Project.getBySlug = function(name) {
+
+        var params = {
+            query: JSON.stringify({slug: name})
         };
-          
-        this.getAll({
-          slug: name
-        }, function(result) {
-          respond(result);
+
+        return $http.get('/api/project/find', {params: params}).then(function(response) {
+          return response.data[0];
         });
       };
 

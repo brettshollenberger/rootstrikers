@@ -119,8 +119,8 @@ module.exports = function(app, db, mail) {
     } else {
       //Create a user with full sign up
       createUser(db, data, res, function(err, user) {
-        if (err) throw err;
-        verifyUser(req, db, mail, user);
+        if (err) res.json(err);
+        if (!err) verifyUser(req, db, mail, user);
       });
     }
   });
@@ -211,7 +211,7 @@ module.exports = function(app, db, mail) {
                  
                 currentUser.save(function(err, user) {
                     if (!err) {
-                      res.json(user);
+                      res.json(cleanUser(user));
                     } else {
                       res.send(err);
                     }
@@ -227,7 +227,6 @@ module.exports = function(app, db, mail) {
               message: 'Object Not Found'
             });
           }
-          res.json(cleanUser(user));
         } else {
           res.json(err);
         }
