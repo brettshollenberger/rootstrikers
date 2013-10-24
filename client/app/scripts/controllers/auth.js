@@ -96,7 +96,6 @@ angular
          _addError('email', 'Email address already registered');
          $location.hash('registeremail');
         
-         console.log($scope);
          $scope.registerStep = 1;
         
         $anchorScroll();
@@ -202,6 +201,7 @@ angular
       function _close() {
         _clearErrors();
         if ($scope.closeModal) {
+          
           $scope.closeModal();
         }
         $scope.registerStep = 1;
