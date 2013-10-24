@@ -13,7 +13,10 @@ angular
         MetaMachine.title("Projects", "Admin");
 
         $scope.remove = function(item) {
-            if(confirm('Are you sure you want to delete this Project?')) {
+        
+            var confirm = confirm('Are you sure you want to delete this Project?');
+        
+            if(confirm) {
                 item.$remove(function() {
                     notification.set({
                         body: 'Your Project has been successfully removed',
@@ -25,9 +28,16 @@ angular
         };
 
         $scope.publish = function(id, status) {
-            projectAPI.get(id, function(project) {
+        
+            projectAPI.getById(id).then(function(response) {
+                
+                var project = response;
+                
                 project.publish = status;
-                project.$save(function() {
+                projectAPI.updateById(id, project).then(function(response) {
+                    
+                    $scope.projects = projectAPI.getAll();
+                    
                     notification.pop({
                         body: 'Your Project has been successfully ' + (status) ? 'published' : 'unpublished',
                         type: 'success'

@@ -26,6 +26,18 @@ angular
         return -1;
       };
       
+      Project.getById = function(id) {
+        return $http.get('/api/project/' + id).then(function(response) {
+            return response.data;
+        });
+      };
+      
+      Project.updateById = function(id, data) {
+        return $http.post('/api/project/' + id, data).then(function(response) {
+            return response.data;
+        });
+      };
+      
       Project.newProject = function() {
         return new Project();
       };
