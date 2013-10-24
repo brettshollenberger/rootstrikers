@@ -24,7 +24,7 @@ angular
       $scope.join_success = false;
       
       $scope.advanceStep = function() {
-         $scope.registerStep++; 
+         $scope.registerStep++;
       };
 
       $scope.join = function() {
@@ -37,8 +37,11 @@ angular
           };
           
           var user = userAPI.newUser(joinUser);
-          user.$save();
-          $scope.join_success = true;
+          user.$save(function(res) {
+            if (res.err)  $scope.errors = "That email has already been registered.";
+            if (!res.err) $scope.join_success = true;
+          });
+          
       };
 
       $scope.register = function() {

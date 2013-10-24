@@ -119,8 +119,8 @@ module.exports = function(app, db, mail) {
     } else {
       //Create a user with full sign up
       createUser(db, data, res, function(err, user) {
-        if (err) throw err;
-        verifyUser(req, db, mail, user);
+        if (err) res.json(err);
+        if (!err) verifyUser(req, db, mail, user);
       });
     }
   });
