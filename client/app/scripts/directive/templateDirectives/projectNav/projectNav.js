@@ -1,8 +1,8 @@
 angular
   .module('app')
   .directive('projectNav',
-    ['$location',
-    function($location) {
+    ['$location', '$timeout',
+    function($location, $timeout) {
       return {
         restrict: 'EA',
         scope: {},
@@ -24,26 +24,32 @@ angular
         }],
         link: function(scope, element, attrs) {
 
+          function safeApply() {
+            $timeout(function() {
+              scope.$apply();
+            },0);
+          }
+
           scope.displayCurrentProject = function() {
             scope.displayedProject = scope.currentProject;
-            if(!scope.$$phase) { scope.$apply(); }
+            safeApply();
           };
 
           scope.displayNextProject = function() {
             scope.displayedProject = scope.projects[
               _.indexOf(scope.projects, scope.currentProject) + 1] || _.first(scope.projects);
-            if(!scope.$$phase) { scope.$apply(); }
+            safeApply();
           };
 
           scope.displayPreviousProject = function() {
             scope.displayedProject = scope.projects[
               _.indexOf(scope.projects, scope.currentProject) - 1] || _.last(scope.projects);
-            if(!scope.$$phase) { scope.$apply(); }
+            safeApply();
           };
 
           scope.displayAllCampaigns = function() {
             scope.displayedProject = {title: "View All Campaigns"};
-            if(!scope.$$phase) { scope.$apply(); }
+            safeApply();
           };
           
           scope.nextProject = function() {
@@ -60,7 +66,8 @@ angular
             var slug = scope.displayedProject.slug;
             $location.path("/project/" + slug);
 
-            if(!scope.$$phase) { scope.$apply(); }
+            safeApply();
+
           };
         }
       };
