@@ -120,7 +120,7 @@ angular
       });
       
       $scope.donateProject = function() {
-          console.log('DONATE PROJECT');
+          //console.log('DONATE PROJECT');
       };
       
       var doAction = function(action, user) {
