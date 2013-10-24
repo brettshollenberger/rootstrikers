@@ -17,6 +17,10 @@
         ng-submit="join()">
                 
         <div form-group form="joinRootstrikers">
+
+            <div ng-show="errors" class="alert alert-error">
+                {{errors}}
+            </div>
         
             <label for="firstName">First Name</label>
             <input
@@ -69,7 +73,7 @@
 
         </div>
               
-        <button type="submit" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right">Join</button>
+        <button type="submit" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right">Join</button><br>
         <p>We do not share your email address without your permission. We will send you updates on this and other important campaigns by email. If at any time you would like to unsubscribe from our email list, you may do so.</p>
                                     
         <!-- <button type="submit" ng-click="closeModal()" ng-disabled="joinRootstrikers.$invalid" class="btn btn-primary pull-right" modal template="app/templates/pledge/thankyou.html">Join</button> -->
