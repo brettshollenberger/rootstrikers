@@ -10,6 +10,14 @@ angular.module('app').controller('projectEditController', [
 
     var model;
 
+    $scope.tabs = [{
+        name: 'Custom Project',
+        active: false
+    }, {
+        name: 'ActionKit Project',
+        active: false
+    }];
+
     //Check for the ID to know if its an edit or a new
     if ($routeParams.projectID) {
         
@@ -18,49 +26,55 @@ angular.module('app').controller('projectEditController', [
         
         //get the project from the API
         projectAPI.get({projectID: $routeParams.projectID}, function(project) {
-            model = project;
-
-            $scope.project = model;
             
-            if($scope.project.shortname) {
+            if(project.shortname) {
             
-                actionKitService.getPage($scope.project.shortname).then(function (response) {
-                    
+                // get the ActionKit page information
+                actionKitService.getPage(project.shortname).then(function (response) {
                     if(response !== false) {
-                        $scope.project.title = response.title;
-                        $scope.project.actionkit = response;
+                        
+                        // parse the actionkit return info to match the project fields
+                        project = projectAPI.parseActionkit(project, response);
+                        
+                        // update the scope model with the returned project
+                        updateScopeModel(project);
                     }
                 });
+                
+                // change the active tab to be an actionkit project
+                $scope.activeTab = 1;
+                $scope.tabs[1].active = true;
+            } else {
+                // change the active tab to be a custom project
+                $scope.activeTab = 0;
+                $scope.tabs[0].active = true;
+                
+                // update the scope model with the returned project
+                updateScopeModel(project);
             }
             
-            MetaMachine.title("Editing: " + $scope.project.title, "Admin");
-
-            $scope.isContentFromOldSite = function(project) {
-                return project.end_date == "2012-10-20T04:00:00.000Z";
-            };
+            MetaMachine.title("Editing: " + project.title, "Admin");
         });
     } else {
-        //Create a new resource
-        model = projectAPI.newProject();
+        // Create a new resource and save it to scope
+        updateScopeModel(projectAPI.newProject());
+
         $scope.actionTitle = 'New';
         MetaMachine.title("New Project", "Admin");
     }
     
-/*
-    var get
-    
-    
-    
-    $scope.$watch('model', function(response) { 
+    var updateScopeModel = function (newModel) {
+
+        // set the model for the admin edit page
+        $scope.project = newModel;
         
-    });
-*/
-
-    //set the model on the scope so its filled by the form
-    $scope.project = model;
-
-    //And for preview
-    $scope.item = model;
+        // set model for the preview page
+        $scope.item = newModel;
+    };
+    
+    $scope.isContentFromOldSite = function(project) {
+        return project && project.end_date && project.end_date == "2012-10-20T04:00:00.000Z";
+    };
 
     $scope.signUrl = 'http://act.demandprogress.org/sign/';
 
@@ -71,34 +85,24 @@ angular.module('app').controller('projectEditController', [
     };
 
     var saveModel = function(silent) {
-            model.$save(function(project, putResponseHeaders) {
-                if (silent) {
-                    return;
-                }
-                //If there is no projectID
-                if ( !! !$routeParams.projectID) {
-                    notification.set({
-                        body: 'Your Project has been successfully saved',
-                        type: 'success'
-                    });
-                    $location.path('admin/project/edit/' + project.id).replace();
-                }
-                notification.pop({
+        model.$save(function(project, putResponseHeaders) {
+            if (silent) {
+                return;
+            }
+            // If there is no projectID
+            if ( !! !$routeParams.projectID) {
+                notification.set({
                     body: 'Your Project has been successfully saved',
                     type: 'success'
                 });
+                $location.path('admin/project/edit/' + project.id).replace();
+            }
+            notification.pop({
+                body: 'Your Project has been successfully saved',
+                type: 'success'
             });
-        };
-
-    $scope.activeTab = 1;
-
-    $scope.tabs = [{
-        name: 'Custom Project',
-        active: false
-    }, {
-        name: 'ActionKit Project',
-        active: true
-    }];
+        });
+    };
     
     $scope.changeTab = function(tab) {
         $scope.tabs[$scope.activeTab].active = false;

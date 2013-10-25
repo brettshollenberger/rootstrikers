@@ -9,11 +9,11 @@ angular
         scope.completed = attrs.completed;
 
         scope.hasDate = function() {
-          return scope.item.end_date && scope.item.end_date !== null;
+          return scope.item && scope.item.end_date && scope.item.end_date !== null;
         };
 
         scope.isContentFromOldSite = function(item) {
-          return scope.item.end_date == "2012-10-20T04:00:00.000Z";
+          return item && item.end_date == "2012-10-20T04:00:00.000Z";
         };
 
         scope.completedStamp = function(item) {
