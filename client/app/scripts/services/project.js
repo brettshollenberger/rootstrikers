@@ -67,6 +67,21 @@ angular
           return response.data[0];
         });
       };
+      
+      Project.parseActionkit = function(project, actionkit) {
+        project.actionkit = actionkit;
+        project.title = actionkit.title;
+        project.sub_title = actionkit.petitionForm.statement_leadin;
+        project.problem = actionkit.petitionForm.about_text;
+        project.action = actionkit.petitionForm.statement_text;
+        project.goal = actionkit.goal;
+        
+        if(project.actionkit.goal_type === 'actions') {
+            project.actionsNeeded = project.actionkit.goal;
+        }
+        
+        return project;
+      };
 
       return Project;
     }

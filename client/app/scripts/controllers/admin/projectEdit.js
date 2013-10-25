@@ -27,16 +27,17 @@ angular.module('app').controller('projectEditController', [
         //get the project from the API
         projectAPI.get({projectID: $routeParams.projectID}, function(project) {
             
-            // update the scope model with the returned project
-            updateScopeModel(project);
-            
-            if($scope.project.shortname) {
+            if(project.shortname) {
             
                 // get the ActionKit page information
-                actionKitService.getPage($scope.project.shortname).then(function (response) {
+                actionKitService.getPage(project.shortname).then(function (response) {
                     if(response !== false) {
-                        $scope.project.title = response.title;
-                        $scope.project.actionkit = response;
+                        
+                        // parse the actionkit return info to match the project fields
+                        project = projectAPI.parseActionkit(project, response);
+                        
+                        // update the scope model with the returned project
+                        updateScopeModel(project);
                     }
                 });
                 
@@ -47,13 +48,12 @@ angular.module('app').controller('projectEditController', [
                 // change the active tab to be a custom project
                 $scope.activeTab = 0;
                 $scope.tabs[0].active = true;
+                
+                // update the scope model with the returned project
+                updateScopeModel(project);
             }
             
-            MetaMachine.title("Editing: " + $scope.project.title, "Admin");
-
-            $scope.isContentFromOldSite = function(project) {
-                return project.end_date == "2012-10-20T04:00:00.000Z";
-            };
+            MetaMachine.title("Editing: " + project.title, "Admin");
         });
     } else {
         // Create a new resource and save it to scope
@@ -64,13 +64,16 @@ angular.module('app').controller('projectEditController', [
     }
     
     var updateScopeModel = function (newModel) {
-        model = newModel;
-        
+
         // set the model for the admin edit page
-        $scope.project = model;
+        $scope.project = newModel;
         
         // set model for the preview page
-        $scope.item = model;
+        $scope.item = newModel;
+    };
+    
+    $scope.isContentFromOldSite = function(project) {
+        return project && project.end_date && project.end_date == "2012-10-20T04:00:00.000Z";
     };
 
     $scope.signUrl = 'http://act.demandprogress.org/sign/';

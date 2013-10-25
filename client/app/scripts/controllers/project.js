@@ -73,25 +73,17 @@ angular
             
             // check to see if there is an actionkit page set and get that page if so
             if($scope.project.shortname) {
-                actionKitService.getPage($scope.project.shortname).then(function(response){
+                actionKitService.getPage($scope.project.shortname).then(function(response) {
                     if(response) {
-                        $scope.project.actionkit = response;
-                        $scope.project.title = response.title;
-                        $scope.project.sub_title = response.petitionForm.statement_leadin;
-                        $scope.project.problem = response.petitionForm.about_text;
-                        $scope.project.action = response.petitionForm.statement_text;
-                        $scope.project.goal = response.goal;
-
+                        
+                        // parse the actionkit return info to match the project fields
+                        $scope.project = projectAPI.parseActionkit($scope.project, response);
+                        
                         MetaMachine.title($scope.project.title);
                         MetaMachine.description($scope.project.action);
                         MetaMachine.image($scope.project.image);
                         MetaMachine.url($location.absUrl());
-                        
-                        if($scope.project.actionkit.goal_type === 'actions') {
-                            $scope.project.actionsNeeded = $scope.project.actionkit.goal;
-                        }
                     }
-            
                 });
             } else {
               MetaMachine.title($scope.project.title);
