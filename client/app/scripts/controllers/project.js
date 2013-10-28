@@ -107,6 +107,9 @@ angular
               }
               MetaMachine.image($scope.project.image);
               MetaMachine.url($location.absUrl());
+
+              // clear the title, which is normally done in project service 
+              $rootScope.shareText = null;
             }
             
             $scope.signedPledge = $cookieStore.get('signedPledge');

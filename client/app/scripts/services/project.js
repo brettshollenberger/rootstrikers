@@ -3,7 +3,8 @@ angular
   .factory('projectService', [
     '$resource',
     '$http',
-    function($resource, $http) {
+    '$rootScope',
+    function($resource, $http, $rootScope) {
       var Project = $resource('/api/project/:projectID', { projectID: '@id' }, {
         active: {
           method: 'GET',
@@ -90,6 +91,12 @@ angular
         
         if(project.actionkit.goal_type === 'actions') {
             project.actionsNeeded = project.actionkit.goal;
+        }
+
+        if(project.actionkit.fields.twitter_text) {
+          $rootScope.shareText = project.actionkit.fields.twitter_text;
+        } else {
+          $rootScope.shareText = null;
         }
         
         return project;
