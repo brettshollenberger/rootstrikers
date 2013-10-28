@@ -51,7 +51,13 @@
                         <div class="progress">
                             <div class="bar" style="width: {{users.length / project.actionsNeeded * 100}}%;"></div>
                         </div>
-                        <p class="text-right" ng-hide="!project.actionsNeeded"><span>{{project.actionsNeeded | number}}</span> Needed</p>
+                        <p class="text-right" ng-hide="!project.actionsNeeded || project.actionsNeeded - users.length < 1">
+                            <span>{{project.actionsNeeded - users.length | number}}</span>
+                            Needed
+                        </p>
+                        <p class="text-right" ng-show="project.actionsNeeded && project.actionsNeeded - users.length < 1">
+                            <span>The Goal Has been Reached</span>
+                        </p>
                     </div>
                 
                 <div>
