@@ -24,12 +24,22 @@ angular
         
         // build the url for sharing
         var twitterUrl = 'https://twitter.com/intent/tweet?hashtags=rootstrikers' +
-        //'&text=Testing' + 
         '&tw_p=tweetbutton' +
-        '&original_referer=' + shareableController.absUrl +
+        '&original_referer=' + shareableController.absUrl + 
         '&url=' + shareableController.absUrl;
-                    
+
+       
         element.on('click', function() {
+
+          // if we have share text, append to share string before we open the button
+          // @Note we are setting this custom text on rootscope, and clearing it if
+          //       project is non-actionkit OR doesn't have any text
+
+          // check for share text & set share text if present
+          if($rootScope.shareText) {
+            twitterUrl += '&text=' + $rootScope.shareText;
+          }
+
           $window.open(twitterUrl, '_blank');
           $window.focus();
 
