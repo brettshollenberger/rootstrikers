@@ -10,6 +10,15 @@ angular.module('app').controller('projectEditController', [
 
     var model;
 
+    var updateScopeModel = function (newModel) {
+
+        // set the model for the admin edit page
+        $scope.project = newModel;
+        
+        // set model for the preview page
+        $scope.item = newModel;
+    };
+
     $scope.tabs = [{
         name: 'Custom Project',
         active: false
@@ -59,18 +68,13 @@ angular.module('app').controller('projectEditController', [
         // Create a new resource and save it to scope
         updateScopeModel(projectAPI.newProject());
 
+         // change the active tab to be a custom project
+        $scope.activeTab = 0;
+        $scope.tabs[0].active = true;
+
         $scope.actionTitle = 'New';
         MetaMachine.title("New Project", "Admin");
     }
-    
-    var updateScopeModel = function (newModel) {
-
-        // set the model for the admin edit page
-        $scope.project = newModel;
-        
-        // set model for the preview page
-        $scope.item = newModel;
-    };
     
     $scope.isContentFromOldSite = function(project) {
         return project && project.end_date && project.end_date == "2012-10-20T04:00:00.000Z";
