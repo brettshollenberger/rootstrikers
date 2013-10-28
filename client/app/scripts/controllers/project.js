@@ -45,6 +45,19 @@ angular
       
       var watcher1 = $rootScope.$watch('loggedUser', checkActionForUser);
       
+
+      /**
+       * --------------------------------------------
+       * Gets current users that have acted on this pledge 
+       * --------------------------------------------
+       */
+      var loadCurrentUsers = function() {
+          // get all of the people who have acted on this project
+          actionService.getProjectActionUsers($scope.project.id).then(function(response) {
+              $scope.users        = response;
+              $scope.displayUsers = _.take(response, 22);
+          });
+      };
      
       /*
       $scope.$on('$routeChangeSuccess', function() {
@@ -98,11 +111,8 @@ angular
             
             $scope.signedPledge = $cookieStore.get('signedPledge');
             
-            // get all of the people who have acted on this project
-            actionService.getProjectActionUsers($scope.project.id).then(function(response) {
-                $scope.users        = response;
-                $scope.displayUsers = _.take(response, 22);
-            });
+            loadCurrentUsers();
+            
             
         } else {
             MetaMachine.title();
@@ -128,7 +138,14 @@ angular
               
                   // add an action entry to our DB for easy reference later
                   var myAction = new actionService({user: user, project_id: $scope.project.id});
-                  myAction.$save();
+                  
+                  // save to the database AND THEN
+                  // call loadCurrentUsers() which will update show 
+                  // user in 'taken action' area
+                  myAction.$save(function() {
+                    loadCurrentUsers();
+                  });
+
                   $scope.performedAction = true;
               }
 
